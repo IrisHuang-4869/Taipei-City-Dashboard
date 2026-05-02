@@ -210,6 +210,7 @@ onMounted(() => {
 
 	&-map {
 		height: calc(100% - 32px);
+		position: relative;
 
 		@media (max-width: 1000px) {
 			height: 100%;

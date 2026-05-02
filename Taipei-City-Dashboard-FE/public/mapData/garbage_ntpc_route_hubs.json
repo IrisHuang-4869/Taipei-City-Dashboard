@@ -1,0 +1,8 @@
+{
+	"meta": {
+		"description": "新北垃圾清運路線之「集中點」座標（可選）。與 garbage_ntpc_route_local 之 properties.dist、route_name 對應；有 latitude／longitude 時弧線終點優先連至此處，否則使用該路線所有停靠點之座標重心。",
+		"updated": "2026-05-02",
+		"key_format": "dist + route_name（與程式內 routeGroupKey 一致：「行政區|路線名稱」）"
+	},
+	"route_hubs": []
+}

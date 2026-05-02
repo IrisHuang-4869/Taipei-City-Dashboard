@@ -1,0 +1,471 @@
+{
+	"meta": {
+		"description": "臺北市清潔隊分隊／相關站點名稱與地址（供收運弧線終點）。僅地址無法自動得座標，請以地理編碼或手動填入 latitude、longitude；有座標時弧線會優先連向該點，否則仍用該分隊站點重心。收運 GeoJSON 之 brigade 若與此處 name 不同，請在 brigade_name_aliases 加上「資料欄位名→此表 name」對應（例：陽明分隊→陽明一班）。",
+		"updated": "2026-05-02",
+		"geocode_last_run_provider": "google"
+	},
+	"brigade_name_aliases": {
+		"台大分隊": "台大班",
+		"博愛分隊": "正博愛分隊",
+		"內湖分隊": "內湖區隊",
+		"大直分隊": "大直停車場"
+	},
+	"offices": [
+		{
+			"name": "東新橋下停車場",
+			"address": "南港區東新街東新橋下",
+			"latitude": 25.0468401,
+			"longitude": 121.5877415,
+			"geocode_query": "臺北市南港區東新街東新橋下",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "南港分隊",
+			"address": "南港區興東街7巷臨14號",
+			"latitude": 25.0556747,
+			"longitude": 121.6128131,
+			"geocode_query": "臺北市南港區興東街7巷臨14號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "玉成分隊",
+			"address": "南港區東新街臨3之1號",
+			"latitude": 25.0468401,
+			"longitude": 121.5877415,
+			"geocode_query": "臺北市南港區東新街臨3之1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "舊莊分隊",
+			"address": "南港區舊莊街一段三號",
+			"latitude": 25.0397311,
+			"longitude": 121.6205416,
+			"geocode_query": "臺北市南港區舊莊街一段三號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "延平分隊",
+			"address": "大同區環河北路1段63號之1",
+			"latitude": 25.0779224,
+			"longitude": 121.5086512,
+			"geocode_query": "臺北市大同區環河北路1段63號之1",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "蘭州分隊",
+			"address": "大同區敦煌路151號之1",
+			"latitude": 25.076699,
+			"longitude": 121.5116459,
+			"geocode_query": "臺北市大同區敦煌路151號之1",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "建成分隊",
+			"address": "大同區民權西路臨194之1號加油站旁",
+			"latitude": 25.0627243,
+			"longitude": 121.5113064,
+			"geocode_query": "臺北市大同區民權西路臨194之1號加油站旁",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "大龍分隊",
+			"address": "大同區承德路3段（承德橋下）",
+			"latitude": 25.0777125,
+			"longitude": 121.5188136,
+			"geocode_query": "臺北市大同區承德路3段（承德橋下）",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "武昌分隊",
+			"address": "萬華區成都路173號對面（橋墩下）",
+			"latitude": 25.0441349,
+			"longitude": 121.5019855,
+			"geocode_query": "臺北市萬華區成都路173號對面（橋墩下）",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "昆明分隊",
+			"address": "萬華區和平西路3段251號",
+			"latitude": 25.0356406,
+			"longitude": 121.4948228,
+			"geocode_query": "臺北市萬華區和平西路3段251號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "大理分隊",
+			"address": "萬華區長順街臨131號",
+			"latitude": 25.0313905,
+			"longitude": 121.4906769,
+			"geocode_query": "臺北市萬華區長順街臨131號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "東園分隊",
+			"address": "萬華區寶興街222巷11號之1",
+			"latitude": 25.0220278,
+			"longitude": 121.494953,
+			"geocode_query": "臺北市萬華區寶興街222巷11號之1",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "漢中分隊",
+			"address": "萬華區環河南路1段臨280之1號",
+			"latitude": 25.040468112298,
+			"longitude": 121.498330586398,
+			"geocode_query": "臺北市萬華區環河南路1段臨280之1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "青年分隊",
+			"address": "萬華區中華路二段416巷臨90號",
+			"latitude": 25.0268993,
+			"longitude": 121.5033681,
+			"geocode_query": "臺北市萬華區中華路二段416巷臨90號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "內湖區隊",
+			"address": "舊宗路2段臨158號停車場",
+			"latitude": 25.070764331646,
+			"longitude": 121.574358987424,
+			"geocode_query": "臺北市舊宗路2段臨158號停車場",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "西湖分隊",
+			"address": "內湖路1段臨552之1號",
+			"latitude": 25.0800142,
+			"longitude": 121.575196,
+			"geocode_query": "臺北市內湖路1段臨552之1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "文德分隊",
+			"address": "民權東路6段臨10之2號",
+			"latitude": 25.0690834,
+			"longitude": 121.5892012,
+			"geocode_query": "臺北市民權東路6段臨10之2號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "內湖分隊",
+			"address": "成功路5段5號消防隊對面",
+			"latitude": 25.0840097,
+			"longitude": 121.6015266,
+			"geocode_query": "臺北市成功路5段5號消防隊對面",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "民一分隊",
+			"address": "松江路臨487號",
+			"latitude": 25.0583675,
+			"longitude": 121.5332101,
+			"geocode_query": "臺北市松江路臨487號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "南京分隊",
+			"address": "長春路350號",
+			"latitude": 25.0545349,
+			"longitude": 121.5417449,
+			"geocode_query": "臺北市長春路350號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "大直停車場",
+			"address": "濱江街305巷中山高架橋下",
+			"latitude": 25.0720299,
+			"longitude": 121.5461125,
+			"geocode_query": "臺北市濱江街305巷中山高架橋下",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "中山分隊",
+			"address": "新生北路2段臨30-1號",
+			"latitude": 25.0527861,
+			"longitude": 121.5279185,
+			"geocode_query": "臺北市新生北路2段臨30-1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "長安分隊",
+			"address": "建國北路1段臨5-1號",
+			"latitude": 25.0521905,
+			"longitude": 121.5372233,
+			"geocode_query": "臺北市建國北路1段臨5-1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "和平分隊",
+			"address": "辛亥路1段臨143號",
+			"latitude": 25.022268316253,
+			"longitude": 121.532601267813,
+			"geocode_query": "臺北市辛亥路1段臨143號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "敦化分隊",
+			"address": "建國南路忠孝東路口往北第一個橋孔下",
+			"latitude": 25.0418417,
+			"longitude": 121.5367388,
+			"geocode_query": "臺北市建國南路忠孝東路口往北第一個橋孔下",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "瑞安分隊",
+			"address": "建國南路2段臨262號",
+			"latitude": 25.0228567,
+			"longitude": 121.5372832,
+			"geocode_query": "臺北市建國南路2段臨262號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "新生分隊",
+			"address": "建國南路1段臨173號",
+			"latitude": 25.0228567,
+			"longitude": 121.5372832,
+			"geocode_query": "臺北市建國南路1段臨173號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "臥龍分隊",
+			"address": "基隆路3段臨24號",
+			"latitude": 25.018168,
+			"longitude": 121.5456535,
+			"geocode_query": "臺北市基隆路3段臨24號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "台大班",
+			"address": "辛亥路1段臨138號",
+			"latitude": 25.022515218474,
+			"longitude": 121.532406535284,
+			"geocode_query": "臺北市辛亥路1段臨138號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "忠孝分隊",
+			"address": "北平東路19-1號",
+			"latitude": 25.0466555,
+			"longitude": 121.5249217,
+			"geocode_query": "臺北市北平東路19-1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "仁愛分隊",
+			"address": "紹興南街36巷口人行道邊",
+			"latitude": 25.037288,
+			"longitude": 121.5227935,
+			"geocode_query": "臺北市紹興南街36巷口人行道邊",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "正博愛分隊",
+			"address": "愛國西路臨5之1號",
+			"latitude": 25.0356971,
+			"longitude": 121.5118461,
+			"geocode_query": "臺北市愛國西路臨5之1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "泉州分隊",
+			"address": "惠安街47號",
+			"latitude": 25.0288021,
+			"longitude": 121.507552,
+			"geocode_query": "臺北市惠安街47號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "師大路停車場",
+			"address": "師大路臨241號",
+			"latitude": 25.0210392,
+			"longitude": 121.525255,
+			"geocode_query": "臺北市師大路臨241號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "五分埔分隊",
+			"address": "永吉路120巷101號",
+			"latitude": 25.0416459,
+			"longitude": 121.5702907,
+			"geocode_query": "臺北市永吉路120巷101號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "六張犁分隊",
+			"address": "嘉興街236號",
+			"latitude": 25.02571,
+			"longitude": 121.5560626,
+			"geocode_query": "臺北市嘉興街236號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "吳興分隊",
+			"address": "松平路信義國中後門旁",
+			"latitude": 25.0288257,
+			"longitude": 121.5677566,
+			"geocode_query": "臺北市松平路信義國中後門旁",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "三張犁分隊",
+			"address": "信義路五段91巷臨31號",
+			"latitude": 25.0338741,
+			"longitude": 121.5717404,
+			"geocode_query": "臺北市信義路五段91巷臨31號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "福德分隊",
+			"address": "福德街51巷2弄9號",
+			"latitude": 25.0361069,
+			"longitude": 121.581172,
+			"geocode_query": "臺北市福德街51巷2弄9號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "上塔悠分隊",
+			"address": "民權東路五段臨九四號後",
+			"latitude": 25.0632949,
+			"longitude": 121.5658778,
+			"geocode_query": "臺北市民權東路五段臨九四號後",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "中崙分隊",
+			"address": "南京東路四段四號",
+			"latitude": 25.0515808,
+			"longitude": 121.5528881,
+			"geocode_query": "臺北市南京東路四段四號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "松山分隊",
+			"address": "南京東路五段撫遠街正氣橋橋孔",
+			"latitude": 25.0644631,
+			"longitude": 121.5658051,
+			"geocode_query": "臺北市南京東路五段撫遠街正氣橋橋孔",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "東社分隊",
+			"address": "健康路15巷46號對面",
+			"latitude": 25.0554809,
+			"longitude": 121.5531545,
+			"geocode_query": "臺北市健康路15巷46號對面",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "興隆分隊",
+			"address": "景豐街臨82號",
+			"latitude": 25.0007027,
+			"longitude": 121.5456883,
+			"geocode_query": "臺北市景豐街臨82號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "復興分隊",
+			"address": "興隆路4段109巷臨77之1號",
+			"latitude": 24.9868207,
+			"longitude": 121.563512,
+			"geocode_query": "臺北市興隆路4段109巷臨77之1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "景美分隊",
+			"address": "溪洲街臨220號",
+			"latitude": 25.002924,
+			"longitude": 121.535545,
+			"geocode_query": "臺北市溪洲街臨220號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "博嘉分隊",
+			"address": "萬美街一段55巷口對面",
+			"latitude": 25.0021917,
+			"longitude": 121.5681287,
+			"geocode_query": "臺北市萬美街一段55巷口對面",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "文林分隊",
+			"address": "文昌路臨159之1號",
+			"latitude": 25.0977855,
+			"longitude": 121.5205909,
+			"geocode_query": "臺北市文昌路臨159之1號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "天母分隊",
+			"address": "中山北路6段763巷臨2號",
+			"latitude": 25.1158311,
+			"longitude": 121.52761,
+			"geocode_query": "臺北市中山北路6段763巷臨2號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "後港分隊",
+			"address": "承德路4段臨5之2號",
+			"latitude": 25.0853394,
+			"longitude": 121.5232805,
+			"geocode_query": "臺北市承德路4段臨5之2號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "蘭雅分隊",
+			"address": "文昌路211之3號",
+			"latitude": 25.1000225,
+			"longitude": 121.5200946,
+			"geocode_query": "臺北市文昌路211之3號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "社子分隊",
+			"address": "士林區中正路626號對面",
+			"latitude": 25.0868021,
+			"longitude": 121.5085543,
+			"geocode_query": "臺北市士林區中正路626號對面",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "光明分隊",
+			"address": "北投路1段臨30號",
+			"latitude": 25.137534,
+			"longitude": 121.4853612,
+			"geocode_query": "臺北市北投路1段臨30號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "石牌分隊",
+			"address": "北投路1段臨20號",
+			"latitude": 25.137534,
+			"longitude": 121.4853612,
+			"geocode_query": "臺北市北投路1段臨20號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "關渡分隊",
+			"address": "大度路3段臨250號",
+			"latitude": 25.1233369,
+			"longitude": 121.4677544,
+			"geocode_query": "臺北市大度路3段臨250號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "陽明二班",
+			"address": "新民路73之6號",
+			"latitude": 25.1412801,
+			"longitude": 121.5127087,
+			"geocode_query": "臺北市新民路73之6號",
+			"geocode_provider": "google"
+		},
+		{
+			"name": "陽明一班",
+			"address": "紗帽路141巷臨23號",
+			"latitude": 25.1486041,
+			"longitude": 121.5337123,
+			"geocode_query": "臺北市紗帽路141巷臨23號",
+			"geocode_provider": "google"
+		}
+	]
+}

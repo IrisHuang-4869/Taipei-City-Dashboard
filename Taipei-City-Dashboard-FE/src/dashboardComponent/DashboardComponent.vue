@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 // import "./styles/chartStyles.css";
 // import "./styles/toggleswitch.css";
 import "material-icons/iconfont/material-icons.css";
@@ -92,7 +92,26 @@ const emits = defineEmits([
 	"changeCity"
 ]);
 
-const activeChart = ref(props.config.chart_config.types[0]);
+const chartTypesList = computed(
+	() => props.config.chart_config?.types ?? [],
+);
+const activeChart = ref(chartTypesList.value[0] ?? null);
+watch(
+	chartTypesList,
+	(types) => {
+		if (!types.length) {
+			activeChart.value = null;
+			return;
+		}
+		if (
+			activeChart.value == null ||
+			!types.includes(activeChart.value)
+		) {
+			activeChart.value = types[0];
+		}
+	},
+	{ immediate: true },
+);
 const activeCity = computed({
 	get: () => props.activeCity,
 	set: (value) => {
@@ -369,11 +388,11 @@ function returnChartComponent(name, svg) {
         </template>
       </select>
       <div
-        v-if="config.chart_config.types.length > 1"
+        v-if="chartTypesList.length > 1"
         class="dashboardcomponent-control-group"
       >
         <button
-          v-for="item in config.chart_config.types"
+          v-for="item in chartTypesList"
           :key="`${config.index}-${item}-button`"
           :class="{
             'dashboardcomponent-control-group-button': true,
@@ -412,7 +431,7 @@ function returnChartComponent(name, svg) {
       </div>
       <div class="preview-content-charts">
         <img
-          v-for="chart in props.config.chart_config.types"
+          v-for="chart in chartTypesList"
           :key="`${props.config.index} - ${chart}`"
           :src="returnChartComponent(chart, true).toString()"
         >
@@ -429,7 +448,7 @@ function returnChartComponent(name, svg) {
     >
       <component
         :is="returnChartComponent(item)"
-        v-for="item in config.chart_config.types"
+        v-for="item in chartTypesList"
         :key="`${props.config.index}-${item}-chart-${item.city}`"
         :active-chart="activeChart"
         :active-city="activeCity"

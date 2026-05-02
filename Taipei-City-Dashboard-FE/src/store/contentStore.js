@@ -316,7 +316,10 @@ export const useContentStore = defineStore("content", {
 						this.cityDashboard.components[index].chart_data =
 							response.data.data;
 
-						if (response.data.categories) {
+						if (
+							response.data.categories &&
+							this.cityDashboard.components[index].chart_config
+						) {
 							this.cityDashboard.components[
 								index
 							].chart_config.categories =
@@ -428,7 +431,10 @@ export const useContentStore = defineStore("content", {
 						this.cityDashboard.components[index].chart_data =
 							response.data.data;
 
-						if (response.data.categories) {
+						if (
+							response.data.categories &&
+							this.cityDashboard.components[index].chart_config
+						) {
 							this.cityDashboard.components[
 								index
 							].chart_config.categories =
@@ -547,7 +553,10 @@ export const useContentStore = defineStore("content", {
 						this.cityDashboard.components[index].chart_data =
 							response.data.data;
 
-						if (response.data.categories) {
+						if (
+							response.data.categories &&
+							this.cityDashboard.components[index].chart_config
+						) {
 							this.cityDashboard.components[
 								index
 							].chart_config.categories =
@@ -937,7 +946,10 @@ export const useContentStore = defineStore("content", {
 				dialogStore.moreInfoContent[index].chart_data =
 					response_2.data.data;
 
-				if (response_2.data.categories) {
+				if (
+					response_2.data.categories &&
+					dialogStore.moreInfoContent[index].chart_config
+				) {
 					dialogStore.moreInfoContent[index].chart_config.categories =
 						response_2.data.categories;
 				}
@@ -1058,7 +1070,7 @@ export const useContentStore = defineStore("content", {
 			});
 
 			row.chart_data = response_2.data.data;
-			if (response_2.data.categories) {
+			if (response_2.data.categories && row.chart_config) {
 				row.chart_config.categories = response_2.data.categories;
 			}
 
