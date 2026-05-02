@@ -1,0 +1,1937 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.544483,
+          25.0517636
+        ]
+      },
+      "properties": {
+        "no": "206",
+        "county_code": "63000",
+        "site_name": "Lucky柒",
+        "tel": "0913226809",
+        "postal_code": "105",
+        "address": "南京東路三段253號販賣店B1",
+        "service_type": "買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "松山區",
+        "full_address": "臺北市松山區南京東路三段253號販賣店B1",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市松山區南京東路三段253號販賣店B1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4604496,
+          25.0882189
+        ]
+      },
+      "properties": {
+        "no": "345",
+        "county_code": "65000",
+        "site_name": "手機維修基地",
+        "tel": "0908-425-680",
+        "postal_code": "247",
+        "address": "光榮路18號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區光榮路18號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區光榮路18號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4658078,
+          25.0797059
+        ]
+      },
+      "properties": {
+        "no": "347",
+        "county_code": "65000",
+        "site_name": "3℃手機配件",
+        "tel": "0958-393-039",
+        "postal_code": "247",
+        "address": "九芎街107號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區九芎街107號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區九芎街107號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4646805,
+          25.0810217
+        ]
+      },
+      "properties": {
+        "no": "348",
+        "county_code": "65000",
+        "site_name": "又太科技有限公司",
+        "tel": "0973-390-837",
+        "postal_code": "247",
+        "address": "九芎街90巷17號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區九芎街90巷17號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區九芎街90巷17號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4512679,
+          25.1003715
+        ]
+      },
+      "properties": {
+        "no": "349",
+        "county_code": "65000",
+        "site_name": "展宇電腦",
+        "tel": "0981-810-921",
+        "postal_code": "248",
+        "address": "成泰路三段505號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "五股區",
+        "full_address": "新北市五股區成泰路三段505號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市五股區成泰路三段505號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5411539,
+          24.9970957
+        ]
+      },
+      "properties": {
+        "no": "350",
+        "county_code": "63000",
+        "site_name": "FixTED 維修工作室",
+        "tel": "02-2935-0899",
+        "postal_code": "116",
+        "address": "羅斯福路六段163號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區羅斯福路六段163號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區羅斯福路六段163號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4665852,
+          25.0247705
+        ]
+      },
+      "properties": {
+        "no": "352",
+        "county_code": "65000",
+        "site_name": "許刷刷手機現場維修",
+        "tel": "0915-024-888",
+        "postal_code": "220",
+        "address": "民生路三段95號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區民生路三段95號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區民生路三段95號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4554362,
+          25.005974
+        ]
+      },
+      "properties": {
+        "no": "353",
+        "county_code": "65000",
+        "site_name": "FOCUS通訊手機維修",
+        "tel": "0966-551-985",
+        "postal_code": "220",
+        "address": "南雅東路8號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區南雅東路8號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區南雅東路8號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4529499,
+          25.0092384
+        ]
+      },
+      "properties": {
+        "no": "354",
+        "county_code": "65000",
+        "site_name": "蘋果部落手機現場快速維修",
+        "tel": "0938-220-192",
+        "postal_code": "220",
+        "address": "南雅西路二段9號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區南雅西路二段9號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區南雅西路二段9號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4772488,
+          25.026609
+        ]
+      },
+      "properties": {
+        "no": "355",
+        "county_code": "65000",
+        "site_name": "修蛋機咧3C維修中心",
+        "tel": "02-22500809",
+        "postal_code": "220",
+        "address": "大同街8巷3號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區大同街8巷3號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區大同街8巷3號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4550567,
+          25.0064708
+        ]
+      },
+      "properties": {
+        "no": "356",
+        "county_code": "65000",
+        "site_name": "盛裕手機維修",
+        "tel": "0987-758-965",
+        "postal_code": "220",
+        "address": "新興路80號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區新興路80號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區新興路80號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4740393,
+          25.0151677
+        ]
+      },
+      "properties": {
+        "no": "357",
+        "county_code": "65000",
+        "site_name": "嵿石通訊",
+        "tel": "0928-916-490",
+        "postal_code": "220",
+        "address": "民生路一段66號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區民生路一段66號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區民生路一段66號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4627268,
+          25.0190882
+        ]
+      },
+      "properties": {
+        "no": "358",
+        "county_code": "65000",
+        "site_name": "修天下3C手機維修-板橋漢西店",
+        "tel": "0917-650-312",
+        "postal_code": "220",
+        "address": "漢生西路77-3號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區漢生西路77-3號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區漢生西路77-3號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5022834,
+          24.9990575
+        ]
+      },
+      "properties": {
+        "no": "359",
+        "county_code": "65000",
+        "site_name": "手機救星中和南山店",
+        "tel": "0972-040-501",
+        "postal_code": "235",
+        "address": "南山路27號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "中和區",
+        "full_address": "新北市中和區南山路27號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市中和區南山路27號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5424663,
+          24.9743944
+        ]
+      },
+      "properties": {
+        "no": "360",
+        "county_code": "65000",
+        "site_name": "FLASH FIX手機現場專業維修",
+        "tel": "0975-337-371",
+        "postal_code": "231",
+        "address": "北新路二段97巷4號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新店區",
+        "full_address": "新北市新店區北新路二段97巷4號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新店區北新路二段97巷4號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5419132,
+          24.974241
+        ]
+      },
+      "properties": {
+        "no": "361",
+        "county_code": "65000",
+        "site_name": "Mix手機現場維修",
+        "tel": "0980-486-147",
+        "postal_code": "231",
+        "address": "北新路二段97巷15號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新店區",
+        "full_address": "新北市新店區北新路二段97巷15號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新店區北新路二段97巷15號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4842663,
+          25.0702467
+        ]
+      },
+      "properties": {
+        "no": "362",
+        "county_code": "65000",
+        "site_name": "核心電腦",
+        "tel": "0973-399-067",
+        "postal_code": "241",
+        "address": "忠孝路二段87號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區忠孝路二段87號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區忠孝路二段87號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4603707,
+          25.0134629
+        ]
+      },
+      "properties": {
+        "no": "367",
+        "county_code": "65000",
+        "site_name": "點子數位 新北門市",
+        "tel": "0925-321-808",
+        "postal_code": "220",
+        "address": "文化路一段45巷2號",
+        "service_type": "維修,維護",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區文化路一段45巷2號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區文化路一段45巷2號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5784063,
+          25.0835337
+        ]
+      },
+      "properties": {
+        "no": "676",
+        "county_code": "63000",
+        "site_name": "銘遠商行",
+        "tel": "(02)2797-6128",
+        "postal_code": "114",
+        "address": "港墘路7號1樓",
+        "service_type": "買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區港墘路7號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區港墘路7號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6085371,
+          25.054556
+        ]
+      },
+      "properties": {
+        "no": "678",
+        "county_code": "63000",
+        "site_name": "劃時代電玩漫畫",
+        "tel": "(02)2651-2596",
+        "postal_code": "115",
+        "address": "南港路一段281號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區南港路一段281號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區南港路一段281號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6140835,
+          25.0346535
+        ]
+      },
+      "properties": {
+        "no": "681",
+        "county_code": "63000",
+        "site_name": "佳音中古電器",
+        "tel": "(02)2785-7221",
+        "postal_code": "115",
+        "address": "研究院路三段76號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區研究院路三段76號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區研究院路三段76號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.53983,
+          25.00144
+        ]
+      },
+      "properties": {
+        "no": "683",
+        "county_code": "63000",
+        "site_name": "林相攝影",
+        "tel": "(02)2930-3697",
+        "postal_code": "116",
+        "address": "羅斯福路六段5號萬隆捷運站2號出口",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區羅斯福路六段5號萬隆捷運站2號出口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區羅斯福路六段5號萬隆捷運站2號出口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.54138,
+          24.995639
+        ]
+      },
+      "properties": {
+        "no": "685",
+        "county_code": "63000",
+        "site_name": "GE 電玩達人",
+        "tel": "(02)2933-8345",
+        "postal_code": "116",
+        "address": "羅斯福路六段227號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區羅斯福路六段227號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區羅斯福路六段227號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5620191,
+          24.9841843
+        ]
+      },
+      "properties": {
+        "no": "687",
+        "county_code": "63000",
+        "site_name": "侍 電玩",
+        "tel": "0965-350-469",
+        "postal_code": "116",
+        "address": "興隆路四段163之2號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區興隆路四段163之2號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區興隆路四段163之2號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.543622,
+          25.054109
+        ]
+      },
+      "properties": {
+        "no": "690",
+        "county_code": "63000",
+        "site_name": "集英堂寫真機",
+        "tel": "(02)2545-1212",
+        "postal_code": "104",
+        "address": "南京東路三段223巷53號",
+        "service_type": "買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區南京東路三段223巷53號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區南京東路三段223巷53號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.537017,
+          25.0458577
+        ]
+      },
+      "properties": {
+        "no": "692",
+        "county_code": "63000",
+        "site_name": "惜福屋-慈濟二手好物大賣場",
+        "tel": "無",
+        "postal_code": "104",
+        "address": "八德路二段108-1號",
+        "service_type": "捐送,買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區八德路二段108-1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區八德路二段108-1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5117323,
+          25.0525102
+        ]
+      },
+      "properties": {
+        "no": "707",
+        "county_code": "63000",
+        "site_name": "四海相機",
+        "tel": "(02)2555-0303",
+        "postal_code": "103",
+        "address": "延平北路一段96號",
+        "service_type": "買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區延平北路一段96號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區延平北路一段96號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5186486,
+          25.0662384
+        ]
+      },
+      "properties": {
+        "no": "711",
+        "county_code": "63000",
+        "site_name": "優酷3C收購中心",
+        "tel": "0920-787-688",
+        "postal_code": "103",
+        "address": "承德路三段91號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區承德路三段91號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區承德路三段91號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.735553,
+          25.132257
+        ]
+      },
+      "properties": {
+        "no": "726",
+        "county_code": "10017",
+        "site_name": "大呼小叫-西定",
+        "tel": "2424-5115",
+        "postal_code": "203",
+        "address": "西定路32號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "中山區",
+        "full_address": "基隆市中山區西定路32號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市中山區西定路32號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.712681,
+          25.097461
+        ]
+      },
+      "properties": {
+        "no": "727",
+        "county_code": "10017",
+        "site_name": "傑昇通訊-七堵明德",
+        "tel": "2456-5680",
+        "postal_code": "206",
+        "address": "明德一路202號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "七堵區",
+        "full_address": "基隆市七堵區明德一路202號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市七堵區明德一路202號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4869414,
+          25.0685211
+        ]
+      },
+      "properties": {
+        "no": "728",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重力行店",
+        "tel": "2984-3000",
+        "postal_code": "241",
+        "address": "力行路一段89巷13號",
+        "service_type": "買賣,回收,交換",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區力行路一段89巷13號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區力行路一段89巷13號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4636171,
+          25.0795836
+        ]
+      },
+      "properties": {
+        "no": "729",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲長安店",
+        "tel": "2848-0628",
+        "postal_code": "247",
+        "address": "長安街40號",
+        "service_type": "買賣,回收,交換",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區長安街40號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區長安街40號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4905547,
+          25.0806766
+        ]
+      },
+      "properties": {
+        "no": "730",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重慈愛店",
+        "tel": "8982-5568",
+        "postal_code": "241",
+        "address": "新北市三重區慈愛街140號",
+        "service_type": "買賣,回收,交換",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區慈愛街140號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區慈愛街140號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4773289,
+          25.0903434
+        ]
+      },
+      "properties": {
+        "no": "731",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲民族店",
+        "tel": "2288-3339",
+        "postal_code": "247",
+        "address": "民族路314巷1號",
+        "service_type": "買賣,回收,交換",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區民族路314巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區民族路314巷1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5644722,
+          25.0339639
+        ]
+      },
+      "properties": {
+        "no": "737",
+        "county_code": "63000",
+        "site_name": "成功二手冷氣買賣",
+        "tel": "(02)2255-8075",
+        "postal_code": "110",
+        "address": "漢生東路33號",
+        "service_type": "買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區漢生東路33號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區漢生東路33號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5642343,
+          25.0289159
+        ]
+      },
+      "properties": {
+        "no": "738",
+        "county_code": "63000",
+        "site_name": "大老二手電腦",
+        "tel": "0953-231-611",
+        "postal_code": "110",
+        "address": "莊敬路289巷8弄16號1樓",
+        "service_type": "買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區莊敬路289巷8弄16號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區莊敬路289巷8弄16號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.736136,
+          25.1316301
+        ]
+      },
+      "properties": {
+        "no": "761",
+        "county_code": "10017",
+        "site_name": "傑昇通信安一店",
+        "tel": "2422-1798",
+        "postal_code": "203",
+        "address": "安一路80號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "中山區",
+        "full_address": "基隆市中山區安一路80號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市中山區安一路80號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7864874,
+          25.1357671
+        ]
+      },
+      "properties": {
+        "no": "762",
+        "county_code": "10017",
+        "site_name": "六六屋新豐店",
+        "tel": "2469-4529",
+        "postal_code": "202",
+        "address": "新豐街426號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "中正區",
+        "full_address": "基隆市中正區新豐街426號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市中正區新豐街426號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7441044,
+          25.1292975
+        ]
+      },
+      "properties": {
+        "no": "767",
+        "county_code": "10017",
+        "site_name": "睿暘科技通信行(大呼小叫)",
+        "tel": "2422-6622",
+        "postal_code": "200",
+        "address": "愛四路41號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "仁愛區",
+        "full_address": "基隆市仁愛區愛四路41號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市仁愛區愛四路41號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7159472,
+          25.0986691
+        ]
+      },
+      "properties": {
+        "no": "768",
+        "county_code": "10017",
+        "site_name": "遠傳電信-七堵明德加盟",
+        "tel": "2455-1058",
+        "postal_code": "206",
+        "address": "明德一路108號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "七堵區",
+        "full_address": "基隆市七堵區明德一路108號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市七堵區明德一路108號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7147685,
+          25.0969589
+        ]
+      },
+      "properties": {
+        "no": "769",
+        "county_code": "10017",
+        "site_name": "中華電信七堵服務中心",
+        "tel": "0800-080123",
+        "postal_code": "206",
+        "address": "崇智街2-5號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "七堵區",
+        "full_address": "基隆市七堵區崇智街2-5號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市七堵區崇智街2-5號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7250705,
+          25.1220805
+        ]
+      },
+      "properties": {
+        "no": "770",
+        "county_code": "10017",
+        "site_name": "中華電信 安樂服務中心",
+        "tel": "0800-080123",
+        "postal_code": "204",
+        "address": "安樂路二段129號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "安樂區",
+        "full_address": "基隆市安樂區安樂路二段129號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市安樂區安樂路二段129號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.711097,
+          25.141012
+        ]
+      },
+      "properties": {
+        "no": "771",
+        "county_code": "10017",
+        "site_name": "中華電信-神腦基隆大武崙門市",
+        "tel": "2431-9292",
+        "postal_code": "204",
+        "address": "基金一路172-6號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "安樂區",
+        "full_address": "基隆市安樂區基金一路172-6號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市安樂區基金一路172-6號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7445194,
+          25.1299389
+        ]
+      },
+      "properties": {
+        "no": "772",
+        "county_code": "10017",
+        "site_name": "中華電信行動通信分公司-基隆營運中心基隆行通一股",
+        "tel": "2424-1926",
+        "postal_code": "200",
+        "address": "愛四路53號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "仁愛區",
+        "full_address": "基隆市仁愛區愛四路53號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市仁愛區愛四路53號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7341567,
+          25.1319173
+        ]
+      },
+      "properties": {
+        "no": "773",
+        "county_code": "10017",
+        "site_name": "中華電信 安一服務中心",
+        "tel": "0800-080123",
+        "postal_code": "204",
+        "address": "安一路123號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "安樂區",
+        "full_address": "基隆市安樂區安一路123號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市安樂區安一路123號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7508353,
+          25.1287143
+        ]
+      },
+      "properties": {
+        "no": "774",
+        "county_code": "10017",
+        "site_name": "中華電信-神腦基隆信一門市",
+        "tel": "2425-5522",
+        "postal_code": "201",
+        "address": "信一路94號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "信義區",
+        "full_address": "基隆市信義區信一路94號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市信義區信一路94號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7424102,
+          25.1278385
+        ]
+      },
+      "properties": {
+        "no": "775",
+        "county_code": "10017",
+        "site_name": "傑昇通信 基隆愛三店",
+        "tel": "24281233",
+        "postal_code": "200",
+        "address": "愛三路40號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "仁愛區",
+        "full_address": "基隆市仁愛區愛三路40號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市仁愛區愛三路40號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7443173,
+          25.1300839
+        ]
+      },
+      "properties": {
+        "no": "776",
+        "county_code": "10017",
+        "site_name": "中華電信基隆服務中心",
+        "tel": "0800-080123",
+        "postal_code": "200",
+        "address": "仁一路321號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "仁愛區",
+        "full_address": "基隆市仁愛區仁一路321號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市仁愛區仁一路321號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7825088,
+          25.1333675
+        ]
+      },
+      "properties": {
+        "no": "777",
+        "county_code": "10017",
+        "site_name": "中華電信 基隆深溪門市",
+        "tel": "2468-3311",
+        "postal_code": "201",
+        "address": "深溪路94號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "基隆市",
+        "resolved_district": "信義區",
+        "full_address": "基隆市信義區深溪路94號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市信義區深溪路94號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5008325,
+          25.1183089
+        ]
+      },
+      "properties": {
+        "no": "785",
+        "county_code": "63000",
+        "site_name": "小米電腦",
+        "tel": "(02)2821-2617",
+        "postal_code": "112",
+        "address": "承德路七段393巷31號",
+        "service_type": "買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "北投區",
+        "full_address": "臺北市北投區承德路七段393巷31號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市北投區承德路七段393巷31號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5266191,
+          25.0892184
+        ]
+      },
+      "properties": {
+        "no": "798",
+        "county_code": "63000",
+        "site_name": "鴻景通信",
+        "tel": "(02)2881-9687",
+        "postal_code": "111",
+        "address": "文林路155號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區文林路155號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區文林路155號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5803966,
+          25.0743499
+        ]
+      },
+      "properties": {
+        "no": "802",
+        "county_code": "63000",
+        "site_name": "成功電腦回收",
+        "tel": "(02)8792-2135",
+        "postal_code": "114",
+        "address": "陽光街200號",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區陽光街200號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區陽光街200號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5955687,
+          25.0839056
+        ]
+      },
+      "properties": {
+        "no": "803",
+        "county_code": "63000",
+        "site_name": "優格米電玩遊戲專賣店(內湖金湖店)",
+        "tel": "(02)2634-9232",
+        "postal_code": "114",
+        "address": "金湖路2號1樓",
+        "service_type": "買賣,維修",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區金湖路2號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區金湖路2號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5949799,
+          25.078653
+        ]
+      },
+      "properties": {
+        "no": "804",
+        "county_code": "63000",
+        "site_name": "就愛新歡跳蚤市場",
+        "tel": "0932-187-063",
+        "postal_code": "114",
+        "address": "康寧路一段190號",
+        "service_type": "捐送,買賣",
+        "item": "3C用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區康寧路一段190號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區康寧路一段190號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4754128,
+          25.0866932
+        ]
+      },
+      "properties": {
+        "no": "975",
+        "county_code": "65000",
+        "site_name": "遠傳 蘆洲復興直營店",
+        "tel": "(02)8285-4649",
+        "postal_code": "247",
+        "address": "復興路84號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區復興路84號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區復興路84號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6316618,
+          25.0652769
+        ]
+      },
+      "properties": {
+        "no": "976",
+        "county_code": "65000",
+        "site_name": "遠傳 汐止中興直營店",
+        "tel": "(02)2693-6153",
+        "postal_code": "221",
+        "address": "中興路129號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "汐止區",
+        "full_address": "新北市汐止區中興路129號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市汐止區中興路129號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4254127,
+          24.9909695
+        ]
+      },
+      "properties": {
+        "no": "977",
+        "county_code": "65000",
+        "site_name": "遠傳 樹林博愛直營店",
+        "tel": "(02)2687-9252",
+        "postal_code": "238",
+        "address": "博愛一街12號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區博愛一街12號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區博愛一街12號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4579649,
+          25.049562
+        ]
+      },
+      "properties": {
+        "no": "978",
+        "county_code": "65000",
+        "site_name": "遠傳 新莊幸福加盟門市加盟店",
+        "tel": "(02)8991-6789",
+        "postal_code": "242",
+        "address": "幸福路38號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區幸福路38號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區幸福路38號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.455541,
+          25.0052498
+        ]
+      },
+      "properties": {
+        "no": "979",
+        "county_code": "65000",
+        "site_name": "遠傳 板橋南雅加盟門市加盟店",
+        "tel": "(02)2965-7992",
+        "postal_code": "220",
+        "address": "南雅南路一段93號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區南雅南路一段93號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區南雅南路一段93號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4410523,
+          24.9739405
+        ]
+      },
+      "properties": {
+        "no": "980",
+        "county_code": "65000",
+        "site_name": "台灣大哥大 台北土城農會直營服務中心",
+        "tel": "(02)89210089",
+        "postal_code": "236",
+        "address": "中央路2段219之2號1樓",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "土城區",
+        "full_address": "新北市土城區中央路2段219之2號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市土城區中央路2段219之2號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4459063,
+          25.1716245
+        ]
+      },
+      "properties": {
+        "no": "981",
+        "county_code": "65000",
+        "site_name": "台灣大哥大 淡水英專",
+        "tel": "(02)2629-2222",
+        "postal_code": "251",
+        "address": "英專路90之4號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區英專路90之4號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區英專路90之4號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4262047,
+          24.993567
+        ]
+      },
+      "properties": {
+        "no": "982",
+        "county_code": "65000",
+        "site_name": "台灣大哥大 樹林鎮前",
+        "tel": "(02)2684-6613",
+        "postal_code": "238",
+        "address": "鎮前街8號1樓",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區鎮前街8號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區鎮前街8號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4239162,
+          24.9926446
+        ]
+      },
+      "properties": {
+        "no": "983",
+        "county_code": "65000",
+        "site_name": "台灣大哥大 樹林中山直營服務中心",
+        "tel": "809000852",
+        "postal_code": "238",
+        "address": "中山路1段65號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區中山路1段65號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區中山路1段65號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4193095,
+          25.0263109
+        ]
+      },
+      "properties": {
+        "no": "984",
+        "county_code": "65000",
+        "site_name": "台灣大哥大 新莊裕民直營服務中心",
+        "tel": "809000852",
+        "postal_code": "242",
+        "address": "富國路51號1樓",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區富國路51號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區富國路51號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4261644,
+          25.0137877
+        ]
+      },
+      "properties": {
+        "no": "985",
+        "county_code": "65000",
+        "site_name": "台灣大哥大 新莊西盛直營服務中心",
+        "tel": "809000852",
+        "postal_code": "242",
+        "address": "民安西路243號1樓",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區民安西路243號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區民安西路243號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4638858,
+          25.0276961
+        ]
+      },
+      "properties": {
+        "no": "986",
+        "county_code": "65000",
+        "site_name": "台灣大哥大 板橋民權直營服務中心",
+        "tel": "809000852",
+        "postal_code": "220",
+        "address": "四維路222號1樓",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區四維路222號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區四維路222號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.3696489,
+          24.9339916
+        ]
+      },
+      "properties": {
+        "no": "987",
+        "county_code": "65000",
+        "site_name": "中華電信 三峽服務中心",
+        "tel": "123或0800-080123",
+        "postal_code": "237",
+        "address": "民權街36號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三峽區",
+        "full_address": "新北市三峽區民權街36號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三峽區民權街36號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.3708391,
+          24.9386551
+        ]
+      },
+      "properties": {
+        "no": "988",
+        "county_code": "65000",
+        "site_name": "中華電信 三峽復興服務中心",
+        "tel": "123或0800-080123",
+        "postal_code": "237",
+        "address": "復興路172號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三峽區",
+        "full_address": "新北市三峽區復興路172號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三峽區復興路172號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5126175,
+          24.9614373
+        ]
+      },
+      "properties": {
+        "no": "989",
+        "county_code": "65000",
+        "site_name": "新店安康特約服務中心",
+        "tel": "123或0800-080123",
+        "postal_code": "231",
+        "address": "安康路二段121-1號",
+        "service_type": "回收",
+        "item": "3C用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新店區",
+        "full_address": "新北市新店區安康路二段121-1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新店區安康路二段121-1號"
+      }
+    }
+  ]
+}

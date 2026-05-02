@@ -149,6 +149,9 @@ func GenVector(inputText string) ([]float32, error) {
     if global.LMTokenizer == nil {
         return nil, fmt.Errorf("tokenizer is not initialized")
     }
+	if global.LMSession == nil {
+		return nil, fmt.Errorf("LM session is not initialized")
+	}
     tk := global.LMTokenizer
 
 	// 2) 將查詢字串轉成 input_ids 與 attention_mask

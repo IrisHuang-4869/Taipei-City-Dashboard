@@ -1,0 +1,537 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5221311,
+          24.9945808
+        ]
+      },
+      "properties": {
+        "no": "351",
+        "county_code": "65000",
+        "site_name": "凱利達企業社",
+        "tel": "0981-892-245",
+        "postal_code": "235",
+        "address": "自立路111號",
+        "service_type": "維修,維護",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "中和區",
+        "full_address": "新北市中和區自立路111號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市中和區自立路111號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4926,
+          25.0072689
+        ]
+      },
+      "properties": {
+        "no": "363",
+        "county_code": "65000",
+        "site_name": "慈濟中大型環保教育站\n(雙和立業環保教育站)",
+        "tel": "02-22406226",
+        "postal_code": "235",
+        "address": "立業路51號",
+        "service_type": "維修,維護",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "中和區",
+        "full_address": "新北市中和區立業路51號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市中和區立業路51號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.453636,
+          25.04065
+        ]
+      },
+      "properties": {
+        "no": "364",
+        "county_code": "65000",
+        "site_name": "慈濟中大型環保教育站\n(新莊中港環保教育站)",
+        "tel": "02-29917793",
+        "postal_code": "242",
+        "address": "中港路161巷28號",
+        "service_type": "維修,維護",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區中港路161巷28號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區中港路161巷28號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4771621,
+          25.0051428
+        ]
+      },
+      "properties": {
+        "no": "365",
+        "county_code": "65000",
+        "site_name": "慈濟中大型環保教育站\n(雙和環保教育站)",
+        "tel": "02-82281628",
+        "postal_code": "235",
+        "address": "中山路三段41號",
+        "service_type": "維修,維護",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "中和區",
+        "full_address": "新北市中和區中山路三段41號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市中和區中山路三段41號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4732938,
+          25.0714958
+        ]
+      },
+      "properties": {
+        "no": "366",
+        "county_code": "65000",
+        "site_name": "慈濟中大型環保教育站\n(三重園區環保站)",
+        "tel": "02-29810310",
+        "postal_code": "241",
+        "address": "中正北路472號",
+        "service_type": "維修,維護",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區中正北路472號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區中正北路472號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5784063,
+          25.0835337
+        ]
+      },
+      "properties": {
+        "no": "676",
+        "county_code": "63000",
+        "site_name": "銘遠商行",
+        "tel": "(02)2797-6128",
+        "postal_code": "114",
+        "address": "港墘路7號1樓",
+        "service_type": "買賣",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區港墘路7號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區港墘路7號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6140835,
+          25.0346535
+        ]
+      },
+      "properties": {
+        "no": "681",
+        "county_code": "63000",
+        "site_name": "佳音中古電器",
+        "tel": "(02)2785-7221",
+        "postal_code": "115",
+        "address": "研究院路三段76號",
+        "service_type": "買賣,維修",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區研究院路三段76號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區研究院路三段76號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5282684,
+          25.060174
+        ]
+      },
+      "properties": {
+        "no": "691",
+        "county_code": "63000",
+        "site_name": "三分之一二手家電行",
+        "tel": "0935-285-178",
+        "postal_code": "104",
+        "address": "錦州街116號",
+        "service_type": "買賣",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區錦州街116號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區錦州街116號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.537017,
+          25.0458577
+        ]
+      },
+      "properties": {
+        "no": "692",
+        "county_code": "63000",
+        "site_name": "惜福屋-慈濟二手好物大賣場",
+        "tel": "無",
+        "postal_code": "104",
+        "address": "八德路二段108-1號",
+        "service_type": "捐送,買賣",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區八德路二段108-1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區八德路二段108-1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.501398,
+          25.0412779
+        ]
+      },
+      "properties": {
+        "no": "717",
+        "county_code": "63000",
+        "site_name": "收購二手傢俱家電",
+        "tel": "0980-730-482",
+        "postal_code": "108",
+        "address": "雅江街52-1號2樓",
+        "service_type": "買賣,維修",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區雅江街52-1號2樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區雅江街52-1號2樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5025327,
+          25.0387344
+        ]
+      },
+      "properties": {
+        "no": "718",
+        "county_code": "63000",
+        "site_name": "二手電視修理買賣",
+        "tel": "(02)2311-8581",
+        "postal_code": "108",
+        "address": "桂林路65巷12號",
+        "service_type": "買賣,維修",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區桂林路65巷12號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區桂林路65巷12號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4869414,
+          25.0685211
+        ]
+      },
+      "properties": {
+        "no": "728",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重力行店",
+        "tel": "2984-3000",
+        "postal_code": "241",
+        "address": "力行路一段89巷13號",
+        "service_type": "買賣,回收,交換",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區力行路一段89巷13號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區力行路一段89巷13號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4636171,
+          25.0795836
+        ]
+      },
+      "properties": {
+        "no": "729",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲長安店",
+        "tel": "2848-0628",
+        "postal_code": "247",
+        "address": "長安街40號",
+        "service_type": "買賣,回收,交換",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區長安街40號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區長安街40號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4905547,
+          25.0806766
+        ]
+      },
+      "properties": {
+        "no": "730",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重慈愛店",
+        "tel": "8982-5568",
+        "postal_code": "241",
+        "address": "新北市三重區慈愛街140號",
+        "service_type": "買賣,回收,交換",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區慈愛街140號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區慈愛街140號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4773289,
+          25.0903434
+        ]
+      },
+      "properties": {
+        "no": "731",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲民族店",
+        "tel": "2288-3339",
+        "postal_code": "247",
+        "address": "民族路314巷1號",
+        "service_type": "買賣,回收,交換",
+        "item": "電器類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區民族路314巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區民族路314巷1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5644722,
+          25.0339639
+        ]
+      },
+      "properties": {
+        "no": "737",
+        "county_code": "63000",
+        "site_name": "成功二手冷氣買賣",
+        "tel": "(02)2255-8075",
+        "postal_code": "110",
+        "address": "漢生東路33號",
+        "service_type": "買賣",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區漢生東路33號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區漢生東路33號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5644722,
+          25.0339639
+        ]
+      },
+      "properties": {
+        "no": "744",
+        "county_code": "63000",
+        "site_name": "行善二手冷氣買賣",
+        "tel": "0986-595-335",
+        "postal_code": "110",
+        "address": "漢生東路33號",
+        "service_type": "買賣",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區漢生東路33號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區漢生東路33號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5949799,
+          25.078653
+        ]
+      },
+      "properties": {
+        "no": "804",
+        "county_code": "63000",
+        "site_name": "就愛新歡跳蚤市場",
+        "tel": "0932-187-063",
+        "postal_code": "114",
+        "address": "康寧路一段190號",
+        "service_type": "捐送,買賣",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區康寧路一段190號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區康寧路一段190號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5030425,
+          25.0388865
+        ]
+      },
+      "properties": {
+        "no": "972",
+        "county_code": "63000",
+        "site_name": "明宏專修電視及二手買賣",
+        "tel": "(02)2314-3923",
+        "postal_code": "108",
+        "address": "貴陽街二段96巷34號",
+        "service_type": "買賣,維修",
+        "item": "電器類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區貴陽街二段96巷34號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區貴陽街二段96巷34號"
+      }
+    }
+  ]
+}

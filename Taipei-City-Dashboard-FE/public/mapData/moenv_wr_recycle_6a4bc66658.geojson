@@ -1,0 +1,341 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5611627,
+          25.0609448
+        ]
+      },
+      "properties": {
+        "no": "209",
+        "county_code": "63000",
+        "site_name": "Vintage & Deco",
+        "tel": "0916216828",
+        "postal_code": "105",
+        "address": "富錦街429巷1號",
+        "service_type": "買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "松山區",
+        "full_address": "臺北市松山區富錦街429巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市松山區富錦街429巷1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5784063,
+          25.0835337
+        ]
+      },
+      "properties": {
+        "no": "676",
+        "county_code": "63000",
+        "site_name": "銘遠商行",
+        "tel": "(02)2797-6128",
+        "postal_code": "114",
+        "address": "港墘路7號1樓",
+        "service_type": "買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區港墘路7號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區港墘路7號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5623243,
+          25.0850688
+        ]
+      },
+      "properties": {
+        "no": "677",
+        "county_code": "63000",
+        "site_name": "crosstyle北歐傢俱家飾專門店",
+        "tel": "(02)2627-4248",
+        "postal_code": "114",
+        "address": "內湖路一段91巷24弄2樓",
+        "service_type": "買賣,維修",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區內湖路一段91巷24弄2樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區內湖路一段91巷24弄2樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5920982,
+          25.0503774
+        ]
+      },
+      "properties": {
+        "no": "680",
+        "county_code": "63000",
+        "site_name": "再生網域有限公司",
+        "tel": "080-077-1770",
+        "postal_code": "115",
+        "address": "忠孝東路六段327號",
+        "service_type": "買賣,回收",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區忠孝東路六段327號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區忠孝東路六段327號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6140835,
+          25.0346535
+        ]
+      },
+      "properties": {
+        "no": "681",
+        "county_code": "63000",
+        "site_name": "佳音中古電器",
+        "tel": "(02)2785-7221",
+        "postal_code": "115",
+        "address": "研究院路三段76號",
+        "service_type": "買賣,維修",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區研究院路三段76號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區研究院路三段76號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.537017,
+          25.0458577
+        ]
+      },
+      "properties": {
+        "no": "692",
+        "county_code": "63000",
+        "site_name": "惜福屋-慈濟二手好物大賣場",
+        "tel": "無",
+        "postal_code": "104",
+        "address": "八德路二段108-1號",
+        "service_type": "捐送,買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區八德路二段108-1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區八德路二段108-1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.532589,
+          25.0522172
+        ]
+      },
+      "properties": {
+        "no": "706",
+        "county_code": "63000",
+        "site_name": "合盛豐收購二手傢俱家電",
+        "tel": "0952-380-326",
+        "postal_code": "104",
+        "address": "南京東路二段101號11樓",
+        "service_type": "買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區南京東路二段101號11樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區南京東路二段101號11樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.501398,
+          25.0412779
+        ]
+      },
+      "properties": {
+        "no": "717",
+        "county_code": "63000",
+        "site_name": "收購二手傢俱家電",
+        "tel": "0980-730-482",
+        "postal_code": "108",
+        "address": "雅江街52-1號2樓",
+        "service_type": "買賣,維修",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區雅江街52-1號2樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區雅江街52-1號2樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5644722,
+          25.0339639
+        ]
+      },
+      "properties": {
+        "no": "737",
+        "county_code": "63000",
+        "site_name": "成功二手冷氣買賣",
+        "tel": "(02)2255-8075",
+        "postal_code": "110",
+        "address": "漢生東路33號",
+        "service_type": "買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區漢生東路33號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區漢生東路33號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4991124,
+          25.1069004
+        ]
+      },
+      "properties": {
+        "no": "784",
+        "county_code": "63000",
+        "site_name": "玖隆中古傢俱有限公司",
+        "tel": "(02)8866-6096",
+        "postal_code": "112",
+        "address": "洲美街265之2號",
+        "service_type": "買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "北投區",
+        "full_address": "臺北市北投區洲美街265之2號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市北投區洲美街265之2號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5284402,
+          25.1187468
+        ]
+      },
+      "properties": {
+        "no": "791",
+        "county_code": "63000",
+        "site_name": "思覓處",
+        "tel": "(02)2872-8066",
+        "postal_code": "111",
+        "address": "天母西路13巷5號",
+        "service_type": "買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區天母西路13巷5號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區天母西路13巷5號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5949799,
+          25.078653
+        ]
+      },
+      "properties": {
+        "no": "804",
+        "county_code": "63000",
+        "site_name": "就愛新歡跳蚤市場",
+        "tel": "0932-187-063",
+        "postal_code": "114",
+        "address": "康寧路一段190號",
+        "service_type": "捐送,買賣",
+        "item": "家具類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區康寧路一段190號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區康寧路一段190號"
+      }
+    }
+  ]
+}

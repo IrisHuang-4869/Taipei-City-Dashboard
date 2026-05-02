@@ -121,7 +121,10 @@ var (
 		MaxRetry:      getIntEnv("TWCC_MAX_RETRY", 2),
 		MaxConcurrent: getIntEnv("TWCC_MAX_CONCURRENT", 100),
 	}
-	
+
+	// macOS 本機若無 libonnxruntime，設 SKIP_LM_INIT=true 可略過 LM 初始化
+	SkipLMInit = getEnv("SKIP_LM_INIT", "") == "true"
+
 	LMSession *ort.DynamicSession[int64, float32]
 	LMTokenizer *tokenizer.Tokenizer
 )

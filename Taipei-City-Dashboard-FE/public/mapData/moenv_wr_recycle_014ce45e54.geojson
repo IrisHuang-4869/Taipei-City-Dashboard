@@ -1,0 +1,369 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6085371,
+          25.054556
+        ]
+      },
+      "properties": {
+        "no": "678",
+        "county_code": "63000",
+        "site_name": "劃時代電玩漫畫",
+        "tel": "(02)2651-2596",
+        "postal_code": "115",
+        "address": "南港路一段281號",
+        "service_type": "買賣,維修",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區南港路一段281號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區南港路一段281號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.613958,
+          25.0464831
+        ]
+      },
+      "properties": {
+        "no": "682",
+        "county_code": "63000",
+        "site_name": "書燈二手書店",
+        "tel": "0970-529-000",
+        "postal_code": "115",
+        "address": "研究院路二段12巷58弄17號",
+        "service_type": "捐送,買賣,回收",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區研究院路二段12巷58弄17號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區研究院路二段12巷58弄17號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.538567,
+          24.997436
+        ]
+      },
+      "properties": {
+        "no": "684",
+        "county_code": "63000",
+        "site_name": "竹風書苑二手書店 財政店",
+        "tel": "0906-177-090",
+        "postal_code": "116",
+        "address": "羅斯福路六段142巷84號",
+        "service_type": "捐送,買賣",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區羅斯福路六段142巷84號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區羅斯福路六段142巷84號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4869414,
+          25.0685211
+        ]
+      },
+      "properties": {
+        "no": "728",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重力行店",
+        "tel": "2984-3000",
+        "postal_code": "241",
+        "address": "力行路一段89巷13號",
+        "service_type": "買賣,回收,交換",
+        "item": "書籍類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區力行路一段89巷13號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區力行路一段89巷13號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4636171,
+          25.0795836
+        ]
+      },
+      "properties": {
+        "no": "729",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲長安店",
+        "tel": "2848-0628",
+        "postal_code": "247",
+        "address": "長安街40號",
+        "service_type": "買賣,回收,交換",
+        "item": "書籍類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區長安街40號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區長安街40號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4905547,
+          25.0806766
+        ]
+      },
+      "properties": {
+        "no": "730",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重慈愛店",
+        "tel": "8982-5568",
+        "postal_code": "241",
+        "address": "新北市三重區慈愛街140號",
+        "service_type": "買賣,回收,交換",
+        "item": "書籍類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區慈愛街140號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區慈愛街140號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4773289,
+          25.0903434
+        ]
+      },
+      "properties": {
+        "no": "731",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲民族店",
+        "tel": "2288-3339",
+        "postal_code": "247",
+        "address": "民族路314巷1號",
+        "service_type": "買賣,回收,交換",
+        "item": "書籍類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區民族路314巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區民族路314巷1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5157745,
+          25.1166471
+        ]
+      },
+      "properties": {
+        "no": "783",
+        "county_code": "63000",
+        "site_name": "蘭臺藝廊＆青石巷書店",
+        "tel": "(02)2823-4549",
+        "postal_code": "112",
+        "address": "石牌路二段75巷3弄",
+        "service_type": "買賣",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "北投區",
+        "full_address": "臺北市北投區石牌路二段75巷3弄",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市北投區石牌路二段75巷3弄"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.500033,
+          25.1311734
+        ]
+      },
+      "properties": {
+        "no": "786",
+        "county_code": "63000",
+        "site_name": "山峸二手書店",
+        "tel": "0987-313-710",
+        "postal_code": "112",
+        "address": "中央南路一段102巷34號",
+        "service_type": "買賣",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "北投區",
+        "full_address": "臺北市北投區中央南路一段102巷34號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市北投區中央南路一段102巷34號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5195478,
+          25.093391
+        ]
+      },
+      "properties": {
+        "no": "789",
+        "county_code": "63000",
+        "site_name": "尋寶",
+        "tel": "無",
+        "postal_code": "111",
+        "address": "中正路422號",
+        "service_type": "買賣",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區中正路422號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區中正路422號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5195559,
+          25.0934765
+        ]
+      },
+      "properties": {
+        "no": "800",
+        "county_code": "63000",
+        "site_name": "創世基金會二手拍",
+        "tel": "(02)2835-7700#128",
+        "postal_code": "111",
+        "address": "中正路420號B1",
+        "service_type": "捐送,買賣",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區中正路420號B1",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區中正路420號B1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5270327,
+          25.0192853
+        ]
+      },
+      "properties": {
+        "no": "818",
+        "county_code": "63000",
+        "site_name": "愛人如己文創小店",
+        "tel": "02 2363 5111",
+        "postal_code": "100",
+        "address": "汀州路三段43號B1",
+        "service_type": "買賣",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中正區",
+        "full_address": "臺北市中正區汀州路三段43號B1",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中正區汀州路三段43號B1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5265998,
+          25.113554
+        ]
+      },
+      "properties": {
+        "no": "829",
+        "county_code": "63000",
+        "site_name": "光仁綠時尚-天母選品店",
+        "tel": "2871-0608",
+        "postal_code": "111",
+        "address": "中山北路六段419巷1號",
+        "service_type": "捐送,買賣",
+        "item": "書籍類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區中山北路六段419巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區中山北路六段419巷1號"
+      }
+    }
+  ]
+}

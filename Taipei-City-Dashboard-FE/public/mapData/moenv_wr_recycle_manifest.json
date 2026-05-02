@@ -1,0 +1,50 @@
+[
+  {
+    "item": "3C用品類",
+    "index": "moenv_wr_recycle_6ca8d697f6",
+    "color": "#E170A6",
+    "feature_count": 69
+  },
+  {
+    "item": "其他類",
+    "index": "moenv_wr_recycle_7b805c8fa1",
+    "color": "#24B0DD",
+    "feature_count": 39
+  },
+  {
+    "item": "家具類",
+    "index": "moenv_wr_recycle_6a4bc66658",
+    "color": "#56B96D",
+    "feature_count": 12
+  },
+  {
+    "item": "書籍類",
+    "index": "moenv_wr_recycle_014ce45e54",
+    "color": "#F8CF58",
+    "feature_count": 13
+  },
+  {
+    "item": "玩具類",
+    "index": "moenv_wr_recycle_8863327e9b",
+    "color": "#F5AD4A",
+    "feature_count": 10
+  },
+  {
+    "item": "生活用品類",
+    "index": "moenv_wr_recycle_c5e75de7e7",
+    "color": "#9DC56E",
+    "feature_count": 47
+  },
+  {
+    "item": "舊衣類",
+    "index": "moenv_wr_recycle_e62fbe91a5",
+    "color": "#8B5CF6",
+    "feature_count": 144
+  },
+  {
+    "item": "電器類",
+    "index": "moenv_wr_recycle_4554828c57",
+    "color": "#ED6A45",
+    "feature_count": 19
+  }
+]

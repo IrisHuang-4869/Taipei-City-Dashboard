@@ -35,8 +35,12 @@ func StartApplication() {
 	cache.ConnectToRedis()
 	initial.InitCronJobs()
 
-	global.LMSession = models.InitLmSession()
-	global.LMTokenizer = models.InitTokenizer()
+	if global.SkipLMInit {
+		logs.FInfo("SKIP_LM_INIT=true: skipping ONNX / tokenizer / LM session")
+	} else {
+		global.LMSession = models.InitLmSession()
+		global.LMTokenizer = models.InitTokenizer()
+	}
 
 	// 2. Initiate default Gin router with logger and recovery middleware
 	routes.Router = gin.Default()
@@ -77,9 +81,13 @@ func StartApplication() {
 	cache.CloseConnect()
 
 	// If the server stops, close the lm session and environment
-	global.LMSession.Destroy()
-	ort.DestroyEnvironment()
-	
+	if !global.SkipLMInit {
+		if global.LMSession != nil {
+			global.LMSession.Destroy()
+		}
+		ort.DestroyEnvironment()
+	}
+
 }
 
 func MigrateManagerSchema() {

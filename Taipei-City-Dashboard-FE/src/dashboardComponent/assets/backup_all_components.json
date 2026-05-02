@@ -5464,6 +5464,366 @@
 				"林育緹",
 				"tuic"
 			]
+		},
+		"221": {
+			"id": 221,
+			"index": "moenv_wr_recycle_6ca8d697f6",
+			"map_config": [
+				{
+					"id": 103,
+					"index": "moenv_wr_recycle_6ca8d697f6",
+					"title": "回收點｜3C用品類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#E170A6",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#E170A6", "#E170A6", "#E170A6"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜3C用品類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：3C用品類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含 3C用品類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
+		},
+		"222": {
+			"id": 222,
+			"index": "moenv_wr_recycle_7b805c8fa1",
+			"map_config": [
+				{
+					"id": 104,
+					"index": "moenv_wr_recycle_7b805c8fa1",
+					"title": "回收點｜其他類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#24B0DD",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#24B0DD", "#24B0DD", "#24B0DD"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜其他類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：其他類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含其他類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
+		},
+		"223": {
+			"id": 223,
+			"index": "moenv_wr_recycle_6a4bc66658",
+			"map_config": [
+				{
+					"id": 105,
+					"index": "moenv_wr_recycle_6a4bc66658",
+					"title": "回收點｜家具類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#56B96D",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#56B96D", "#56B96D", "#56B96D"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜家具類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：家具類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含家具類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
+		},
+		"224": {
+			"id": 224,
+			"index": "moenv_wr_recycle_014ce45e54",
+			"map_config": [
+				{
+					"id": 106,
+					"index": "moenv_wr_recycle_014ce45e54",
+					"title": "回收點｜書籍類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#F8CF58",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#F8CF58", "#F8CF58", "#F8CF58"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜書籍類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：書籍類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含書籍類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
+		},
+		"225": {
+			"id": 225,
+			"index": "moenv_wr_recycle_8863327e9b",
+			"map_config": [
+				{
+					"id": 107,
+					"index": "moenv_wr_recycle_8863327e9b",
+					"title": "回收點｜玩具類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#F5AD4A",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#F5AD4A", "#F5AD4A", "#F5AD4A"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜玩具類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：玩具類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含玩具類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
+		},
+		"226": {
+			"id": 226,
+			"index": "moenv_wr_recycle_c5e75de7e7",
+			"map_config": [
+				{
+					"id": 108,
+					"index": "moenv_wr_recycle_c5e75de7e7",
+					"title": "回收點｜生活用品類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#9DC56E",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#9DC56E", "#9DC56E", "#9DC56E"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜生活用品類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：生活用品類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含生活用品類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
+		},
+		"227": {
+			"id": 227,
+			"index": "moenv_wr_recycle_e62fbe91a5",
+			"map_config": [
+				{
+					"id": 109,
+					"index": "moenv_wr_recycle_e62fbe91a5",
+					"title": "回收點｜舊衣類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#8B5CF6",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#8B5CF6", "#8B5CF6", "#8B5CF6"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜舊衣類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：舊衣類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含舊衣類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
+		},
+		"228": {
+			"id": 228,
+			"index": "moenv_wr_recycle_4554828c57",
+			"map_config": [
+				{
+					"id": 110,
+					"index": "moenv_wr_recycle_4554828c57",
+					"title": "回收點｜電器類",
+					"type": "circle",
+					"source": "geojson",
+					"size": "small",
+					"paint": {
+						"circle-color": "#ED6A45",
+						"circle-opacity": 0.85,
+						"circle-radius": 5,
+						"circle-stroke-width": 1,
+						"circle-stroke-color": "#ffffff"
+					},
+					"property": [
+						{ "key": "site_name", "name": "點位名稱" },
+						{ "key": "full_address", "name": "地址" },
+						{ "key": "item", "name": "回收類別" },
+						{ "key": "service_type", "name": "服務類型" },
+						{ "key": "tel", "name": "電話" }
+					]
+				}
+			],
+			"chart_config": {
+				"types": ["TextUnitChart"],
+				"color": ["#ED6A45", "#ED6A45", "#ED6A45"],
+				"unit": "處"
+			},
+			"source": "環境部",
+			"name": "回收點｜電器類",
+			"time_from": "2026-05-02T00:00:00+08:00",
+			"time_to": null,
+			"update_freq": 0,
+			"update_freq_unit": null,
+			"short_desc": "北北基 MOENV 回收點：電器類。",
+			"long_desc": "圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含電器類。",
+			"use_case": "於地圖模式可獨立開關本圖層以檢視點位與屬性。",
+			"links": [],
+			"tags": [],
+			"contributors": ["doit", "ntpc"]
 		}
 	}
 }

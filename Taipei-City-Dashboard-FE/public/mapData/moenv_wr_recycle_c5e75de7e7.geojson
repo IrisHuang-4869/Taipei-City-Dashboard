@@ -1,0 +1,1321 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4689655,
+          25.0787604
+        ]
+      },
+      "properties": {
+        "no": "346",
+        "county_code": "65000",
+        "site_name": "村榮自行車行",
+        "tel": "0977-318-628",
+        "postal_code": "247",
+        "address": "九芎街2號",
+        "service_type": "維修,維護",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區九芎街2號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區九芎街2號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.453636,
+          25.04065
+        ]
+      },
+      "properties": {
+        "no": "364",
+        "county_code": "65000",
+        "site_name": "慈濟中大型環保教育站\n(新莊中港環保教育站)",
+        "tel": "02-29917793",
+        "postal_code": "242",
+        "address": "中港路161巷28號",
+        "service_type": "維修,維護",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區中港路161巷28號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區中港路161巷28號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4771621,
+          25.0051428
+        ]
+      },
+      "properties": {
+        "no": "365",
+        "county_code": "65000",
+        "site_name": "慈濟中大型環保教育站\n(雙和環保教育站)",
+        "tel": "02-82281628",
+        "postal_code": "235",
+        "address": "中山路三段41號",
+        "service_type": "維修,維護",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "中和區",
+        "full_address": "新北市中和區中山路三段41號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市中和區中山路三段41號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4732938,
+          25.0714958
+        ]
+      },
+      "properties": {
+        "no": "366",
+        "county_code": "65000",
+        "site_name": "慈濟中大型環保教育站\n(三重園區環保站)",
+        "tel": "02-29810310",
+        "postal_code": "241",
+        "address": "中正北路472號",
+        "service_type": "維修,維護",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區中正北路472號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區中正北路472號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4914071,
+          25.0799392
+        ]
+      },
+      "properties": {
+        "no": "628",
+        "county_code": "65000",
+        "site_name": "蚤寶大王二店",
+        "tel": "(02)29895480",
+        "postal_code": "241",
+        "address": "新北市三重區自強路4段106號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區自強路4段106號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區自強路4段106號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4896318,
+          25.0816843
+        ]
+      },
+      "properties": {
+        "no": "629",
+        "county_code": "65000",
+        "site_name": "仁愛蚤寶王國",
+        "tel": "(02)89826768",
+        "postal_code": "241",
+        "address": "新北市三重區仁愛街428號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區仁愛街428號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區仁愛街428號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4608204,
+          25.0088579
+        ]
+      },
+      "properties": {
+        "no": "652",
+        "county_code": "65000",
+        "site_name": "2ndstreet誠品生活板橋店",
+        "tel": "(02)29598899",
+        "postal_code": "220",
+        "address": "新北市板橋區中山路一段46號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區中山路一段46號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區中山路一段46號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4749878,
+          25.0061409
+        ]
+      },
+      "properties": {
+        "no": "653",
+        "county_code": "65000",
+        "site_name": "2ndstreet環球新北中和店",
+        "tel": "(02)77317999",
+        "postal_code": "235",
+        "address": "新北市中和區中山路三段122號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "中和區",
+        "full_address": "新北市中和區中山路三段122號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市中和區中山路三段122號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.546478,
+          24.978061
+        ]
+      },
+      "properties": {
+        "no": "654",
+        "county_code": "65000",
+        "site_name": "2ndstreet誠品生活新店店",
+        "tel": "(02)29100667",
+        "postal_code": "231",
+        "address": "新北市新店區中興路三段70號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新店區",
+        "full_address": "新北市新店區中興路三段70號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新店區中興路三段70號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4495726,
+          25.0596782
+        ]
+      },
+      "properties": {
+        "no": "655",
+        "county_code": "65000",
+        "site_name": "2ndstreet新莊宏匯廣場店",
+        "tel": "(02)85128366",
+        "postal_code": "242",
+        "address": "新北市新莊區新北大道四段3號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區新北大道四段3號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區新北大道四段3號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4805085,
+          25.0805505
+        ]
+      },
+      "properties": {
+        "no": "656",
+        "county_code": "65000",
+        "site_name": "2ndstreet徐匯廣場店",
+        "tel": "(02)77171688",
+        "postal_code": "247",
+        "address": "新北市蘆洲區中山一路8號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區中山一路8號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區中山一路8號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4637836,
+          25.0144937
+        ]
+      },
+      "properties": {
+        "no": "657",
+        "county_code": "65000",
+        "site_name": "2ndstreet環球板橋車站店",
+        "tel": "(02)25155668",
+        "postal_code": "220",
+        "address": "新北市板橋區縣民大道二段7號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區縣民大道二段7號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區縣民大道二段7號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6490496,
+          25.0621773
+        ]
+      },
+      "properties": {
+        "no": "658",
+        "county_code": "65000",
+        "site_name": "2ndstreet汐止遠雄店",
+        "tel": "(02)26973888",
+        "postal_code": "221",
+        "address": "新北市汐止區新台五路一段93-99號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "汐止區",
+        "full_address": "新北市汐止區新台五路一段93-99號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市汐止區新台五路一段93-99號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5988884,
+          25.0536674
+        ]
+      },
+      "properties": {
+        "no": "679",
+        "county_code": "63000",
+        "site_name": "MISS名牌二手衣包收購",
+        "tel": "0979-365-000",
+        "postal_code": "115",
+        "address": "南港路二段B2 (倉庫20巷5號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區南港路二段B2 (倉庫20巷5號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區南港路二段B2 (倉庫20巷5號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5534664,
+          24.9878341
+        ]
+      },
+      "properties": {
+        "no": "686",
+        "county_code": "63000",
+        "site_name": "尋寶趣",
+        "tel": "無",
+        "postal_code": "116",
+        "address": "木柵路一段220號",
+        "service_type": "捐送,買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區木柵路一段220號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區木柵路一段220號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5693651,
+          24.9876934
+        ]
+      },
+      "properties": {
+        "no": "688",
+        "county_code": "63000",
+        "site_name": "鼎順專業收購",
+        "tel": "0966-607-111",
+        "postal_code": "116",
+        "address": "集英街2-1號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區集英街2-1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區集英街2-1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5754639,
+          24.9880316
+        ]
+      },
+      "properties": {
+        "no": "689",
+        "county_code": "63000",
+        "site_name": "潛水鳥",
+        "tel": "無",
+        "postal_code": "116",
+        "address": "指南路二段77巷24號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區指南路二段77巷24號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區指南路二段77巷24號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5436616,
+          25.0457293
+        ]
+      },
+      "properties": {
+        "no": "693",
+        "county_code": "63000",
+        "site_name": "RECOVER",
+        "tel": "(02)8772-3188",
+        "postal_code": "104",
+        "address": "復興南路一段36之5號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區復興南路一段36之5號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區復興南路一段36之5號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5436058,
+          25.0461161
+        ]
+      },
+      "properties": {
+        "no": "705",
+        "county_code": "63000",
+        "site_name": "優買二手精品名牌店-微風復興店",
+        "tel": "(02)8772-2455",
+        "postal_code": "104",
+        "address": "復興南路一段36-1號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區復興南路一段36-1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區復興南路一段36-1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5059039,
+          25.0435485
+        ]
+      },
+      "properties": {
+        "no": "708",
+        "county_code": "63000",
+        "site_name": "當肯二手名品",
+        "tel": "0953-708-520",
+        "postal_code": "108",
+        "address": "西寧南路70號1樓29室",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區西寧南路70號1樓29室",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區西寧南路70號1樓29室"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5060657,
+          25.0436428
+        ]
+      },
+      "properties": {
+        "no": "709",
+        "county_code": "63000",
+        "site_name": "愛麗絲二手名牌",
+        "tel": "(02)2389-3724",
+        "postal_code": "103",
+        "address": "西寧南路70號1樓21室",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區西寧南路70號1樓21室",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區西寧南路70號1樓21室"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5174333,
+          25.0571083
+        ]
+      },
+      "properties": {
+        "no": "712",
+        "county_code": "63000",
+        "site_name": "WATCH180二手錶交流中心",
+        "tel": "(02)2558-8418",
+        "postal_code": "103",
+        "address": "民生西路180號",
+        "service_type": "買賣,維修",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區民生西路180號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區民生西路180號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5129393,
+          25.072968
+        ]
+      },
+      "properties": {
+        "no": "715",
+        "county_code": "63000",
+        "site_name": "唐青古物商行",
+        "tel": "(02)2341-8799",
+        "postal_code": "103",
+        "address": "哈密街155號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區哈密街155號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區哈密街155號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4255031,
+          25.0214769
+        ]
+      },
+      "properties": {
+        "no": "719",
+        "county_code": "65000",
+        "site_name": "新莊蚤寶王國",
+        "tel": "(02)22068988",
+        "postal_code": "242",
+        "address": "新北市新莊區成功街8號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區成功街8號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區成功街8號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4834223,
+          25.0744816
+        ]
+      },
+      "properties": {
+        "no": "720",
+        "county_code": "65000",
+        "site_name": "永福蚤寶王國",
+        "tel": "(02)22861118",
+        "postal_code": "241",
+        "address": "新北市三重區永福街287-5號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區永福街287-5號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區永福街287-5號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4621514,
+          25.0258643
+        ]
+      },
+      "properties": {
+        "no": "721",
+        "county_code": "65000",
+        "site_name": "陽明蚤寶王國",
+        "tel": "(02)22590990",
+        "postal_code": "220",
+        "address": "新北市板橋區陽明街271號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區陽明街271號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區陽明街271號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4738552,
+          25.0038792
+        ]
+      },
+      "properties": {
+        "no": "722",
+        "county_code": "65000",
+        "site_name": "中和蚤寶王國",
+        "tel": "(02)22229067",
+        "postal_code": "235",
+        "address": "新北市中和區民享街16號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "中和區",
+        "full_address": "新北市中和區民享街16號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市中和區民享街16號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4782052,
+          25.0237924
+        ]
+      },
+      "properties": {
+        "no": "723",
+        "county_code": "65000",
+        "site_name": "板橋蚤寶王國",
+        "tel": "(02)22509119",
+        "postal_code": "220",
+        "address": "新北市板橋區縣民大道三段149號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區縣民大道三段149號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區縣民大道三段149號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4705486,
+          25.0802159
+        ]
+      },
+      "properties": {
+        "no": "724",
+        "county_code": "65000",
+        "site_name": "蘆洲蚤寶王國",
+        "tel": "(02)22826330",
+        "postal_code": "247",
+        "address": "新北市蘆洲區中山二路219號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區中山二路219號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區中山二路219號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.492824,
+          25.0560741
+        ]
+      },
+      "properties": {
+        "no": "725",
+        "county_code": "65000",
+        "site_name": "三重蚤寶王國",
+        "tel": "(02)29733308",
+        "postal_code": "241",
+        "address": "新北市三重區光明路118號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區光明路118號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區光明路118號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4869414,
+          25.0685211
+        ]
+      },
+      "properties": {
+        "no": "728",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重力行店",
+        "tel": "2984-3000",
+        "postal_code": "241",
+        "address": "力行路一段89巷13號",
+        "service_type": "買賣,回收,交換",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區力行路一段89巷13號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區力行路一段89巷13號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4636171,
+          25.0795836
+        ]
+      },
+      "properties": {
+        "no": "729",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲長安店",
+        "tel": "2848-0628",
+        "postal_code": "247",
+        "address": "長安街40號",
+        "service_type": "買賣,回收,交換",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區長安街40號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區長安街40號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4905547,
+          25.0806766
+        ]
+      },
+      "properties": {
+        "no": "730",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重慈愛店",
+        "tel": "8982-5568",
+        "postal_code": "241",
+        "address": "新北市三重區慈愛街140號",
+        "service_type": "買賣,回收,交換",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區慈愛街140號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區慈愛街140號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4773289,
+          25.0903434
+        ]
+      },
+      "properties": {
+        "no": "731",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲民族店",
+        "tel": "2288-3339",
+        "postal_code": "247",
+        "address": "民族路314巷1號",
+        "service_type": "買賣,回收,交換",
+        "item": "生活用品類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區民族路314巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區民族路314巷1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.565571,
+          25.041356
+        ]
+      },
+      "properties": {
+        "no": "739",
+        "county_code": "63000",
+        "site_name": "最愛二手精品店",
+        "tel": "(02)2768-7685",
+        "postal_code": "110",
+        "address": "忠孝東路五段17號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區忠孝東路五段17號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區忠孝東路五段17號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5652888,
+          25.0419728
+        ]
+      },
+      "properties": {
+        "no": "740",
+        "county_code": "63000",
+        "site_name": "優買二手名牌店",
+        "tel": "(02)2748-9917",
+        "postal_code": "110",
+        "address": "基隆路一段159號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區基隆路一段159號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區基隆路一段159號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.578066,
+          25.044175
+        ]
+      },
+      "properties": {
+        "no": "741",
+        "county_code": "63000",
+        "site_name": "老胡單車精品",
+        "tel": "(02)2761-7864",
+        "postal_code": "110",
+        "address": "松山路251號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區松山路251號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區松山路251號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5683178,
+          25.0436322
+        ]
+      },
+      "properties": {
+        "no": "742",
+        "county_code": "63000",
+        "site_name": "鍾愛國際精品",
+        "tel": "(02)2765-4088",
+        "postal_code": "110",
+        "address": "永吉路30巷102弄10號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區永吉路30巷102弄10號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區永吉路30巷102弄10號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.57592,
+          25.0473578
+        ]
+      },
+      "properties": {
+        "no": "745",
+        "county_code": "63000",
+        "site_name": "金橋二手錶",
+        "tel": "0955-789-943",
+        "postal_code": "110",
+        "address": "虎林街30巷28號1樓",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "信義區",
+        "full_address": "臺北市信義區虎林街30巷28號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市信義區虎林街30巷28號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5245607,
+          25.103368
+        ]
+      },
+      "properties": {
+        "no": "790",
+        "county_code": "63000",
+        "site_name": "文森珠寶精品",
+        "tel": "(02)2831-8699",
+        "postal_code": "111",
+        "address": "中山北路六段35巷6號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區中山北路六段35巷6號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區中山北路六段35巷6號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.574766,
+          25.0641021
+        ]
+      },
+      "properties": {
+        "no": "801",
+        "county_code": "63000",
+        "site_name": "BRAND OFF",
+        "tel": "(02)8791-6710",
+        "postal_code": "114",
+        "address": "民善街205號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區民善街205號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區民善街205號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5043684,
+          25.0294886
+        ]
+      },
+      "properties": {
+        "no": "820",
+        "county_code": "63000",
+        "site_name": "萬華大水溝二手屋",
+        "tel": "0958 130 142",
+        "postal_code": "108",
+        "address": "中華路二段334號B1",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區中華路二段334號B1",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區中華路二段334號B1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5421011,
+          25.0441098
+        ]
+      },
+      "properties": {
+        "no": "825",
+        "county_code": "63000",
+        "site_name": "伴Ban 古著 二手 買取 選品工作室",
+        "tel": "0",
+        "postal_code": "106",
+        "address": "安東街40巷3號一樓",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大安區",
+        "full_address": "臺北市大安區安東街40巷3號一樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大安區安東街40巷3號一樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5041734,
+          25.0460472
+        ]
+      },
+      "properties": {
+        "no": "826",
+        "county_code": "63000",
+        "site_name": "OPMM.SHOP",
+        "tel": "070 9589 7088",
+        "postal_code": "108",
+        "address": "漢口街二段90巷4號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區漢口街二段90巷4號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區漢口街二段90巷4號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5010267,
+          25.0212701
+        ]
+      },
+      "properties": {
+        "no": "827",
+        "county_code": "63000",
+        "site_name": "萬大庇護工場",
+        "tel": "2305-0025",
+        "postal_code": "108",
+        "address": "萬大路423巷38號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區萬大路423巷38號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區萬大路423巷38號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5190596,
+          25.0291766
+        ]
+      },
+      "properties": {
+        "no": "828",
+        "county_code": "63000",
+        "site_name": "光仁綠時尚-古亭選品店",
+        "tel": "2356-0112",
+        "postal_code": "100",
+        "address": "福州街11之1號",
+        "service_type": "買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中正區",
+        "full_address": "臺北市中正區福州街11之1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中正區福州街11之1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5265998,
+          25.113554
+        ]
+      },
+      "properties": {
+        "no": "829",
+        "county_code": "63000",
+        "site_name": "光仁綠時尚-天母選品店",
+        "tel": "2871-0608",
+        "postal_code": "111",
+        "address": "中山北路六段419巷1號",
+        "service_type": "捐送,買賣",
+        "item": "生活用品類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區中山北路六段419巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區中山北路六段419巷1號"
+      }
+    }
+  ]
+}

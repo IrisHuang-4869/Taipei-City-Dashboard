@@ -34,6 +34,14 @@ bike_map	{#a0b8e8,#b7ff98}	{MapLegend}	條
 garbage_map_overview	{#D8DEE9,#F2BE5C,#E56B6F}	{TextUnitChart}	\N
 garbage_map_cross_compare	{#5B8FF9,#8EA7E9,#C1D8F0}	{DistrictChart,ColumnChart}	處
 incinerator_capacity	{#4CAF50,#FFEB3B,#F44336}	{DistrictChart}	%
+moenv_wr_recycle_6ca8d697f6	{#E170A6,#E170A6,#E170A6}	{TextUnitChart}	處
+moenv_wr_recycle_7b805c8fa1	{#24B0DD,#24B0DD,#24B0DD}	{TextUnitChart}	處
+moenv_wr_recycle_6a4bc66658	{#56B96D,#56B96D,#56B96D}	{TextUnitChart}	處
+moenv_wr_recycle_014ce45e54	{#F8CF58,#F8CF58,#F8CF58}	{TextUnitChart}	處
+moenv_wr_recycle_8863327e9b	{#F5AD4A,#F5AD4A,#F5AD4A}	{TextUnitChart}	處
+moenv_wr_recycle_c5e75de7e7	{#9DC56E,#9DC56E,#9DC56E}	{TextUnitChart}	處
+moenv_wr_recycle_e62fbe91a5	{#8B5CF6,#8B5CF6,#8B5CF6}	{TextUnitChart}	處
+moenv_wr_recycle_4554828c57	{#ED6A45,#ED6A45,#ED6A45}	{TextUnitChart}	處
 \.
 
 
@@ -48,6 +56,14 @@ COPY public.component_maps (id, index, title, type, source, size, icon, paint, p
 101	bike_network_metrotaipei	自行車路網	line	geojson	\N	\N	{"line-color":["match",["get","direction"],"雙向","#097138","單向","#007BFF","#808080"]}	[\r\n  {"key": "data_time", "name": "數據時間"},\r\n  {"key": "route_name", "name": "路線名稱"},\r\n  {"key": "city_code", "name": "城市代碼"},\r\n  {"key": "city", "name": "城市"},\r\n  {"key": "road_section_start", "name": "起點路段"},\r\n  {"key": "road_section_end", "name": "終點路段"},\r\n  {"key": "direction", "name": "方向"},\r\n  {"key": "cycling_length", "name": "自行車道長度"},\r\n  {"key": "finished_time", "name": "完工時間"},\r\n  {"key": "update_time", "name": "更新時間"}\r\n]
 102	garbage_map_cross_compare_placeholder	垃圾地圖交叉比對	circle	geojson	small	\N	{"circle-color":"#5B8FF9","circle-opacity":0.85}	[{"key":"district","name":"行政區"},{"key":"site_name","name":"點位名稱"},{"key":"status","name":"狀態"}]
 103	incinerator_capacity	焚化爐處理量能	fill	geojson	\N	\N	{"fill-color":["interpolate",["linear"],["get","capacity_ratio"],0,"#4CAF50",0.7,"#FFEB3B",1,"#F44336"],"fill-opacity":0.75,"fill-outline-color":"#333"}	[{"key":"name","name":"焚化廠名稱"},{"key":"capacity_ratio_pct","name":"處理量能比率 (%)"},{"key":"district","name":"行政區"}]
+103	moenv_wr_recycle_6ca8d697f6	回收點｜3C用品類	circle	geojson	small	\N	{"circle-color":"#E170A6","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+104	moenv_wr_recycle_7b805c8fa1	回收點｜其他類	circle	geojson	small	\N	{"circle-color":"#24B0DD","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+105	moenv_wr_recycle_6a4bc66658	回收點｜家具類	circle	geojson	small	\N	{"circle-color":"#56B96D","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+106	moenv_wr_recycle_014ce45e54	回收點｜書籍類	circle	geojson	small	\N	{"circle-color":"#F8CF58","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+107	moenv_wr_recycle_8863327e9b	回收點｜玩具類	circle	geojson	small	\N	{"circle-color":"#F5AD4A","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+108	moenv_wr_recycle_c5e75de7e7	回收點｜生活用品類	circle	geojson	small	\N	{"circle-color":"#9DC56E","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+109	moenv_wr_recycle_e62fbe91a5	回收點｜舊衣類	circle	geojson	small	\N	{"circle-color":"#8B5CF6","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+110	moenv_wr_recycle_4554828c57	回收點｜電器類	circle	geojson	small	\N	{"circle-color":"#ED6A45","circle-opacity":0.85,"circle-radius":5,"circle-stroke-width":1,"circle-stroke-color":"#ffffff"}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
 \.
 
 
@@ -67,6 +83,14 @@ COPY public.components (id, index, name) FROM stdin;
 219	garbage_map_overview	垃圾地圖總覽
 220	garbage_map_cross_compare	垃圾地圖交叉比對
 999	incinerator_capacity	雙北焚化爐處理量能
+221	moenv_wr_recycle_6ca8d697f6	回收點｜3C用品類
+222	moenv_wr_recycle_7b805c8fa1	回收點｜其他類
+223	moenv_wr_recycle_6a4bc66658	回收點｜家具類
+224	moenv_wr_recycle_014ce45e54	回收點｜書籍類
+225	moenv_wr_recycle_8863327e9b	回收點｜玩具類
+226	moenv_wr_recycle_c5e75de7e7	回收點｜生活用品類
+227	moenv_wr_recycle_e62fbe91a5	回收點｜舊衣類
+228	moenv_wr_recycle_4554828c57	回收點｜電器類
 \.
 
 
@@ -90,6 +114,7 @@ COPY public.dashboards (id, index, name, components, icon, updated_at, created_a
 359	map-layers-metrotaipei	圖資資訊	{217}	public	2024-05-16 03:56:12.76016+00	2024-03-21 10:04:24.928533+00
 358	practical_transportation_newtpe	務實交通	{60,212,213}	directions_car	2025-03-12 08:00:38.75842+00	2024-03-21 09:38:37.66+00
 360	garbage_map_metrotaipei	垃圾地圖	{219,220,999}	delete	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00
+360	garbage_map_metrotaipei	垃圾地圖	{219,220,221,222,223,224,225,226,227,228}	delete	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00
 1	09a25cd9cb7d	收藏組件	\N	favorite	2025-03-14 07:34:22.247753+00	2025-03-14 07:34:22.247753+00
 2	3245d9eace5f	我的新儀表板	{215,218,216,213,212,214,60,146}	star	2025-03-14 14:55:11.732116+00	2025-03-14 14:55:11.732116+00
 \.
@@ -112,7 +137,7 @@ COPY public.issues (id, title, user_name, user_id, context, description, decisio
 
 
 ALTER TABLE public.query_charts OWNER TO postgres;
-\.
+
 TRUNCATE TABLE public.query_charts RESTART IDENTITY CASCADE;
 COPY public.query_charts (index, history_config, map_config_ids, map_filter, time_from, time_to, update_freq, update_freq_unit, source, short_desc, long_desc, use_case, links, contributors, created_at, updated_at, query_type, query_chart, query_history, city) FROM stdin;
 aging_kpi	\N	{}	{}	static	\N	0	\N	主計處	此圖顯示雙北長照關懷各項指標。	此圖表呈現雙北長照關懷相關指標，包括 扶老比、扶幼比、扶養比 及 老化指數。扶老比代表每百名勞動人口需扶養的老年人口數，扶幼比則是需扶養的兒童人口數，而扶養比則合計這兩者，反映整體社會負擔程度。老化指數則比較老年人口與兒童人口比例，顯示人口結構的高齡化趨勢。這些數據可用於評估長照需求，並規劃資源分配與政策方向，以因應人口老化帶來的挑戰。	在制定長照政策時，政府可運用 扶老比、扶幼比、扶養比 及 老化指數 來評估未來照護需求。例如，某城市發現扶老比上升且老化指數超過 100，代表老年人口已多於兒童，預示長照需求將持續增加。政府可據此增設長照機構、強化居家照護服務，並鼓勵社區共融計畫，以減輕勞動人口的扶養壓力，確保高齡者獲得適切照顧。	{https://data.taipei/dataset/detail?id=64c8a3a0-3b9a-4f49-a13a-fb1eb2ffa4b1,https://data.ntpc.gov.tw/datasets/8308ab58-62d1-424e-8314-24b65b7ab492}	{doit,ntpc}	2023-12-20 05:56:00+00	2024-06-12 06:02:41.642+00	three_d	select y_axis,icon ,round(avg(data))data  \r\nfrom(\r\nselect '扶老比' as y_axis, percent30 as data ,'%' as icon \r\nfrom public.city_age_distribution_taipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_taipei ) and  區域別='總計' and 統計類型='計'\r\nunion all\r\nselect '扶幼比' as y_axis, percent31 as data ,'%' as icon \r\nfrom public.city_age_distribution_taipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_taipei ) and  區域別='總計' and 統計類型='計'\r\nunion all\r\nselect '扶養比' as y_axis, percent32 as data ,'%' as icon \r\nfrom public.city_age_distribution_taipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_taipei ) and  區域別='總計' and 統計類型='計'\r\nunion all\r\nselect '老化指數' as y_axis, percent33 as data ,'%' as icon \r\nfrom public.city_age_distribution_taipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_taipei ) and  區域別='總計' and 統計類型='計'\r\nunion all\r\nselect '扶老比' as y_axis, avg(percent30) as data ,'%' as icon \r\nfrom public.city_age_distribution_newtaipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_newtaipei )  and 統計類型='計'\r\nunion all\r\nselect '扶幼比' as y_axis, avg(percent31) as data ,'%' as icon \r\nfrom public.city_age_distribution_newtaipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_newtaipei ) and 統計類型='計'\r\nunion all\r\nselect '扶養比' as y_axis, avg(percent32) as data ,'%' as icon \r\nfrom public.city_age_distribution_newtaipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_newtaipei )  and 統計類型='計'\r\nunion all\r\nselect '老化指數' as y_axis, avg(percent33) as data ,'%' as icon \r\nfrom public.city_age_distribution_newtaipei \r\nwhere 年份= (select max(年份) from public.city_age_distribution_newtaipei )  and 統計類型='計'\r\n)d\r\ngroup by y_axis,icon	\N	metrotaipei
@@ -134,7 +159,15 @@ youbike_availability	\N	{70}	\N	current	\N	10	minute	交通局	顯示當前臺�
 garbage_map_overview	\N	{}	{}	static	\N	0	\N	環保局	雙北垃圾地圖總覽 placeholder。	此為雙北垃圾地圖的空白骨架，先預留總覽卡片位置，後續可接入垃圾清運、回收點位或環保設施等資料。	可作為之後串接真實資料前的版型驗證，確認雙北 dashboard 的總覽資訊與互動流程已就位。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('總覽','清運點位','處',0),('總覽','行政區數','區',0),('總覽','資料圖層','層',0),('總覽','待接資料','項',0)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
 garbage_map_cross_compare	\N	{102}	{"mode":"byParam","byParam":{"xParam":"district"}}	static	\N	0	\N	環保局	雙北垃圾地圖交叉比對 placeholder。	此為雙北垃圾地圖的空白交叉比對骨架，先提供行政區維度與空地圖圖層，後續可接入垃圾收運點、清潔隊服務範圍或其他環保圖資。	可先驗證儀表板與地圖交叉比對的互動結構，之後只需替換查詢與 geojson 即可接上正式資料。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('北投區','垃圾地圖',0),('士林區','垃圾地圖',0),('內湖區','垃圾地圖',0),('南港區','垃圾地圖',0),('松山區','垃圾地圖',0),('信義區','垃圾地圖',0),('中山區','垃圾地圖',0),('大同區','垃圾地圖',0),('中正區','垃圾地圖',0),('萬華區','垃圾地圖',0),('大安區','垃圾地圖',0),('文山區','垃圾地圖',0),('新莊區','垃圾地圖',0),('淡水區','垃圾地圖',0),('汐止區','垃圾地圖',0),('板橋區','垃圾地圖',0),('三重區','垃圾地圖',0),('樹林區','垃圾地圖',0),('土城區','垃圾地圖',0),('蘆洲區','垃圾地圖',0),('中和區','垃圾地圖',0),('永和區','垃圾地圖',0),('新店區','垃圾地圖',0),('鶯歌區','垃圾地圖',0),('三峽區','垃圾地圖',0),('瑞芳區','垃圾地圖',0),('五股區','垃圾地圖',0),('泰山區','垃圾地圖',0),('林口區','垃圾地圖',0),('深坑區','垃圾地圖',0),('石碇區','垃圾地圖',0),('坪林區','垃圾地圖',0),('三芝區','垃圾地圖',0),('石門區','垃圾地圖',0),('八里區','垃圾地圖',0),('平溪區','垃圾地圖',0),('雙溪區','垃圾地圖',0),('貢寮區','垃圾地圖',0),('金山區','垃圾地圖',0),('萬里區','垃圾地圖',0),('烏來區','垃圾地圖',0)) as t(x_axis,y_axis,data)	\N	metrotaipei
 incinerator_capacity	\N	{103}	{"mode":"byParam","byParam":{"xParam":"district"}}	static	\N	0	\N	環保局	顯示雙北焚化爐處理量能。	此圖顯示雙北地區各焚化廠的處理量能比率，以行政區為單位呈現，顏色由綠色（低負載）過渡至紅色（高負載），可直觀了解各焚化廠的負荷狀況。資料來源為 2026 年 2 月份雙北焚化廠實際處理量與設計容量比對結果。	可用於評估雙北垃圾焚化設施的容量使用狀況，協助環保主管機關掌握各廠的運作負荷，作為廢棄物處理政策與設施擴充規劃的重要參考依據。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select district as x_axis, '焚化爐處理量能' as y_axis, round(capacity_ratio * 100) as data from (values ('北投區','臺北市北投垃圾焚化廠',68.84),('木柵','臺北市木柵垃圾焚化廠',58.39),('內湖','臺北市內湖垃圾焚化廠',52.86),('八里區','新北市八里垃圾焚化廠',89.97),('新店區','新北市新店垃圾焚化廠',69.56),('樹林區','新北市樹林垃圾焚化廠',62.04)) as t(district,name,capacity_ratio)	\N	metrotaipei
-\.
+moenv_wr_recycle_6ca8d697f6	\N	{103}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：3C用品類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含 3C用品類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('3C用品類','點位數','處',69)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+moenv_wr_recycle_7b805c8fa1	\N	{104}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：其他類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含其他類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('其他類','點位數','處',39)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+moenv_wr_recycle_6a4bc66658	\N	{105}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：家具類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含家具類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('家具類','點位數','處',12)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+moenv_wr_recycle_014ce45e54	\N	{106}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：書籍類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含書籍類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('書籍類','點位數','處',13)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+moenv_wr_recycle_8863327e9b	\N	{107}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：玩具類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含玩具類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('玩具類','點位數','處',10)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+moenv_wr_recycle_c5e75de7e7	\N	{108}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：生活用品類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含生活用品類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('生活用品類','點位數','處',47)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+moenv_wr_recycle_e62fbe91a5	\N	{109}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：舊衣類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含舊衣類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('舊衣類','點位數','處',144)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+moenv_wr_recycle_4554828c57	\N	{110}	{}	static	\N	0	\N	環境部	北北基 MOENV 回收點：電器類。	圖層來自環境部回收點位公開資料；範圍僅臺北市、新北市、基隆市（已排除桃園市）；單一圖層僅含電器類。	於地圖模式可獨立開關本圖層以檢視點位與屬性。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('電器類','點位數','處',19)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+
 
 
 COPY public.dashboard_groups (dashboard_id, group_id) FROM stdin;
