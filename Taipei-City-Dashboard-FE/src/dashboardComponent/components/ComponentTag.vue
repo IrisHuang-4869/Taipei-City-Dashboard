@@ -74,6 +74,9 @@ defineProps({
 
 		&.city-tag-item {
 			margin: 0;
+			/* 雙北等雙字以上標籤勿被 88px 裁成單字 */
+			max-width: none;
+			white-space: nowrap;
 
 			p {
 				color: white;
