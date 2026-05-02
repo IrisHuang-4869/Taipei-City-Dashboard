@@ -491,7 +491,7 @@ function returnChartComponent(name, svg) {
 		</div>
 		<!-- Footer -->
 		<div
-			v-if="footer && (!mode.includes('map') || toggleOn)"
+			v-if="footer && (!mode.includes('map') || toggleOn || infoBtn)"
 			class="dashboardcomponent-footer"
 		>
 			<div
