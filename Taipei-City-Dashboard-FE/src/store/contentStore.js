@@ -259,6 +259,15 @@ export const useContentStore = defineStore("content", {
 					`/dashboard/${this.currentDashboard.index}`,
 				);
 				this.cityDashboard.components = response.data.data || [];
+
+				// Inject local garbage map layers if applicable
+				if (this.currentDashboard.index === "garbage_map_metrotaipei") {
+					localGarbageMapLayers.forEach(localComp => {
+						if (!this.cityDashboard.components.find(c => c.index === localComp.index)) {
+							this.cityDashboard.components.push(localComp);
+						}
+					});
+				}
 				this.filterCurrentDashboardContent();
 			} catch (error) {
 				console.error("Error getting dashboard index data:", error);
@@ -278,6 +287,8 @@ export const useContentStore = defineStore("content", {
 					index++
 				) {
 					const component = this.cityDashboard.components[index];
+					// Skip local-only components
+					if (component.id >= 990000) continue;
 					try {
 						// 4-2. Get chart data
 						const response = await http.get(
@@ -385,6 +396,7 @@ export const useContentStore = defineStore("content", {
 					index++
 				) {
 					const component = this.cityDashboard.components[index];
+					if (component.id >= 990000) continue;
 					if (
 						this.metroKeys.some((key) =>
 							component.index.includes(key),
@@ -438,6 +450,7 @@ export const useContentStore = defineStore("content", {
 					index++
 				) {
 					const component = this.cityDashboard.components[index];
+					if (component.id >= 990000) continue;
 					if (
 						this.metroKeys.some((key) =>
 							component.index.includes(key),
@@ -505,6 +518,7 @@ export const useContentStore = defineStore("content", {
 					index++
 				) {
 					const component = this.cityDashboard.components[index];
+					if (component.id >= 990000) continue;
 					if (
 						!this.metroKeys.some((key) =>
 							component.index.includes(key),
@@ -558,6 +572,7 @@ export const useContentStore = defineStore("content", {
 					index++
 				) {
 					const component = this.cityDashboard.components[index];
+					if (component.id >= 990000) continue;
 					if (
 						!this.metroKeys.some((key) =>
 							component.index.includes(key),
