@@ -760,7 +760,18 @@ export const useContentStore = defineStore("content", {
 						},
 					);
 
-					this.allMapLayers = filteredMapLayersData;
+					// Merge local garbage layers, avoiding duplicates by id
+					const existingIds = new Set(
+						filteredMapLayersData.map((i) => i.id),
+					);
+					const mergedLayers = [
+						...filteredMapLayersData,
+						...localGarbageMapLayers.filter(
+							(i) => !existingIds.has(i.id),
+						),
+					];
+
+					this.allMapLayers = mergedLayers;
 					// Get chart_data for all layers
 					await this.setMapLayersContent(cityValue);
 				} else {
@@ -789,6 +800,8 @@ export const useContentStore = defineStore("content", {
 			try {
 				for (let index = 0; index < this.allMapLayers.length; index++) {
 					const component = this.allMapLayers[index];
+
+					if (component.id >= 990000) continue;
 
 					try {
 						const response = await http.get(
