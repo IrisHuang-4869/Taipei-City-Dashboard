@@ -1,0 +1,4037 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4532019,
+          25.0220971
+        ]
+      },
+      "properties": {
+        "no": "1",
+        "county_code": "65000",
+        "site_name": "社團法人新北市土城區身障自立協會",
+        "tel": "02-2267-0739",
+        "postal_code": "220",
+        "address": "板橋區中正里中正路379巷34號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區中正里中正路379巷34號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區中正里中正路379巷34號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4541571,
+          25.0213579
+        ]
+      },
+      "properties": {
+        "no": "2",
+        "county_code": "65000",
+        "site_name": "社團法人新北市土城區身障自立協會",
+        "tel": "02-2267-0739",
+        "postal_code": "220",
+        "address": "板橋區中正里中正路379巷1弄1號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區中正里中正路379巷1弄1號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區中正里中正路379巷1弄1號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4537809,
+          25.0204975
+        ]
+      },
+      "properties": {
+        "no": "3",
+        "county_code": "65000",
+        "site_name": "社團法人新北市土城區身障自立協會",
+        "tel": "02-2267-0739",
+        "postal_code": "220",
+        "address": "板橋區中正里中正路375巷38號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區中正里中正路375巷38號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區中正里中正路375巷38號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4530788,
+          25.0237208
+        ]
+      },
+      "properties": {
+        "no": "4",
+        "county_code": "65000",
+        "site_name": "社團法人新北市土城區身障自立協會",
+        "tel": "02-2267-0739",
+        "postal_code": "220",
+        "address": "板橋區中正里中正路433巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區中正里中正路433巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區中正里中正路433巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4534989,
+          25.0225763
+        ]
+      },
+      "properties": {
+        "no": "5",
+        "county_code": "65000",
+        "site_name": "社團法人新北市土城區身障自立協會",
+        "tel": "02-2267-0739",
+        "postal_code": "220",
+        "address": "板橋區中正里中正路413巷15號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區中正里中正路413巷15號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區中正里中正路413巷15號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4727445,
+          25.0800592
+        ]
+      },
+      "properties": {
+        "no": "6",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "247",
+        "address": "蘆洲區樹德里中山一路263號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區樹德里中山一路263號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區樹德里中山一路263號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4549686,
+          25.1615236
+        ]
+      },
+      "properties": {
+        "no": "7",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區竿蓁里淡金路77巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區竿蓁里淡金路77巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區竿蓁里淡金路77巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.453953,
+          25.1609914
+        ]
+      },
+      "properties": {
+        "no": "8",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區竿蓁里淡金路79巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區竿蓁里淡金路79巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區竿蓁里淡金路79巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4555914,
+          25.160437
+        ]
+      },
+      "properties": {
+        "no": "9",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區竿蓁里坪頂路11號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區竿蓁里坪頂路11號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區竿蓁里坪頂路11號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4592744,
+          25.1608812
+        ]
+      },
+      "properties": {
+        "no": "10",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區竿蓁里淡金路16巷",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區竿蓁里淡金路16巷",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區竿蓁里淡金路16巷"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4605003,
+          25.1559953
+        ]
+      },
+      "properties": {
+        "no": "11",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區八勢里八勢一街7號旁公告欄",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區八勢里八勢一街7號旁公告欄",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區八勢里八勢一街7號旁公告欄"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4621368,
+          25.1554741
+        ]
+      },
+      "properties": {
+        "no": "12",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區八勢里八勢一街55號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區八勢里八勢一街55號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區八勢里八勢一街55號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4615466,
+          25.1549851
+        ]
+      },
+      "properties": {
+        "no": "13",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區八勢里八勢一街77號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區八勢里八勢一街77號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區八勢里八勢一街77號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4645533,
+          25.1319985
+        ]
+      },
+      "properties": {
+        "no": "14",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區福德里自強路118巷福德公園",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區福德里自強路118巷福德公園",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區福德里自強路118巷福德公園"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4625834,
+          25.1319997
+        ]
+      },
+      "properties": {
+        "no": "15",
+        "county_code": "65000",
+        "site_name": "新北市慈懷愛心會",
+        "tel": "0952-036-411",
+        "postal_code": "251",
+        "address": "淡水區福德里自強路309號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "淡水區",
+        "full_address": "新北市淡水區福德里自強路309號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市淡水區福德里自強路309號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5034263,
+          25.067115
+        ]
+      },
+      "properties": {
+        "no": "16",
+        "county_code": "65000",
+        "site_name": "新北市三蘆愛心關懷協會",
+        "tel": "0921-623-775",
+        "postal_code": "241",
+        "address": "三重區長江里龍濱路1號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區長江里龍濱路1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區長江里龍濱路1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5028832,
+          25.0679139
+        ]
+      },
+      "properties": {
+        "no": "17",
+        "county_code": "65000",
+        "site_name": "新北市三蘆愛心關懷協會",
+        "tel": "0921-623-775",
+        "postal_code": "241",
+        "address": "三重區長江里龍濱路21號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區長江里龍濱路21號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區長江里龍濱路21號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5024855,
+          25.0698882
+        ]
+      },
+      "properties": {
+        "no": "18",
+        "county_code": "65000",
+        "site_name": "新北市三蘆愛心關懷協會",
+        "tel": "0921-623-775",
+        "postal_code": "241",
+        "address": "三重區長福里龍濱路167號前",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區長福里龍濱路167號前",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區長福里龍濱路167號前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.502214,
+          25.0698095
+        ]
+      },
+      "properties": {
+        "no": "19",
+        "county_code": "65000",
+        "site_name": "新北市三蘆愛心關懷協會",
+        "tel": "0921-623-775",
+        "postal_code": "241",
+        "address": "三重區長福里龍濱路86號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區長福里龍濱路86號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區長福里龍濱路86號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5009782,
+          25.068993
+        ]
+      },
+      "properties": {
+        "no": "20",
+        "county_code": "65000",
+        "site_name": "新北市三蘆愛心關懷協會",
+        "tel": "0921-623-775",
+        "postal_code": "241",
+        "address": "三重區長泰里長興街62號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區長泰里長興街62號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區長泰里長興街62號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4790119,
+          25.0880792
+        ]
+      },
+      "properties": {
+        "no": "21",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區信義里民族路167巷1弄3號前",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區信義里民族路167巷1弄3號前",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區信義里民族路167巷1弄3號前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4723979,
+          25.0870292
+        ]
+      },
+      "properties": {
+        "no": "22",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區仁愛里三民路98巷與三民路110巷交叉口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區仁愛里三民路98巷與三民路110巷交叉口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區仁愛里三民路98巷與三民路110巷交叉口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4577316,
+          25.0920991
+        ]
+      },
+      "properties": {
+        "no": "23",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區南港里永平街32巷11弄36號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區南港里永平街32巷11弄36號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區南港里永平街32巷11弄36號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4597564,
+          25.0925988
+        ]
+      },
+      "properties": {
+        "no": "24",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區南港里永平街32巷51號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區南港里永平街32巷51號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區南港里永平街32巷51號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4582214,
+          25.0926657
+        ]
+      },
+      "properties": {
+        "no": "25",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區南港里永平街32巷33弄巷口 (美簾社旁)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區南港里永平街32巷33弄巷口 (美簾社旁)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區南港里永平街32巷33弄巷口 (美簾社旁)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.457695,
+          25.0904894
+        ]
+      },
+      "properties": {
+        "no": "26",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區永樂里永樂街38巷57弄口(全聯)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區永樂里永樂街38巷57弄口(全聯)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區永樂里永樂街38巷57弄口(全聯)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4576675,
+          25.0900438
+        ]
+      },
+      "properties": {
+        "no": "27",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區永樂里永樂街38巷45弄口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區永樂里永樂街38巷45弄口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區永樂里永樂街38巷45弄口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.457297,
+          25.0892323
+        ]
+      },
+      "properties": {
+        "no": "28",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區永樂里永樂街38巷19弄口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區永樂里永樂街38巷19弄口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區永樂里永樂街38巷19弄口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.45795,
+          25.0870139
+        ]
+      },
+      "properties": {
+        "no": "29",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區成功里長安街 274 巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區成功里長安街 274 巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區成功里長安街 274 巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.457047,
+          25.0883863
+        ]
+      },
+      "properties": {
+        "no": "30",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區成功里永樂街45號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區成功里永樂街45號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區成功里永樂街45號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4588498,
+          25.0867441
+        ]
+      },
+      "properties": {
+        "no": "31",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區成功里長安街246巷47號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區成功里長安街246巷47號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區成功里長安街246巷47號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.457756,
+          25.0850972
+        ]
+      },
+      "properties": {
+        "no": "32",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區永康里永康街27號前",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區永康里永康街27號前",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區永康里永康街27號前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4565611,
+          25.0847642
+        ]
+      },
+      "properties": {
+        "no": "33",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區永康里永康街63巷1弄2號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區永康里永康街63巷1弄2號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區永康里永康街63巷1弄2號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4597828,
+          25.0851456
+        ]
+      },
+      "properties": {
+        "no": "34",
+        "county_code": "65000",
+        "site_name": "新北市蘆洲區愛心會",
+        "tel": "0921-623-775",
+        "postal_code": "247",
+        "address": "蘆洲區永康里長安街220巷36號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區永康里長安街220巷36號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區永康里長安街220巷36號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4692474,
+          25.0238908
+        ]
+      },
+      "properties": {
+        "no": "35",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區莒光里莒光路16巷34號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區莒光里莒光路16巷34號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區莒光里莒光路16巷34號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.469539,
+          25.0246169
+        ]
+      },
+      "properties": {
+        "no": "36",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區莒光里莒光路16巷2號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區莒光里莒光路16巷2號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區莒光里莒光路16巷2號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4699245,
+          25.025035
+        ]
+      },
+      "properties": {
+        "no": "37",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區莒光里莒光路15巷7-1號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區莒光里莒光路15巷7-1號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區莒光里莒光路15巷7-1號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4713537,
+          25.0254923
+        ]
+      },
+      "properties": {
+        "no": "38",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區莒光里文化路2段124巷36號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區莒光里文化路2段124巷36號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區莒光里文化路2段124巷36號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4765259,
+          25.0233811
+        ]
+      },
+      "properties": {
+        "no": "39",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區永安里縣民大道3段121巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區永安里縣民大道3段121巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區永安里縣民大道3段121巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4740731,
+          25.021063
+        ]
+      },
+      "properties": {
+        "no": "40",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區埤墘里縣民大道3段33巷6弄2號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區埤墘里縣民大道3段33巷6弄2號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區埤墘里縣民大道3段33巷6弄2號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4751506,
+          25.0219575
+        ]
+      },
+      "properties": {
+        "no": "41",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區埤墘里縣民大道3段79巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區埤墘里縣民大道3段79巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區埤墘里縣民大道3段79巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4726918,
+          25.0217496
+        ]
+      },
+      "properties": {
+        "no": "42",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區埤墘里莊敬路263巷31號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區埤墘里莊敬路263巷31號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區埤墘里莊敬路263巷31號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4737409,
+          25.0216037
+        ]
+      },
+      "properties": {
+        "no": "43",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區埤墘里莊敬路261號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區埤墘里莊敬路261號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區埤墘里莊敬路261號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4743341,
+          25.0219337
+        ]
+      },
+      "properties": {
+        "no": "44",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區埤墘里莒光路237號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區埤墘里莒光路237號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區埤墘里莒光路237號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4740545,
+          25.0228893
+        ]
+      },
+      "properties": {
+        "no": "45",
+        "county_code": "65000",
+        "site_name": "社團法人新北市板橋區陽光慈善推廣協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區埤墘里莒光路178號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區埤墘里莒光路178號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區埤墘里莒光路178號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4768734,
+          25.0237904
+        ]
+      },
+      "properties": {
+        "no": "46",
+        "county_code": "65000",
+        "site_name": "新北市殘疾人福利服務協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區永安里縣民大道三段127巷25號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區永安里縣民大道三段127巷25號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區永安里縣民大道三段127巷25號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.42806,
+          25.01057
+        ]
+      },
+      "properties": {
+        "no": "47",
+        "county_code": "65000",
+        "site_name": "新北市殘疾人福利服務協會",
+        "tel": "0935-936-082",
+        "postal_code": "242",
+        "address": "新莊區光華里民安西路327巷底與光華街口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區光華里民安西路327巷底與光華街口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區光華里民安西路327巷底與光華街口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4258312,
+          25.0143967
+        ]
+      },
+      "properties": {
+        "no": "48",
+        "county_code": "65000",
+        "site_name": "新北市殘疾人福利服務協會",
+        "tel": "0935-936-082",
+        "postal_code": "242",
+        "address": "新莊區光華里光華街與民安西路口對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區光華里光華街與民安西路口對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區光華里光華街與民安西路口對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.456727,
+          25.024569
+        ]
+      },
+      "properties": {
+        "no": "49",
+        "county_code": "65000",
+        "site_name": "新北市殘疾人福利服務協會",
+        "tel": "0919-573-396",
+        "postal_code": "220",
+        "address": "板橋區德翠里龍泉街110號前",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區德翠里龍泉街110號前",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區德翠里龍泉街110號前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4124167,
+          25.0098869
+        ]
+      },
+      "properties": {
+        "no": "50",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區猐寮里保安街二段357號(7-11旁)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區猐寮里保安街二段357號(7-11旁)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區猐寮里保安街二段357號(7-11旁)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4128578,
+          25.0069039
+        ]
+      },
+      "properties": {
+        "no": "51",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區猐寮里保安街二段337號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區猐寮里保安街二段337號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區猐寮里保安街二段337號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4122786,
+          25.0067609
+        ]
+      },
+      "properties": {
+        "no": "52",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區猐寮里保安街二段311號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區猐寮里保安街二段311號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區猐寮里保安街二段311號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4128578,
+          25.0069039
+        ]
+      },
+      "properties": {
+        "no": "53",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區猐寮里保安街二段295號萊爾富旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區猐寮里保安街二段295號萊爾富旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區猐寮里保安街二段295號萊爾富旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.412767,
+          25.0040598
+        ]
+      },
+      "properties": {
+        "no": "54",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區猐寮里光榮街13號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區猐寮里光榮街13號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區猐寮里光榮街13號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4197423,
+          24.996705
+        ]
+      },
+      "properties": {
+        "no": "55",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區潭底里保安街一段249號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區潭底里保安街一段249號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區潭底里保安街一段249號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.415135,
+          24.9811147
+        ]
+      },
+      "properties": {
+        "no": "56",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-433",
+        "postal_code": "238",
+        "address": "樹林區東陽里東華街70巷對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區東陽里東華街70巷對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區東陽里東華街70巷對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4129032,
+          24.9818213
+        ]
+      },
+      "properties": {
+        "no": "57",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區東陽里東陽街18號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區東陽里東陽街18號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區東陽里東陽街18號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.416508,
+          24.9841677
+        ]
+      },
+      "properties": {
+        "no": "58",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區東昇里鎮前街345號(對面圍牆)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區東昇里鎮前街345號(對面圍牆)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區東昇里鎮前街345號(對面圍牆)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4174281,
+          24.9846223
+        ]
+      },
+      "properties": {
+        "no": "59",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區東昇里鎮前街313號(對面圍牆)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區東昇里鎮前街313號(對面圍牆)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區東昇里鎮前街313號(對面圍牆)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.422774,
+          24.9800898
+        ]
+      },
+      "properties": {
+        "no": "60",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區彭福里國凱街122巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區彭福里國凱街122巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區彭福里國凱街122巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4200757,
+          24.9806231
+        ]
+      },
+      "properties": {
+        "no": "61",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "238",
+        "address": "樹林區彭福里樹林區彭福里太平路127巷12弄6號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "樹林區",
+        "full_address": "新北市樹林區彭福里樹林區彭福里太平路127巷12弄6號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市樹林區彭福里樹林區彭福里太平路127巷12弄6號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4291733,
+          24.9880294
+        ]
+      },
+      "properties": {
+        "no": "62",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "220",
+        "address": "板橋區溪北里滿平街與溪崑一街口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區溪北里滿平街與溪崑一街口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區溪北里滿平街與溪崑一街口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4301579,
+          24.9910094
+        ]
+      },
+      "properties": {
+        "no": "63",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "220",
+        "address": "板橋區溪北里溪崑一街47巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區溪北里溪崑一街47巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區溪北里溪崑一街47巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4290795,
+          24.993248
+        ]
+      },
+      "properties": {
+        "no": "64",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "220",
+        "address": "板橋區崑崙里沙崙街29號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區崑崙里沙崙街29號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區崑崙里沙崙街29號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4437984,
+          25.0019439
+        ]
+      },
+      "properties": {
+        "no": "65",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "220",
+        "address": "板橋區聚安里龍興街73巷萊爾富對面圍牆",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區聚安里龍興街73巷萊爾富對面圍牆",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區聚安里龍興街73巷萊爾富對面圍牆"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4418975,
+          25.0023945
+        ]
+      },
+      "properties": {
+        "no": "66",
+        "county_code": "65000",
+        "site_name": "新北市殘障福利服務協會",
+        "tel": "0982-980-432",
+        "postal_code": "220",
+        "address": "板橋區聚安里大觀路二段174巷138-140號之間",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區聚安里大觀路二段174巷138-140號之間",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區聚安里大觀路二段174巷138-140號之間"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4279496,
+          24.9848983
+        ]
+      },
+      "properties": {
+        "no": "67",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區溪福里金門街336巷7號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區溪福里金門街336巷7號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區溪福里金門街336巷7號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4301518,
+          24.9864857
+        ]
+      },
+      "properties": {
+        "no": "68",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區溪福里金門街299號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區溪福里金門街299號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區溪福里金門街299號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4325898,
+          24.9899183
+        ]
+      },
+      "properties": {
+        "no": "69",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區堂春里金門街215巷口對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區堂春里金門街215巷口對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區堂春里金門街215巷口對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4319804,
+          24.9889703
+        ]
+      },
+      "properties": {
+        "no": "70",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區堂春里金門街251號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區堂春里金門街251號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區堂春里金門街251號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4318869,
+          24.9882704
+        ]
+      },
+      "properties": {
+        "no": "71",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區堂春里金門街253巷2弄口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區堂春里金門街253巷2弄口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區堂春里金門街253巷2弄口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4330491,
+          24.9879596
+        ]
+      },
+      "properties": {
+        "no": "72",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區堂春里金門街253巷10弄8號前",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區堂春里金門街253巷10弄8號前",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區堂春里金門街253巷10弄8號前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4455656,
+          24.9995832
+        ]
+      },
+      "properties": {
+        "no": "73",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區大安里大觀路二段187巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區大安里大觀路二段187巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區大安里大觀路二段187巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4426406,
+          24.999162
+        ]
+      },
+      "properties": {
+        "no": "74",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區龍安里大觀路二段142之2號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區龍安里大觀路二段142之2號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區龍安里大觀路二段142之2號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4619432,
+          25.016743
+        ]
+      },
+      "properties": {
+        "no": "75",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區漢生里光正街45巷5號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區漢生里光正街45巷5號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區漢生里光正街45巷5號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4613035,
+          25.0155862
+        ]
+      },
+      "properties": {
+        "no": "76",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區漢生里公館街31號斜對面(光正街45巷底)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區漢生里公館街31號斜對面(光正街45巷底)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區漢生里公館街31號斜對面(光正街45巷底)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.456672,
+          25.016906
+        ]
+      },
+      "properties": {
+        "no": "77",
+        "county_code": "65000",
+        "site_name": "新北市社區工作者協會",
+        "tel": "0930-204-987",
+        "postal_code": "220",
+        "address": "板橋區建國里中正路162號轉角電線桿旁(大同3C展售店)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "板橋區",
+        "full_address": "新北市板橋區建國里中正路162號轉角電線桿旁(大同3C展售店)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市板橋區建國里中正路162號轉角電線桿旁(大同3C展售店)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4453025,
+          25.052687
+        ]
+      },
+      "properties": {
+        "no": "78",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區中原里中榮街85號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區中原里中榮街85號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區中原里中榮街85號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.445184,
+          25.0480698
+        ]
+      },
+      "properties": {
+        "no": "79",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區立廷里中平路184巷10弄1號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區立廷里中平路184巷10弄1號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區立廷里中平路184巷10弄1號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4578941,
+          25.063645
+        ]
+      },
+      "properties": {
+        "no": "80",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-087",
+        "postal_code": "242",
+        "address": "新莊區瓊林里瓊林路70號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區瓊林里瓊林路70號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區瓊林里瓊林路70號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4286138,
+          25.0152442
+        ]
+      },
+      "properties": {
+        "no": "81",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區光榮里西盛街311巷8號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區光榮里西盛街311巷8號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區光榮里西盛街311巷8號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4262415,
+          25.0220679
+        ]
+      },
+      "properties": {
+        "no": "82",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區民安里民安路236號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區民安里民安路236號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區民安里民安路236號旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4270494,
+          25.0188825
+        ]
+      },
+      "properties": {
+        "no": "83",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區民安里民安西路97號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區民安里民安西路97號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區民安里民安西路97號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4259907,
+          25.0218739
+        ]
+      },
+      "properties": {
+        "no": "84",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區八德里成功街3號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區八德里成功街3號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區八德里成功街3號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4247146,
+          25.0219229
+        ]
+      },
+      "properties": {
+        "no": "85",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區八德里八德街61號前",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區八德里八德街61號前",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區八德里八德街61號前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4286477,
+          25.0277368
+        ]
+      },
+      "properties": {
+        "no": "86",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區建福里建福路59巷44號後面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區建福里建福路59巷44號後面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區建福里建福路59巷44號後面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.416787,
+          25.028705
+        ]
+      },
+      "properties": {
+        "no": "87",
+        "county_code": "65000",
+        "site_name": "新北市板橋區親子服務協會",
+        "tel": "0930-204-987",
+        "postal_code": "242",
+        "address": "新莊區丹鳳里天祥街43號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "新莊區",
+        "full_address": "新北市新莊區丹鳳里天祥街43號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市新莊區丹鳳里天祥街43號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5542781,
+          25.0447675
+        ]
+      },
+      "properties": {
+        "no": "208",
+        "county_code": "63000",
+        "site_name": "RONS Select",
+        "tel": "0974401227",
+        "postal_code": "105",
+        "address": "八德路三段106巷118號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "松山區",
+        "full_address": "臺北市松山區八德路三段106巷118號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市松山區八德路三段106巷118號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7381902,
+          25.0963273
+        ]
+      },
+      "properties": {
+        "no": "640",
+        "county_code": "10017",
+        "site_name": "七礙-42",
+        "tel": "02-24557222",
+        "postal_code": "205",
+        "address": "東勢街26巷106號對面電桿旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "基隆市",
+        "resolved_district": "暖暖區",
+        "full_address": "基隆市暖暖區東勢街26巷106號對面電桿旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市暖暖區東勢街26巷106號對面電桿旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.7388409,
+          25.0950457
+        ]
+      },
+      "properties": {
+        "no": "641",
+        "county_code": "10017",
+        "site_name": "七礙-40",
+        "tel": "02-24557222",
+        "postal_code": "205",
+        "address": "東勢街6-59號瑞光商店旁電桿",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "基隆市",
+        "resolved_district": "暖暖區",
+        "full_address": "基隆市暖暖區東勢街6-59號瑞光商店旁電桿",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "基隆市暖暖區東勢街6-59號瑞光商店旁電桿"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5988884,
+          25.0536674
+        ]
+      },
+      "properties": {
+        "no": "679",
+        "county_code": "63000",
+        "site_name": "MISS名牌二手衣包收購",
+        "tel": "0979-365-000",
+        "postal_code": "115",
+        "address": "南港路二段B2 (倉庫20巷5號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區南港路二段B2 (倉庫20巷5號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區南港路二段B2 (倉庫20巷5號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5436616,
+          25.0457293
+        ]
+      },
+      "properties": {
+        "no": "693",
+        "county_code": "63000",
+        "site_name": "RECOVER",
+        "tel": "(02)8772-3188",
+        "postal_code": "104",
+        "address": "復興南路一段36之5號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區復興南路一段36之5號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區復興南路一段36之5號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5198748,
+          25.0631217
+        ]
+      },
+      "properties": {
+        "no": "694",
+        "county_code": "63000",
+        "site_name": "奧莉薇二手婚紗禮服專賣店",
+        "tel": "(02)2585-9129",
+        "postal_code": "104",
+        "address": "民權西路75號2F",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區民權西路75號2F",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區民權西路75號2F"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5200457,
+          25.0557747
+        ]
+      },
+      "properties": {
+        "no": "710",
+        "county_code": "63000",
+        "site_name": "香蕉貓",
+        "tel": "0955-213-317",
+        "postal_code": "103",
+        "address": "赤峰街49巷11號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區赤峰街49巷11號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區赤峰街49巷11號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5181721,
+          25.0683049
+        ]
+      },
+      "properties": {
+        "no": "713",
+        "county_code": "63000",
+        "site_name": "HaNou Select 日韓服飾選物",
+        "tel": "(02)2598-1231",
+        "postal_code": "103",
+        "address": "承德路三段158-1號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區承德路三段158-1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區承德路三段158-1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.520008,
+          25.0548126
+        ]
+      },
+      "properties": {
+        "no": "714",
+        "county_code": "63000",
+        "site_name": "赤峰洋行",
+        "tel": "0926-712-402",
+        "postal_code": "103",
+        "address": "赤峰街41巷2-6號號 2樓",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區赤峰街41巷2-6號號 2樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區赤峰街41巷2-6號號 2樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5190242,
+          25.0553966
+        ]
+      },
+      "properties": {
+        "no": "716",
+        "county_code": "63000",
+        "site_name": "懶得選物LZD/vintage & Used Select Shop｜古著、二手、選物",
+        "tel": "0939-600-155",
+        "postal_code": "103",
+        "address": "承德路二段53巷17號",
+        "service_type": "買賣,回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區承德路二段53巷17號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區承德路二段53巷17號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4869414,
+          25.0685211
+        ]
+      },
+      "properties": {
+        "no": "728",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重力行店",
+        "tel": "2984-3000",
+        "postal_code": "241",
+        "address": "力行路一段89巷13號",
+        "service_type": "買賣,回收,交換",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區力行路一段89巷13號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區力行路一段89巷13號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4636171,
+          25.0795836
+        ]
+      },
+      "properties": {
+        "no": "729",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲長安店",
+        "tel": "2848-0628",
+        "postal_code": "247",
+        "address": "長安街40號",
+        "service_type": "買賣,回收,交換",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區長安街40號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區長安街40號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4905547,
+          25.0806766
+        ]
+      },
+      "properties": {
+        "no": "730",
+        "county_code": "65000",
+        "site_name": "蚤寶shop三重慈愛店",
+        "tel": "8982-5568",
+        "postal_code": "241",
+        "address": "新北市三重區慈愛街140號",
+        "service_type": "買賣,回收,交換",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "三重區",
+        "full_address": "新北市三重區慈愛街140號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市三重區慈愛街140號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4773289,
+          25.0903434
+        ]
+      },
+      "properties": {
+        "no": "731",
+        "county_code": "65000",
+        "site_name": "蚤寶shop蘆洲民族店",
+        "tel": "2288-3339",
+        "postal_code": "247",
+        "address": "民族路314巷1號",
+        "service_type": "買賣,回收,交換",
+        "item": "舊衣類",
+        "resolved_county": "新北市",
+        "resolved_district": "蘆洲區",
+        "full_address": "新北市蘆洲區民族路314巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "新北市蘆洲區民族路314巷1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6041152,
+          25.0560818
+        ]
+      },
+      "properties": {
+        "no": "733",
+        "county_code": "63000",
+        "site_name": "力麒村上青春區",
+        "tel": "無",
+        "postal_code": "115",
+        "address": "東明街51號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區東明街51號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區東明街51號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6109537,
+          25.0589321
+        ]
+      },
+      "properties": {
+        "no": "734",
+        "county_code": "63000",
+        "site_name": "台北悅桂冠",
+        "tel": "02-2785-3602",
+        "postal_code": "115",
+        "address": "園區街17號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區園區街17號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區園區街17號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5279013,
+          25.0557832
+        ]
+      },
+      "properties": {
+        "no": "735",
+        "county_code": "63000",
+        "site_name": "梵帝崗",
+        "tel": "無",
+        "postal_code": "104",
+        "address": "新生北路二段47號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區新生北路二段47號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區新生北路二段47號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5416515,
+          24.989685
+        ]
+      },
+      "properties": {
+        "no": "736",
+        "county_code": "63000",
+        "site_name": "金運金大廈",
+        "tel": "無",
+        "postal_code": "116",
+        "address": "景興路282巷9號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區景興路282巷9號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區景興路282巷9號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5966464,
+          25.0810543
+        ]
+      },
+      "properties": {
+        "no": "747",
+        "county_code": "63000",
+        "site_name": "大湖仙境",
+        "tel": "無",
+        "postal_code": "114",
+        "address": "星雲街163號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "內湖區",
+        "full_address": "臺北市內湖區星雲街163號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市內湖區星雲街163號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5199529,
+          25.0269415
+        ]
+      },
+      "properties": {
+        "no": "748",
+        "county_code": "63000",
+        "site_name": "中正香榭",
+        "tel": "無",
+        "postal_code": "100",
+        "address": "和平西路一段55號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中正區",
+        "full_address": "臺北市中正區和平西路一段55號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中正區和平西路一段55號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5509259,
+          25.0777475
+        ]
+      },
+      "properties": {
+        "no": "749",
+        "county_code": "63000",
+        "site_name": "圓山景觀樓",
+        "tel": "02-2532-7721",
+        "postal_code": "104",
+        "address": "明水路463號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區明水路463號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區明水路463號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5226127,
+          25.0526041
+        ]
+      },
+      "properties": {
+        "no": "750",
+        "county_code": "63000",
+        "site_name": "麗晶盛艷",
+        "tel": "無",
+        "postal_code": "104",
+        "address": "中山北路1段83巷28～40號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "中山區",
+        "full_address": "臺北市中山區中山北路1段83巷28～40號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市中山區中山北路1段83巷28～40號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.51859,
+          25.063533
+        ]
+      },
+      "properties": {
+        "no": "751",
+        "county_code": "63000",
+        "site_name": "克里翁",
+        "tel": "無",
+        "postal_code": "103",
+        "address": "承德路三段7號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區承德路三段7號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區承德路三段7號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5033968,
+          25.0296982
+        ]
+      },
+      "properties": {
+        "no": "752",
+        "county_code": "63000",
+        "site_name": "復華花園新城",
+        "tel": "無",
+        "postal_code": "108",
+        "address": "西藏路107號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區西藏路107號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區西藏路107號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5984723,
+          25.0566394
+        ]
+      },
+      "properties": {
+        "no": "753",
+        "county_code": "63000",
+        "site_name": "Tiffany Garden",
+        "tel": "無",
+        "postal_code": "115",
+        "address": "重陽路125巷1號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區重陽路125巷1號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區重陽路125巷1號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5253575,
+          25.0914259
+        ]
+      },
+      "properties": {
+        "no": "787",
+        "county_code": "63000",
+        "site_name": "0311 Vintage & Used Clothing",
+        "tel": "無",
+        "postal_code": "111",
+        "address": "大西路74巷16號1樓",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區大西路74巷16號1樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區大西路74巷16號1樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5262175,
+          25.0893842
+        ]
+      },
+      "properties": {
+        "no": "788",
+        "county_code": "63000",
+        "site_name": "融合製造",
+        "tel": "無",
+        "postal_code": "111",
+        "address": "小東街33號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區小東街33號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區小東街33號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5195478,
+          25.093391
+        ]
+      },
+      "properties": {
+        "no": "789",
+        "county_code": "63000",
+        "site_name": "尋寶",
+        "tel": "無",
+        "postal_code": "111",
+        "address": "中正路422號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區中正路422號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區中正路422號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5252793,
+          25.0900372
+        ]
+      },
+      "properties": {
+        "no": "797",
+        "county_code": "63000",
+        "site_name": "DMC12 古著 X 選物 X 二手",
+        "tel": "(02)2883-1568",
+        "postal_code": "111",
+        "address": "大北路63號2樓",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區大北路63號2樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區大北路63號2樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5235514,
+          25.0973247
+        ]
+      },
+      "properties": {
+        "no": "799",
+        "county_code": "63000",
+        "site_name": "野娜日本流行古著",
+        "tel": "無",
+        "postal_code": "111",
+        "address": "美崙街6號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區美崙街6號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區美崙街6號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4988224,
+          25.0323737
+        ]
+      },
+      "properties": {
+        "no": "819",
+        "county_code": "63000",
+        "site_name": "Back to Green",
+        "tel": "0",
+        "postal_code": "108",
+        "address": "西園路二段11巷24號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區西園路二段11巷24號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區西園路二段11巷24號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5196789,
+          25.0549924
+        ]
+      },
+      "properties": {
+        "no": "821",
+        "county_code": "63000",
+        "site_name": "MITTY - 古著 二手 選物 服飾店",
+        "tel": "0",
+        "postal_code": "103",
+        "address": "赤峰街43號2樓",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區赤峰街43號2樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區赤峰街43號2樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5201796,
+          25.0556854
+        ]
+      },
+      "properties": {
+        "no": "822",
+        "county_code": "63000",
+        "site_name": "自助餐 All you can eat 是一間服飾店",
+        "tel": "0955 276 568",
+        "postal_code": "103",
+        "address": "赤峰街49巷18號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區赤峰街49巷18號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區赤峰街49巷18號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5367647,
+          25.0104491
+        ]
+      },
+      "properties": {
+        "no": "823",
+        "county_code": "63000",
+        "site_name": "小麻雀公館無人自助商店",
+        "tel": "02 8259 5738",
+        "postal_code": "116",
+        "address": "羅斯福路四段206巷8號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區羅斯福路四段206巷8號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區羅斯福路四段206巷8號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5413264,
+          25.0421382
+        ]
+      },
+      "properties": {
+        "no": "824",
+        "county_code": "63000",
+        "site_name": "綠天使二手衣著專賣站",
+        "tel": "02 2711 5322",
+        "postal_code": "106",
+        "address": "忠孝東路三段251巷2弄5號一樓",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大安區",
+        "full_address": "臺北市大安區忠孝東路三段251巷2弄5號一樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大安區忠孝東路三段251巷2弄5號一樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5421011,
+          25.0441098
+        ]
+      },
+      "properties": {
+        "no": "825",
+        "county_code": "63000",
+        "site_name": "伴Ban 古著 二手 買取 選品工作室",
+        "tel": "0",
+        "postal_code": "106",
+        "address": "安東街40巷3號一樓",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大安區",
+        "full_address": "臺北市大安區安東街40巷3號一樓",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大安區安東街40巷3號一樓"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5041734,
+          25.0460472
+        ]
+      },
+      "properties": {
+        "no": "826",
+        "county_code": "63000",
+        "site_name": "OPMM.SHOP",
+        "tel": "070 9589 7088",
+        "postal_code": "108",
+        "address": "漢口街二段90巷4號",
+        "service_type": "買賣",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區漢口街二段90巷4號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區漢口街二段90巷4號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5052109,
+          25.0917241
+        ]
+      },
+      "properties": {
+        "no": "831",
+        "county_code": "63000",
+        "site_name": "1283",
+        "tel": "02-27099961",
+        "postal_code": "111",
+        "address": "永平街82號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區永平街82號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區永平街82號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5028732,
+          25.0919637
+        ]
+      },
+      "properties": {
+        "no": "832",
+        "county_code": "63000",
+        "site_name": "1282",
+        "tel": "02-27099961",
+        "postal_code": "111",
+        "address": "延平北路6段258巷與社中街口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區延平北路6段258巷與社中街口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區延平北路6段258巷與社中街口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5051692,
+          25.0896086
+        ]
+      },
+      "properties": {
+        "no": "833",
+        "county_code": "63000",
+        "site_name": "1281",
+        "tel": "02-27099961",
+        "postal_code": "111",
+        "address": "延平北路6段202號旁路燈",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區延平北路6段202號旁路燈",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區延平北路6段202號旁路燈"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5058125,
+          25.0930169
+        ]
+      },
+      "properties": {
+        "no": "834",
+        "county_code": "63000",
+        "site_name": "1273",
+        "tel": "02-27099961",
+        "postal_code": "111",
+        "address": "通河西街2段140號對面",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區通河西街2段140號對面",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區通河西街2段140號對面"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5185829,
+          25.0521528
+        ]
+      },
+      "properties": {
+        "no": "835",
+        "county_code": "63000",
+        "site_name": "358",
+        "tel": "02-25587370",
+        "postal_code": "103",
+        "address": "南京西路64巷14-4號",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區南京西路64巷14-4號",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區南京西路64巷14-4號"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5447842,
+          25.0547965
+        ]
+      },
+      "properties": {
+        "no": "836",
+        "county_code": "63000",
+        "site_name": "290",
+        "tel": "02-25953937",
+        "postal_code": "105",
+        "address": "長春路339巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "松山區",
+        "full_address": "臺北市松山區長春路339巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市松山區長春路339巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5357692,
+          25.0377765
+        ]
+      },
+      "properties": {
+        "no": "860",
+        "county_code": "63000",
+        "site_name": "382",
+        "tel": "(02)22789866",
+        "postal_code": "106",
+        "address": "仁愛路3段24巷1弄口和仁愛路3段24巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大安區",
+        "full_address": "臺北市大安區仁愛路3段24巷1弄口和仁愛路3段24巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大安區仁愛路3段24巷1弄口和仁愛路3段24巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.545757,
+          25.020739
+        ]
+      },
+      "properties": {
+        "no": "861",
+        "county_code": "63000",
+        "site_name": "208",
+        "tel": "(02)25798682",
+        "postal_code": "106",
+        "address": "辛亥路3段55號(大安運動中心前)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大安區",
+        "full_address": "臺北市大安區辛亥路3段55號(大安運動中心前)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大安區辛亥路3段55號(大安運動中心前)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5601762,
+          24.9887396
+        ]
+      },
+      "properties": {
+        "no": "862",
+        "county_code": "63000",
+        "site_name": "898",
+        "tel": "(02)25912695",
+        "postal_code": "116",
+        "address": "新光路1段31巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "文山區",
+        "full_address": "臺北市文山區新光路1段31巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市文山區新光路1段31巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5097314,
+          25.0769649
+        ]
+      },
+      "properties": {
+        "no": "863",
+        "county_code": "63000",
+        "site_name": "673",
+        "tel": "(02)25060676",
+        "postal_code": "103",
+        "address": "敦煌路205號旁邊的電箱旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大同區",
+        "full_address": "臺北市大同區敦煌路205號旁邊的電箱旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大同區敦煌路205號旁邊的電箱旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.581432,
+          25.0453921
+        ]
+      },
+      "properties": {
+        "no": "864",
+        "county_code": "63000",
+        "site_name": "1140",
+        "tel": "(02)25991234",
+        "postal_code": "115",
+        "address": "永吉路553巷燈桿旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "南港區",
+        "full_address": "臺北市南港區永吉路553巷燈桿旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市南港區永吉路553巷燈桿旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5534354,
+          25.0265986
+        ]
+      },
+      "properties": {
+        "no": "865",
+        "county_code": "63000",
+        "site_name": "258",
+        "tel": "(02)25429529",
+        "postal_code": "106",
+        "address": "通化街203巷巷內里長辦公室旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大安區",
+        "full_address": "臺北市大安區通化街203巷巷內里長辦公室旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大安區通化街203巷巷內里長辦公室旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5001716,
+          25.1372161
+        ]
+      },
+      "properties": {
+        "no": "866",
+        "county_code": "63000",
+        "site_name": "549",
+        "tel": "0937-862-107",
+        "postal_code": "112",
+        "address": "大業路695號（北投聖高隆邦天主堂門口前）",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "北投區",
+        "full_address": "臺北市北投區大業路695號（北投聖高隆邦天主堂門口前）",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市北投區大業路695號（北投聖高隆邦天主堂門口前）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.552779,
+          25.0181036
+        ]
+      },
+      "properties": {
+        "no": "867",
+        "county_code": "63000",
+        "site_name": "214",
+        "tel": "(02)25798682",
+        "postal_code": "106",
+        "address": "臥龍街199號旁里公告欄旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "大安區",
+        "full_address": "臺北市大安區臥龍街199號旁里公告欄旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市大安區臥龍街199號旁里公告欄旁"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5061699,
+          25.0876128
+        ]
+      },
+      "properties": {
+        "no": "868",
+        "county_code": "63000",
+        "site_name": "355",
+        "tel": "(02)25587370",
+        "postal_code": "111",
+        "address": "社子街87號對面(公佈欄旁)",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區社子街87號對面(公佈欄旁)",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區社子街87號對面(公佈欄旁)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5552952,
+          25.0463965
+        ]
+      },
+      "properties": {
+        "no": "869",
+        "county_code": "63000",
+        "site_name": "393",
+        "tel": "(02)22789866",
+        "postal_code": "105",
+        "address": "光復南路32巷與八德路3段158巷口",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "松山區",
+        "full_address": "臺北市松山區光復南路32巷與八德路3段158巷口",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市松山區光復南路32巷與八德路3段158巷口"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5549613,
+          25.0479046
+        ]
+      },
+      "properties": {
+        "no": "870",
+        "county_code": "63000",
+        "site_name": "393",
+        "tel": "(02)25991234",
+        "postal_code": "105",
+        "address": "八德路3段156號旁電箱左側",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "松山區",
+        "full_address": "臺北市松山區八德路3段156號旁電箱左側",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市松山區八德路3段156號旁電箱左側"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5549613,
+          25.0479046
+        ]
+      },
+      "properties": {
+        "no": "871",
+        "county_code": "63000",
+        "site_name": "1139",
+        "tel": "(02)25991234",
+        "postal_code": "105",
+        "address": "八德路3段156號旁電箱左側",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "松山區",
+        "full_address": "臺北市松山區八德路3段156號旁電箱左側",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市松山區八德路3段156號旁電箱左側"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.499545,
+          25.0323099
+        ]
+      },
+      "properties": {
+        "no": "872",
+        "county_code": "63000",
+        "site_name": "699",
+        "tel": "(02)25530253",
+        "postal_code": "108",
+        "address": "興寧街70號旁（天主教聖女小德蘭朝聖地旁）",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "萬華區",
+        "full_address": "臺北市萬華區興寧街70號旁（天主教聖女小德蘭朝聖地旁）",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市萬華區興寧街70號旁（天主教聖女小德蘭朝聖地旁）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5035317,
+          25.0929794
+        ]
+      },
+      "properties": {
+        "no": "873",
+        "county_code": "63000",
+        "site_name": "934",
+        "tel": "(02)25429529",
+        "postal_code": "111",
+        "address": "社中街346巷3弄27號旁",
+        "service_type": "回收",
+        "item": "舊衣類",
+        "resolved_county": "臺北市",
+        "resolved_district": "士林區",
+        "full_address": "臺北市士林區社中街346巷3弄27號旁",
+        "address_resolve_note": null,
+        "geocode_ok": true,
+        "geocode_provider": "google",
+        "geocode_tier": "street",
+        "geocode_query": "臺北市士林區社中街346巷3弄27號旁"
+      }
+    }
+  ]
+}

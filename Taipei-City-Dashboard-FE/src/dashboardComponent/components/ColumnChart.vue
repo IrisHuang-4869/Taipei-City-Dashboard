@@ -18,121 +18,176 @@ const emits = defineEmits([
 	"filterByLayer",
 	"clearByParamFilter",
 	"clearByLayerFilter",
-	"fly"
+	"fly",
 ]);
 
-const isLargeDataSet = computed(() => {
-	return props.series[0].data.length > 12
-})
-
-// Calculate initial width for large datasets only
-const initialWidth = computed(() => {
-	const WIDTH_PER_ITEM = 32
-	const itemCount = props.series[0].data.length;
-	return itemCount * WIDTH_PER_ITEM;
+/** 僅用於橫向長條圖：依各類別數值加總降冪（矩形圖／Treemap 不使用此排序） */
+const columnDisplay = computed(() => {
+	const cats = props.chart_config?.categories;
+	const series = props.series;
+	if (!series?.length || !series[0]?.data?.length) {
+		return { categories: cats || [], series: series || [] };
+	}
+	if (cats?.length) {
+		const n = cats.length;
+		if (!series.every((s) => Array.isArray(s.data) && s.data.length === n)) {
+			return { categories: cats, series };
+		}
+		const idx = Array.from({ length: n }, (_, i) => i);
+		const totalAt = (i) =>
+			series.reduce((acc, ser) => {
+				const v = Number(ser.data[i]);
+				return acc + (Number.isFinite(v) ? v : 0);
+			}, 0);
+		idx.sort((a, b) => totalAt(b) - totalAt(a));
+		return {
+			categories: idx.map((i) => cats[i]),
+			series: series.map((ser) => ({
+				...ser,
+				data: idx.map((i) => ser.data[i]),
+			})),
+		};
+	}
+	const d0 = series[0].data[0];
+	if (d0 && typeof d0 === "object" && "y" in d0) {
+		const order = [...series[0].data]
+			.map((pt, i) => ({ i, y: Number(pt.y) || 0 }))
+			.sort((a, b) => b.y - a.y)
+			.map((x) => x.i);
+		return {
+			categories: [],
+			series: series.map((ser) => ({
+				...ser,
+				data: order.map((i) => ser.data[i]),
+			})),
+		};
+	}
+	return { categories: cats || [], series };
 });
 
-const widthValue = ref(initialWidth.value);
-
-// Convert to a string with unit for ApexCharts
-const chartWidth = computed(() => {
-	return isLargeDataSet.value ? `${widthValue.value}px` : "100%";
+const categoryCount = computed(() => {
+	const d = columnDisplay.value;
+	if (d.categories.length) {
+		return d.categories.length;
+	}
+	return d.series?.[0]?.data?.length ?? 0;
 });
 
+/** 與 BarChart／Moenv 回收點橫向長條一致：依筆數撐高、區名在左側 */
+const chartHeight = computed(() => {
+	const n = categoryCount.value;
+	if (!n) {
+		return "120";
+	}
+	return `${Math.max(120, 36 + n * 28)}`;
+});
 
-const chartOptions = ref({
-	chart: {
-		stacked: true,
-		zoom: {
-			allowMouseWheelZoom: false,
-		},
-		toolbar: isLargeDataSet.value 
-			? {
-				show: true,
-				tools: {
-					download: false,
-					pan: false,
-					reset: "<p>" + "重置" + "</p>",
-					zoomin: false,
-					zoomout: false,
-				}
-			  }
-			: {
+const columnChartOptions = computed(() => {
+	const display = columnDisplay.value;
+	const cats = display.categories;
+	const unit = props.chart_config?.unit || "";
+	const multi = (display.series?.length ?? 0) > 1;
+	const hasCats = cats.length > 0;
+	return {
+		chart: {
+			offsetY: 10,
+			stacked: true,
+			toolbar: {
 				show: false,
-			}
-	},
-	colors: [...props.chart_config.color],
-	dataLabels: {
-		enabled: props.chart_config.categories ? false : true,
-		offsetY: 20,
-	},
-	grid: {
-		show: false,
-	},
-	legend: isLargeDataSet.value
-		? {
-			show: props.chart_config.categories ? true : false,
-			horizontalAlign: "left",
-			offsetX: 20,
-			floating: true,
-		  }
-		: {
-			show: props.chart_config.categories ? true : false,
-		  },
-	plotOptions: {
-		bar: {
-			borderRadius: 5,
-			dataLabels: {
-				hideOverflowingLabels: false
+			},
+			zoom: {
+				allowMouseWheelZoom: false,
 			},
 		},
-	},
-	stroke: {
-		colors: ["#282a2c"],
-		show: true,
-		width: 2,
-	},
-	tooltip: {
-		// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
-		custom: function ({
-			series,
-			seriesIndex,
-			dataPointIndex,
-			w,
-		}) {
-			return (
-				'<div class="chart-tooltip">' +
+		colors: [...(props.chart_config?.color || [])],
+		dataLabels: {
+			enabled: true,
+			offsetX: 8,
+			textAnchor: "start",
+			dropShadow: {
+				enabled: false,
+			},
+			style: {
+				colors: ["#FFFFFF"],
+			},
+		},
+		grid: {
+			show: false,
+		},
+		legend:
+			multi && hasCats
+				? {
+						show: true,
+						horizontalAlign: "left",
+						offsetX: 20,
+						floating: true,
+					}
+				: { show: false },
+		plotOptions: {
+			bar: {
+				borderRadius: 2,
+				distributed: !multi,
+				horizontal: true,
+				dataLabels: {
+					position: "top",
+					hideOverflowingLabels: false,
+				},
+			},
+		},
+		stroke: {
+			colors: ["#282a2c"],
+			show: true,
+			width: 0,
+		},
+		tooltip: {
+			custom: function ({
+				series,
+				seriesIndex,
+				dataPointIndex,
+				w,
+			}) {
+				return (
+					'<div class="chart-tooltip">' +
 					"<h6>" +
-						w.globals.labels[dataPointIndex] +
-						`${
-							props.chart_config.categories
-								? "-" + w.globals.seriesNames[seriesIndex]
-								: ""
-						}` +
+					w.globals.labels[dataPointIndex] +
+					`${
+						hasCats ? "-" + w.globals.seriesNames[seriesIndex] : ""
+					}` +
 					"</h6>" +
 					"<span>" +
-						series[seriesIndex][dataPointIndex] +
-						` ${props.chart_config.unit}` +
+					series[seriesIndex][dataPointIndex] +
+					` ${unit}` +
 					"</span>" +
-				"</div>"
-			);
+					"</div>"
+				);
+			},
+			followCursor: true,
 		},
-	},
-	xaxis: {
-		axisBorder: {
-			show: false,
+		xaxis: {
+			axisBorder: {
+				show: false,
+			},
+			axisTicks: {
+				show: false,
+			},
+			categories: hasCats ? cats : [],
+			labels: {
+				show: false,
+			},
+			type: "category",
 		},
-		axisTicks: {
-			show: false,
+		yaxis: {
+			labels: {
+				formatter: function (value) {
+					if (value == null) {
+						return "";
+					}
+					const s = String(value);
+					return s.length > 8 ? `${s.slice(0, 7)}…` : s;
+				},
+			},
 		},
-		categories: props.chart_config.categories
-			? props.chart_config.categories
-			: [],
-		labels: {
-			offsetY: 2,
-		},
-		type: "category",
-	},
+	};
 });
 
 const selectedIndex = ref(null);
@@ -144,22 +199,19 @@ function handleDataSelection(_e, _chartContext, config) {
 	if (
 		`${config.dataPointIndex}-${config.seriesIndex}` !== selectedIndex.value
 	) {
-		// Supports filtering by xAxis + yAxis
 		if (props.map_filter.mode === "byParam") {
 			emits(
 				"filterByParam",
 				props.map_filter,
 				props.map_config,
 				config.w.globals.labels[config.dataPointIndex],
-				config.w.globals.seriesNames[config.seriesIndex]
+				config.w.globals.seriesNames[config.seriesIndex],
 			);
-		}
-		// Supports filtering by xAxis
-		else if (props.map_filter.mode === "byLayer") {
+		} else if (props.map_filter.mode === "byLayer") {
 			emits(
 				"filterByLayer",
 				props.map_config,
-				config.w.globals.labels[config.dataPointIndex]
+				config.w.globals.labels[config.dataPointIndex],
 			);
 		}
 		selectedIndex.value = `${config.dataPointIndex}-${config.seriesIndex}`;
@@ -172,20 +224,6 @@ function handleDataSelection(_e, _chartContext, config) {
 		selectedIndex.value = null;
 	}
 }
-
-function increaseWidth() {
-	widthValue.value += 50;
-}
-
-function decreaseWidth() {
-	if (widthValue.value > 150) {
-		widthValue.value -= 50;
-	}
-}
-
-function resetWidth() {
-	widthValue.value = initialWidth.value;
-}
 </script>
 
 <template>
@@ -193,36 +231,13 @@ function resetWidth() {
     v-if="activeChart === 'ColumnChart'"
     class="columnChart"
   >
-    <div
-      v-if="isLargeDataSet"
-      class="columnChart-toolbar"
-    >
-      <p
-        class="columnChart-toolbar-item"
-        @click="increaseWidth"
-      >
-        <span>add</span>
-      </p>
-      <p
-        class="columnChart-toolbar-item"
-        @click="decreaseWidth"
-      >
-        <span>remove</span>
-      </p>
-      <p
-        class="columnChart-toolbar-item reset"
-        @click="resetWidth"
-      >
-        重置
-      </p>
-    </div>
     <VueApexCharts
-      :key="chartWidth"
+      :key="chartHeight"
+      width="100%"
+      :height="chartHeight"
       type="bar"
-      :width="chartWidth"
-      height="250px"
-      :options="chartOptions"
-      :series="series"
+      :options="columnChartOptions"
+      :series="columnDisplay.series"
       @data-point-selection="handleDataSelection"
     />
   </div>
@@ -237,37 +252,5 @@ function resetWidth() {
 	.vue-apexcharts {
 		justify-content: unset !important;
 	}
-
-	&-toolbar {
-		position: sticky;
-		top: 0;
-		left: 0;
-		z-index: 1;
-		background-color: var(--color-component-background);
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		gap: 4px;
-
-		&-item {
-			cursor: pointer;
-			font-size: var(--font-s);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			span {
-				text-align: center;
-				font-family: var(--font-icon);
-				font-size: var(--font-ms);
-				padding: 2px;
-			}
-
-			&.reset {
-				color: var(--color-highlight)
-			}
-		}
-	}
 }
 </style>
-
