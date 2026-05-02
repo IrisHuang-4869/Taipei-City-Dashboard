@@ -16,6 +16,7 @@ import { useDialogStore } from "./dialogStore";
 import { useAuthStore } from "./authStore";
 import { getComponentDataTimeframe } from "../assets/utilityFunctions/dataTimeframe";
 import { CityManager } from "../dashboardComponent/utilities/cityManager";
+import { localGarbageMapLayers } from "../assets/configs/mapbox/localGarbageLayers";
 
 export const useContentStore = defineStore("content", {
 	state: () => ({
@@ -95,10 +96,7 @@ export const useContentStore = defineStore("content", {
 				this.currentDashboard.city === city &&
 				previousMode === mode
 			) {
-				if (
-					mode === "/mapview" &&
-					!index.includes("map-layers")
-				) {
+				if (mode === "/mapview" && !index.includes("map-layers")) {
 					this.setMapLayers(city);
 				} else {
 					return;
