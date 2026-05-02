@@ -158,16 +158,31 @@ function layerColor(i) {
 	return "#888888";
 }
 
-function layerTitle(mc) {
-	return mc?.title || mc?.index || "";
+/** 顯示用：移除「回收點｜／回收點 |」等前綴（與 DB / 圖資標題相容） */
+function stripRecyclePointPrefix(raw) {
+	if (raw == null || raw === "") {
+		return "";
+	}
+	let s = String(raw).trim();
+	const prefixes = ["回收點｜", "回收點 | ", "回收點 |", "回收點|"];
+	for (const p of prefixes) {
+		if (s.startsWith(p)) {
+			return s.slice(p.length).trimStart();
+		}
+	}
+	return s;
 }
 
-/** Y 軸用：去掉「回收點｜」前綴以縮短標籤 */
+function layerTitle(mc) {
+	return stripRecyclePointPrefix(mc?.title || mc?.index || "");
+}
+
+/** 圖表 Y 軸與 layerTitle 一致（標題已不再帶前綴時可略過多餘分段） */
 function shortLayerTitle(mc) {
 	const t = layerTitle(mc);
 	const sep = "｜";
 	const idx = t.indexOf(sep);
-	return idx >= 0 ? t.slice(idx + sep.length) : t;
+	return idx >= 0 ? t.slice(idx + sep.length).trimStart() : t;
 }
 
 /** 長條圖：依數量遞減；載入失敗者排在最後 */
@@ -297,6 +312,32 @@ function onSubToggle(i, enabled) {
 		mapStore.turnOffMapLayerVisibility([cfg]);
 	}
 }
+
+const allLayersEnabled = computed(() => {
+	const len = props.map_config?.length ?? 0;
+	if (!len) {
+		return false;
+	}
+	for (let i = 0; i < len; i++) {
+		if (!userLayerEnabled.value[i]) {
+			return false;
+		}
+	}
+	return true;
+});
+
+function toggleSelectAllLayers() {
+	if (!props.parentMapOn || !props.map_config?.length) {
+		return;
+	}
+	const turnOn = !allLayersEnabled.value;
+	userLayerEnabled.value = props.map_config.map(() => turnOn);
+	if (turnOn) {
+		mapStore.addToMapLayerList(props.map_config);
+	} else {
+		mapStore.turnOffMapLayerVisibility(props.map_config);
+	}
+}
 </script>
 
 <template>
@@ -326,6 +367,17 @@ function onSubToggle(i, enabled) {
       <p class="moenv-layer-toggles__hint">
         開啟組件主開關後，可在此選擇要顯示的回收物資類別。
       </p>
+      <div class="moenv-layer-toggles__bulk">
+        <button
+          v-if="map_config?.length"
+          type="button"
+          class="moenv-layer-toggles__select-all"
+          :disabled="!parentMapOn"
+          @click="toggleSelectAllLayers"
+        >
+          {{ allLayersEnabled ? "取消全選" : "全選" }}
+        </button>
+      </div>
       <div
         v-for="(mc, i) in map_config"
         :key="`layer-${mc.index}-${mc.city || ''}-${i}`"
@@ -429,9 +481,37 @@ function onSubToggle(i, enabled) {
 }
 
 .moenv-layer-toggles__hint {
-	margin: 0 0 0.75rem;
+	margin: 0 0 0.5rem;
 	line-height: 1.45;
 	color: var(--color-component-text-secondary, rgba(255, 255, 255, 0.75));
+}
+
+.moenv-layer-toggles__bulk {
+	display: flex;
+	justify-content: flex-end;
+	margin: 0 0 0.55rem;
+}
+
+.moenv-layer-toggles__select-all {
+	font-size: 0.78rem;
+	padding: 0.28rem 0.65rem;
+	cursor: pointer;
+	border: 1px solid rgba(36, 176, 221, 0.45);
+	border-radius: 4px;
+	background: rgba(36, 176, 221, 0.12);
+	color: #6fd4f0;
+	font-family: inherit;
+	font-weight: 500;
+
+	&:hover:not(:disabled) {
+		background: rgba(36, 176, 221, 0.22);
+		color: #a8e8fb;
+	}
+
+	&:disabled {
+		opacity: 0.42;
+		cursor: not-allowed;
+	}
 }
 
 .moenv-layer-toggles__loading {

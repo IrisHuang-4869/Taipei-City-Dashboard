@@ -7097,16 +7097,14 @@
 				{
 					"id": 111,
 					"index": "moenv_wr_recycle_6ca8d697f6",
-					"title": "回收點｜3C用品類",
+					"title": "3C用品類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#E170A6",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
@@ -7134,16 +7132,14 @@
 				{
 					"id": 112,
 					"index": "moenv_wr_recycle_7b805c8fa1",
-					"title": "回收點｜其他類",
+					"title": "其他類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#24B0DD",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
@@ -7171,16 +7167,14 @@
 				{
 					"id": 113,
 					"index": "moenv_wr_recycle_6a4bc66658",
-					"title": "回收點｜家具類",
+					"title": "家具類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#56B96D",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
@@ -7208,16 +7202,14 @@
 				{
 					"id": 114,
 					"index": "moenv_wr_recycle_014ce45e54",
-					"title": "回收點｜書籍類",
+					"title": "書籍類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#F8CF58",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
@@ -7245,16 +7237,14 @@
 				{
 					"id": 115,
 					"index": "moenv_wr_recycle_8863327e9b",
-					"title": "回收點｜玩具類",
+					"title": "玩具類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#F5AD4A",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
@@ -7282,16 +7272,14 @@
 				{
 					"id": 116,
 					"index": "moenv_wr_recycle_c5e75de7e7",
-					"title": "回收點｜生活用品類",
+					"title": "生活用品類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#9DC56E",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
@@ -7319,16 +7307,14 @@
 				{
 					"id": 117,
 					"index": "moenv_wr_recycle_e62fbe91a5",
-					"title": "回收點｜舊衣類",
+					"title": "舊衣類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#8B5CF6",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
@@ -7356,16 +7342,14 @@
 				{
 					"id": 118,
 					"index": "moenv_wr_recycle_4554828c57",
-					"title": "回收點｜電器類",
+					"title": "電器類",
 					"type": "circle",
 					"source": "geojson",
 					"size": "small",
 					"paint": {
 						"circle-color": "#ED6A45",
 						"circle-opacity": 0.85,
-						"circle-radius": 5,
-						"circle-stroke-width": 1,
-						"circle-stroke-color": "#ffffff"
+						"circle-radius": 2
 					},
 					"property": [
 						{
