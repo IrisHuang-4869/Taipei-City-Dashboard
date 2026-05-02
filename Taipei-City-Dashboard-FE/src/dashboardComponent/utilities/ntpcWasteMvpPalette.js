@@ -17,28 +17,28 @@ export const METRO_RECYCLING_MAP_INDEX = "metro_recycling_map_mvp";
 /** 舊 index：仍保留色階以免快取舊儀表板異常 */
 export const TPC_RECYCLING_MAP_INDEX = "tpc_recycling_map_mvp";
 
-/** 回收：淺綠 → 深綠，共 8 階 */
+/** 回收：綠色 8 階（前段加飽和／略降亮度，矩形圖白字較可讀） */
 export const NTPC_RECYCLING_COLORS_8 = [
-	"#ecfdf5",
-	"#d1fae5",
-	"#a7f3d0",
-	"#6ee7b7",
-	"#34d399",
-	"#10b981",
-	"#047857",
-	"#064e3b",
+	"#4ade80",
+	"#22c55e",
+	"#16a34a",
+	"#15803d",
+	"#166534",
+	"#14532d",
+	"#0f3d26",
+	"#052e16",
 ];
 
-/** 廚餘：淺琥珀 → 深褐，共 8 階 */
+/** 廚餘：琥珀／褐色 8 階（避免最前段過接近底色、與白字對比過低） */
 export const NTPC_KITCHEN_COLORS_8 = [
-	"#fffbeb",
-	"#fef3c7",
-	"#fde68a",
-	"#fcd34d",
-	"#f59e0b",
-	"#d97706",
-	"#92400e",
-	"#451a03",
+	"#fde047",
+	"#facc15",
+	"#eab308",
+	"#ca8a04",
+	"#a16207",
+	"#854d0e",
+	"#713f12",
+	"#422006",
 ];
 
 export function isNtpcWasteRankColorChart(chartConfig) {
