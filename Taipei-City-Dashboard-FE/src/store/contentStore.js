@@ -96,7 +96,11 @@ export const useContentStore = defineStore("content", {
 				this.currentDashboard.city === city &&
 				previousMode === mode
 			) {
-				if (mode === "/mapview" && !index.includes("map-layers")) {
+				if (
+					mode === "/mapview" &&
+					typeof index === "string" &&
+					!index.includes("map-layers")
+				) {
 					this.setMapLayers(city);
 				} else {
 					return;
@@ -979,22 +983,27 @@ export const useContentStore = defineStore("content", {
 			const dialogStore = useDialogStore();
 			dialogStore.showDialog("moreInfo");
 			dialogStore.moreInfoContent = item;
-			const updated = await this.fetchComponentConfigWithChartHistory(
-				item.index,
-				item.city,
-			);
-			if (!updated) {
-				return;
-			}
-			dialogStore.moreInfoContent = updated;
-			const list = this.cityDashboard.components;
-			if (Array.isArray(list)) {
-				const idx = list.findIndex(
-					(c) => c.id === item.id && c.city === item.city,
+			try {
+				const updated = await this.fetchComponentConfigWithChartHistory(
+					item.index,
+					item.city,
 				);
-				if (idx >= 0) {
-					Object.assign(list[idx], updated);
+				if (!updated) {
+					return;
 				}
+				dialogStore.moreInfoContent = updated;
+				const list = this.cityDashboard.components;
+				if (Array.isArray(list)) {
+					const idx = list.findIndex(
+						(c) => c.id === item.id && c.city === item.city,
+					);
+					if (idx >= 0) {
+						Object.assign(list[idx], updated);
+					}
+				}
+			} catch (e) {
+				console.error("openMoreInfoFromDashboard:", e);
+				/* 保留儀表板已載入的 item，避免對話框整塊空白 */
 			}
 		},
 

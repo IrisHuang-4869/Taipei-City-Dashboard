@@ -486,7 +486,10 @@ function toggleSelectAllLayers() {
             :disabled="!parentMapOn || aiLoading || !aiUserMessage.trim()"
             @click="sendAIMessage"
           >
-            <i v-if="aiLoading" class="fas fa-spinner fa-spin"></i>
+            <i
+              v-if="aiLoading"
+              class="fas fa-spinner fa-spin"
+            />
             <span v-else>🔍</span>
           </button>
         </div>
@@ -501,7 +504,10 @@ function toggleSelectAllLayers() {
           {{ allLayersEnabled ? "取消全選" : "全選" }}
         </button>
       </div>
-      <div v-if="aiResultText" class="moenv-layer-toggles__ai-result">
+      <div
+        v-if="aiResultText"
+        class="moenv-layer-toggles__ai-result"
+      >
         {{ aiResultText }}
       </div>
       <div
@@ -565,7 +571,6 @@ function toggleSelectAllLayers() {
         </p>
       </template>
     </template>
-
   </div>
 </template>
 

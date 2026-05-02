@@ -4,8 +4,8 @@
 import { computed, ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 import {
-	discreteNtpcRankColors,
 	isNtpcWasteRankColorChart,
+	treemapBarColorsByPerCapitaKg,
 } from "../utilities/ntpcWasteMvpPalette";
 
 const props = defineProps([
@@ -87,7 +87,7 @@ const treemapChartOptions = computed(() => {
 	const baseColors = [...(props.chart_config?.color || [])];
 	const colors =
 		useNtpcRankTreemapStyle.value && rows.length > 0
-			? discreteNtpcRankColors(rows.length, props.chart_config.index)
+			? treemapBarColorsByPerCapitaKg(rows, props.chart_config.index)
 			: baseColors;
 	return {
 		chart: {

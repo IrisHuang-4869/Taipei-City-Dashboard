@@ -8,7 +8,7 @@
     <div class="mappopup-tab">
       <div
         v-for="(mapConfig, index) in mapConfigs"
-        :key="mapConfig.id"
+        :key="mapConfig.layerId || `${mapConfig.index}-${mapConfig.type}-${mapConfig.city}-${index}`"
         :class="{ 'mappopup-tab-active': activeTab === index }"
       >
         <button

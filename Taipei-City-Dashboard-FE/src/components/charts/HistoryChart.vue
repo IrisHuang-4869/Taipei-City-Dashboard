@@ -1,7 +1,7 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023-2024-->
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { timeTerms } from "../../assets/configs/AllTimes";
 
 const props = defineProps(["chart_config", "series", "history_config"]);
@@ -16,7 +16,16 @@ function formatHistoryValue(val) {
 	return n.toFixed(1);
 }
 
-const chartOptions = ref({
+const paletteColors = computed(() => {
+	const hc = props.history_config?.color;
+	if (Array.isArray(hc) && hc.length > 0) {
+		return hc;
+	}
+	const cc = props.chart_config?.color;
+	return Array.isArray(cc) && cc.length > 0 ? cc : ["#94a3b8"];
+});
+
+const chartOptions = computed(() => ({
 	chart: {
 		toolbar: {
 			tools: {
@@ -28,9 +37,7 @@ const chartOptions = ref({
 			},
 		},
 	},
-	colors: props.history_config.color[0]
-		? props.history_config.color
-		: props.chart_config.color,
+	colors: paletteColors.value,
 	dataLabels: {
 		enabled: false,
 	},
@@ -48,9 +55,7 @@ const chartOptions = ref({
 		strokeWidth: 0,
 	},
 	stroke: {
-		colors: props.history_config.color[0]
-			? props.history_config.color
-			: props.chart_config.color,
+		colors: paletteColors.value,
 		curve: "smooth",
 		show: true,
 		width: 2,
@@ -59,20 +64,19 @@ const chartOptions = ref({
 		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
 			const raw = series[seriesIndex][dataPointIndex];
 			const valueStr = formatHistoryValue(raw);
-			// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
 			return (
 				'<div class="chart-tooltip">' +
 				"<h6>" +
 				`${parseTime(
-					w.config.series[seriesIndex].data[dataPointIndex].x
+					w.config.series[seriesIndex].data[dataPointIndex].x,
 				)}` +
 				"</h6>" +
 				"<span>" +
 				valueStr +
 				` ${
-					props.history_config.unit
+					props.history_config?.unit
 						? props.history_config.unit
-						: props.chart_config.unit
+						: props.chart_config?.unit || ""
 				}` +
 				"</span>" +
 				"</div>"
@@ -103,10 +107,10 @@ const chartOptions = ref({
 		},
 		type: "datetime",
 	},
-});
+}));
 
 function parseTime(time) {
-	return time.replace("T", " ").replace("+08:00", " ");
+	return String(time).replace("T", " ").replace("+08:00", " ");
 }
 </script>
 
@@ -138,7 +142,7 @@ function parseTime(time) {
         height="155px"
         type="area"
         :options="chartOptions"
-        :series="series[currentSeries]"
+        :series="props.series[currentSeries]"
       />
     </div>
     <div

@@ -4,8 +4,8 @@
 import { computed, ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 import {
-	discreteNtpcRankColors,
 	isNtpcWasteRankColorChart,
+	treemapBarColorsByPerCapitaKg,
 } from "../utilities/ntpcWasteMvpPalette";
 
 const props = defineProps([
@@ -90,7 +90,7 @@ const categoryCount = computed(() => {
 	return d.series?.[0]?.data?.length ?? 0;
 });
 
-/** 新北 MVP 橫向長條：與矩形圖／地圖同 8 階，依顯示序（已由大到小）分桶 */
+/** 新北 MVP 橫向長條：長度仍依量；顏色依人均公斤（與矩形圖一致） */
 const ntpcColumnDistributedColors = computed(() => {
 	if (!isNtpcWasteRankColorChart(props.chart_config)) {
 		return null;
@@ -100,11 +100,29 @@ const ntpcColumnDistributedColors = computed(() => {
 	if (multi) {
 		return null;
 	}
-	const n = categoryCount.value;
-	if (!n) {
+	const cats = display.categories;
+	const ser = display.series?.[0];
+	if (!ser?.data?.length) {
 		return null;
 	}
-	return discreteNtpcRankColors(n, props.chart_config.index);
+	let rows;
+	if (cats.length && cats.length === ser.data.length) {
+		rows = cats.map((c, i) => ({
+			x: c,
+			y: Number(ser.data[i]) || 0,
+		}));
+	} else {
+		const d0 = ser.data[0];
+		if (d0 && typeof d0 === "object" && "x" in d0 && "y" in d0) {
+			rows = ser.data.map((pt) => ({
+				x: pt.x,
+				y: Number(pt.y) || 0,
+			}));
+		} else {
+			return null;
+		}
+	}
+	return treemapBarColorsByPerCapitaKg(rows, props.chart_config.index);
 });
 
 /** 與 BarChart／Moenv 回收點橫向長條一致：依筆數撐高、區名在左側 */

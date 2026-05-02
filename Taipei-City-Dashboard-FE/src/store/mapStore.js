@@ -21,6 +21,7 @@ import http from "../router/axios.js";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { point, distance } from "@turf/turf";
+import { getMapPerCapitaGradientFillExpr } from "../dashboardComponent/utilities/ntpcWasteMvpPalette.js";
 
 /** 廚餘面圖：避免沿用 fill 共用 zoom 內插 opacity（高 zoom 僅 ~0.15）導致整圖過淡 */
 const KITCHEN_FILL_MAP_INDICES = new Set([
@@ -28,7 +29,7 @@ const KITCHEN_FILL_MAP_INDICES = new Set([
 	"metro_kitchen_waste_map_mvp",
 ]);
 
-/** 與 db-sample-data 廚餘 paint 一致；alpha 階梯對齊 metro_recycling_map_mvp（0.1→0.92） */
+/** 與 db-sample-data 廚餘 paint 一致；依「公噸」分階（非人均） */
 const KITCHEN_FILL_COLOR_EXPR = [
 	"interpolate",
 	["linear"],
@@ -91,6 +92,15 @@ function isKitchenFillLayerId(mapLayerId) {
 		(mapLayerId.startsWith("ntpc_kitchen_waste_map_mvp-") ||
 			mapLayerId.startsWith("metro_kitchen_waste_map_mvp-"))
 	);
+}
+
+/** 圖層 id：`{index}-fill-{city}` → 人均漸層 fill（廚餘／回收 MVP） */
+function mvpPerCapitaFillExprForLayerId(mapLayerId) {
+	if (typeof mapLayerId !== "string" || !mapLayerId.includes("-fill-")) {
+		return null;
+	}
+	const idx = mapLayerId.split("-fill-")[0];
+	return getMapPerCapitaGradientFillExpr(idx);
 }
 
 // Other Stores
@@ -760,7 +770,21 @@ export const useMapStore = defineStore("map", {
 				...extra_paint_configs,
 				...componentPaint,
 			};
-			if (isKitchenFillMapConfig(map_config)) {
+			const mvpPcGradient =
+				map_config.type === "fill"
+					? getMapPerCapitaGradientFillExpr(map_config.index)
+					: null;
+			if (mvpPcGradient) {
+				basePaint["fill-color"] = mvpPcGradient;
+				basePaint["fill-opacity"] = 1;
+				if (!basePaint["fill-outline-color"]) {
+					basePaint["fill-outline-color"] = isKitchenFillMapConfig(
+						map_config,
+					)
+						? "rgba(255,255,255,0.35)"
+						: "rgba(255,255,255,0.26)";
+				}
+			} else if (isKitchenFillMapConfig(map_config)) {
 				basePaint["fill-opacity"] = 1;
 				if (!basePaint["fill-color"]) {
 					basePaint["fill-color"] = KITCHEN_FILL_COLOR_EXPR;
@@ -1963,22 +1987,39 @@ export const useMapStore = defineStore("map", {
 						"visibility",
 						"visible",
 					);
-					if (
-						this.map.getLayer(mapLayerId) &&
-						isKitchenFillLayerId(mapLayerId)
-					) {
-						this.map.setPaintProperty(
+					if (this.map.getLayer(mapLayerId)) {
+						const mvpFill = mvpPerCapitaFillExprForLayerId(
 							mapLayerId,
-							"fill-opacity",
-							1,
 						);
-						const cfg = this.mapConfigs[mapLayerId];
-						const fc = cfg?.paint?.["fill-color"];
-						this.map.setPaintProperty(
-							mapLayerId,
-							"fill-color",
-							fc && Array.isArray(fc) ? fc : KITCHEN_FILL_COLOR_EXPR,
-						);
+						if (mvpFill) {
+							this.map.setPaintProperty(
+								mapLayerId,
+								"fill-opacity",
+								1,
+							);
+							const cfg = this.mapConfigs[mapLayerId];
+							const fc = cfg?.paint?.["fill-color"];
+							this.map.setPaintProperty(
+								mapLayerId,
+								"fill-color",
+								fc && Array.isArray(fc) ? fc : mvpFill,
+							);
+						} else if (isKitchenFillLayerId(mapLayerId)) {
+							this.map.setPaintProperty(
+								mapLayerId,
+								"fill-opacity",
+								1,
+							);
+							const cfg = this.mapConfigs[mapLayerId];
+							const fc = cfg?.paint?.["fill-color"];
+							this.map.setPaintProperty(
+								mapLayerId,
+								"fill-color",
+								fc && Array.isArray(fc)
+									? fc
+									: KITCHEN_FILL_COLOR_EXPR,
+							);
+						}
 					}
 				}
 			}
@@ -2037,6 +2078,9 @@ export const useMapStore = defineStore("map", {
 		/* Popup Related Functions */
 		// 1. Adds a popup when the user clicks on a item. The event will be passed in.
 		addPopup(event) {
+			if (!this.map) {
+				return;
+			}
 			const formatValue = (value, key) => {
 				if (key === "occupied_rate") {
 					return value === -99 ? "-" : value;
@@ -2107,11 +2151,15 @@ export const useMapStore = defineStore("map", {
 			const closestLayers = Object.keys(layerClosestFeature).slice(0, 3);
 			for (const layerId of closestLayers) {
 				const { feature } = layerClosestFeature[layerId];
+				const cfg = this.mapConfigs[layerId];
+				if (!cfg?.property?.length) {
+					continue;
+				}
 				parsedPopupContent.push(feature);
-				mapConfigs.push(this.mapConfigs[layerId]);
+				mapConfigs.push(cfg);
 			}
 
-			if (!parsedPopupContent.length) return;
+			if (!parsedPopupContent.length || !mapConfigs[0]) return;
 
 			// Create a new mapbox popup
 			const popupCoords = getPopupCoordinates(
@@ -2248,10 +2296,10 @@ export const useMapStore = defineStore("map", {
 
 			// 使用者點擊圖徵時觸發GA自訂事件
 			if (
-				mapConfigs[0].city &&
-				mapConfigs[0].title &&
-				mapConfigs[0].source &&
-				mapConfigs[0].type
+				mapConfigs[0]?.city &&
+				mapConfigs[0]?.title &&
+				mapConfigs[0]?.source &&
+				mapConfigs[0]?.type
 			) {
 				gtag("event", "popular_feature_click", {
 					dashboard_city: mapConfigs[0].city,
@@ -2704,8 +2752,17 @@ export const useMapStore = defineStore("map", {
 		/* Clearing the map */
 		// 1. Called when the user is switching between maps
 		clearOnlyLayers() {
+			this.removePopup();
+			if (!this.map) {
+				this.currentLayers = [];
+				this.mapConfigs = {};
+				this.currentVisibleLayers = [];
+				return;
+			}
 			this.currentLayers.forEach((element) => {
-				this.map.removeLayer(element);
+				if (this.map.getLayer(element)) {
+					this.map.removeLayer(element);
+				}
 				if (this.map.getSource(`${element}-source`)) {
 					this.map.removeSource(`${element}-source`);
 				}
@@ -2713,7 +2770,6 @@ export const useMapStore = defineStore("map", {
 			this.currentLayers = [];
 			this.mapConfigs = {};
 			this.currentVisibleLayers = [];
-			this.removePopup();
 		},
 		// 2. Called when user navigates away from the map
 		clearEntireMap() {
