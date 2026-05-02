@@ -838,9 +838,15 @@ export const useMapStore = defineStore("map", {
 			// 需求 1: 確保焚化爐圖層始終在最上層
 			this.ensureIncineratorOnTop();
 
-			// 為焚化爐圖層增加懸浮工具提示 (如果是焚化爐圖層本人)
-			if (map_config.index === "incinerator_capacity" && this.map.getLayer(map_config.layerId)) {
-				this.addIncineratorHoverHandlers(map_config.layerId);
+			// 需求：為特定的垃圾/回收圖層增加懸浮工具提示 (Hover Tooltip)
+			if (this.map.getLayer(map_config.layerId)) {
+				if (map_config.index === "incinerator_capacity") {
+					this.addWasteHoverHandlers(map_config.layerId, "incinerator");
+				} else if (map_config.index.includes("recycling_map_mvp")) {
+					this.addWasteHoverHandlers(map_config.layerId, "recycling");
+				} else if (map_config.index.includes("kitchen_waste_map_mvp")) {
+					this.addWasteHoverHandlers(map_config.layerId, "kitchen");
+				}
 			}
 		},
 		/** 確保焚化爐圖層在最上層 */
@@ -854,31 +860,47 @@ export const useMapStore = defineStore("map", {
 				}
 			});
 		},
-		/** 為焚化爐圖層增加懸浮工具提示 */
-		addIncineratorHoverHandlers(layerId) {
+		/** 為圖層增加懸浮工具提示 (支援焚化爐、回收、廚餘) */
+		addWasteHoverHandlers(layerId, type) {
 			const map = this.map;
 			
 			map.on("mouseenter", layerId, (e) => {
 				map.getCanvas().style.cursor = "pointer";
 				
 				const props = e.features[0].properties;
+				let html = "";
 				
-				// 構建 HTML Tooltip
-				const html = `
-					<div style="padding: 10px; color: white; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 13px; line-height: 1.6; min-width: 180px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
-						<div style="font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.2); margin-bottom: 8px; padding-bottom: 4px; font-size: 14px; color: #f8fafc;">
-							${props.name}
+				if (type === "incinerator") {
+					html = `
+						<div style="padding: 10px; color: white; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 13px; line-height: 1.6; min-width: 180px;">
+							<div style="font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.2); margin-bottom: 8px; padding-bottom: 4px; font-size: 14px;">${props.name}</div>
+							<div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+								<span style="color: #94a3b8;">焚化量能比率:</span>
+								<span style="color: #fbbf24; font-weight: 600;">${props.capacity_ratio_pct || (Math.round(props.capacity_ratio * 100) + '%')}</span>
+							</div>
+							<div style="display: flex; justify-content: space-between;">
+								<span style="color: #94a3b8;">總焚化量:</span>
+								<span style="color: #34d399; font-weight: 600;">${props.actual_volume_month || props.total_volume} 公噸/月</span>
+							</div>
 						</div>
-						<div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-							<span style="color: #94a3b8;">焚化量能比率:</span>
-							<span style="color: #fbbf24; font-weight: 600;">${props.capacity_ratio_pct || (Math.round(props.capacity_ratio * 100) + '%')}</span>
+					`;
+				} else {
+					const title = type === "recycling" ? "資源回收量" : "廚餘回收量";
+					const district = props.TNAME || props.district || "";
+					html = `
+						<div style="padding: 10px; color: white; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 13px; line-height: 1.6; min-width: 180px;">
+							<div style="font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.2); margin-bottom: 8px; padding-bottom: 4px; font-size: 14px;">${district} - ${title}</div>
+							<div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+								<span style="color: #94a3b8;">人均回收量:</span>
+								<span style="color: #fbbf24; font-weight: 600;">${props.per_capita_kg || 0} 公斤/人</span>
+							</div>
+							<div style="display: flex; justify-content: space-between;">
+								<span style="color: #94a3b8;">總回收量:</span>
+								<span style="color: #34d399; font-weight: 600;">${props.total_tons || props.recycling_tons || props.kitchen_tons || 0} 公噸</span>
+							</div>
 						</div>
-						<div style="display: flex; justify-content: space-between;">
-							<span style="color: #94a3b8;">總焚化量:</span>
-							<span style="color: #34d399; font-weight: 600;">${props.actual_volume_month || props.total_volume} 公噸/月</span>
-						</div>
-					</div>
-				`;
+					`;
+				}
 				
 				if (this.hoverPopup) this.hoverPopup.remove();
 				

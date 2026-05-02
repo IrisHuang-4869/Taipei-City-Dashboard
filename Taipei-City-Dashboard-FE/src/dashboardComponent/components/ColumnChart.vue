@@ -146,7 +146,7 @@ const columnChartOptions = computed(() => {
 	return {
 		chart: {
 			offsetY: 10,
-			stacked: true,
+			stacked: false,
 			toolbar: {
 				show: false,
 			},
@@ -196,23 +196,32 @@ const columnChartOptions = computed(() => {
 		},
 		tooltip: {
 			custom: function ({
-				series,
 				seriesIndex,
 				dataPointIndex,
 				w,
 			}) {
+				let seriesRows = "";
+				const label = w.globals.labels[dataPointIndex];
+				const categories = props.chart_config?.categories || [];
+				let originalIdx = categories.indexOf(label);
+				
+				if (originalIdx === -1 && props.series[0]?.data?.[0]?.x) {
+					originalIdx = props.series[0].data.findIndex(d => d.x === label);
+				}
+
+				if (originalIdx !== -1) {
+					props.series.forEach((s) => {
+						const val = s.data[originalIdx];
+						seriesRows += `<div>${s.name}: ${val} ${unit}</div>`;
+					});
+				} else {
+					seriesRows = `<div>數據: ${w.globals.series[seriesIndex][dataPointIndex]} ${unit}</div>`;
+				}
+				
 				return (
 					'<div class="chart-tooltip">' +
-					"<h6>" +
-					w.globals.labels[dataPointIndex] +
-					`${
-						hasCats ? "-" + w.globals.seriesNames[seriesIndex] : ""
-					}` +
-					"</h6>" +
-					"<span>" +
-					series[seriesIndex][dataPointIndex] +
-					` ${unit}` +
-					"</span>" +
+					"<h6>" + label + "</h6>" +
+					seriesRows +
 					"</div>"
 				);
 			},

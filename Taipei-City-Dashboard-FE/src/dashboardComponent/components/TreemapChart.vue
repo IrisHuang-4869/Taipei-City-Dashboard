@@ -139,20 +139,35 @@ const treemapChartOptions = computed(() => {
 		},
 		tooltip: {
 			custom: function ({
-				series,
 				seriesIndex,
 				dataPointIndex,
 				w,
 			}) {
+				let seriesRows = "";
+				const label = w.globals.categoryLabels[dataPointIndex];
+				// 取得該行政區在原始資料中的索引 (假設 categories 順序與 props.series 一致，如果不一致則需比對)
+				const categories = props.chart_config?.categories || [];
+				let originalIdx = categories.indexOf(label);
+				
+				// 如果 categories 沒定義，則嘗試從 props.series[0].data 找 x
+				if (originalIdx === -1 && props.series[0]?.data?.[0]?.x) {
+					originalIdx = props.series[0].data.findIndex(d => d.x === label);
+				}
+
+				if (originalIdx !== -1) {
+					props.series.forEach((s) => {
+						const val = s.data[originalIdx];
+						seriesRows += `<div>${s.name}: ${val} ${unit}</div>`;
+					});
+				} else {
+					// 退而求其次顯示目前 series 的值
+					seriesRows = `<div>數據: ${w.globals.series[seriesIndex][dataPointIndex]} ${unit}</div>`;
+				}
+				
 				return (
 					'<div class="chart-tooltip">' +
-					"<h6>" +
-					w.globals.categoryLabels[dataPointIndex] +
-					"</h6>" +
-					"<span>" +
-					series[seriesIndex][dataPointIndex] +
-					` ${unit}` +
-					"</span>" +
+					"<h6>" + label + "</h6>" +
+					seriesRows +
 					"</div>"
 				);
 			},
