@@ -5493,7 +5493,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#E170A6", "#E170A6", "#E170A6"],
 				"unit": "處"
 			},
@@ -5538,7 +5538,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#24B0DD", "#24B0DD", "#24B0DD"],
 				"unit": "處"
 			},
@@ -5583,7 +5583,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#56B96D", "#56B96D", "#56B96D"],
 				"unit": "處"
 			},
@@ -5628,7 +5628,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#F8CF58", "#F8CF58", "#F8CF58"],
 				"unit": "處"
 			},
@@ -5673,7 +5673,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#F5AD4A", "#F5AD4A", "#F5AD4A"],
 				"unit": "處"
 			},
@@ -5718,7 +5718,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#9DC56E", "#9DC56E", "#9DC56E"],
 				"unit": "處"
 			},
@@ -5763,7 +5763,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#8B5CF6", "#8B5CF6", "#8B5CF6"],
 				"unit": "處"
 			},
@@ -5808,7 +5808,7 @@
 				}
 			],
 			"chart_config": {
-				"types": ["TextUnitChart"],
+				"types": ["BarChart"],
 				"color": ["#ED6A45", "#ED6A45", "#ED6A45"],
 				"unit": "處"
 			},

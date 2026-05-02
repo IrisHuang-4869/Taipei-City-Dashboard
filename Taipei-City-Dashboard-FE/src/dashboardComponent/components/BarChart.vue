@@ -20,85 +20,103 @@ const emits = defineEmits([
 	"fly"
 ]);
 
-const chartOptions = ref({
-	chart: {
-		offsetY: 15,
-		stacked: true,
-		toolbar: {
-			show: false,
-		},
-	},
-	colors: [...props.chart_config.color],
-	dataLabels: {
-		offsetX: 20,
-		textAnchor: "start",
-	},
-	grid: {
-		show: false,
-	},
-	legend: {
-		show: false,
-	},
-	plotOptions: {
-		bar: {
-			borderRadius: 2,
-			distributed: true,
-			horizontal: true,
-			dataLabels: {
-				hideOverflowingLabels: false
+const apexChartOptions = computed(() => {
+	const unit = props.chart_config.unit || "";
+	return {
+		chart: {
+			offsetY: 15,
+			stacked: true,
+			toolbar: {
+				show: false,
 			},
 		},
-	},
-	stroke: {
-		colors: ["#282a2c"],
-		show: true,
-		width: 0,
-	},
-	// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
-	tooltip: {
-		custom: function ({
-			series,
-			seriesIndex,
-			dataPointIndex,
-			w,
-		}) {
-			return (
-				'<div class="chart-tooltip">' +
-				"<h6>" +
-				w.globals.labels[dataPointIndex] +
-				"</h6>" +
-				"<span>" +
-				series[seriesIndex][dataPointIndex] +
-				` ${props.chart_config.unit}` +
-				"</span>" +
-				"</div>"
-			);
-		},
-		followCursor: true,
-	},
-	xaxis: {
-		axisBorder: {
-			show: false,
-		},
-		axisTicks: {
-			show: false,
-		},
-		labels: {
-			show: false,
-		},
-		type: "category",
-	},
-	yaxis: {
-		labels: {
-			formatter: function (value) {
-				return value.length > 7 ? value.slice(0, 6) + "..." : value;
+		colors: [...(props.chart_config.color || [])],
+		dataLabels: {
+			enabled: true,
+			// 橫向長條：`plotOptions.bar.dataLabels.position: 'top'` 將錨點放在條的右端；
+			// `textAnchor: 'start'` + 小幅 `offsetX` 讓數字畫在條外右側（不壓在色塊內）
+			offsetX: 8,
+			textAnchor: "start",
+			dropShadow: {
+				enabled: false,
+			},
+			style: {
+				colors: ["#FFFFFF"],
 			},
 		},
-	},
+		grid: {
+			show: false,
+		},
+		legend: {
+			show: false,
+		},
+		plotOptions: {
+			bar: {
+				borderRadius: 2,
+				distributed: true,
+				horizontal: true,
+				dataLabels: {
+					position: "top",
+					hideOverflowingLabels: false,
+				},
+			},
+		},
+		stroke: {
+			colors: ["#282a2c"],
+			show: true,
+			width: 0,
+		},
+		tooltip: {
+			custom: function ({
+				series,
+				seriesIndex,
+				dataPointIndex,
+				w,
+			}) {
+				return (
+					'<div class="chart-tooltip">' +
+					"<h6>" +
+					w.globals.labels[dataPointIndex] +
+					"</h6>" +
+					"<span>" +
+					series[seriesIndex][dataPointIndex] +
+					` ${unit}` +
+					"</span>" +
+					"</div>"
+				);
+			},
+			followCursor: true,
+		},
+		xaxis: {
+			axisBorder: {
+				show: false,
+			},
+			axisTicks: {
+				show: false,
+			},
+			labels: {
+				show: false,
+			},
+			type: "category",
+			categories: props.chart_config.categories || [],
+		},
+		yaxis: {
+			labels: {
+				formatter: function (value) {
+					if (value == null) {
+						return "";
+					}
+					const s = String(value);
+					return s.length > 7 ? s.slice(0, 6) + "..." : s;
+				},
+			},
+		},
+	};
 });
 
 const chartHeight = computed(() => {
-	return `${40 + props.series[0].data.length * 30}`;
+	const n = props.series?.[0]?.data?.length ?? 0;
+	return `${40 + n * 30}`;
 });
 
 const selectedIndex = ref(null);
@@ -146,7 +164,7 @@ function handleDataSelection(_e, _chartContext, config) {
       width="100%"
       :height="chartHeight"
       type="bar"
-      :options="chartOptions"
+      :options="apexChartOptions"
       :series="series"
       @data-point-selection="handleDataSelection"
     />
