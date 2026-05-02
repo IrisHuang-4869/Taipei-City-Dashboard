@@ -67,6 +67,22 @@ function handleMoreInfo(item) {
 		void contentStore.openMoreInfoFromDashboard(item);
 	}
 }
+
+// 判斷是否為「雙北垃圾車」儀表板（組件皆為 metrotaipei，城市切換只改 activeCity）
+function isGarbageMapDashboard() {
+	return contentStore.currentDashboard.index === "garbage_map_metrotaipei";
+}
+
+// 雙北垃圾車儀表板的城市切換：只更新組件的 city 欄位（activeCity），不換整個資料組件
+function handleGarbageCityChange(city, item) {
+	const componentIndex = contentStore.currentDashboard.components.findIndex(
+		(c) => c.id === item.id,
+	);
+	if (componentIndex !== -1) {
+		const updated = { ...contentStore.currentDashboard.components[componentIndex], city };
+		contentStore.setComponentData(componentIndex, updated);
+	}
+}
 </script>
 
 <template>
@@ -99,6 +115,10 @@ function handleMoreInfo(item) {
         }
       "
       @change-city="(city)=> {
+        if (isGarbageMapDashboard()) {
+          handleGarbageCityChange(city, item);
+          return;
+        }
         const selectedData = contentStore.cityDashboard.components.find((data) => {
           if (data.index === item.index && data.city === city) {
             return data
@@ -129,7 +149,7 @@ function handleMoreInfo(item) {
       :info-btn="true"
       :active-city="item.city"
       :select-btn="true"
-      :select-btn-disabled="contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city).length === 1 || contentStore.currentDashboardExcluded.components.filter((data) => data.index === item.index).length === 0"
+      :select-btn-disabled="contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city).length === 1 || (!isGarbageMapDashboard() && contentStore.currentDashboardExcluded.components.filter((data) => data.index === item.index).length === 0)"
       :select-btn-list="contentStore.currentDashboard?.city
         ? contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city)
         : contentStore.cityManager.getCities(contentStore.cityManager.activeCities)
@@ -164,6 +184,10 @@ function handleMoreInfo(item) {
         }
       "
       @change-city="(city)=> {
+        if (isGarbageMapDashboard()) {
+          handleGarbageCityChange(city, item);
+          return;
+        }
         const selectedData = contentStore.cityDashboard.components.find((data) => {
           if (data.index === item.index && data.city === city) {
             return data
