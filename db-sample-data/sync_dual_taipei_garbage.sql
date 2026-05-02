@@ -1,8 +1,7 @@
 BEGIN;
 
--- 1. 更新儀表板名稱為「雙北垃圾車」
 UPDATE public.dashboards 
-SET name = '雙北垃圾車', updated_at = NOW() 
+SET name = '垃圾地圖', updated_at = NOW() 
 WHERE index = 'garbage_map_metrotaipei';
 
 -- 2. 插入新北與台北的所有垃圾圖層 (ID 使用 310-315)
@@ -39,13 +38,71 @@ INSERT INTO components (id, index, name) VALUES
 
 -- 4. 插入對應的 query_charts
 DELETE FROM query_charts WHERE index IN ('garbage_taipei_truck_local', 'garbage_taipei_dropoff_local', 'garbage_ntpc_route_local', 'garbage_ntpc_mobile_local', 'garbage_ntpc_timed_local', 'garbage_ntpc_temp_local');
-INSERT INTO query_charts (index, map_config_ids, source, city, query_type, created_at, updated_at) VALUES
-('garbage_taipei_truck_local', ARRAY[310]::integer[], '臺北市環保局', 'taipei', 'map_legend', NOW(), NOW()),
-('garbage_taipei_dropoff_local', ARRAY[311]::integer[], '臺北市環保局', 'taipei', 'map_legend', NOW(), NOW()),
-('garbage_ntpc_route_local', ARRAY[312]::integer[], '新北市環保局', 'metrotaipei', 'map_legend', NOW(), NOW()),
-('garbage_ntpc_mobile_local', ARRAY[313]::integer[], '新北市環保局', 'metrotaipei', 'map_legend', NOW(), NOW()),
-('garbage_ntpc_timed_local', ARRAY[314]::integer[], '新北市環保局', 'metrotaipei', 'map_legend', NOW(), NOW()),
-('garbage_ntpc_temp_local', ARRAY[315]::integer[], '新北市環保局', 'metrotaipei', 'map_legend', NOW(), NOW());
+INSERT INTO query_charts (
+  index, map_config_ids, map_filter, time_from, time_to,
+  update_freq, update_freq_unit, source,
+  short_desc, long_desc, use_case,
+  links, contributors, created_at, updated_at, query_type, city
+) VALUES
+(
+  'garbage_taipei_truck_local', ARRAY[310]::integer[],
+  '{"mode":"byParam","byParam":{"xParam":"dist"}}'::json,
+  'static', NULL, 0, NULL,
+  '臺北市環保局',
+  '顯示臺北市各里垃圾車收運點位及預定到達時間。',
+  '呈現臺北市環保局各清潔隊分隊垃圾車收運站點，標示行政區、里別、地點及抵達／離開時間；點位顏色依抵達時間分四個時段深淺標示，方便民眾辨識收運時段。',
+  '查詢住家附近的垃圾車收運點位與時間，安排適時出門配合清運；亦可供環保單位掌握各路線站點分布與收運密度。',
+  ARRAY[]::text[], ARRAY['doit']::text[], NOW(), NOW(), 'map_legend', 'taipei'
+),
+(
+  'garbage_taipei_dropoff_local', ARRAY[311]::integer[],
+  NULL, 'static', NULL, 0, NULL,
+  '臺北市環保局',
+  '顯示臺北市限時收受點位置，僅在特定時段開放投放垃圾。',
+  '呈現臺北市環保局設置的限時收受點，各點位標示行政區、分隊、電話、地址及備註資訊，民眾需在指定時段前往投放垃圾。',
+  '查詢鄰近的限時收受點位置與開放時段，方便在無固定收運路線的區域安排垃圾投放，避免錯過收受時間。',
+  ARRAY[]::text[], ARRAY['doit']::text[], NOW(), NOW(), 'map_legend', 'taipei'
+),
+(
+  'garbage_ntpc_route_local', ARRAY[312]::integer[],
+  '{"mode":"byParam","byParam":{"xParam":"dist"}}'::json,
+  'static', NULL, 0, NULL,
+  '新北市環保局',
+  '顯示新北市各里循線清運點，為固定路線定期清運站點。',
+  '呈現新北市環保局循線定期清運之站點，包含行政區、里別、清運點名稱、路線名稱及表定清運時間，涵蓋各區固定收運路線的所有停靠點位。',
+  '查詢所在里別附近的固定循線清運點及時間，安排垃圾投放；亦可供環保單位分析清運路線密度與各里覆蓋情形。',
+  ARRAY[]::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'map_legend', 'metrotaipei'
+),
+(
+  'garbage_ntpc_mobile_local', ARRAY[313]::integer[],
+  '{"mode":"byParam","byParam":{"xParam":"dist"}}'::json,
+  'static', NULL, 0, NULL,
+  '新北市環保局',
+  '顯示新北市機動定點清運站，依需求彈性設置於固定路線未涵蓋區域。',
+  '呈現新北市環保局以機動方式調整的定點清運站，包含行政區、里別、清運點名稱、站點型態及表定時間，彈性補足固定路線未涵蓋之區域清運需求。',
+  '查詢住家附近的機動定點清運站，了解非固定路線的清運服務位置與時間；亦可供環保局評估機動站點的空間佈局與服務需求。',
+  ARRAY[]::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'map_legend', 'metrotaipei'
+),
+(
+  'garbage_ntpc_timed_local', ARRAY[314]::integer[],
+  '{"mode":"byParam","byParam":{"xParam":"dist"}}'::json,
+  'static', NULL, 0, NULL,
+  '新北市環保局',
+  '顯示新北市限時定點清運站，僅在特定時段開放投放垃圾。',
+  '呈現新北市環保局設置的限時定點清運站，包含行政區、里別、清運點名稱、站點型態及表定開放時段，民眾需在規定時段內前往投放垃圾。',
+  '確認限時定點清運站的位置與開放時段，避免錯過投放時間；亦可供環保局分析此類站點的空間分布與服務涵蓋。',
+  ARRAY[]::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'map_legend', 'metrotaipei'
+),
+(
+  'garbage_ntpc_temp_local', ARRAY[315]::integer[],
+  '{"mode":"byParam","byParam":{"xParam":"dist"}}'::json,
+  'static', NULL, 0, NULL,
+  '新北市環保局',
+  '顯示新北市臨停清運點，為垃圾車行駛路線中的臨時性補充停靠點。',
+  '呈現新北市環保局設置的臨停清運點，包含行政區、里別、清運點名稱及相關資訊，為正式路線以外的臨時性或補充性停靠點，依實際需求彈性調整。',
+  '查詢鄰近的臨停清運點位置，把握垃圾車臨時停靠的投放機會；亦可供環保單位評估臨停站點的空間分布與服務效益。',
+  ARRAY[]::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'map_legend', 'metrotaipei'
+);
 
 -- 5. 更新儀表板的組件列表，整合雙北所有垃圾站點並保留焚化爐 (999)
 UPDATE public.dashboards 
