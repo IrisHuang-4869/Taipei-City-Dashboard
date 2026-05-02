@@ -87,14 +87,16 @@ export const useContentStore = defineStore("content", {
 		/* Steps in adding content to the application (/dashboard or /mapview) */
 		// 1. Check the current path and execute actions based on the current path
 		setRouteParams(mode, index, city) {
+			const previousMode = this.currentDashboard.mode;
 			this.currentDashboard.mode = mode;
-			// 1-1. Don't do anything if the path is the same
+			// 1-1. Don't do anything if the path is the same (index, city AND mode all unchanged)
 			if (
 				this.currentDashboard.index === index &&
-				this.currentDashboard.city === city
+				this.currentDashboard.city === city &&
+				previousMode === mode
 			) {
 				if (
-					this.currentDashboard.mode === "/mapview" &&
+					mode === "/mapview" &&
 					!index.includes("map-layers")
 				) {
 					this.setMapLayers(city);

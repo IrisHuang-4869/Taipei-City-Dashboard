@@ -129,16 +129,21 @@ const districtData = computed(() => {
 		烏來區: 0,
 		highest: 0,
 		sum: 0,
+		average: 0,
 	};
 	let highest = 0;
 	let sum = 0;
-	if (props.series.length === 1) {
+	let count = 0;
+	if (props.series.length === 1 && typeof props.series[0].data[0] === 'object' && props.series[0].data[0] !== null) {
 		props.series[0].data.forEach((item) => {
 			output[item.x] = item.y;
 			if (item.y > highest) {
 				highest = item.y;
 			}
-			sum += item.y;
+			if (item.y > 0) {
+				sum += item.y;
+				count++;
+			}
 		});
 	} else {
 		props.series.forEach((serie) => {
@@ -152,14 +157,18 @@ const districtData = computed(() => {
 		highest = Object.values(output).sort(function (a, b) {
 			return b - a;
 		})[0];
-		sum = Object.values(output).reduce(
-			(partialSum, a) => partialSum + a,
-			0
-		);
+		
+		districts.forEach(district => {
+			if (output[district] > 0) {
+				sum += output[district];
+				count++;
+			}
+		});
 	}
 
 	output.highest = highest;
 	output.sum = sum;
+	output.average = count > 0 ? Math.round(sum / count) : 0;
 
 	return output;
 });
@@ -283,8 +292,8 @@ function handleDataSelection(index) {
     class="districtchart"
   >
     <div class="districtchart-title">
-      <h5>總合</h5>
-      <h6>{{ districtData.sum }} {{ chart_config.unit }}</h6>
+      <h5>{{ chart_config.unit === '%' ? '平均' : '總合' }}</h5>
+      <h6>{{ chart_config.unit === '%' ? districtData.average : districtData.sum }} {{ chart_config.unit }}</h6>
       <div class="districtchart-title-legend">
         <p>多</p>
         <div

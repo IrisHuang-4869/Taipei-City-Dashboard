@@ -37,10 +37,10 @@ const toggleOn = ref({
 // Separate components with maps from those without
 const parseMapLayers = computed(() => {
 	const hasMap = contentStore.currentDashboard.components?.filter(
-		(item) => item.map_config[0],
+		(item) => item.map_config && item.map_config[0],
 	);
 	const noMap = contentStore.currentDashboard.components?.filter(
-		(item) => !item.map_config[0],
+		(item) => !item.map_config || !item.map_config[0],
 	);
 
 	return { hasMap: hasMap, noMap: noMap };
@@ -78,7 +78,7 @@ function handleOpenSettings() {
 
 // Open and closes the component as well as communicates to the mapStore to turn on and off map layers
 function handleToggle(value, map_config) {
-	if (!map_config[0]) {
+	if (!map_config || !map_config[0]) {
 		if (value) {
 			dialogStore.showNotification(
 				"info",
