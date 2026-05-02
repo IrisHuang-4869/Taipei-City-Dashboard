@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投垃圾焚化廠",
+        "district": "北投區",
+        "actual_volume_month": 41304,
+        "capacity_ratio": 0.6884,
+        "capacity_ratio_pct": "68.8%",
+        "status": "營運中"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.499214, 25.107388]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市木柵垃圾焚化廠",
+        "district": "文山區",
+        "actual_volume_month": 31530,
+        "capacity_ratio": 0.5839,
+        "capacity_ratio_pct": "58.4%",
+        "status": "營運中"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.594775, 25.000108]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖垃圾焚化廠",
+        "district": "內湖區",
+        "actual_volume_month": 14272,
+        "capacity_ratio": 0.5286,
+        "capacity_ratio_pct": "52.9%",
+        "status": "營運中"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.606277, 25.061794]
+      }
+    }
+  ]
+}

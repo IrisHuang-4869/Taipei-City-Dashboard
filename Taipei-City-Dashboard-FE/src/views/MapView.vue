@@ -167,7 +167,7 @@ function popularBasicLayerGA(map_config) {
         <DashboardComponent
           v-for="(item, arrayIdx) in contentStore.currentDashboard
             .components"
-          :key="`map-layer-${item.index}-${item.city}`"
+          :key="`map-layer-${item.id}-${item.index}-${item.city}`"
           :config="item"
           mode="halfmap"
           :info-btn="true"
@@ -273,7 +273,7 @@ function popularBasicLayerGA(map_config) {
       >
         <DashboardComponent
           v-for="(item, arrayIdx) in parseMapLayers.hasMap"
-          :key="`map-layer-${item.index}-${item.city}`"
+          :key="`map-layer-${item.id}-${item.index}-${item.city}`"
           :config="item"
           mode="map"
           :info-btn="true"
@@ -394,7 +394,7 @@ function popularBasicLayerGA(map_config) {
         </h2>
         <DashboardComponent
           v-for="(item, arrayIdx) in contentStore.mapLayers"
-          :key="`map-layer-${item.index}-${item.city}`"
+          :key="`map-layer-${item.id}-${item.index}-${item.city}`"
           :config="item"
           mode="halfmap"
           :info-btn="true"
@@ -489,7 +489,7 @@ function popularBasicLayerGA(map_config) {
         </h2>
         <DashboardComponent
           v-for="(item, arrayIdx) in parseMapLayers.noMap"
-          :key="`map-layer-${item.index}-${item.city}`"
+          :key="`map-layer-${item.id}-${item.index}-${item.city}`"
           :config="item"
           mode="map"
           :info-btn="true"

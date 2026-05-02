@@ -126,7 +126,7 @@ const treemapChartOptions = computed(() => {
 		plotOptions: {
 			treemap: {
 				distributed: true,
-				shadeIntensity: 0,
+				shadeIntensity: 0.35,
 				dataLabels: {
 					hideOverflowingLabels: true,
 				},

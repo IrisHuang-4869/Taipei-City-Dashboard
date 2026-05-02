@@ -267,7 +267,9 @@ export const useContentStore = defineStore("content", {
 				// Inject local garbage map layers if applicable
 				if (this.currentDashboard.index === "garbage_map_metrotaipei") {
 					localGarbageMapLayers.forEach(localComp => {
-						if (!this.cityDashboard.components.find(c => c.index === localComp.index)) {
+						if (!this.cityDashboard.components.find(
+							(c) => c.index === localComp.index && c.city === localComp.city,
+						)) {
 							this.cityDashboard.components.push(localComp);
 						}
 					});
@@ -316,7 +318,10 @@ export const useContentStore = defineStore("content", {
 						this.cityDashboard.components[index].chart_data =
 							response.data.data;
 
-						if (response.data.categories) {
+						if (
+							response.data.categories &&
+							this.cityDashboard.components[index].chart_config
+						) {
 							this.cityDashboard.components[
 								index
 							].chart_config.categories =
@@ -428,7 +433,10 @@ export const useContentStore = defineStore("content", {
 						this.cityDashboard.components[index].chart_data =
 							response.data.data;
 
-						if (response.data.categories) {
+						if (
+							response.data.categories &&
+							this.cityDashboard.components[index].chart_config
+						) {
 							this.cityDashboard.components[
 								index
 							].chart_config.categories =
@@ -547,7 +555,10 @@ export const useContentStore = defineStore("content", {
 						this.cityDashboard.components[index].chart_data =
 							response.data.data;
 
-						if (response.data.categories) {
+						if (
+							response.data.categories &&
+							this.cityDashboard.components[index].chart_config
+						) {
 							this.cityDashboard.components[
 								index
 							].chart_config.categories =
@@ -631,10 +642,50 @@ export const useContentStore = defineStore("content", {
 			const { components } = this.cityDashboard;
 
 			if (components && components.length > 0) {
-				// 雙北垃圾地圖：組件皆為 metrotaipei，側欄 city 可能是 taipei，若依 city 過濾會全部不見
+				// 雙北垃圾地圖：同 id 可能同時有 taipei / metrotaipei 版本
+				// 優先顯示目前城市，若無對應城市則回退到 metrotaipei，避免同一組件重複渲染。
 				if (this.currentDashboard.index === "garbage_map_metrotaipei") {
-					this.currentDashboard.components = [...components];
-					this.currentDashboardExcluded.components = [];
+					const groupedById = new Map();
+					components.forEach((item) => {
+						const list = groupedById.get(item.id) || [];
+						list.push(item);
+						groupedById.set(item.id, list);
+					});
+
+					const selected = [];
+					const excluded = [];
+					const currentCity = this.currentDashboard.city;
+
+					groupedById.forEach((list) => {
+						let picked = list.find(
+							(item) => item.city === currentCity,
+						);
+						if (!picked) {
+							const metro = list.find(
+								(item) => item.city === "metrotaipei",
+							);
+							if (
+								metro &&
+								!(
+									currentCity === "taipei" &&
+									metro.noTaipeiTwin
+								)
+							) {
+								picked = metro;
+							}
+						}
+						if (picked) {
+							selected.push(picked);
+							list.forEach((item) => {
+								if (item !== picked) excluded.push(item);
+							});
+						} else {
+							list.forEach((item) => excluded.push(item));
+						}
+					});
+
+					this.currentDashboard.components = selected;
+					this.currentDashboardExcluded.components = excluded;
 				} else {
 				const currentCityData = components.filter(
 					(item) => item.city === this.currentDashboard.city,
@@ -937,7 +988,10 @@ export const useContentStore = defineStore("content", {
 				dialogStore.moreInfoContent[index].chart_data =
 					response_2.data.data;
 
-				if (response_2.data.categories) {
+				if (
+					response_2.data.categories &&
+					dialogStore.moreInfoContent[index].chart_config
+				) {
 					dialogStore.moreInfoContent[index].chart_config.categories =
 						response_2.data.categories;
 				}
@@ -1058,7 +1112,7 @@ export const useContentStore = defineStore("content", {
 			});
 
 			row.chart_data = response_2.data.data;
-			if (response_2.data.categories) {
+			if (response_2.data.categories && row.chart_config) {
 				row.chart_config.categories = response_2.data.categories;
 			}
 

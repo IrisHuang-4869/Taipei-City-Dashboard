@@ -14,6 +14,10 @@ const props = defineProps({
 	map_filter_on: { type: Boolean, default: false },
 	/** 地圖模式主開關（由 DashboardComponent 傳入） */
 	parentMapOn: { type: Boolean, default: true },
+	/**
+	 * 儀表板總覽：只顯示「站點數量」長條圖（與地圖交叉比對該分頁相同邏輯），不顯示分頁與圖層開關。
+	 */
+	countsOnly: { type: Boolean, default: false },
 });
 
 const mapStore = useMapStore();
@@ -163,9 +167,12 @@ function applyUserPreferencesToMap() {
 
 watch(
 	() => props.map_config,
-	() => {
+	async () => {
 		syncPrefLength();
 		resetCounts();
+		if (props.countsOnly) {
+			await loadLayerCounts();
+		}
 	},
 	{ deep: true },
 );
@@ -185,6 +192,9 @@ watch(
 );
 
 watch(activeSubTab, (tab) => {
+	if (props.countsOnly) {
+		return;
+	}
 	if (tab === "counts" && !countsLoaded.value && !countsLoading.value) {
 		loadLayerCounts();
 	}
@@ -193,6 +203,10 @@ watch(activeSubTab, (tab) => {
 onMounted(async () => {
 	syncPrefLength();
 	await nextTick();
+	if (props.countsOnly) {
+		await loadLayerCounts();
+		return;
+	}
 	if (props.parentMapOn) {
 		applyUserPreferencesToMap();
 	}
@@ -449,6 +463,46 @@ function toggleSelectAllLayers() {
     v-if="activeChart === 'MoenvRecycleLayerToggles'"
     class="moenv-layer-toggles"
   >
+    <template v-if="countsOnly">
+      <p class="moenv-layer-toggles__hint">
+        各類別點位總數依公開圖資統計（不分行政區），長條由多至少排列。
+      </p>
+      <div
+        v-if="countsLoading"
+        class="moenv-layer-toggles__loading"
+      >
+        載入中…
+      </div>
+      <template v-else-if="countsLoaded && countBarSeries.data.length">
+        <div class="moenv-layer-toggles__chart-wrap">
+          <VueApexCharts
+            width="100%"
+            :height="countsChartHeight"
+            type="bar"
+            :options="countsChartOptions"
+            :series="countsChartSeries"
+          />
+        </div>
+        <div
+          v-if="totalCount !== null"
+          class="moenv-layer-toggles__total"
+        >
+          <template v-if="allCountsOk">
+            合計 <strong>{{ totalCount.toLocaleString("zh-TW") }}</strong> 處
+          </template>
+          <template v-else>
+            已載入類別合計 <strong>{{ totalCount.toLocaleString("zh-TW") }}</strong> 處
+          </template>
+        </div>
+        <p
+          v-if="hasCountLoadError"
+          class="moenv-layer-toggles__warn"
+        >
+          部分圖檔無法讀取；顯示「—」的類別未計入長條長度（值為 0）。
+        </p>
+      </template>
+    </template>
+    <template v-else>
     <div
       class="moenv-tabs"
       role="tablist"
@@ -570,6 +624,7 @@ function toggleSelectAllLayers() {
           部分圖檔無法讀取；顯示「—」的類別未計入長條長度（值為 0）。
         </p>
       </template>
+    </template>
     </template>
   </div>
 </template>

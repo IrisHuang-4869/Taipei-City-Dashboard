@@ -134,6 +134,8 @@ import { cutRouteSegment } from "../assets/utilityFunctions/getRouteForAnimation
 import { interpolateAlongSegment } from "../assets/utilityFunctions/geometryUtils.js";
 import { updateCarsPosition } from "../assets/utilityFunctions/mrtCars.js";
 import { getPopupCoordinates } from "../assets/utilityFunctions/getPopupCoordinates.js";
+import { buildTaipeiGarbageBrigadeArcs } from "../assets/utilityFunctions/garbageTaipeiStopToBrigadeArcs.js";
+import { buildNtpcGarbageRouteHubArcs } from "../assets/utilityFunctions/garbageNtpcStopToRouteHubArcs.js";
 import {
 	getCrowdColor,
 	mrtLineColor,
@@ -573,6 +575,40 @@ export const useMapStore = defineStore("map", {
 		},
 		// 2. Call an API to get the layer data
 		fetchLocalGeoJson(map_config) {
+			if (map_config.index === "garbage_taipei_truck_local") {
+				Promise.all([
+					axios.get(`/mapData/${map_config.index}.geojson`),
+					axios
+						.get("/mapData/garbage_taipei_brigade_offices.json")
+						.catch(() => ({ data: null })),
+				])
+					.then(([rsPoints, rsOffices]) => {
+						const arcData = buildTaipeiGarbageBrigadeArcs(
+							rsPoints.data,
+							rsOffices.data,
+						);
+						this.addGeojsonSource(map_config, arcData);
+					})
+					.catch((e) => console.error(e));
+				return;
+			}
+			if (map_config.index === "garbage_ntpc_route_arcs_local") {
+				Promise.all([
+					axios.get("/mapData/garbage_ntpc_route_local.geojson"),
+					axios
+						.get("/mapData/garbage_ntpc_route_hubs.json")
+						.catch(() => ({ data: null })),
+				])
+					.then(([rsPoints, rsHubs]) => {
+						const arcData = buildNtpcGarbageRouteHubArcs(
+							rsPoints.data,
+							rsHubs.data,
+						);
+						this.addGeojsonSource(map_config, arcData);
+					})
+					.catch((e) => console.error(e));
+				return;
+			}
 			axios
 				.get(`/mapData/${map_config.index}.geojson`)
 				.then((rs) => {
@@ -863,7 +899,7 @@ export const useMapStore = defineStore("map", {
 		/** 為圖層增加懸浮工具提示 (支援焚化爐、回收、廚餘) */
 		addWasteHoverHandlers(layerId, type) {
 			const map = this.map;
-			
+
 			map.on("mouseenter", layerId, (e) => {
 				map.getCanvas().style.cursor = "pointer";
 				

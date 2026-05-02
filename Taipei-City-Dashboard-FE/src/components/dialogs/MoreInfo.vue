@@ -135,8 +135,7 @@ function getLinkTag(link, index) {
           </button>
           <button
             v-if="
-              moreInfoPanel.chart_config
-                .types[0] !== 'MetroChart'
+              moreInfoPanel.chart_config?.types?.[0] !== 'MetroChart'
             "
             @click="dialogStore.showDialog('downloadData')"
           >
