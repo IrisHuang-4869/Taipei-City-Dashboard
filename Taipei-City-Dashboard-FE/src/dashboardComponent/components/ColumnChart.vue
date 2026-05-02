@@ -65,6 +65,19 @@ const columnDisplay = computed(() => {
 	return { categories: cats || [], series };
 });
 
+/**
+ * Apex 可能就地修改傳入的 series／categories；與 DistrictChart 等共用 config.chart_data 時會打亂索引與著色。
+ * 只餵圖表複本，勿改動父層 props.series。
+ */
+const columnSeriesForApex = computed(() => {
+	const raw = columnDisplay.value.series;
+	try {
+		return structuredClone(raw);
+	} catch {
+		return JSON.parse(JSON.stringify(raw));
+	}
+});
+
 const categoryCount = computed(() => {
 	const d = columnDisplay.value;
 	if (d.categories.length) {
@@ -170,7 +183,7 @@ const columnChartOptions = computed(() => {
 			axisTicks: {
 				show: false,
 			},
-			categories: hasCats ? cats : [],
+			categories: hasCats ? [...cats] : [],
 			labels: {
 				show: false,
 			},
@@ -200,19 +213,23 @@ function handleDataSelection(_e, _chartContext, config) {
 		`${config.dataPointIndex}-${config.seriesIndex}` !== selectedIndex.value
 	) {
 		if (props.map_filter.mode === "byParam") {
+			const w = config.w.globals;
+			const label =
+				w.categoryLabels?.[config.dataPointIndex] ??
+				w.labels?.[config.dataPointIndex];
 			emits(
 				"filterByParam",
 				props.map_filter,
 				props.map_config,
-				config.w.globals.labels[config.dataPointIndex],
-				config.w.globals.seriesNames[config.seriesIndex],
+				label,
+				w.seriesNames?.[config.seriesIndex],
 			);
 		} else if (props.map_filter.mode === "byLayer") {
-			emits(
-				"filterByLayer",
-				props.map_config,
-				config.w.globals.labels[config.dataPointIndex],
-			);
+			const w = config.w.globals;
+			const label =
+				w.categoryLabels?.[config.dataPointIndex] ??
+				w.labels?.[config.dataPointIndex];
+			emits("filterByLayer", props.map_config, label);
 		}
 		selectedIndex.value = `${config.dataPointIndex}-${config.seriesIndex}`;
 	} else {
@@ -237,7 +254,7 @@ function handleDataSelection(_e, _chartContext, config) {
       :height="chartHeight"
       type="bar"
       :options="columnChartOptions"
-      :series="columnDisplay.series"
+      :series="columnSeriesForApex"
       @data-point-selection="handleDataSelection"
     />
   </div>
