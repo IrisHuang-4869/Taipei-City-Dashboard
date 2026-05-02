@@ -1035,29 +1035,32 @@ export const useContentStore = defineStore("content", {
 		 */
 		async openMoreInfoFromDashboard(item) {
 			const dialogStore = useDialogStore();
+			if (!item) return;
+			
+			// 先清理舊內容，避免殘留資料導致組件渲染報錯
+			dialogStore.moreInfoContent = null;
 			dialogStore.showDialog("moreInfo");
-			dialogStore.moreInfoContent = item;
+			
 			try {
+				dialogStore.moreInfoContent = item;
 				const updated = await this.fetchComponentConfigWithChartHistory(
 					item.index,
 					item.city,
 				);
-				if (!updated) {
-					return;
-				}
-				dialogStore.moreInfoContent = updated;
-				const list = this.cityDashboard.components;
-				if (Array.isArray(list)) {
-					const idx = list.findIndex(
-						(c) => c.id === item.id && c.city === item.city,
-					);
-					if (idx >= 0) {
-						Object.assign(list[idx], updated);
+				if (updated) {
+					dialogStore.moreInfoContent = updated;
+					const list = this.cityDashboard.components;
+					if (Array.isArray(list)) {
+						const idx = list.findIndex(
+							(c) => c.id === item.id && c.city === item.city,
+						);
+						if (idx >= 0) {
+							Object.assign(list[idx], updated);
+						}
 					}
 				}
 			} catch (e) {
-				console.error("openMoreInfoFromDashboard:", e);
-				/* 保留儀表板已載入的 item，避免對話框整塊空白 */
+				console.error("openMoreInfoFromDashboard error:", e);
 			}
 		},
 

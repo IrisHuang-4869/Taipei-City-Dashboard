@@ -95,9 +95,9 @@ function getLinkTag(link, index) {
               <div
                 v-for="contributor in moreInfoPanel.contributors"
                 :key="contributor"
-                v-show="contentStore.contributors[contributor]"
               >
                 <a
+                  v-if="contentStore.contributors[contributor]"
                   :href="
                     contentStore.contributors[contributor]
                       .link
