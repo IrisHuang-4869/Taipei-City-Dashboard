@@ -1,5 +1,5 @@
 -- 將新北回收／廚餘地圖組件（components 300、301）併入「垃圾地圖」garbage_map_metrotaipei，並移除獨立儀表板 ntpc_waste_maps_mvp。
--- 前置：已執行 ntpc_waste_mvp_manager_patch.sql（或至少已有 components 300、301 與對應 query_charts）。
+-- 前置：import_ntpc_waste_mvp_data.sql → ntpc_waste_mvp_manager_patch.sql（manager_patch 已會 UPDATE garbage_map_metrotaipei；若僅缺 components 陣列可再跑本檔）。
 -- 可重複執行：僅在未含 300/301 時擴充 components；刪除獨立儀表板為冪等。
 -- psql -h ... -U ... -d <manager_db> -v ON_ERROR_STOP=1 -f db-sample-data/ntpc_merge_waste_into_garbage_map_metrotaipei.sql
 

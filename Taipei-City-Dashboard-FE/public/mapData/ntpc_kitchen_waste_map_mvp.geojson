@@ -1,0 +1,1020 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "八里區",
+        "recycling_tons": 235.0,
+        "kitchen_tons": 84.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.391,
+              25.134
+            ],
+            [
+              121.415,
+              25.134
+            ],
+            [
+              121.415,
+              25.158
+            ],
+            [
+              121.391,
+              25.158
+            ],
+            [
+              121.391,
+              25.134
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "三芝區",
+        "recycling_tons": 750.3,
+        "kitchen_tons": 135.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.49,
+              25.243
+            ],
+            [
+              121.514,
+              25.243
+            ],
+            [
+              121.514,
+              25.267
+            ],
+            [
+              121.49,
+              25.267
+            ],
+            [
+              121.49,
+              25.243
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "三重區",
+        "recycling_tons": 559.1,
+        "kitchen_tons": 149.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.476,
+              25.049
+            ],
+            [
+              121.5,
+              25.049
+            ],
+            [
+              121.5,
+              25.073
+            ],
+            [
+              121.476,
+              25.073
+            ],
+            [
+              121.476,
+              25.049
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "三峽區",
+        "recycling_tons": 285.6,
+        "kitchen_tons": 56.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.355,
+              24.922
+            ],
+            [
+              121.379,
+              24.922
+            ],
+            [
+              121.379,
+              24.946
+            ],
+            [
+              121.355,
+              24.946
+            ],
+            [
+              121.355,
+              24.922
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "土城區",
+        "recycling_tons": 353.8,
+        "kitchen_tons": 104.1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.439,
+              24.96
+            ],
+            [
+              121.463,
+              24.96
+            ],
+            [
+              121.463,
+              24.984
+            ],
+            [
+              121.439,
+              24.984
+            ],
+            [
+              121.439,
+              24.96
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "中和區",
+        "recycling_tons": 925.0,
+        "kitchen_tons": 148.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.483,
+              24.989
+            ],
+            [
+              121.507,
+              24.989
+            ],
+            [
+              121.507,
+              25.013
+            ],
+            [
+              121.483,
+              25.013
+            ],
+            [
+              121.483,
+              24.989
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "五股區",
+        "recycling_tons": 878.8,
+        "kitchen_tons": 120.9
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.425,
+              25.083
+            ],
+            [
+              121.449,
+              25.083
+            ],
+            [
+              121.449,
+              25.107
+            ],
+            [
+              121.425,
+              25.107
+            ],
+            [
+              121.425,
+              25.083
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "平溪區",
+        "recycling_tons": 365.8,
+        "kitchen_tons": 89.7
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.726,
+              25.014
+            ],
+            [
+              121.75,
+              25.014
+            ],
+            [
+              121.75,
+              25.038
+            ],
+            [
+              121.726,
+              25.038
+            ],
+            [
+              121.726,
+              25.014
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "永和區",
+        "recycling_tons": 399.9,
+        "kitchen_tons": 148.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.505,
+              24.996
+            ],
+            [
+              121.529,
+              24.996
+            ],
+            [
+              121.529,
+              25.02
+            ],
+            [
+              121.505,
+              25.02
+            ],
+            [
+              121.505,
+              24.996
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "汐止區",
+        "recycling_tons": 779.7,
+        "kitchen_tons": 63.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.647,
+              25.057
+            ],
+            [
+              121.671,
+              25.057
+            ],
+            [
+              121.671,
+              25.081
+            ],
+            [
+              121.647,
+              25.081
+            ],
+            [
+              121.647,
+              25.057
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "坪林區",
+        "recycling_tons": 634.4,
+        "kitchen_tons": 104.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.699,
+              24.925
+            ],
+            [
+              121.723,
+              24.925
+            ],
+            [
+              121.723,
+              24.949
+            ],
+            [
+              121.699,
+              24.949
+            ],
+            [
+              121.699,
+              24.925
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "林口區",
+        "recycling_tons": 604.2,
+        "kitchen_tons": 32.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.375,
+              25.065
+            ],
+            [
+              121.399,
+              25.065
+            ],
+            [
+              121.399,
+              25.089000000000002
+            ],
+            [
+              121.375,
+              25.089000000000002
+            ],
+            [
+              121.375,
+              25.065
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "板橋區",
+        "recycling_tons": 303.3,
+        "kitchen_tons": 36.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.446,
+              24.998
+            ],
+            [
+              121.47,
+              24.998
+            ],
+            [
+              121.47,
+              25.022000000000002
+            ],
+            [
+              121.446,
+              25.022000000000002
+            ],
+            [
+              121.446,
+              24.998
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "金山區",
+        "recycling_tons": 989.2,
+        "kitchen_tons": 36.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.624,
+              25.209
+            ],
+            [
+              121.648,
+              25.209
+            ],
+            [
+              121.648,
+              25.233
+            ],
+            [
+              121.624,
+              25.233
+            ],
+            [
+              121.624,
+              25.209
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "泰山區",
+        "recycling_tons": 421.5,
+        "kitchen_tons": 123.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.407,
+              25.046
+            ],
+            [
+              121.431,
+              25.046
+            ],
+            [
+              121.431,
+              25.07
+            ],
+            [
+              121.407,
+              25.07
+            ],
+            [
+              121.407,
+              25.046
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "烏來區",
+        "recycling_tons": 327.0,
+        "kitchen_tons": 115.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.539,
+              24.852
+            ],
+            [
+              121.563,
+              24.852
+            ],
+            [
+              121.563,
+              24.876
+            ],
+            [
+              121.539,
+              24.876
+            ],
+            [
+              121.539,
+              24.852
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "貢寮區",
+        "recycling_tons": 694.7,
+        "kitchen_tons": 141.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.906,
+              25.012999999999998
+            ],
+            [
+              121.93,
+              25.012999999999998
+            ],
+            [
+              121.93,
+              25.037
+            ],
+            [
+              121.906,
+              25.037
+            ],
+            [
+              121.906,
+              25.012999999999998
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "淡水區",
+        "recycling_tons": 364.6,
+        "kitchen_tons": 45.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.429,
+              25.157
+            ],
+            [
+              121.453,
+              25.157
+            ],
+            [
+              121.453,
+              25.181
+            ],
+            [
+              121.429,
+              25.181
+            ],
+            [
+              121.429,
+              25.157
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "深坑區",
+        "recycling_tons": 793.4,
+        "kitchen_tons": 111.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.605,
+              24.99
+            ],
+            [
+              121.629,
+              24.99
+            ],
+            [
+              121.629,
+              25.014
+            ],
+            [
+              121.605,
+              25.014
+            ],
+            [
+              121.605,
+              24.99
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "新店區",
+        "recycling_tons": 423.0,
+        "kitchen_tons": 125.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.52,
+              24.959
+            ],
+            [
+              121.544,
+              24.959
+            ],
+            [
+              121.544,
+              24.983
+            ],
+            [
+              121.52,
+              24.983
+            ],
+            [
+              121.52,
+              24.959
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "新莊區",
+        "recycling_tons": 313.5,
+        "kitchen_tons": 88.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.438,
+              25.024
+            ],
+            [
+              121.462,
+              25.024
+            ],
+            [
+              121.462,
+              25.048000000000002
+            ],
+            [
+              121.438,
+              25.048000000000002
+            ],
+            [
+              121.438,
+              25.024
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "瑞芳區",
+        "recycling_tons": 817.4,
+        "kitchen_tons": 79.9
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.794,
+              25.095
+            ],
+            [
+              121.818,
+              25.095
+            ],
+            [
+              121.818,
+              25.119
+            ],
+            [
+              121.794,
+              25.119
+            ],
+            [
+              121.794,
+              25.095
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "萬里區",
+        "recycling_tons": 612.6,
+        "kitchen_tons": 47.6
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.67699999999999,
+              25.163999999999998
+            ],
+            [
+              121.701,
+              25.163999999999998
+            ],
+            [
+              121.701,
+              25.188
+            ],
+            [
+              121.67699999999999,
+              25.188
+            ],
+            [
+              121.67699999999999,
+              25.163999999999998
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "樹林區",
+        "recycling_tons": 287.2,
+        "kitchen_tons": 48.1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.409,
+              24.995
+            ],
+            [
+              121.433,
+              24.995
+            ],
+            [
+              121.433,
+              25.019000000000002
+            ],
+            [
+              121.409,
+              25.019000000000002
+            ],
+            [
+              121.409,
+              24.995
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "蘆洲區",
+        "recycling_tons": 851.8,
+        "kitchen_tons": 128.6
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.459,
+              25.072
+            ],
+            [
+              121.483,
+              25.072
+            ],
+            [
+              121.483,
+              25.096
+            ],
+            [
+              121.459,
+              25.096
+            ],
+            [
+              121.459,
+              25.072
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "鶯歌區",
+        "recycling_tons": 519.4,
+        "kitchen_tons": 52.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.343,
+              24.944
+            ],
+            [
+              121.367,
+              24.944
+            ],
+            [
+              121.367,
+              24.968
+            ],
+            [
+              121.343,
+              24.968
+            ],
+            [
+              121.343,
+              24.944
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "石碇區",
+        "recycling_tons": 443.4,
+        "kitchen_tons": 83.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.646,
+              24.935
+            ],
+            [
+              121.67,
+              24.935
+            ],
+            [
+              121.67,
+              24.959
+            ],
+            [
+              121.646,
+              24.959
+            ],
+            [
+              121.646,
+              24.935
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "石門區",
+        "recycling_tons": 613.4,
+        "kitchen_tons": 43.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.55499999999999,
+              25.279
+            ],
+            [
+              121.579,
+              25.279
+            ],
+            [
+              121.579,
+              25.303
+            ],
+            [
+              121.55499999999999,
+              25.303
+            ],
+            [
+              121.55499999999999,
+              25.279
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TNAME": "雙溪區",
+        "recycling_tons": 253.7,
+        "kitchen_tons": 104.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.854,
+              24.989
+            ],
+            [
+              121.878,
+              24.989
+            ],
+            [
+              121.878,
+              25.013
+            ],
+            [
+              121.854,
+              25.013
+            ],
+            [
+              121.854,
+              24.989
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
