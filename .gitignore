@@ -73,12 +73,6 @@ Taipei-City-Dashboard-DE/docker/prod/.env
 *.py[cod]
 
 *.env
-AGENTS.md
-.gitignore
-.claude/skills/taipei-city-dashboard-docs/SKILL.md
-.gitignore
-Taipei-City-Dashboard-FE/src/assets/configs/mapbox/mapConfig.js
-Taipei-City-Dashboard-FE/src/assets/configs/mapbox/mapConfig.js
 
 
 /scripts
