@@ -501,6 +501,18 @@ export const maplayerCommonLayout = {
 			1.4,
 		],
 	},
+	"symbol-flame": {
+		"icon-image": "flame",
+		"icon-size": [
+			"interpolate",
+			["linear"],
+			["get", "total_volume"],
+			900,
+			0.15,
+			1800,
+			0.4,
+		],
+	},
 	"symbol-metro-density": {
 		"icon-image": "metro",
 		"icon-size": [
