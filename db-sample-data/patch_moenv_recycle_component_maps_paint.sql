@@ -5,20 +5,20 @@
 BEGIN;
 
 UPDATE component_maps SET paint = '{"circle-color":"#E170A6","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_6ca8d697f6';
+WHERE index IN ('moenv_wr_recycle_6ca8d697f6', 'moenv_wr_recycle_6ca8d697f6_tpe');
 UPDATE component_maps SET paint = '{"circle-color":"#24B0DD","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_7b805c8fa1';
+WHERE index IN ('moenv_wr_recycle_7b805c8fa1', 'moenv_wr_recycle_7b805c8fa1_tpe');
 UPDATE component_maps SET paint = '{"circle-color":"#56B96D","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_6a4bc66658';
+WHERE index IN ('moenv_wr_recycle_6a4bc66658', 'moenv_wr_recycle_6a4bc66658_tpe');
 UPDATE component_maps SET paint = '{"circle-color":"#F8CF58","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_014ce45e54';
+WHERE index IN ('moenv_wr_recycle_014ce45e54', 'moenv_wr_recycle_014ce45e54_tpe');
 UPDATE component_maps SET paint = '{"circle-color":"#F5AD4A","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_8863327e9b';
+WHERE index IN ('moenv_wr_recycle_8863327e9b', 'moenv_wr_recycle_8863327e9b_tpe');
 UPDATE component_maps SET paint = '{"circle-color":"#9DC56E","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_c5e75de7e7';
+WHERE index IN ('moenv_wr_recycle_c5e75de7e7', 'moenv_wr_recycle_c5e75de7e7_tpe');
 UPDATE component_maps SET paint = '{"circle-color":"#8B5CF6","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_e62fbe91a5';
+WHERE index IN ('moenv_wr_recycle_e62fbe91a5', 'moenv_wr_recycle_e62fbe91a5_tpe');
 UPDATE component_maps SET paint = '{"circle-color":"#ED6A45","circle-opacity":0.85,"circle-radius":2}'::json
-WHERE index = 'moenv_wr_recycle_4554828c57';
+WHERE index IN ('moenv_wr_recycle_4554828c57', 'moenv_wr_recycle_4554828c57_tpe');
 
 COMMIT;

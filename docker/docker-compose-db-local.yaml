@@ -1,0 +1,12 @@
+## 로컬 개발용 오버라이드
+## postgres-data, redis 에 로컬 포트를 추가로 노출합니다.
+version: "3.7"
+
+services:
+  postgres-data:
+    ports:
+      - "5434:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
