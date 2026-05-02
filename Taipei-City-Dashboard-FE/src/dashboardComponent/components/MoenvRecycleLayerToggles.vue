@@ -28,37 +28,35 @@ const countsLoaded = ref(false);
 const tabs = [
 	{ id: "layers", label: "圖層開關" },
 	{ id: "counts", label: "站點數量" },
-	{ id: "ai", label: "AI 分類" },
 ];
 
-const aiChatMessages = ref([]);
 const aiUserMessage = ref("");
+const aiResultText = ref("");
 const aiLoading = ref(false);
 
 const getSystemPrompt = () => {
 	const layerInfo = props.map_config.map((mc, idx) => `${idx}: ${mc.title || mc.index}`).join('\n');
 	return `你是一個大台北地區回收點分類小幫手。請根據使用者的物品，判斷對應的回收類別索引。
-如果一個物品同時屬於多個類別（例如：電子玩具可能屬於「玩具類」與「電器類」），請針對每一個適用的類別分別呼叫一次 toggle_recycle_layer 工具。
+請優先判斷物品的「主要回收類別」。除非物品確實明顯同時具備多種回收屬性（例如：電子玩具兼具玩具與電器屬性），才需要呼叫多個工具。
+請保持精簡，避免過度分類，以使用者最直覺的分類為主。
 可用的類別與索引如下：\n${layerInfo}`;
 };
 
 const sendAIMessage = async () => {
 	if (!aiUserMessage.value.trim() || aiLoading.value) return;
 	
-	if (aiChatMessages.value.length === 0) {
-		aiChatMessages.value.push({ role: 'system', content: getSystemPrompt() });
-	}
-	
 	const userInput = aiUserMessage.value;
-	aiChatMessages.value.push({ role: 'user', content: userInput });
-	aiUserMessage.value = "";
+	aiResultText.value = "AI 正在分類中...";
 	aiLoading.value = true;
 	
 	try {
 		const requestPayload = {
 			session: "recycle_ai_" + Date.now(),
 			stream: false,
-			messages: aiChatMessages.value,
+			messages: [
+				{ role: 'system', content: getSystemPrompt() },
+				{ role: 'user', content: userInput }
+			],
 			tools: [
 				{
 					type: "function",
@@ -82,10 +80,6 @@ const sendAIMessage = async () => {
 		
 		const response = await http.post("/ai/chat/twai", requestPayload);
 		const data = response.data?.data;
-		
-		if (data?.content) {
-			aiChatMessages.value.push({ role: 'assistant', content: data.content });
-		}
 		
 		if (data?.tool_used && data.executed_tools) {
 			const toolsStr = data.executed_tools;
@@ -117,19 +111,25 @@ const sendAIMessage = async () => {
 				for (const idx of targetIndices) {
 					onSubToggle(idx, true);
 				}
+				const names = targetIndices.map(idx => layerTitle(props.map_config[idx]));
+				aiResultText.value = `已為您開啟：${names.join('、')}`;
+			} else {
+				aiResultText.value = "抱歉，我無法判斷該物品的分類。";
 			}
+		} else {
+			aiResultText.value = data?.content || "抱歉，我無法判斷該物品的分類。";
 		}
 	} catch (error) {
 		console.error("AI chat error", error);
-		let errMsg = "抱歉，發生了錯誤，請稍後再試。";
-		if (error.response?.data?.message) {
-			errMsg = `錯誤：${error.response.data.message}`;
-		} else if (error.message) {
-			errMsg = `錯誤：${error.message}`;
-		}
-		aiChatMessages.value.push({ role: 'assistant', content: errMsg });
+		aiResultText.value = "AI 分類時發生錯誤，請稍後再試。";
 	} finally {
 		aiLoading.value = false;
+		// 3秒後自動清除小字
+		setTimeout(() => {
+			if (aiResultText.value && !aiLoading.value) {
+				aiResultText.value = "";
+			}
+		}, 5000);
 	}
 };
 
@@ -472,6 +472,25 @@ function toggleSelectAllLayers() {
         開啟組件主開關後，可在此選擇要顯示的回收物資類別。
       </p>
       <div class="moenv-layer-toggles__bulk">
+        <div class="moenv-layer-toggles__ai-input-wrap">
+          <input
+            v-model="aiUserMessage"
+            type="text"
+            class="moenv-layer-toggles__ai-input"
+            placeholder="輸入你想回收的東西"
+            :disabled="!parentMapOn || aiLoading"
+            @keyup.enter="sendAIMessage"
+          >
+          <button
+            class="moenv-layer-toggles__ai-btn"
+            :disabled="!parentMapOn || aiLoading || !aiUserMessage.trim()"
+            @click="sendAIMessage"
+          >
+            <i v-if="aiLoading" class="fas fa-spinner fa-spin"></i>
+            <span v-else>🔍</span>
+          </button>
+        </div>
+
         <button
           v-if="map_config?.length"
           type="button"
@@ -481,6 +500,9 @@ function toggleSelectAllLayers() {
         >
           {{ allLayersEnabled ? "取消全選" : "全選" }}
         </button>
+      </div>
+      <div v-if="aiResultText" class="moenv-layer-toggles__ai-result">
+        {{ aiResultText }}
       </div>
       <div
         v-for="(mc, i) in map_config"
@@ -544,40 +566,7 @@ function toggleSelectAllLayers() {
       </template>
     </template>
 
-    <template v-else-if="activeSubTab === 'ai'">
-      <div class="moenv-ai-chat">
-        <p class="moenv-layer-toggles__hint">輸入你想丟掉的物品，AI 會幫你開啟對應的回收圖層！</p>
-        <div class="chat-messages">
-          <div
-            v-for="(msg, index) in aiChatMessages.filter(m => m.role !== 'system')"
-            :key="index"
-            :class="['chat-bubble', msg.role]"
-          >
-            {{ msg.content }}
-          </div>
-          <div
-            v-if="aiLoading"
-            class="chat-bubble assistant loading"
-          >
-            思考中...
-          </div>
-        </div>
-        <div class="chat-input-area">
-          <input
-            v-model="aiUserMessage"
-            type="text"
-            placeholder="例如：我想丟廢電池"
-            @keyup.enter="sendAIMessage"
-          >
-          <button
-            :disabled="aiLoading"
-            @click="sendAIMessage"
-          >
-            送出
-          </button>
-        </div>
-      </div>
-    </template>
+
   </div>
 </template>
 
@@ -627,11 +616,13 @@ function toggleSelectAllLayers() {
 
 .moenv-layer-toggles__bulk {
 	display: flex;
-	justify-content: flex-end;
+	align-items: center;
+	gap: 0.5rem;
 	margin: 0 0 0.55rem;
 }
 
 .moenv-layer-toggles__select-all {
+	flex-shrink: 0;
 	font-size: 0.78rem;
 	padding: 0.28rem 0.65rem;
 	cursor: pointer;
@@ -651,6 +642,74 @@ function toggleSelectAllLayers() {
 		opacity: 0.42;
 		cursor: not-allowed;
 	}
+}
+
+.moenv-layer-toggles__ai-input-wrap {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 4px;
+	overflow: hidden;
+	height: 28px;
+}
+
+.moenv-layer-toggles__ai-input {
+	flex: 1;
+	background: transparent;
+	border: none;
+	color: #fff;
+	font-size: 0.8rem;
+	padding: 0 0.5rem;
+	width: 100%;
+
+	&::placeholder {
+		color: rgba(255, 255, 255, 0.4);
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+	}
+}
+
+.moenv-layer-toggles__ai-btn {
+	background: transparent;
+	border: none;
+	color: #fff;
+	padding: 0 0.4rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.7;
+
+	&:hover:not(:disabled) {
+		opacity: 1;
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.3;
+	}
+}
+
+.moenv-layer-toggles__ai-result {
+	font-size: 0.75rem;
+	color: #88c0d0;
+	margin: -0.25rem 0 0.55rem;
+	padding-left: 0.2rem;
+	animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(-3px); }
+	to { opacity: 1; transform: translateY(0); }
 }
 
 .moenv-layer-toggles__loading {
@@ -710,59 +769,5 @@ function toggleSelectAllLayers() {
 	color: rgba(255, 200, 120, 0.9);
 }
 
-.moenv-ai-chat {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-}
-.chat-messages {
-	max-height: 200px;
-	overflow-y: auto;
-	display: flex;
-	flex-direction: column;
-	gap: 0.4rem;
-	padding-right: 4px;
-}
-.chat-bubble {
-	padding: 0.5rem;
-	border-radius: 8px;
-	font-size: 0.85rem;
-	max-width: 90%;
-	word-wrap: break-word;
-}
-.chat-bubble.user {
-	align-self: flex-end;
-	background-color: #24b0dd;
-	color: #fff;
-}
-.chat-bubble.assistant {
-	align-self: flex-start;
-	background-color: #494b4e;
-	color: #fff;
-}
-.chat-input-area {
-	display: flex;
-	gap: 0.4rem;
-	margin-top: 0.4rem;
-}
-.chat-input-area input {
-	flex: 1;
-	padding: 0.4rem 0.6rem;
-	border-radius: 4px;
-	border: 1px solid #888787;
-	background: #fff;
-	color: #000;
-}
-.chat-input-area button {
-	padding: 0.4rem 0.8rem;
-	border-radius: 4px;
-	border: none;
-	background: #24b0dd;
-	color: #fff;
-	cursor: pointer;
-}
-.chat-input-area button:disabled {
-	background: #888787;
-	cursor: not-allowed;
-}
+
 </style>
