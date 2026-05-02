@@ -17,6 +17,11 @@ func init() {
 	// Register demo tools
 	Register("get_current_time", GetCurrentTime)
 	Register("get_population_summary", GetPopulationSummary)
+	Register("toggle_recycle_layer", ToggleRecycleLayer)
+}
+
+func ToggleRecycleLayer(ctx context.Context, args string) (string, error) {
+	return "成功觸發開啟圖層功能。請告訴使用者已為他們開啟對應的圖層。", nil
 }
 
 // Register adds a tool to the registry

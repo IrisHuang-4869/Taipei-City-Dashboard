@@ -77,3 +77,4 @@ Taipei-City-Dashboard-DE/docker/prod/.env
 /scripts
 moenv_wr_p_250_sample.json
 moenv_wr_p_250_with_full_address.json
+old_cloths.csv
