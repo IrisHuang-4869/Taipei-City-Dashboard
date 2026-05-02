@@ -638,6 +638,23 @@ export const useMapStore = defineStore("map", {
 				};
 			}
 			this.loadingLayers.push("rendering");
+			// Mapbox 需要純物件／純陣列；Pinia 的 reactive Proxy 或後端字串化 paint 會導致填色異常
+			let layerPaint = map_config.paint;
+			if (layerPaint == null) {
+				layerPaint = {};
+			} else if (typeof layerPaint === "string") {
+				try {
+					layerPaint = JSON.parse(layerPaint);
+				} catch {
+					layerPaint = {};
+				}
+			} else {
+				try {
+					layerPaint = JSON.parse(JSON.stringify(layerPaint));
+				} catch {
+					layerPaint = { ...layerPaint };
+				}
+			}
 			const filterClass = [
 				["6h150r", "6h250r", "6h350r"],
 				["12h200r", "12h300r", "12h400r"],
@@ -654,7 +671,7 @@ export const useMapStore = defineStore("map", {
 				paint: {
 					...maplayerCommonPaint[`${map_config.type}`],
 					...extra_paint_configs,
-					...map_config.paint,
+					...layerPaint,
 				},
 				layout: {
 					...maplayerCommonLayout[`${map_config.type}`],

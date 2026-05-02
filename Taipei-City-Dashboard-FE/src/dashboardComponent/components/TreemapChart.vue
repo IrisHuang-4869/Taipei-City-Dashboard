@@ -4,6 +4,40 @@
 import { ref, computed } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 
+/** three_d：series[0].data 為數字陣列時，與 chart_config.categories 對齊成 Apex treemap 需要的 { x, y }[] */
+function buildTreemapSeries(series, categories) {
+	if (!series?.length) {
+		return [{ data: [] }];
+	}
+	const raw = series[0].data;
+	const name = series[0].name || "";
+	if (!Array.isArray(raw) || !raw.length) {
+		return series;
+	}
+	const first = raw[0];
+	const alreadyTreemap =
+		first != null &&
+		typeof first === "object" &&
+		!Array.isArray(first) &&
+		Object.prototype.hasOwnProperty.call(first, "x") &&
+		Object.prototype.hasOwnProperty.call(first, "y");
+	if (alreadyTreemap) {
+		return series;
+	}
+	if (categories?.length) {
+		return [
+			{
+				name,
+				data: categories.map((x, i) => ({
+					x,
+					y: Number(raw[i]) || 0,
+				})),
+			},
+		];
+	}
+	return series;
+}
+
 const props = defineProps([
 	"chart_config",
 	"activeChart",
@@ -89,12 +123,20 @@ const chartOptions = ref({
 	},
 });
 
+const treemapSeries = computed(() =>
+	buildTreemapSeries(props.series, props.chart_config?.categories),
+);
+
 const sum = computed(() => {
-	let sum = 0;
-	props.series[0].data.forEach(
-		(item) => (sum += item.y)
-	);
-	return Math.round(sum * 100) / 100;
+	const data = treemapSeries.value?.[0]?.data;
+	if (!data?.length) {
+		return 0;
+	}
+	let s = 0;
+	for (const item of data) {
+		s += Number(item.y) || 0;
+	}
+	return Math.round(s * 100) / 100;
 });
 
 const selectedIndex = ref(null);
@@ -149,7 +191,7 @@ function handleDataSelection(_e, _chartContext, config) {
       width="100%"
       type="treemap"
       :options="chartOptions"
-      :series="series"
+      :series="treemapSeries"
       @data-point-selection="handleDataSelection"
     />
   </div>

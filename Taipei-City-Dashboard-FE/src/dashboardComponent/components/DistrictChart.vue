@@ -134,17 +134,48 @@ const districtData = computed(() => {
 	let highest = 0;
 	let sum = 0;
 	let count = 0;
-	if (props.series.length === 1 && typeof props.series[0].data[0] === 'object' && props.series[0].data[0] !== null) {
-		props.series[0].data.forEach((item) => {
-			output[item.x] = item.y;
-			if (item.y > highest) {
-				highest = item.y;
+	if (props.series.length === 1) {
+		const s0 = props.series[0].data;
+		if (!Array.isArray(s0) || !s0.length) {
+			// 無資料
+		} else {
+			const cats = props.chart_config?.categories;
+			const first = s0[0];
+			const isXyObjects =
+				first != null &&
+				typeof first === "object" &&
+				!Array.isArray(first) &&
+				Object.prototype.hasOwnProperty.call(first, "x");
+			const isPercent = props.chart_config?.unit === "%";
+
+			if (isXyObjects) {
+				s0.forEach((item) => {
+					output[item.x] = item.y;
+					if (item.y > highest) {
+						highest = item.y;
+					}
+					if (isPercent) {
+						if (item.y > 0) {
+							sum += item.y;
+							count++;
+						}
+					} else {
+						sum += item.y;
+					}
+				});
+			} else if (cats?.length && Array.isArray(s0)) {
+				// three_d：categories + 數字陣列（公噸等）
+				cats.forEach((cat, i) => {
+					const y = Number(s0[i]);
+					const n = Number.isFinite(y) ? y : 0;
+					output[cat] = n;
+					if (n > highest) {
+						highest = n;
+					}
+					sum += n;
+				});
 			}
-			if (item.y > 0) {
-				sum += item.y;
-				count++;
-			}
-		});
+		}
 	} else {
 		props.series.forEach((serie) => {
 			for (let i = 0; i < props.chart_config.categories.length; i++) {
