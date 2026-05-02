@@ -129,6 +129,7 @@ export const localGarbageMapLayers = [
 		use_case: "用於比較雙北各行政區垃圾清運站點數量與密度。",
 		links: [
 			"https://data.taipei/dataset/detail?id=6bb3304b-4f46-4bb0-8cd1-60c66dcd1cae",
+			"https://data.taipei/dataset/detail?id=1acf38f3-1509-4cb1-898a-9b1d4f31a3af",
 			"https://data.ntpc.gov.tw/datasets/edc3ad26-8ae7-4916-a00b-bc6048d19bf8",
 		],
 		tags: ["garbage", "ntpc", "taipei"],

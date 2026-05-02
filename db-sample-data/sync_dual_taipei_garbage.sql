@@ -52,7 +52,7 @@ INSERT INTO query_charts (
   '顯示臺北市各里垃圾車收運點位及預定到達時間。',
   '呈現臺北市環保局各清潔隊分隊垃圾車收運站點，標示行政區、里別、地點及抵達／離開時間；點位顏色依抵達時間分四個時段深淺標示，方便民眾辨識收運時段。',
   '查詢住家附近的垃圾車收運點位與時間，安排適時出門配合清運；亦可供環保單位掌握各路線站點分布與收運密度。',
-  ARRAY[]::text[], ARRAY['doit']::text[], NOW(), NOW(), 'map_legend', 'taipei'
+  ARRAY['https://data.taipei/dataset/detail?id=6bb3304b-4f46-4bb0-8cd1-60c66dcd1cae']::text[], ARRAY['doit']::text[], NOW(), NOW(), 'map_legend', 'taipei'
 ),
 (
   'garbage_taipei_dropoff_local', ARRAY[311]::integer[],
@@ -61,7 +61,7 @@ INSERT INTO query_charts (
   '顯示臺北市限時收受點位置，僅在特定時段開放投放垃圾。',
   '呈現臺北市環保局設置的限時收受點，各點位標示行政區、分隊、電話、地址及備註資訊，民眾需在指定時段前往投放垃圾。',
   '查詢鄰近的限時收受點位置與開放時段，方便在無固定收運路線的區域安排垃圾投放，避免錯過收受時間。',
-  ARRAY[]::text[], ARRAY['doit']::text[], NOW(), NOW(), 'map_legend', 'taipei'
+  ARRAY['https://data.taipei/dataset/detail?id=1acf38f3-1509-4cb1-898a-9b1d4f31a3af']::text[], ARRAY['doit']::text[], NOW(), NOW(), 'map_legend', 'taipei'
 ),
 (
   'garbage_ntpc_route_local', ARRAY[312]::integer[],
@@ -71,7 +71,7 @@ INSERT INTO query_charts (
   '顯示新北市各里循線清運點，為固定路線定期清運站點。',
   '呈現新北市環保局循線定期清運之站點，包含行政區、里別、清運點名稱、路線名稱及表定清運時間，涵蓋各區固定收運路線的所有停靠點位。',
   '查詢所在里別附近的固定循線清運點及時間，安排垃圾投放；亦可供環保單位分析清運路線密度與各里覆蓋情形。',
-  ARRAY[]::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'map_legend', 'metrotaipei'
+  ARRAY['https://data.ntpc.gov.tw/datasets/edc3ad26-8ae7-4916-a00b-bc6048d19bf8']::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'map_legend', 'metrotaipei'
 ),
 (
   'garbage_ntpc_mobile_local', ARRAY[313]::integer[],
