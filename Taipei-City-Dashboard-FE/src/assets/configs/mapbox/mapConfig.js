@@ -506,11 +506,11 @@ export const maplayerCommonLayout = {
 		"icon-size": [
 			"interpolate",
 			["linear"],
-			["get", "total_volume"],
-			900,
+			["get", "actual_volume_month"],
+			14000,
 			0.15,
-			1800,
-			0.4,
+			54000,
+			0.45,
 		],
 	},
 	"symbol-metro-density": {
