@@ -22,6 +22,77 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { point, distance } from "@turf/turf";
 
+/** 廚餘面圖：避免沿用 fill 共用 zoom 內插 opacity（高 zoom 僅 ~0.15）導致整圖過淡 */
+const KITCHEN_FILL_MAP_INDICES = new Set([
+	"ntpc_kitchen_waste_map_mvp",
+	"metro_kitchen_waste_map_mvp",
+]);
+
+/** 與 db-sample-data 廚餘 paint 一致；alpha 階梯對齊 metro_recycling_map_mvp（0.1→0.92） */
+const KITCHEN_FILL_COLOR_EXPR = [
+	"interpolate",
+	["linear"],
+	["coalesce", ["to-number", ["get", "kitchen_tons"]], 0],
+	0,
+	"rgba(254,215,170,0.1)",
+	0.16875,
+	"rgba(253,186,116,0.28)",
+	0.3375,
+	"rgba(251,146,60,0.45)",
+	0.50625,
+	"rgba(249,115,22,0.6)",
+	0.675,
+	"rgba(234,88,12,0.74)",
+	0.84375,
+	"rgba(217,119,6,0.84)",
+	1.0125,
+	"rgba(194,65,12,0.88)",
+	1.18125,
+	"rgba(154,52,18,0.9)",
+	1.35,
+	"rgba(67,20,7,0.92)",
+];
+
+function parseComponentMapPaint(paint) {
+	if (paint == null) return {};
+	if (typeof paint === "string") {
+		try {
+			const o = JSON.parse(paint);
+			return o !== null && typeof o === "object" ? o : {};
+		} catch {
+			return {};
+		}
+	}
+	if (typeof paint === "object") {
+		return { ...paint };
+	}
+	return {};
+}
+
+function isKitchenFillMapConfig(map_config) {
+	if (!map_config) return false;
+	if (
+		map_config.index &&
+		KITCHEN_FILL_MAP_INDICES.has(map_config.index)
+	) {
+		return true;
+	}
+	const lid = map_config.layerId;
+	return (
+		typeof lid === "string" &&
+		(lid.startsWith("ntpc_kitchen_waste_map_mvp-") ||
+			lid.startsWith("metro_kitchen_waste_map_mvp-"))
+	);
+}
+
+function isKitchenFillLayerId(mapLayerId) {
+	return (
+		typeof mapLayerId === "string" &&
+		(mapLayerId.startsWith("ntpc_kitchen_waste_map_mvp-") ||
+			mapLayerId.startsWith("metro_kitchen_waste_map_mvp-"))
+	);
+}
+
 // Other Stores
 import { useAuthStore } from "./authStore";
 import { useDialogStore } from "./dialogStore";
@@ -683,16 +754,27 @@ export const useMapStore = defineStore("map", {
 
 			// 初始 filter 設定為第一組 (6 小時降雨)
 			const initialFilter = ["in", "hazard_class", ...filterClass[0]];
+			const componentPaint = parseComponentMapPaint(map_config.paint);
+			const basePaint = {
+				...maplayerCommonPaint[`${map_config.type}`],
+				...extra_paint_configs,
+				...componentPaint,
+			};
+			if (isKitchenFillMapConfig(map_config)) {
+				basePaint["fill-opacity"] = 1;
+				if (!basePaint["fill-color"]) {
+					basePaint["fill-color"] = KITCHEN_FILL_COLOR_EXPR;
+				}
+				if (!basePaint["fill-outline-color"]) {
+					basePaint["fill-outline-color"] = "rgba(255,255,255,0.35)";
+				}
+			}
 			const config = {
 				id: map_config.layerId,
 				type: map_config.type,
 				"source-layer":
 					map_config.source === "raster" ? map_config.index : "",
-				paint: {
-					...maplayerCommonPaint[`${map_config.type}`],
-					...extra_paint_configs,
-					...map_config.paint,
-				},
+				paint: basePaint,
 				layout: {
 					...maplayerCommonLayout[`${map_config.type}`],
 					...extra_layout_configs,
@@ -716,7 +798,10 @@ export const useMapStore = defineStore("map", {
 			)
 				this.animateFilter(map_config.layerId);
 			this.currentLayers.push(map_config.layerId);
-			this.mapConfigs[map_config.layerId] = map_config;
+			this.mapConfigs[map_config.layerId] = {
+				...map_config,
+				paint: { ...basePaint },
+			};
 			if (!this.currentVisibleLayers.includes(map_config.layerId)) {
 				this.currentVisibleLayers.push(map_config.layerId);
 			}
@@ -1878,6 +1963,23 @@ export const useMapStore = defineStore("map", {
 						"visibility",
 						"visible",
 					);
+					if (
+						this.map.getLayer(mapLayerId) &&
+						isKitchenFillLayerId(mapLayerId)
+					) {
+						this.map.setPaintProperty(
+							mapLayerId,
+							"fill-opacity",
+							1,
+						);
+						const cfg = this.mapConfigs[mapLayerId];
+						const fc = cfg?.paint?.["fill-color"];
+						this.map.setPaintProperty(
+							mapLayerId,
+							"fill-color",
+							fc && Array.isArray(fc) ? fc : KITCHEN_FILL_COLOR_EXPR,
+						);
+					}
 				}
 			}
 		},

@@ -1,0 +1,12 @@
+臺北市各行政區「清潔隊廚餘回收量」月資料（公噸）
+
+請將臺北市環保局公開之「各區清潔隊廚餘回收量統計表」PDF 置於本資料夾（檔名不限，副檔名 .pdf）。
+版面須與 raw/tpc_recycling_history 內「各區清潔隊資源回收量」相同：表尾有「臺北市政府環境保護局○○年各區清潔隊廚餘回收量統計表」、單位列為「○○區隊」、數字為帶兩位小數之公噸。
+
+產出指令（於專案 scripts 目錄）：
+  node build_tpc_kitchen_sql.mjs
+  node build_metro_kitchen_geojson.mjs
+
+若暫無 PDF，可先以占位資料串接雙北圖層（臺北 12 區為 0 公噸）：
+  node build_tpc_kitchen_sql.mjs --placeholder
+  node build_metro_kitchen_geojson.mjs

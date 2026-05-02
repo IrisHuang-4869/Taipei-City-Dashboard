@@ -9,7 +9,7 @@ SET
   query_chart = $q$SELECT district AS x_axis,
        '資源回收量(公噸)' AS y_axis,
        ''::text AS icon,
-       round(recycling_kg::numeric / 1000)::int AS data
+       ROUND((recycling_kg::numeric / 1000.0), 2)::double precision AS data
 FROM public.ntpc_waste_mvp
 ORDER BY 1$q$,
   updated_at = NOW()
@@ -18,12 +18,42 @@ WHERE index = 'ntpc_recycling_map_mvp' AND city = 'metrotaipei';
 UPDATE public.query_charts
 SET
   query_chart = $q$SELECT district AS x_axis,
+       '資源回收量(公噸)' AS y_axis,
+       ''::text AS icon,
+       ROUND((recycling_kg::numeric / 1000.0), 2)::double precision AS data
+FROM (
+  SELECT district, recycling_kg FROM public.ntpc_waste_mvp
+  UNION ALL
+  SELECT district, recycling_kg FROM public.tpc_recycling_mvp
+) AS u
+ORDER BY 1$q$,
+  updated_at = NOW()
+WHERE index = 'metro_recycling_map_mvp' AND city = 'metrotaipei';
+
+UPDATE public.query_charts
+SET
+  query_chart = $q$SELECT district AS x_axis,
        '廚餘回收量(公噸)' AS y_axis,
        ''::text AS icon,
-       round(kitchen_kg::numeric / 1000)::int AS data
+       ROUND((kitchen_kg::numeric / 1000.0), 2)::double precision AS data
 FROM public.ntpc_waste_mvp
 ORDER BY 1$q$,
   updated_at = NOW()
 WHERE index = 'ntpc_kitchen_waste_map_mvp' AND city = 'metrotaipei';
+
+UPDATE public.query_charts
+SET
+  query_chart = $q$SELECT district AS x_axis,
+       '廚餘回收量(公噸)' AS y_axis,
+       ''::text AS icon,
+       ROUND((kitchen_kg::numeric / 1000.0), 2)::double precision AS data
+FROM (
+  SELECT district, kitchen_kg FROM public.ntpc_waste_mvp
+  UNION ALL
+  SELECT district, kitchen_kg FROM public.tpc_kitchen_mvp
+) AS u
+ORDER BY 1$q$,
+  updated_at = NOW()
+WHERE index = 'metro_kitchen_waste_map_mvp' AND city = 'metrotaipei';
 
 COMMIT;

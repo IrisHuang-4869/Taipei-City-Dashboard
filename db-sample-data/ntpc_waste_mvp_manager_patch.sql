@@ -21,26 +21,26 @@ DELETE FROM component_maps WHERE id IN (150, 151);
 INSERT INTO component_maps (id, index, title, type, source, size, icon, paint, property) VALUES
 (150, 'ntpc_recycling_map_mvp', '新北資源回收量（分區）', 'fill', 'geojson', NULL, NULL,
  $paint150${
-  "fill-opacity": 0.85,
-  "fill-outline-color": "rgba(255,255,255,0.26)",
-  "fill-color": ["interpolate",["linear"],["coalesce",["to-number",["get","recycling_tons"]],0],0,"#356b52",3500,"#4c8569",7000,"#63a082",10500,"#7ab99a",14000,"#9fe0c0"]
+  "fill-opacity": 1,
+  "fill-outline-color": "rgba(255,255,255,0.22)",
+  "fill-color": ["interpolate",["linear"],["coalesce",["to-number",["get","recycling_tons"]],0],0,"#ecfdf5",2000,"#d1fae5",4000,"#a7f3d0",6000,"#6ee7b7",8000,"#34d399",10000,"#10b981",12000,"#047857",14000,"#064e3b"]
 }$paint150$::json,
  '[{"key":"TNAME","name":"區名"},{"key":"recycling_tons","name":"回收量（公噸）"}]'::json),
 (151, 'ntpc_kitchen_waste_map_mvp', '新北廚餘回收量（分區）', 'fill', 'geojson', NULL, NULL,
  $paint151${
-  "fill-opacity": 0.85,
-  "fill-outline-color": "rgba(255,255,255,0.26)",
-  "fill-color": ["interpolate",["linear"],["coalesce",["to-number",["get","kitchen_tons"]],0],0,"#6e5a42",140,"#8c7358",320,"#aa8c6f",520,"#c6a686",780,"#e8d2b8"]
+  "fill-opacity": 1,
+  "fill-outline-color": "rgba(255,255,255,0.22)",
+  "fill-color": ["interpolate",["linear"],["coalesce",["to-number",["get","kitchen_tons"]],0],0,"rgba(254,215,170,0.1)",0.16875,"rgba(253,186,116,0.28)",0.3375,"rgba(251,146,60,0.45)",0.50625,"rgba(249,115,22,0.6)",0.675,"rgba(234,88,12,0.74)",0.84375,"rgba(217,119,6,0.84)",1.0125,"rgba(194,65,12,0.88)",1.18125,"rgba(154,52,18,0.9)",1.35,"rgba(67,20,7,0.92)"]
 }$paint151$::json,
  '[{"key":"TNAME","name":"區名"},{"key":"kitchen_tons","name":"廚餘回收量（公噸）"}]'::json);
 
 INSERT INTO components (id, index, name) VALUES
 (300, 'ntpc_recycling_map_mvp', '回收地圖'),
-(301, 'ntpc_kitchen_waste_map_mvp', '垃圾地圖');
+(301, 'ntpc_kitchen_waste_map_mvp', '廚餘地圖');
 
 INSERT INTO component_charts (index, color, types, unit) VALUES
-('ntpc_recycling_map_mvp', '{#22c55e,#4ade80,#15803d,#14532d}', '{TreemapChart,ColumnChart}', '公噸'),
-('ntpc_kitchen_waste_map_mvp', '{#fbbf24,#f59e0b,#d97706,#78350f}', '{TreemapChart,ColumnChart}', '公噸');
+('ntpc_recycling_map_mvp', '{#ecfdf5,#d1fae5,#a7f3d0,#6ee7b7,#34d399,#10b981,#047857,#064e3b}', '{TreemapChart,ColumnChart}', '公噸'),
+('ntpc_kitchen_waste_map_mvp', '{#fffbeb,#fef3c7,#fde68a,#fcd34d,#f59e0b,#d97706,#92400e,#451a03}', '{TreemapChart,ColumnChart}', '公噸');
 
 INSERT INTO query_charts (
   index, history_config, map_config_ids, map_filter, time_from, time_to,
@@ -48,38 +48,64 @@ INSERT INTO query_charts (
   links, contributors, created_at, updated_at, query_type, query_chart, query_history, city
 ) VALUES
 (
-  'ntpc_recycling_map_mvp', NULL, ARRAY[150]::integer[],
+  'ntpc_recycling_map_mvp',
+  '{"range":["year_ago","halfyear_ago"],"color":["#22c55e","#4ade80"],"unit":"公噸"}'::json,
+  ARRAY[150]::integer[],
   '{"mode":"byParam","byParam":{"xParam":"TNAME"}}'::json,
   'static', NULL, 0, NULL,
   '新北市政府開放資料（整理）',
   '新北市各行政區資源回收量（區小計／總計），單位：公噸（由公斤換算）。資料期別：中華民國115年3月。',
-  'MVP 為單月快照；臺北市區域於圖資上無數值（0）。之後可擴充多月與時間序列組件（history_config / query_history）。',
+  'MVP 為單月快照；臺北市區域於圖資上無數值（0）。歷史圖為全市各月加總（dashboard.ntpc_waste_mvp_monthly）。',
   '用於觀察各區資源回收量與空間分布。',
   ARRAY[]::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'three_d',
   $q$SELECT district AS x_axis,
        '資源回收量(公噸)' AS y_axis,
        ''::text AS icon,
-       round(recycling_kg::numeric / 1000)::int AS data
+       ROUND((recycling_kg::numeric / 1000.0), 2)::double precision AS data
 FROM public.ntpc_waste_mvp
 ORDER BY 1$q$,
-  NULL, 'metrotaipei'
+  $hist300$
+SELECT
+  date_trunc('%s', report_month::timestamp) AS x_axis,
+  '資源回收量(公噸)' AS y_axis,
+  SUM(recycling_tons)::double precision AS data
+FROM public.ntpc_waste_mvp_monthly
+WHERE report_month >= (('%s'::timestamptz) AT TIME ZONE 'Asia/Taipei')::date
+  AND report_month <= (('%s'::timestamptz) AT TIME ZONE 'Asia/Taipei')::date
+GROUP BY 1
+ORDER BY 1
+$hist300$,
+  'metrotaipei'
 ),
 (
-  'ntpc_kitchen_waste_map_mvp', NULL, ARRAY[151]::integer[],
+  'ntpc_kitchen_waste_map_mvp',
+  '{"range":["year_ago","halfyear_ago"],"color":["#fbbf24","#f59e0b"],"unit":"公噸"}'::json,
+  ARRAY[151]::integer[],
   '{"mode":"byParam","byParam":{"xParam":"TNAME"}}'::json,
   'static', NULL, 0, NULL,
   '新北市政府開放資料（整理）',
   '新北市各行政區廚餘回收量，單位：公噸（由原月報公噸換算後以整數公噸呈現）。資料期別：中華民國115年2月。',
-  'MVP 為單月快照；烏來區原表缺值時為 0。之後可擴充歷史月並改用 time 類型查詢。',
+  'MVP 為單月快照；烏來區原表缺值時為 0。歷史圖為全市各月加總（dashboard.ntpc_waste_mvp_monthly）。',
   '用於觀察各區廚餘回收量與空間分布。',
   ARRAY[]::text[], ARRAY['ntpc']::text[], NOW(), NOW(), 'three_d',
   $q$SELECT district AS x_axis,
        '廚餘回收量(公噸)' AS y_axis,
        ''::text AS icon,
-       round(kitchen_kg::numeric / 1000)::int AS data
+       ROUND((kitchen_kg::numeric / 1000.0), 2)::double precision AS data
 FROM public.ntpc_waste_mvp
 ORDER BY 1$q$,
-  NULL, 'metrotaipei'
+  $hist301$
+SELECT
+  date_trunc('%s', report_month::timestamp) AS x_axis,
+  '廚餘回收量(公噸)' AS y_axis,
+  SUM(kitchen_tons)::double precision AS data
+FROM public.ntpc_waste_mvp_monthly
+WHERE report_month >= (('%s'::timestamptz) AT TIME ZONE 'Asia/Taipei')::date
+  AND report_month <= (('%s'::timestamptz) AT TIME ZONE 'Asia/Taipei')::date
+GROUP BY 1
+ORDER BY 1
+$hist301$,
+  'metrotaipei'
 );
 
 UPDATE public.dashboards

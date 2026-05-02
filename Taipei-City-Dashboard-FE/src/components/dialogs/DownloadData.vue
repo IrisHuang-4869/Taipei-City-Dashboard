@@ -13,7 +13,16 @@ import DialogContainer from "./DialogContainer.vue";
 const props = defineProps(["content"]);
 
 const dialogStore = useDialogStore();
-const content = computed(() => props.content || dialogStore.moreInfoContent);
+const content = computed(() => {
+	if (props.content) {
+		return props.content;
+	}
+	const m = dialogStore.moreInfoContent;
+	if (m == null) {
+		return {};
+	}
+	return Array.isArray(m) ? m[0] ?? {} : m;
+});
 
 // Stores the inputted dashboard name
 const name = ref(content.value.name);

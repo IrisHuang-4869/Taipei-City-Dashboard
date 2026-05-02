@@ -1,5 +1,7 @@
 -- 新北回收／廚餘 MVP：查詢用資料表 + 示範列（與 mapData 內兩份 GeoJSON 屬性對齊）。
--- 數字為專案內示範用，正式環境請以新北市政府開放資料替換。
+-- 數字為專案內示範用；若需與官方月報一致（各區清潔隊／環保單位回收量），請以 raw 報表執行
+--   cd scripts && node build_ntpc_waste_history_sql.mjs
+-- 產出 db-sample-data/generated/import_ntpc_waste_mvp_history.sql 並同步 GeoJSON 後，再匯入 DB。
 --
 -- 後端架構：query_charts 存在 **dashboardmanager**；實際 chart SQL 由 API 在 **dashboard**
 -- 資料庫執行（DBDashboard）。因此下列指令須在 **兩個** DB 各執行一次（或僅 dashboard 若 manager 已由其他流程寫入）。

@@ -8,6 +8,14 @@ const props = defineProps(["chart_config", "series", "history_config"]);
 
 const currentSeries = ref(0);
 
+function formatHistoryValue(val) {
+	const n = Number(val);
+	if (!Number.isFinite(n)) {
+		return "";
+	}
+	return n.toFixed(1);
+}
+
 const chartOptions = ref({
 	chart: {
 		toolbar: {
@@ -49,6 +57,8 @@ const chartOptions = ref({
 	},
 	tooltip: {
 		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+			const raw = series[seriesIndex][dataPointIndex];
+			const valueStr = formatHistoryValue(raw);
 			// The class "chart-tooltip" could be edited in /assets/styles/chartStyles.css
 			return (
 				'<div class="chart-tooltip">' +
@@ -58,7 +68,7 @@ const chartOptions = ref({
 				)}` +
 				"</h6>" +
 				"<span>" +
-				series[seriesIndex][dataPointIndex] +
+				valueStr +
 				` ${
 					props.history_config.unit
 						? props.history_config.unit
@@ -67,6 +77,11 @@ const chartOptions = ref({
 				"</span>" +
 				"</div>"
 			);
+		},
+	},
+	yaxis: {
+		labels: {
+			formatter: (val) => formatHistoryValue(val),
 		},
 	},
 	xaxis: {

@@ -3,6 +3,10 @@
 <script setup>
 import { computed, ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
+import {
+	discreteNtpcRankColors,
+	isNtpcWasteRankColorChart,
+} from "../utilities/ntpcWasteMvpPalette";
 
 const props = defineProps([
 	"chart_config",
@@ -24,6 +28,11 @@ const emits = defineEmits([
 /** 矩形面積約與數值成正比：佔全圖比例過低時不顯示區名，避免小格字被裁切 */
 const LABEL_MIN_SHARE_OF_TOTAL = 0.024;
 
+/** 新北 MVP：矩形圖依量由大到小排，與長條／地圖共用寫死 8 階；圖表依「名次」分桶（非數值線性） */
+const useNtpcRankTreemapStyle = computed(() =>
+	isNtpcWasteRankColorChart(props.chart_config),
+);
+
 /** two_d：data 為 { x, y }[]；three_d／percent：data 為數字[]，需搭配 chart_config.categories（維持 API 順序，不另外降冪） */
 const treemapSeries = computed(() => {
 	const raw = props.series;
@@ -41,13 +50,22 @@ const treemapSeries = computed(() => {
 	}
 	const categories = props.chart_config?.categories ?? [];
 	const nums = raw[0].data;
-	const data = nums.map((val, i) => {
+	let data = nums.map((val, i) => {
 		const y = Number(val);
 		return {
 			x: categories[i] != null ? categories[i] : `項目${i + 1}`,
 			y: Number.isFinite(y) ? y : 0,
 		};
 	});
+	if (useNtpcRankTreemapStyle.value) {
+		data = [...data].sort((a, b) => {
+			const dy = b.y - a.y;
+			if (dy !== 0) {
+				return dy;
+			}
+			return String(a.x).localeCompare(String(b.x), "zh-Hant");
+		});
+	}
 	return [{ data }];
 });
 
@@ -66,6 +84,11 @@ const treemapChartOptions = computed(() => {
 	const rows = treemapSeries.value[0]?.data ?? [];
 	const total = rows.reduce((s, d) => s + (Number(d?.y) || 0), 0);
 	const unit = props.chart_config?.unit || "";
+	const baseColors = [...(props.chart_config?.color || [])];
+	const colors =
+		useNtpcRankTreemapStyle.value && rows.length > 0
+			? discreteNtpcRankColors(rows.length, props.chart_config.index)
+			: baseColors;
 	return {
 		chart: {
 			borderRadius: 5,
@@ -73,7 +96,7 @@ const treemapChartOptions = computed(() => {
 				show: false,
 			},
 		},
-		colors: [...(props.chart_config?.color || [])],
+		colors,
 		dataLabels: {
 			formatter(val, opts) {
 				const pt =

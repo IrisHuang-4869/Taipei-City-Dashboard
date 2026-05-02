@@ -64,7 +64,7 @@ function handleMoreInfo(item) {
 			params: { index: item.index },
 		});
 	} else {
-		dialogStore.showMoreInfo(item);
+		void contentStore.openMoreInfoFromDashboard(item);
 	}
 }
 </script>

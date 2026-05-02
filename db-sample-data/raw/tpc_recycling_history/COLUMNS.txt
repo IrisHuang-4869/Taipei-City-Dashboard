@@ -1,0 +1,23 @@
+放置 **臺北市政府環境保護局「○○年各區清潔隊資源回收量統計表」PDF**（單頁表格式）。
+
+彙整方式：
+
+  cd scripts && node build_tpc_recycling_sql.mjs
+
+會產出：
+
+  db-sample-data/generated/import_tpc_recycling_from_pdf.sql（表 tpc_recycling_monthly、tpc_recycling_mvp）
+  Taipei-City-Dashboard-FE/public/mapData/tpc_recycling_map_mvp.geojson
+
+再於 **dashboard** 執行 `import_tpc_recycling_from_pdf.sql`。
+
+**雙北合併（建議）**：合併圖資 `npm run build-metro-recycling-geojson`，再於 **dashboardmanager** 執行 `metro_recycling_unified_manager_patch.sql`，儀表板僅保留 **303「資源回收統計」**（與廚餘 301 並列），不再使用 300／302 兩張回收地圖。
+
+---
+
+**合併後若地圖無資料請檢查**
+
+1. Manager：`components` 須含 **303**、**metro_recycling_map_mvp** 之 `component_maps.id` = **153**。
+2. Dashboard：`ntpc_waste_mvp`、`tpc_recycling_mvp` 皆有列。
+3. FE：`/mapData/metro_recycling_map_mvp.geojson` 可取得（`npm run build-metro-recycling-geojson`）。
+4. 瀏覽器強制重新整理；地圖頁開啟 **「資源回收統計」** 圖層開關。

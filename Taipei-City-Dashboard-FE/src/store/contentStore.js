@@ -336,10 +336,7 @@ export const useContentStore = defineStore("content", {
 				) {
 					const component = this.cityDashboard.components[index];
 					// Get history data if applicable
-					if (
-						component.history_config &&
-						component.history_config.range
-					) {
+					if (component.history_config?.range) {
 						for (let i in component.history_config.range) {
 							try {
 								const response = await http.get(
@@ -459,10 +456,7 @@ export const useContentStore = defineStore("content", {
 						continue;
 					}
 					// Get history data if applicable
-					if (
-						component.history_config &&
-						component.history_config.range
-					) {
+					if (component.history_config?.range) {
 						for (let i in component.history_config.range) {
 							try {
 								const response = await http.get(
@@ -581,10 +575,7 @@ export const useContentStore = defineStore("content", {
 						continue;
 					}
 					// Get history data if applicable
-					if (
-						component.history_config &&
-						component.history_config.range
-					) {
+					if (component.history_config?.range) {
 						for (let i in component.history_config.range) {
 							try {
 								const response = await http.get(
@@ -948,7 +939,7 @@ export const useContentStore = defineStore("content", {
 				}
 
 				// 2-3. Get the component history data if applicable
-				if (dialogStore.moreInfoContent[index].history_config) {
+				if (dialogStore.moreInfoContent[index].history_config?.range) {
 					for (let i in dialogStore.moreInfoContent[index]
 						.history_config.range) {
 						const response = await http.get(
@@ -978,6 +969,119 @@ export const useContentStore = defineStore("content", {
 				}
 				this.loading = false;
 			}
+		},
+
+		/**
+		 * 從 Manager 拉單一組件完整設定（含 chart、history），並寫回 moreInfo 與 cityDashboard。
+		 * 解決儀表板載入後 Manager 才更新 query_charts 時，更多資訊仍顯示舊 long_desc／無 history 的問題。
+		 */
+		async openMoreInfoFromDashboard(item) {
+			const dialogStore = useDialogStore();
+			dialogStore.showDialog("moreInfo");
+			dialogStore.moreInfoContent = item;
+			const updated = await this.fetchComponentConfigWithChartHistory(
+				item.index,
+				item.city,
+			);
+			if (!updated) {
+				return;
+			}
+			dialogStore.moreInfoContent = updated;
+			const list = this.cityDashboard.components;
+			if (Array.isArray(list)) {
+				const idx = list.findIndex(
+					(c) => c.id === item.id && c.city === item.city,
+				);
+				if (idx >= 0) {
+					Object.assign(list[idx], updated);
+				}
+			}
+		},
+
+		async fetchComponentConfigWithChartHistory(index, city) {
+			const response_1 = await http.get(`/component/`, {
+				params: {
+					filtermode: "eq",
+					filterby: "index",
+					filtervalue: index,
+					city: city,
+				},
+			});
+
+			if (!response_1.data?.data || response_1.data.results === 0) {
+				return null;
+			}
+
+			const raw = response_1.data.data;
+			const rows = Array.isArray(raw) ? raw : [raw];
+			const row =
+				rows.find((c) => c.city === city) ?? rows[0] ?? null;
+			if (!row) {
+				return null;
+			}
+
+			if (typeof row.history_config === "string") {
+				try {
+					row.history_config = JSON.parse(row.history_config);
+				} catch {
+					/* keep string */
+				}
+			}
+			if (typeof row.chart_config === "string") {
+				try {
+					row.chart_config = JSON.parse(row.chart_config);
+				} catch {
+					/* keep string */
+				}
+			}
+
+			const response_2 = await http.get(`/component/${row.id}/chart`, {
+				params: {
+					city: row.city,
+					...(!["static", "current", "demo"].includes(row.time_from)
+						? getComponentDataTimeframe(
+								row.time_from,
+								row.time_to,
+								true,
+							)
+						: {}),
+				},
+			});
+
+			row.chart_data = response_2.data.data;
+			if (response_2.data.categories) {
+				row.chart_config.categories = response_2.data.categories;
+			}
+
+			if (row.history_config?.range) {
+				row.history_data = [];
+				for (const i in row.history_config.range) {
+					try {
+						const response = await http.get(
+							`/component/${row.id}/history`,
+							{
+								params: {
+									city: row.city,
+									...getComponentDataTimeframe(
+										row.history_config.range[i],
+										"now",
+										true,
+									),
+								},
+							},
+						);
+						row.history_data.push(response.data.data);
+					} catch (error) {
+						console.error(
+							`Failed to fetch history for component ${row.id}:`,
+							error,
+						);
+						row.history_data.push([]);
+					}
+				}
+			}
+
+			return row;
 		},
 
 		/* Common Methods to Edit Dashboards */

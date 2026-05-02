@@ -1,5 +1,6 @@
 -- MOENV 回收點：八圖層合併為單一組件（id=229, index=moenv_wr_recycle_metrotaipei），component_maps 仍為 111–118。
 -- 可重複執行。
+-- 建議順序：若儀表板含雙北資源回收統計／廚餘，先跑 metro_recycling_unified_manager_patch（或確認 components 已有 301、303），再跑本檔。
 
 BEGIN;
 
@@ -47,8 +48,9 @@ INSERT INTO query_charts (index, history_config, map_config_ids, map_filter, tim
  NULL,
  'metrotaipei');
 
+-- 與 dashboardmanager-demo、新北 300/301 併存；並取代舊版「221–228 每類一個組件」的清單
 UPDATE dashboards
-SET components = ARRAY[999, 229]::integer[]
+SET components = ARRAY[219, 220, 999, 229, 300, 301, 303]::integer[]
 WHERE index = 'garbage_map_metrotaipei';
 
 SELECT setval('component_maps_id_seq', (SELECT COALESCE(MAX(id), 1) FROM component_maps));

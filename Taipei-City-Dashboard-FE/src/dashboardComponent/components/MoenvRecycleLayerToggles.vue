@@ -566,7 +566,6 @@ function toggleSelectAllLayers() {
       </template>
     </template>
 
-
   </div>
 </template>
 

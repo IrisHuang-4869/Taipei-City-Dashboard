@@ -1,6 +1,7 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023-2024-->
 
 <script setup>
+import { computed } from "vue";
 import DashboardComponent from "../../dashboardComponent/DashboardComponent.vue";
 import { useDialogStore } from "../../store/dialogStore";
 import { useContentStore } from "../../store/contentStore";
@@ -14,6 +15,15 @@ import EmbedComponent from "./EmbedComponent.vue";
 const dialogStore = useDialogStore();
 const contentStore = useContentStore();
 const authStore = useAuthStore();
+
+/** 更多資訊為單一物件；/component/:index 路由可能為陣列 */
+const moreInfoPanel = computed(() => {
+	const m = dialogStore.moreInfoContent;
+	if (m == null) {
+		return null;
+	}
+	return Array.isArray(m) ? m[0] ?? null : m;
+});
 
 function getLinkTag(link, index) {
 	if (link.includes("data.taipei")) {
@@ -35,42 +45,43 @@ function getLinkTag(link, index) {
     :dialog="`moreInfo`"
     @on-close="dialogStore.hideAllDialogs"
   >
-    <div class="moreinfo">
+    <div
+      v-if="moreInfoPanel"
+      class="moreinfo"
+    >
       <DashboardComponent
-        :config="dialogStore.moreInfoContent"
-        :active-city="dialogStore.moreInfoContent.city"
-        :city-tag="contentStore.cityManager.getTagList(dialogStore.moreInfoContent.city)"
+        :config="moreInfoPanel"
+        :active-city="moreInfoPanel.city"
+        :city-tag="contentStore.cityManager.getTagList(moreInfoPanel.city)"
         mode="large"
       />
       <div class="moreinfo-info">
         <div class="moreinfo-info-data">
           <h3>
             組件說明（{{
-              ` ID: ${dialogStore.moreInfoContent.id}｜Index: ${dialogStore.moreInfoContent.index}｜City: ${dialogStore.moreInfoContent.city}`
+              ` ID: ${moreInfoPanel.id}｜Index: ${moreInfoPanel.index}｜City: ${moreInfoPanel.city}`
             }}）
           </h3>
-          <p>{{ dialogStore.moreInfoContent.long_desc }}</p>
+          <p>{{ moreInfoPanel.long_desc }}</p>
           <h3>範例情境</h3>
-          <p>{{ dialogStore.moreInfoContent.use_case }}</p>
-          <div v-if="dialogStore.moreInfoContent.history_config">
+          <p>{{ moreInfoPanel.use_case }}</p>
+          <div
+            v-if="moreInfoPanel.history_config?.range"
+            class="moreinfo-info-history"
+          >
             <h3>歷史軸</h3>
             <h4>*點擊並拉動以檢視細部區間資料</h4>
             <HistoryChart
-              :chart_config="
-                dialogStore.moreInfoContent.chart_config
-              "
-              :series="dialogStore.moreInfoContent.history_data"
-              :history_config="
-                dialogStore.moreInfoContent.history_config
-              "
+              :chart_config="moreInfoPanel.chart_config"
+              :series="moreInfoPanel.history_data || []"
+              :history_config="moreInfoPanel.history_config"
             />
           </div>
-          <div v-if="dialogStore.moreInfoContent.links?.length > 0">
+          <div v-if="moreInfoPanel.links?.length > 0">
             <h3>相關資料</h3>
             <div class="moreinfo-info-links">
               <a
-                v-for="(link, index) in dialogStore
-                  .moreInfoContent.links"
+                v-for="(link, index) in moreInfoPanel.links"
                 :key="link"
                 :href="link"
                 target="_blank"
@@ -78,12 +89,11 @@ function getLinkTag(link, index) {
               >{{ getLinkTag(link, index) }}</a>
             </div>
           </div>
-          <div v-if="dialogStore.moreInfoContent.contributors">
+          <div v-if="moreInfoPanel.contributors">
             <h3>協作者</h3>
             <div class="moreinfo-info-contributors">
               <div
-                v-for="contributor in dialogStore
-                  .moreInfoContent.contributors"
+                v-for="contributor in moreInfoPanel.contributors"
                 :key="contributor"
               >
                 <a
@@ -115,9 +125,9 @@ function getLinkTag(link, index) {
             v-if="authStore.token"
             @click="
               dialogStore.showReportIssue(
-                dialogStore.moreInfoContent.id,
-                dialogStore.moreInfoContent.index,
-                dialogStore.moreInfoContent.name
+                moreInfoPanel.id,
+                moreInfoPanel.index,
+                moreInfoPanel.name
               )
             "
           >
@@ -125,7 +135,7 @@ function getLinkTag(link, index) {
           </button>
           <button
             v-if="
-              dialogStore.moreInfoContent.chart_config
+              moreInfoPanel.chart_config
                 .types[0] !== 'MetroChart'
             "
             @click="dialogStore.showDialog('downloadData')"
@@ -186,6 +196,14 @@ function getLinkTag(link, index) {
 		@media (min-width: 820px) {
 			border-left: solid 1px var(--color-border);
 			border-top: none;
+		}
+
+		&-history {
+			margin: var(--font-s) 0;
+
+			:deep(.historychart) {
+				width: 100%;
+			}
 		}
 
 		&-data {

@@ -3,6 +3,10 @@
 <script setup>
 import { computed, ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
+import {
+	discreteNtpcRankColors,
+	isNtpcWasteRankColorChart,
+} from "../utilities/ntpcWasteMvpPalette";
 
 const props = defineProps([
 	"chart_config",
@@ -24,7 +28,7 @@ const emits = defineEmits([
 /** 僅用於橫向長條圖：依各類別數值加總降冪（矩形圖／Treemap 不使用此排序） */
 const columnDisplay = computed(() => {
 	const cats = props.chart_config?.categories;
-	const series = props.series;
+	const {series} = props;
 	if (!series?.length || !series[0]?.data?.length) {
 		return { categories: cats || [], series: series || [] };
 	}
@@ -86,6 +90,23 @@ const categoryCount = computed(() => {
 	return d.series?.[0]?.data?.length ?? 0;
 });
 
+/** 新北 MVP 橫向長條：與矩形圖／地圖同 8 階，依顯示序（已由大到小）分桶 */
+const ntpcColumnDistributedColors = computed(() => {
+	if (!isNtpcWasteRankColorChart(props.chart_config)) {
+		return null;
+	}
+	const display = columnDisplay.value;
+	const multi = (display.series?.length ?? 0) > 1;
+	if (multi) {
+		return null;
+	}
+	const n = categoryCount.value;
+	if (!n) {
+		return null;
+	}
+	return discreteNtpcRankColors(n, props.chart_config.index);
+});
+
 /** 與 BarChart／Moenv 回收點橫向長條一致：依筆數撐高、區名在左側 */
 const chartHeight = computed(() => {
 	const n = categoryCount.value;
@@ -101,6 +122,9 @@ const columnChartOptions = computed(() => {
 	const unit = props.chart_config?.unit || "";
 	const multi = (display.series?.length ?? 0) > 1;
 	const hasCats = cats.length > 0;
+	const ntpcColors = ntpcColumnDistributedColors.value;
+	const barColors =
+		ntpcColors?.length && !multi ? ntpcColors : [...(props.chart_config?.color || [])];
 	return {
 		chart: {
 			offsetY: 10,
@@ -112,7 +136,7 @@ const columnChartOptions = computed(() => {
 				allowMouseWheelZoom: false,
 			},
 		},
-		colors: [...(props.chart_config?.color || [])],
+		colors: barColors,
 		dataLabels: {
 			enabled: true,
 			offsetX: 8,
@@ -130,11 +154,11 @@ const columnChartOptions = computed(() => {
 		legend:
 			multi && hasCats
 				? {
-						show: true,
-						horizontalAlign: "left",
-						offsetX: 20,
-						floating: true,
-					}
+					show: true,
+					horizontalAlign: "left",
+					offsetX: 20,
+					floating: true,
+				}
 				: { show: false },
 		plotOptions: {
 			bar: {

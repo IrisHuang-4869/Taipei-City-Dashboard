@@ -176,7 +176,7 @@ function popularBasicLayerGA(map_config) {
           :toggle-on="toggleOn.mapLayer[arrayIdx]"
           @info="
             (item) => {
-              dialogStore.showMoreInfo(item);
+              void contentStore.openMoreInfoFromDashboard(item);
             }
           "
           @toggle="
@@ -291,7 +291,7 @@ function popularBasicLayerGA(map_config) {
           :toggle-on="toggleOn.hasMap[arrayIdx]"
           @info="
             (item) => {
-              dialogStore.showMoreInfo(item);
+              void contentStore.openMoreInfoFromDashboard(item);
             }
           "
           @toggle="
@@ -397,7 +397,7 @@ function popularBasicLayerGA(map_config) {
           :toggle-on="toggleOn.basicLayer[arrayIdx]"
           @info="
             (item) => {
-              dialogStore.showMoreInfo(item);
+              void contentStore.openMoreInfoFromDashboard(item);
             }
           "
           @toggle="
@@ -500,7 +500,7 @@ function popularBasicLayerGA(map_config) {
           :toggle-on="toggleOn.noMap[arrayIdx]"
           @info="
             (item) => {
-              dialogStore.showMoreInfo(item);
+              void contentStore.openMoreInfoFromDashboard(item);
             }
           "
           @toggle="
