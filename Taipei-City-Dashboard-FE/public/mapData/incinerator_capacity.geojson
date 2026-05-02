@@ -4,12 +4,12 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "北投垃圾焚化廠",
+        "name": "臺北市北投垃圾焚化廠",
         "district": "北投區",
-        "city": "臺北市",
+        "actual_volume_month": 41304,
         "capacity_ratio": 0.6884,
-        "capacity_ratio_pct": "68.84%",
-        "total_volume": 1800
+        "capacity_ratio_pct": "68.8%",
+        "status": "營運中"
       },
       "geometry": {
         "type": "Point",
@@ -19,76 +19,76 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "木柵垃圾焚化廠",
+        "name": "臺北市木柵垃圾焚化廠",
         "district": "文山區",
-        "city": "臺北市",
+        "actual_volume_month": 31530,
         "capacity_ratio": 0.5839,
-        "capacity_ratio_pct": "58.39%",
-        "total_volume": 1500
+        "capacity_ratio_pct": "58.4%",
+        "status": "營運中"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [121.586380, 25.005156]
+        "coordinates": [121.594775, 25.000108]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "內湖垃圾焚化廠",
+        "name": "臺北市內湖垃圾焚化廠",
         "district": "內湖區",
-        "city": "臺北市",
+        "actual_volume_month": 14272,
         "capacity_ratio": 0.5286,
-        "capacity_ratio_pct": "52.86%",
-        "total_volume": 900
+        "capacity_ratio_pct": "52.9%",
+        "status": "營運中"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [121.603439, 25.062841]
+        "coordinates": [121.606277, 25.061794]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "八里垃圾焚化廠",
+        "name": "新北市八里垃圾焚化廠",
         "district": "八里區",
-        "city": "新北市",
-        "capacity_ratio": 0.8997,
-        "capacity_ratio_pct": "89.97%",
-        "total_volume": 1350
+        "actual_volume_month": 54000,
+        "capacity_ratio": 0.9000,
+        "capacity_ratio_pct": "90.0%",
+        "status": "營運中"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [121.367720, 25.134500]
+        "coordinates": [121.365314, 25.152866]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "新店垃圾焚化廠",
+        "name": "新北市新店垃圾焚化廠",
         "district": "新店區",
-        "city": "新北市",
-        "capacity_ratio": 0.6956,
-        "capacity_ratio_pct": "69.56%",
-        "total_volume": 900
+        "actual_volume_month": 45000,
+        "capacity_ratio": 0.7500,
+        "capacity_ratio_pct": "75.0%",
+        "status": "營運中"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [121.496719, 24.958290]
+        "coordinates": [121.528345, 24.975412]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "name": "樹林垃圾焚化廠",
+        "name": "新北市樹林垃圾焚化廠",
         "district": "樹林區",
-        "city": "新北市",
-        "capacity_ratio": 0.6204,
-        "capacity_ratio_pct": "62.04%",
-        "total_volume": 1350
+        "actual_volume_month": 38000,
+        "capacity_ratio": 0.6333,
+        "capacity_ratio_pct": "63.3%",
+        "status": "營運中"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [121.380646, 24.966640]
+        "coordinates": [121.411234, 24.954567]
       }
     }
   ]

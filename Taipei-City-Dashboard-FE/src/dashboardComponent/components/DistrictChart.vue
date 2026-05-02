@@ -146,14 +146,11 @@ const districtData = computed(() => {
 			}
 		});
 	} else {
-		props.series.forEach((serie) => {
-			for (let i = 0; i < props.chart_config.categories.length; i++) {
-				if (!output[props.chart_config.categories[i]]) {
-					output[props.chart_config.categories[i]] = 0;
-				}
-				output[props.chart_config.categories[i]] += +serie.data[i];
-			}
-		});
+		// 如果有多個數列，預設取第一個數列作為地圖顯示與標題數值（避免單位不同相加導致錯誤）
+		const mainSerie = props.series[0];
+		for (let i = 0; i < props.chart_config.categories.length; i++) {
+			output[props.chart_config.categories[i]] = +mainSerie.data[i];
+		}
 		highest = Object.values(output).sort(function (a, b) {
 			return b - a;
 		})[0];
@@ -1223,7 +1220,7 @@ function handleDataSelection(index) {
           :style="tooltipPosition"
         >
           <h6>{{ targetDistrict }}</h6>
-          <span>
+          <span v-if="series.length <= 1">
             {{ districtData[targetDistrict] }}
             {{ chart_config.unit }}
           </span>
