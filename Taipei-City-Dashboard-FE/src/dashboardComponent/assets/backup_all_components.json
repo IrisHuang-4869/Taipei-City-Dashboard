@@ -5470,7 +5470,7 @@
 			"index": "moenv_wr_recycle_6ca8d697f6",
 			"map_config": [
 				{
-					"id": 103,
+					"id": 111,
 					"index": "moenv_wr_recycle_6ca8d697f6",
 					"title": "回收點｜3C用品類",
 					"type": "circle",
@@ -5515,7 +5515,7 @@
 			"index": "moenv_wr_recycle_7b805c8fa1",
 			"map_config": [
 				{
-					"id": 104,
+					"id": 112,
 					"index": "moenv_wr_recycle_7b805c8fa1",
 					"title": "回收點｜其他類",
 					"type": "circle",
@@ -5560,7 +5560,7 @@
 			"index": "moenv_wr_recycle_6a4bc66658",
 			"map_config": [
 				{
-					"id": 105,
+					"id": 113,
 					"index": "moenv_wr_recycle_6a4bc66658",
 					"title": "回收點｜家具類",
 					"type": "circle",
@@ -5605,7 +5605,7 @@
 			"index": "moenv_wr_recycle_014ce45e54",
 			"map_config": [
 				{
-					"id": 106,
+					"id": 114,
 					"index": "moenv_wr_recycle_014ce45e54",
 					"title": "回收點｜書籍類",
 					"type": "circle",
@@ -5650,7 +5650,7 @@
 			"index": "moenv_wr_recycle_8863327e9b",
 			"map_config": [
 				{
-					"id": 107,
+					"id": 115,
 					"index": "moenv_wr_recycle_8863327e9b",
 					"title": "回收點｜玩具類",
 					"type": "circle",
@@ -5695,7 +5695,7 @@
 			"index": "moenv_wr_recycle_c5e75de7e7",
 			"map_config": [
 				{
-					"id": 108,
+					"id": 116,
 					"index": "moenv_wr_recycle_c5e75de7e7",
 					"title": "回收點｜生活用品類",
 					"type": "circle",
@@ -5740,7 +5740,7 @@
 			"index": "moenv_wr_recycle_e62fbe91a5",
 			"map_config": [
 				{
-					"id": 109,
+					"id": 117,
 					"index": "moenv_wr_recycle_e62fbe91a5",
 					"title": "回收點｜舊衣類",
 					"type": "circle",
@@ -5785,7 +5785,7 @@
 			"index": "moenv_wr_recycle_4554828c57",
 			"map_config": [
 				{
-					"id": 110,
+					"id": 118,
 					"index": "moenv_wr_recycle_4554828c57",
 					"title": "回收點｜電器類",
 					"type": "circle",
