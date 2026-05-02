@@ -28,6 +28,7 @@ import BarChartWithGoal from "./components/BarChartWithGoal.vue";
 import IconPercentChart from "./components/IconPercentChart.vue";
 import IndicatorChart from "./components/IndicatorChart.vue";
 import TextUnitChart from "./components/TextUnitChart.vue";
+import MoenvRecycleLayerToggles from "./components/MoenvRecycleLayerToggles.vue";
 
 import MapLegendSvg from "./assets/chart/MapLegend.svg";
 import DistrictChartSvg from "./assets/chart/DistrictChart.svg";
@@ -108,6 +109,12 @@ const toggleOn = computed({
 		emits("toggle", value, props.config.map_config);
 	},
 });
+
+const moenvLayerToggleProps = computed(() =>
+	props.config.index === "moenv_wr_recycle_metrotaipei"
+		? { parentMapOn: toggleOn.value }
+		: {},
+);
 
 const mousePosition = ref({ x: null, y: null });
 const showTagTooltip = ref(false);
@@ -222,6 +229,8 @@ function returnChartComponent(name, svg) {
 		return svg ? IndicatorChartSvg : IndicatorChart;
 	case "TextUnitChart":
 		return svg ? TextUnitChartSvg : TextUnitChart;
+	case "MoenvRecycleLayerToggles":
+		return svg ? MapLegendSvg : MoenvRecycleLayerToggles;
 	default:
 		return svg ? MapLegendSvg : MapLegend;
 	}
@@ -429,6 +438,7 @@ function returnChartComponent(name, svg) {
         :map_config="config.map_config"
         :map_filter="config.map_filter"
         :map_filter_on="mode.includes('map')"
+        v-bind="moenvLayerToggleProps"
         @filter-by-param="
           (map_filter, map_config, x, y) =>
             $emit('filterByParam', map_filter, map_config, x, y)
