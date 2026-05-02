@@ -48,7 +48,7 @@ INSERT INTO query_charts (index, history_config, map_config_ids, map_filter, tim
  'metrotaipei');
 
 UPDATE dashboards
-SET components = ARRAY[219, 220, 999, 229]::integer[]
+SET components = ARRAY[999, 229]::integer[]
 WHERE index = 'garbage_map_metrotaipei';
 
 SELECT setval('component_maps_id_seq', (SELECT COALESCE(MAX(id), 1) FROM component_maps));

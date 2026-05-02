@@ -1,5 +1,6 @@
 -- 新北垃圾／回收 MVP：Dashboard Manager 增量（請勿整包重跑含 TRUNCATE 的 demo）
 -- 固定 id：component_maps 150–151、components 300–301；併入儀表板 index = garbage_map_metrotaipei（不再建立獨立 id 400）
+-- 「僅 psql -f dashboardmanager-demo.sql」還原则已內含 300/301 與對應圖資列；若手動刪過或舊 DB 無此行，請再跑本檔。
 -- 套用：psql -h ... -U ... -d <manager_db> -v ON_ERROR_STOP=1 -f db-sample-data/ntpc_waste_mvp_manager_patch.sql
 -- 前置（順序）：
 --   1) import_ntpc_waste_mvp_data.sql（建立 public.ntpc_waste_mvp 與示範列）

@@ -636,6 +636,11 @@ export const useContentStore = defineStore("content", {
 			const { components } = this.cityDashboard;
 
 			if (components && components.length > 0) {
+				// 雙北垃圾地圖：組件皆為 metrotaipei，側欄 city 可能是 taipei，若依 city 過濾會全部不見
+				if (this.currentDashboard.index === "garbage_map_metrotaipei") {
+					this.currentDashboard.components = [...components];
+					this.currentDashboardExcluded.components = [];
+				} else {
 				const currentCityData = components.filter(
 					(item) => item.city === this.currentDashboard.city,
 				);
@@ -679,6 +684,7 @@ export const useContentStore = defineStore("content", {
 					});
 					this.currentDashboard.components = uniqueData;
 					this.currentDashboardExcluded.components = excludedData;
+				}
 				}
 			} else {
 				this.currentDashboard.components = [];
@@ -760,18 +766,8 @@ export const useContentStore = defineStore("content", {
 						},
 					);
 
-					// Merge local garbage layers, avoiding duplicates by id
-					const existingIds = new Set(
-						filteredMapLayersData.map((i) => i.id),
-					);
-					const mergedLayers = [
-						...filteredMapLayersData,
-						...localGarbageMapLayers.filter(
-							(i) => !existingIds.has(i.id),
-						),
-					];
-
-					this.allMapLayers = mergedLayers;
+					// 本地垃圾圖層僅注入垃圾地圖儀表板側欄，不透過 map-layers API 併入「基本圖層」
+					this.allMapLayers = [...filteredMapLayersData];
 					// Get chart_data for all layers
 					await this.setMapLayersContent(cityValue);
 				} else {
@@ -790,10 +786,14 @@ export const useContentStore = defineStore("content", {
 		},
 		// Filter layers by city
 		filterMapLayersByCity(city) {
-			// Filter layers of the specified city from allMapLayers
 			this.mapLayers = this.allMapLayers.filter(
 				(item) => item.city === city,
 			);
+			if (this.currentDashboard.index === "garbage_map_metrotaipei") {
+				this.mapLayers = this.mapLayers.filter(
+					(item) => item.index !== "bike_map",
+				);
+			}
 		},
 		// 8. Call an API for each map layer component to get its chart data and store it (if in /mapview)
 		async setMapLayersContent(city) {

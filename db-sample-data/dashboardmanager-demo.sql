@@ -31,10 +31,10 @@ aging_kpi	{#F65658,#F49F36,#F5C860,#9AC17C,#4CB495,#569C9A,#60819C,#2F8AB1}	{Tex
 aging_workforce_trend	{#24B0DD,#56B96D,#F8CF58,#F5AD4A,#E170A6,#ED6A45,#AF4137,#10294A}	{BarPercentChart,RadarChart,ColumnChart}	%
 bike_network	{#a0b8e8,#b7ff98}	{DonutChart,BarChart}	公里
 bike_map	{#a0b8e8,#b7ff98}	{MapLegend}	條
-garbage_map_overview	{#D8DEE9,#F2BE5C,#E56B6F}	{TextUnitChart}	\N
-garbage_map_cross_compare	{#5B8FF9,#8EA7E9,#C1D8F0}	{DistrictChart,ColumnChart}	處
 incinerator_capacity	{#F44336,#FFEB3B,#4CAF50}	{DistrictChart}	%
 moenv_wr_recycle_metrotaipei	{#E170A6,#24B0DD,#56B96D,#F8CF58,#F5AD4A,#9DC56E,#8B5CF6,#ED6A45}	{MoenvRecycleLayerToggles}	\N
+ntpc_recycling_map_mvp	{#22c55e,#4ade80,#15803d,#14532d}	{TreemapChart,ColumnChart}	公噸
+ntpc_kitchen_waste_map_mvp	{#fbbf24,#f59e0b,#d97706,#78350f}	{TreemapChart,ColumnChart}	公噸
 \.
 
 
@@ -47,7 +47,6 @@ COPY public.component_maps (id, index, title, type, source, size, icon, paint, p
 99	youbike_realtime_metrotaipei	youbike站點	symbol	geojson	\N	youbike	{}	[{"key":"sna","name":"場站名稱"},{"key":"sno","name":"場站ID"},{"key":"available_return_bikes","name":"可還車位"},{"key":"available_rent_general_bikes","name":"剩餘車輛"}]
 100	bike_network_tpe	自行車路網	line	geojson	\N	\N	{"line-color":["match",["get","direction"],"雙向","#097138","單向","#007BFF","#808080"]}	[\r\n  {"key": "data_time", "name": "數據時間"},\r\n  {"key": "route_name", "name": "路線名稱"},\r\n  {"key": "city_code", "name": "城市代碼"},\r\n  {"key": "city", "name": "城市"},\r\n  {"key": "road_section_start", "name": "起點路段"},\r\n  {"key": "road_section_end", "name": "終點路段"},\r\n  {"key": "direction", "name": "方向"},\r\n  {"key": "cycling_length", "name": "自行車道長度"},\r\n  {"key": "finished_time", "name": "完工時間"},\r\n  {"key": "update_time", "name": "更新時間"}\r\n]
 101	bike_network_metrotaipei	自行車路網	line	geojson	\N	\N	{"line-color":["match",["get","direction"],"雙向","#097138","單向","#007BFF","#808080"]}	[\r\n  {"key": "data_time", "name": "數據時間"},\r\n  {"key": "route_name", "name": "路線名稱"},\r\n  {"key": "city_code", "name": "城市代碼"},\r\n  {"key": "city", "name": "城市"},\r\n  {"key": "road_section_start", "name": "起點路段"},\r\n  {"key": "road_section_end", "name": "終點路段"},\r\n  {"key": "direction", "name": "方向"},\r\n  {"key": "cycling_length", "name": "自行車道長度"},\r\n  {"key": "finished_time", "name": "完工時間"},\r\n  {"key": "update_time", "name": "更新時間"}\r\n]
-102	garbage_map_cross_compare_placeholder	垃圾地圖交叉比對	circle	geojson	small	\N	{"circle-color":"#5B8FF9","circle-opacity":0.85}	[{"key":"district","name":"行政區"},{"key":"site_name","name":"點位名稱"},{"key":"status","name":"狀態"}]
 103	incinerator_capacity	焚化爐處理量能	symbol	geojson	\N	flame	{"icon-color":["interpolate",["linear"],["get","capacity_ratio"],0,"#4CAF50",0.5,"#4CAF50",0.75,"#FFEB3B",1,"#F44336"],"icon-opacity":0.8}	[{"key":"name","name":"焚化廠名稱"},{"key":"capacity_ratio_pct","name":"處理量能比率"},{"key":"district","name":"行政區"},{"key":"total_volume","name":"總焚燒量 (噸/日)"}]
 111	moenv_wr_recycle_6ca8d697f6	3C用品類	circle	geojson	small	\N	{"circle-color":"#E170A6","circle-opacity":0.85,"circle-radius":2}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
 112	moenv_wr_recycle_7b805c8fa1	其他類	circle	geojson	small	\N	{"circle-color":"#24B0DD","circle-opacity":0.85,"circle-radius":2}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
@@ -57,6 +56,8 @@ COPY public.component_maps (id, index, title, type, source, size, icon, paint, p
 116	moenv_wr_recycle_c5e75de7e7	生活用品類	circle	geojson	small	\N	{"circle-color":"#9DC56E","circle-opacity":0.85,"circle-radius":2}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
 117	moenv_wr_recycle_e62fbe91a5	舊衣類	circle	geojson	small	\N	{"circle-color":"#8B5CF6","circle-opacity":0.85,"circle-radius":2}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
 118	moenv_wr_recycle_4554828c57	電器類	circle	geojson	small	\N	{"circle-color":"#ED6A45","circle-opacity":0.85,"circle-radius":2}	[{"key":"site_name","name":"點位名稱"},{"key":"full_address","name":"地址"},{"key":"item","name":"回收類別"},{"key":"service_type","name":"服務類型"},{"key":"tel","name":"電話"}]
+150	ntpc_recycling_map_mvp	新北資源回收量（分區）	fill	geojson	\N	\N	{"fill-opacity":0.85,"fill-outline-color":"rgba(255,255,255,0.26)","fill-color":["interpolate",["linear"],["coalesce",["to-number",["get","recycling_tons"]],0],0,"#356b52",3500,"#4c8569",7000,"#63a082",10500,"#7ab99a",14000,"#9fe0c0"]}	[{"key":"TNAME","name":"區名"},{"key":"recycling_tons","name":"回收量（公噸）"}]
+151	ntpc_kitchen_waste_map_mvp	新北廚餘回收量（分區）	fill	geojson	\N	\N	{"fill-opacity":0.85,"fill-outline-color":"rgba(255,255,255,0.26)","fill-color":["interpolate",["linear"],["coalesce",["to-number",["get","kitchen_tons"]],0],0,"#6e5a42",140,"#8c7358",320,"#aa8c6f",520,"#c6a686",780,"#e8d2b8"]}	[{"key":"TNAME","name":"區名"},{"key":"kitchen_tons","name":"廚餘回收量（公噸）"}]
 \.
 
 
@@ -73,10 +74,10 @@ COPY public.components (id, index, name) FROM stdin;
 218	aging_kpi	長照指標
 215	aging_workforce_trend	高齡就業人口之年增結構
 217	bike_map	自行車道路網圖資
-219	garbage_map_overview	垃圾地圖總覽
-220	garbage_map_cross_compare	垃圾地圖交叉比對
 999	incinerator_capacity	雙北焚化爐處理量能
 229	moenv_wr_recycle_metrotaipei	大台北地區回收點
+300	ntpc_recycling_map_mvp	回收地圖
+301	ntpc_kitchen_waste_map_mvp	垃圾地圖
 \.
 
 
@@ -99,7 +100,7 @@ COPY public.dashboards (id, index, name, components, icon, updated_at, created_a
 355	ltc_care_newtpe	長照關懷	{214,215,216,218}	elderly	2025-02-27 06:42:21.705931+00	2024-03-21 09:38:37.66+00
 359	map-layers-metrotaipei	圖資資訊	{217}	public	2024-05-16 03:56:12.76016+00	2024-03-21 10:04:24.928533+00
 358	practical_transportation_newtpe	務實交通	{60,212,213}	directions_car	2025-03-12 08:00:38.75842+00	2024-03-21 09:38:37.66+00
-360	garbage_map_metrotaipei	垃圾地圖	{219,220,999,229,300,301}	delete	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00
+360	garbage_map_metrotaipei	垃圾地圖	{999,229,300,301}	delete	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00
 1	09a25cd9cb7d	收藏組件	\N	favorite	2025-03-14 07:34:22.247753+00	2025-03-14 07:34:22.247753+00
 2	3245d9eace5f	我的新儀表板	{215,218,216,213,212,214,60,146}	star	2025-03-14 14:55:11.732116+00	2025-03-14 14:55:11.732116+00
 \.
@@ -141,10 +142,10 @@ ebus_percent	\N	\N	\N	static	\N	\N	\N	交通局	顯示雙北電動公車比例	�
 ebus_percent	\N	\N	\N	static	\N	\N	\N	交通局	顯示臺北電動公車比例	此圖顯示臺北市電動公車的比例，呈現全市公車車隊中電動車所占比重，以及近年來電動公車數量的成長情形。圖表比較傳統燃油公車與電動公車的比例變化，並標示臺北市政府推動電動化政策、補助措施及其帶來的環保效益。透過這些數據，可評估臺北市電動公車的普及程度，及其在減碳與空氣品質改善上的貢獻，有助於進一步規劃更完善的公共運輸電動化策略，推動城市交通朝向低碳永續目標邁進。	可用於評估臺北市公共運輸電動化的進程，透過此圖顯示電動公車在市區公車總數中的占比及其成長趨勢。圖表呈現傳統燃油公車與電動公車的比例變化，並標示臺北市政府推動的政策措施、補助方案及相關環保效益等影響因素。透過這些數據，可分析臺北市電動公車的普及程度及其在減碳排放與空氣品質改善方面的貢獻，有助於進一步規劃更完善的公共運輸電動化策略，推動臺北朝向低碳與永續發展的城市目標邁進。	{https://tdx.transportdata.tw/api/basic/v2/Bus/Vehicle/City/Taipei?%24top=30&%24format=JSON}	{doit}	2025-02-15 05:56:00+00	2025-02-20 09:11:21.620625+00	percent	select '電動公車數量' as x_axis,y_axis,sum(data) data from \r\n(\r\nselect '電動巴士' as y_axis,count(*) as  data\r\nfrom public.bus_info_tpe\r\nwhere plate_numb like 'E%'\r\nunion all\r\nselect '非電動巴士' as y_axis,count(*) as  data\r\nfrom public.bus_info_tpe)d\r\ngroup by \r\ny_axis	\N	taipei
 youbike_availability	\N	{99}	\N	current	\N	10	minute	交通局	顯示當前雙北共享單車YouBike的使用情況。	顯示雙北地區（臺北市與新北市）當前共享單車 YouBike 的使用情況，格式為可借車輛數／全區車位數。資料來源為兩市交通局公開資料，每5分鐘更新一次，提供即時的車輛可用資訊與站點使用狀況，有助於掌握整體運行效率與民眾使用情形，亦可作為交通管理與營運調度的參考依據。	藉由顯示雙北地區 YouBike 的使用情況，以及觀察可借車輛數約為車柱總數的一半，可大致掌握目前停放於站點與使用中車輛的整體分布情形。使用者亦可透過地圖模式查詢雙北各站點的即時資訊，包括可借車輛數、可還空位數及站點位置，方便規劃路線與掌握使用狀況，提升共享單車的便利性與使用效率。	{https://tdx.transportdata.tw/api-service/swagger/basic/2cc9b888-a592-496f-99de-9ab35b7fb70d#/Bike/BikeApi_Availability_2181,https://tdx.transportdata.tw/api/basic/v2/Bike/Availability/City/NewTaipei?%24top=30&%24format=JSON}	{doit,ntpc}	2023-12-20 05:56:00+00	2024-03-19 06:08:17.99+00	percent	select x_axis,y_axis,sum(data)data\r\nfrom (select '在站車輛' as x_axis, \r\nunnest(ARRAY['可借車輛', '空位']) as y_axis, \r\nunnest(ARRAY[SUM(available_rent_general_bikes), SUM(available_return_bikes)]) as data\r\nfrom tran_ubike_realtime_new_tpe\r\nunion all \r\nselect '在站車輛' as x_axis, \r\nunnest(ARRAY['可借車輛', '空位']) as y_axis, \r\nunnest(ARRAY[SUM(available_rent_general_bikes), SUM(available_return_bikes)]) as data\r\nfrom tran_ubike_realtime)d\r\ngroup by x_axis,y_axis	\N	metrotaipei
 youbike_availability	\N	{70}	\N	current	\N	10	minute	交通局	顯示當前臺北市共享單車YouBike的使用情況。	顯示臺北市當前共享單車 YouBike 的使用情況，格式為可借車輛數／全市車位數。資料來源為臺北市政府交通局公開資料，每5分鐘更新一次，反映即時的使用狀況與車輛調度情形，可作為交通監測與市民使用參考依據。	藉由臺北市 YouBike 使用情況的顯示，以及全市可借車輛數約為車柱總數的一半，可大致掌握目前停放於站點與正在使用中的車輛數量。使用者可透過地圖模式查詢臺北市各站點的即時資訊，包括可借車輛數、可還空位數及站點位置，方便即時掌握使用狀況，提升共享單車的使用效率與便利性。	{https://tdx.transportdata.tw/api-service/swagger/basic/2cc9b888-a592-496f-99de-9ab35b7fb70d#/Bike/BikeApi_Availability_2181}	{doit}	2023-12-20 05:56:00+00	2024-03-19 06:08:17.99+00	percent	select '在站車輛' as x_axis, \r\nunnest(ARRAY['可借車輛', '空位']) as y_axis, \r\nunnest(ARRAY[SUM(available_rent_general_bikes), SUM(available_return_bikes)]) as data\r\nfrom tran_ubike_realtime	\N	taipei
-garbage_map_overview	\N	{}	{}	static	\N	0	\N	環保局	雙北垃圾地圖總覽 placeholder。	此為雙北垃圾地圖的空白骨架，先預留總覽卡片位置，後續可接入垃圾清運、回收點位或環保設施等資料。	可作為之後串接真實資料前的版型驗證，確認雙北 dashboard 的總覽資訊與互動流程已就位。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('總覽','清運點位','處',0),('總覽','行政區數','區',0),('總覽','資料圖層','層',0),('總覽','待接資料','項',0)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
-garbage_map_cross_compare	\N	{102}	{"mode":"byParam","byParam":{"xParam":"district"}}	static	\N	0	\N	環保局	雙北垃圾地圖交叉比對 placeholder。	此為雙北垃圾地圖的空白交叉比對骨架，先提供行政區維度與空地圖圖層，後續可接入垃圾收運點、清潔隊服務範圍或其他環保圖資。	可先驗證儀表板與地圖交叉比對的互動結構，之後只需替換查詢與 geojson 即可接上正式資料。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('北投區','垃圾地圖',0),('士林區','垃圾地圖',0),('內湖區','垃圾地圖',0),('南港區','垃圾地圖',0),('松山區','垃圾地圖',0),('信義區','垃圾地圖',0),('中山區','垃圾地圖',0),('大同區','垃圾地圖',0),('中正區','垃圾地圖',0),('萬華區','垃圾地圖',0),('大安區','垃圾地圖',0),('文山區','垃圾地圖',0),('新莊區','垃圾地圖',0),('淡水區','垃圾地圖',0),('汐止區','垃圾地圖',0),('板橋區','垃圾地圖',0),('三重區','垃圾地圖',0),('樹林區','垃圾地圖',0),('土城區','垃圾地圖',0),('蘆洲區','垃圾地圖',0),('中和區','垃圾地圖',0),('永和區','垃圾地圖',0),('新店區','垃圾地圖',0),('鶯歌區','垃圾地圖',0),('三峽區','垃圾地圖',0),('瑞芳區','垃圾地圖',0),('五股區','垃圾地圖',0),('泰山區','垃圾地圖',0),('林口區','垃圾地圖',0),('深坑區','垃圾地圖',0),('石碇區','垃圾地圖',0),('坪林區','垃圾地圖',0),('三芝區','垃圾地圖',0),('石門區','垃圾地圖',0),('八里區','垃圾地圖',0),('平溪區','垃圾地圖',0),('雙溪區','垃圾地圖',0),('貢寮區','垃圾地圖',0),('金山區','垃圾地圖',0),('萬里區','垃圾地圖',0),('烏來區','垃圾地圖',0)) as t(x_axis,y_axis,data)	\N	metrotaipei
 incinerator_capacity	\N	{103}	{"mode":"byParam","byParam":{"xParam":"district"}}	static	\N	0	\N	環保局	顯示雙北焚化爐處理量能。	此圖顯示雙北地區各焚化廠的處理量能比率，以行政區為單位呈現，顏色由綠色（低負載）過渡至紅色（高負載），可直觀了解各焚化廠的負荷狀況。資料來源為 2026 年 2 月份雙北焚化廠實際處理量與設計容量比對結果。	可用於評估雙北垃圾焚化設施的容量使用狀況，協助環保主管機關掌握各廠的運作負荷，作為廢棄物處理政策與設施擴充規劃的重要參考依據。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select district as x_axis, '焚化爐處理量能' as y_axis, round(capacity_ratio) as data from (values ('北投區','臺北市北投垃圾焚化廠',68.84),('文山區','臺北市木柵垃圾焚化廠',58.39),('內湖區','臺北市內湖垃圾焚化廠',52.86),('八里區','新北市八里垃圾焚化廠',89.97),('新店區','新北市新店垃圾焚化廠',69.56),('樹林區','新北市樹林垃圾焚化廠',62.04)) as t(district,name,capacity_ratio)	\N	metrotaipei
 moenv_wr_recycle_metrotaipei	\N	{111,112,113,114,115,116,117,118}	{}	static	\N	0	\N	環境部	北北基地區環境部公開回收點，八類物資分層顯示。	資料來自環境部回收點位公開資訊；範圍為臺北市、新北市、基隆市（已排除桃園市）。於組件內可獨立開關各類別圖層。	先開啟組件地圖開關，再依需求勾選要顯示的物資類別。	{}	{doit,ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	select * from (values ('MOENV 回收點','圖層數','類',8),('MOENV 回收點','涵蓋縣市','項',3)) as t(x_axis,y_axis,icon,data)	\N	metrotaipei
+ntpc_recycling_map_mvp	\N	{150}	{"mode":"byParam","byParam":{"xParam":"TNAME"}}	static	\N	0	\N	新北市政府開放資料（整理）	新北市各行政區資源回收量（區小計／總計），單位：公噸（由公斤換算）。資料期別：中華民國115年3月。	MVP 為單月快照；臺北市區域於圖資上無數值（0）。之後可擴充多月與時間序列組件（history_config / query_history）。	用於觀察各區資源回收量與空間分布。	{}	{ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	SELECT district AS x_axis,\r\n       '資源回收量(公噸)' AS y_axis,\r\n       ''::text AS icon,\r\n       round(recycling_kg::numeric / 1000)::int AS data\r\nFROM public.ntpc_waste_mvp\r\nORDER BY 1	\N	metrotaipei
+ntpc_kitchen_waste_map_mvp	\N	{151}	{"mode":"byParam","byParam":{"xParam":"TNAME"}}	static	\N	0	\N	新北市政府開放資料（整理）	新北市各行政區廚餘回收量，單位：公噸（由原月報公噸換算後以整數公噸呈現）。資料期別：中華民國115年2月。	MVP 為單月快照；烏來區原表缺值時為 0。之後可擴充歷史月並改用 time 類型查詢。	用於觀察各區廚餘回收量與空間分布。	{}	{ntpc}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	three_d	SELECT district AS x_axis,\r\n       '廚餘回收量(公噸)' AS y_axis,\r\n       ''::text AS icon,\r\n       round(kitchen_kg::numeric / 1000)::int AS data\r\nFROM public.ntpc_waste_mvp\r\nORDER BY 1	\N	metrotaipei
 \.
 
 COPY public.dashboard_groups (dashboard_id, group_id) FROM stdin;
