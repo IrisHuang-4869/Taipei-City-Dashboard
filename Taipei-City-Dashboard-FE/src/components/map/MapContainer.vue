@@ -13,7 +13,6 @@ import AddViewPoint from "../dialogs/AddViewPoint.vue";
 import MobileLayers from "../dialogs/MobileLayers.vue";
 import IncidentReport from "../dialogs/IncidentReport.vue";
 import FindClosestPoint from "../dialogs/FindClosestPoint.vue";
-import GarbageTimeSlider from "./GarbageTimeSlider.vue";
 import { savedLocations } from "../../assets/configs/mapbox/savedLocations.js";
 
 const authStore = useAuthStore();
@@ -36,10 +35,6 @@ const canUseFindClosestPoint = computed(() => {
 
 	return pointLayerCount === 1;
 });
-
-const hasArcLayer = computed(() =>
-	mapStore.currentVisibleLayers.some((l) => l.indexOf("-arc") !== -1),
-);
 
 function toggleDistrictLayer() {
 	districtLayer.value = !districtLayer.value;
@@ -152,10 +147,6 @@ onMounted(() => {
       <MobileLayers :key="contentStore.currentDashboard.index" />
       <IncidentReport />
       <FindClosestPoint />
-      <GarbageTimeSlider
-        v-if="hasArcLayer"
-        class="mapcontainer-arc-time-slider hide-if-mobile"
-      />
     </div>
 
     <div class="mapcontainer-controls hide-if-mobile">
@@ -224,15 +215,6 @@ onMounted(() => {
 		@media (max-width: 1000px) {
 			height: 100%;
 		}
-	}
-
-	&-arc-time-slider {
-		position: absolute;
-		bottom: 28px;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 10;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 	}
 
 	&-controls {

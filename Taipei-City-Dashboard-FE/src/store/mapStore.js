@@ -147,14 +147,60 @@ import {
 	planGarbageAddressJourney,
 } from "../assets/utilityFunctions/garbageAddressJourneyPlanner.js";
 import { startMarkerAlongSegmentPolylines } from "../assets/utilityFunctions/animateLngLatAlongPath.js";
+import { sampleGreatCircleLngLat } from "../assets/utilityFunctions/greatCircleSample.js";
+import {
+	startGarbageFlowAmbienceLoop,
+	stopGarbageFlowAmbience,
+} from "../assets/utilityFunctions/garbageFlowAmbience.js";
+
+/** 雙北清運收運流向弧線：統一配色（不依縣市區分），[0]=終點、[1]=起點（與 deck getTarget/getSource 一致） */
+const GARBAGE_FLOW_ARC_INDICES = new Set([
+	"garbage_ntpc_route_arcs_local",
+	"garbage_taipei_truck_local",
+	"garbage_ntpc_hub_incinerator_arcs_local",
+	"garbage_taipei_hub_incinerator_arcs_local",
+]);
+
+function applyUnifiedGarbageFlowArcPaint(mapIndex, paint) {
+	if (!GARBAGE_FLOW_ARC_INDICES.has(mapIndex)) return;
+	paint["arc-animate"] = true;
+	const phase1 =
+		mapIndex === "garbage_ntpc_route_arcs_local" ||
+		mapIndex === "garbage_taipei_truck_local";
+	if (phase1) {
+		paint["arc-color"] = ["#2F8F84", "#C8F2EC"];
+		if (paint["arc-opacity"] == null) paint["arc-opacity"] = 0.52;
+	} else {
+		paint["arc-color"] = ["#B71C1C", "#FFE8CC"];
+		if (paint["arc-opacity"] == null) paint["arc-opacity"] = 0.62;
+		const w = Number(paint["arc-width"]);
+		const baseW = Number.isFinite(w) && w > 0 ? w : 3;
+		paint["arc-width"] = Math.max(1, baseW - 1);
+	}
+}
+
+/** 清運弧線 sweep 動畫 rAF（非 Pinia state） */
+let garbageArcSweepRafId = null;
+let garbageArcSweepStartMs = 0;
+const GARBAGE_ARC_SWEEP_DURATION_MS = 2200;
+/** 地址「垃圾的旅途」模擬進行中：暫停背景兩階段弧線 sweep，避免搶視覺 */
+let garbageArcSweepPausedByJourney = false;
+/** 模擬期間隱藏雙北清運 deck 弧線之 visible 備份；null = 未進入隱藏狀態 */
+let garbageFlowArcVisibilityBackup = null;
+
+/** 地址模擬動畫節奏（demo 用較短） */
+const GARBAGE_JOURNEY_INTRO_FIT_MS = 240;
+const GARBAGE_JOURNEY_INTRO_WAIT_MS = 300;
+const GARBAGE_JOURNEY_FLYTO_LEG_MS = 380;
+const GARBAGE_JOURNEY_MS_PER_LEG = 320;
+const GARBAGE_JOURNEY_PAUSE_BETWEEN_LEGS_MS = 20;
 
 /** 清運地址模擬路徑：動畫 Marker 與取消（非 Pinia state） */
 let garbageJourneyMarker = null;
 let garbageJourneyAnimCancel = null;
-const JOURNEY_ROUTE_SOURCE = "garbage-journey-route";
-const JOURNEY_ROUTE_ALL_LAYER = "garbage-journey-route-all";
-const JOURNEY_ROUTE_ACTIVE_SOURCE = "garbage-journey-route-active";
-const JOURNEY_ROUTE_ACTIVE_LAYER = "garbage-journey-route-active";
+/** 模擬專用：單一 GeoJSON 含三條大圓弧（地點→站→集中→焚化），避免多圖層疊色像兩段 */
+const JOURNEY_ARCS_SOURCE = "garbage-journey-arcs-source";
+const JOURNEY_ARCS_LAYER = "garbage-journey-arcs-layer";
 
 export const useMapStore = defineStore("map", {
 	state: () => ({
@@ -172,11 +218,7 @@ export const useMapStore = defineStore("map", {
 		deckGlLayer: {},
 		// Store animate step form 1 to 100
 		step: 1,
-		// 收運流向時間動畫：目前顯示的時間（分鐘，0–1439），null = 顯示全部
-		arcTimeMinutes: null,
-		// 收運流向時間動畫：是否正在播放
-		arcTimeAnimating: false,
-		// 各 arc 圖層的完整 feature 陣列快取（用於時間篩選）
+		// 各 arc 圖層的完整 feature 陣列快取（行政區篩選用）
 		arcRawFeatures: {},
 		// 收運流向行政區篩選：null = 顯示全部，否則為行政區名稱
 		arcDistrictFilter: null,
@@ -1156,12 +1198,11 @@ export const useMapStore = defineStore("map", {
 			// start loading
 			this.loadingLayers.push("rendering");
 			const mapLayerId = `${map_config.index}-${map_config.type}-${map_config.city}`;
-			const paintSettings = map_config.paint
-				? map_config.paint
-				: { "arc-color": ["#ffffff"] };
-			paintSettings["arc-color"] = paintSettings["arc-color"]
-				? paintSettings["arc-color"]
-				: ["#ffffff"];
+			let paintSettings = parseComponentMapPaint(map_config.paint);
+			if (!paintSettings["arc-color"]?.length) {
+				paintSettings["arc-color"] = ["#ffffff"];
+			}
+			applyUnifiedGarbageFlowArcPaint(map_config.index, paintSettings);
 			const baseArcWidth = paintSettings["arc-width"] ?? 2;
 			const widthField =
 				typeof paintSettings["arc-width-property"] === "string"
@@ -1215,7 +1256,7 @@ export const useMapStore = defineStore("map", {
 					coef: this.step / 1000,
 				}),
 			};
-			// 快取完整 features 供時間篩選
+			// 快取完整 features（行政區篩選）
 			this.arcRawFeatures[mapLayerId] = data.features;
 			// add deckgl layer to overlay
 			this.deckGlLayer[mapLayerId] = {
@@ -1235,29 +1276,21 @@ export const useMapStore = defineStore("map", {
 				(el) => el !== map_config.layerId,
 			);
 		},
-		// 4-2-2. Render DeckGL Layer
-		// Developed by Weeee Chill, Taipei Codefest 2024
-		renderDeckGLLayer() {
-			const layers = Object.keys(this.deckGlLayer).map((index) => {
-				const l = this.deckGlLayer[index];
-				let filteredData = Array.isArray(this.arcRawFeatures[index])
-					? this.arcRawFeatures[index]
-					: l.data;
-				if (this.arcTimeMinutes !== null) {
-					const t = this.arcTimeMinutes;
-					filteredData = filteredData.filter((f) => {
-						const tm = f.properties?.time_minutes;
-						if (tm == null) return true;
-						return tm <= t;
-					});
-				}
-				if (this.arcDistrictFilter !== null) {
-					const d = this.arcDistrictFilter;
-					filteredData = filteredData.filter(
-						(f) => f.properties?.dist === d,
-					);
-				}
-				switch (l.type) {
+		_applyDeckGlOverlayOnly() {
+			if (!this.overlay) return;
+			const layers = Object.keys(this.deckGlLayer)
+				.map((index) => {
+					const l = this.deckGlLayer[index];
+					let filteredData = Array.isArray(this.arcRawFeatures[index])
+						? this.arcRawFeatures[index]
+						: l.data;
+					if (this.arcDistrictFilter !== null) {
+						const d = this.arcDistrictFilter;
+						filteredData = filteredData.filter(
+							(f) => f.properties?.dist === d,
+						);
+					}
+					switch (l.type) {
 					case "ArcLayer":
 						return new ArcLayer({
 							...l.config,
@@ -1270,137 +1303,102 @@ export const useMapStore = defineStore("map", {
 							coef: this.step / 1000,
 						});
 					default:
-						break;
-				}
-			});
+						return null;
+					}
+				})
+				.filter(Boolean);
 			this.overlay.setProps({
 				layers,
 			});
-			if (
-				this.currentVisibleLayers.some(
-					(l) =>
-						l.indexOf("-arc") !== -1 &&
-						typeof this.deckGlLayer[l].config.coef === "number",
-				) &&
-				this.step < 1000
-			)
-				this.animateArcLayer();
 		},
-		// 4-2-4. Set arc time filter and re-render
-		setArcTimeMinutes(minutes) {
-			this.arcTimeMinutes = minutes;
-			this.step = 1;
-			this.renderDeckGLLayer();
+		_hasVisibleAnimatedGarbageArcLayer() {
+			return this.currentVisibleLayers.some(
+				(lid) =>
+					lid.indexOf("-arc") !== -1 &&
+					this.deckGlLayer[lid] &&
+					this.deckGlLayer[lid].type === "AnimatedArcLayer" &&
+					this.deckGlLayer[lid].config.visible !== false,
+			);
 		},
-		// 4-2-5. Start/stop time-lapse playback (30 s from earliest to latest time in data)
-		startArcTimeAnimation() {
-			if (this.arcTimeAnimating) return;
-			this.arcTimeAnimating = true;
-			// 從第一階段 arc 圖層（time_minutes < 1440）找最小/最大時間
-			let dataMin = 1439;
-			let dataMax = 0;
-			for (const features of Object.values(this.arcRawFeatures)) {
-				for (const f of features) {
-					const tm = f.properties?.time_minutes;
-					if (tm != null && tm < 1440) {
-						if (tm < dataMin) dataMin = tm;
-						if (tm > dataMax) dataMax = tm;
-					}
+		_ensureGarbageArcSweepLoop() {
+			if (garbageArcSweepPausedByJourney) {
+				if (garbageArcSweepRafId != null) {
+					cancelAnimationFrame(garbageArcSweepRafId);
+					garbageArcSweepRafId = null;
 				}
+				return;
 			}
-			if (dataMin > dataMax) {
-				dataMin = 360;
-				dataMax = 1439;
+			if (!this._hasVisibleAnimatedGarbageArcLayer()) {
+				if (garbageArcSweepRafId != null) {
+					cancelAnimationFrame(garbageArcSweepRafId);
+					garbageArcSweepRafId = null;
+				}
+				garbageArcSweepStartMs = 0;
+				return;
 			}
-			const TOTAL_MS = 10000;
-			const TOTAL_RANGE = dataMax - dataMin || 1;
-			// 若目前滑桿在範圍外或為 null，從頭開始
-			if (
-				this.arcTimeMinutes === null ||
-				this.arcTimeMinutes < dataMin ||
-				this.arcTimeMinutes >= dataMax
-			) {
-				this.arcTimeMinutes = dataMin;
-			}
-			const STAGE1_MAX = 1439;
-			const stage1Range = STAGE1_MAX - dataMin || 1;
-			let lastTs = null;
+			if (garbageArcSweepRafId != null) return;
+			garbageArcSweepStartMs = 0;
 			const tick = (ts) => {
-				if (!this.arcTimeAnimating) return;
-				if (lastTs !== null) {
-					const delta = ts - lastTs;
-					const next =
-						this.arcTimeMinutes + (delta / TOTAL_MS) * stage1Range;
-					if (next >= STAGE1_MAX) {
-						this.arcTimeMinutes = STAGE1_MAX;
-						this.step = 1;
-						this.renderDeckGLLayer();
-						// 停 1 秒後顯示第二階段
-						this._arcTimeRafId = setTimeout(() => {
-							if (!this.arcTimeAnimating) return;
-							this.arcTimeMinutes = 1440;
-							this.step = 1;
-							this.renderDeckGLLayer();
-							this.arcTimeAnimating = false;
-						}, 1000);
-						return;
+				if (garbageArcSweepPausedByJourney) {
+					if (garbageArcSweepRafId != null) {
+						cancelAnimationFrame(garbageArcSweepRafId);
+						garbageArcSweepRafId = null;
 					}
-					this.arcTimeMinutes = Math.floor(next);
-					this.step = 1;
-					this.renderDeckGLLayer();
+					return;
 				}
-				lastTs = ts;
-				this._arcTimeRafId = requestAnimationFrame(tick);
+				if (!this._hasVisibleAnimatedGarbageArcLayer()) {
+					if (garbageArcSweepRafId != null) {
+						cancelAnimationFrame(garbageArcSweepRafId);
+						garbageArcSweepRafId = null;
+					}
+					garbageArcSweepStartMs = 0;
+					return;
+				}
+				if (!garbageArcSweepStartMs) garbageArcSweepStartMs = ts;
+				const elapsed = ts - garbageArcSweepStartMs;
+				const u =
+					(elapsed % GARBAGE_ARC_SWEEP_DURATION_MS) /
+					GARBAGE_ARC_SWEEP_DURATION_MS;
+				this.step = Math.max(1, Math.min(1000, Math.floor(u * 1000) + 1));
+				this._applyDeckGlOverlayOnly();
+				garbageArcSweepRafId = requestAnimationFrame(tick);
 			};
-			this._arcTimeRafId = requestAnimationFrame(tick);
+			garbageArcSweepRafId = requestAnimationFrame(tick);
 		},
-		stopArcTimeAnimation() {
-			this.arcTimeAnimating = false;
-			if (this._arcTimeRafId) {
-				cancelAnimationFrame(this._arcTimeRafId);
-				clearTimeout(this._arcTimeRafId);
-				this._arcTimeRafId = null;
+		_stopGarbageArcSweepLoop() {
+			if (garbageArcSweepRafId != null) {
+				cancelAnimationFrame(garbageArcSweepRafId);
+				garbageArcSweepRafId = null;
+			}
+			garbageArcSweepStartMs = 0;
+			this.step = 1;
+			this._applyDeckGlOverlayOnly();
+		},
+		/** 清運流向圖層可見時：循環音效與弧線 sweep */
+		syncGarbageFlowMedia() {
+			const flowOn = this.currentVisibleLayers.some(
+				(lid) => this.getGarbageFlowArcPhaseForDeckId(lid) != null,
+			);
+			if (flowOn) {
+				startGarbageFlowAmbienceLoop();
+				this._ensureGarbageArcSweepLoop();
+			} else {
+				stopGarbageFlowAmbience();
+				this._stopGarbageArcSweepLoop();
 			}
 		},
-		resetArcTimeFilter() {
-			this.stopArcTimeAnimation();
-			this.arcTimeMinutes = null;
-			this.step = 1;
-			this.renderDeckGLLayer();
+		// 4-2-2. Render DeckGL Layer
+		// Developed by Weeee Chill, Taipei Codefest 2024
+		renderDeckGLLayer() {
+			if (!this.overlay) return;
+			this._applyDeckGlOverlayOnly();
+			this._ensureGarbageArcSweepLoop();
+			this.syncGarbageFlowMedia();
 		},
 		setArcDistrictFilter(district) {
 			this.arcDistrictFilter = district || null;
 			this.step = 1;
 			this.renderDeckGLLayer();
-		},
-		// 4-2-3. Animate Arc Layer
-		// Developed by Weeee Chill, Taipei Codefest 2024
-		animateArcLayer() {
-			// 開始時間
-			let startTime = performance.now();
-			// 每個動畫步驟的持續時間（毫秒）
-			const duration = 1000; // 1秒
-			const _this = this;
-
-			const step = (timestamp) => {
-				// 計算已經過的時間
-				const elapsedTime = timestamp - startTime;
-				// 計算進度
-				const progress = (elapsedTime / duration) * 100;
-
-				// 如果時間已經超過一個步驟，則增加步驟數
-				if (progress >= (_this.step / 1000) * 100) {
-					_this.step = _this.step + 1;
-					_this.renderDeckGLLayer();
-				}
-
-				// 如果動畫還未完成，繼續下一個動畫步驟
-				if (_this.step <= 1000) {
-					requestAnimationFrame(step);
-				}
-			};
-			// 啟動動畫
-			requestAnimationFrame(step);
 		},
 		// 4-3. Add Map Layer for Voronoi Maps
 		// Developed by 00:21, Taipei Codefest 2023
@@ -3193,8 +3191,11 @@ export const useMapStore = defineStore("map", {
 			this.flyToLocation(res.geometry.coordinates);
 		},
 
-		/** 清除地址模擬清運路徑之 Marker、動畫與地圖線段 */
-		clearGarbageAddressJourney() {
+		/**
+		 * 清除地址模擬清運路徑之 Marker、動畫與地圖線段
+		 * @param {{ skipArcResume?: boolean }} [opts] skipArcResume：由 runGarbageAddressJourney 內部呼叫時勿恢復弧線 sweep（由該流程 finally 統一恢復）
+		 */
+		clearGarbageAddressJourney(opts = {}) {
 			if (garbageJourneyAnimCancel) {
 				garbageJourneyAnimCancel();
 				garbageJourneyAnimCancel = null;
@@ -3204,15 +3205,75 @@ export const useMapStore = defineStore("map", {
 				garbageJourneyMarker = null;
 			}
 			if (this.map) {
-				if (this.map.getLayer(JOURNEY_ROUTE_ALL_LAYER))
-					this.map.removeLayer(JOURNEY_ROUTE_ALL_LAYER);
-				if (this.map.getSource(JOURNEY_ROUTE_SOURCE))
-					this.map.removeSource(JOURNEY_ROUTE_SOURCE);
-				if (this.map.getLayer(JOURNEY_ROUTE_ACTIVE_LAYER))
-					this.map.removeLayer(JOURNEY_ROUTE_ACTIVE_LAYER);
-				if (this.map.getSource(JOURNEY_ROUTE_ACTIVE_SOURCE))
-					this.map.removeSource(JOURNEY_ROUTE_ACTIVE_SOURCE);
+				if (this.map.getLayer(JOURNEY_ARCS_LAYER))
+					this.map.removeLayer(JOURNEY_ARCS_LAYER);
+				if (this.map.getSource(JOURNEY_ARCS_SOURCE))
+					this.map.removeSource(JOURNEY_ARCS_SOURCE);
 			}
+			if (!opts.skipArcResume) {
+				this.restoreDeckGarbageFlowArcsAfterJourney();
+				garbageArcSweepPausedByJourney = false;
+				if (this.overlay) {
+					this.renderDeckGLLayer();
+				}
+			}
+		},
+
+		/** 模擬時隱藏雙北清運四層 deck 弧線（結束或清除時還原） */
+		hideDeckGarbageFlowArcsForJourney() {
+			if (garbageFlowArcVisibilityBackup !== null) return;
+			const b = {};
+			for (const mapLayerId of Object.keys(this.deckGlLayer)) {
+				if (this.getGarbageFlowArcPhaseForDeckId(mapLayerId) == null) {
+					continue;
+				}
+				const cfg = this.deckGlLayer[mapLayerId]?.config;
+				if (!cfg) continue;
+				b[mapLayerId] = cfg.visible !== false;
+				cfg.visible = false;
+			}
+			if (Object.keys(b).length === 0) return;
+			garbageFlowArcVisibilityBackup = b;
+			if (this.overlay) {
+				this._applyDeckGlOverlayOnly();
+			}
+		},
+
+		/** 還原模擬前雙北清運 deck 弧線可見狀態 */
+		restoreDeckGarbageFlowArcsAfterJourney() {
+			if (garbageFlowArcVisibilityBackup === null) return;
+			for (const [id, vis] of Object.entries(garbageFlowArcVisibilityBackup)) {
+				if (this.deckGlLayer[id]?.config) {
+					this.deckGlLayer[id].config.visible = vis;
+				}
+			}
+			garbageFlowArcVisibilityBackup = null;
+			if (this.overlay) {
+				this._applyDeckGlOverlayOnly();
+			}
+		},
+
+		/** 地址模擬期間暫停背景清運弧線 sweep */
+		pauseGarbageFlowArcSweepForJourney() {
+			this.restoreDeckGarbageFlowArcsAfterJourney();
+			garbageArcSweepPausedByJourney = true;
+			if (garbageArcSweepRafId != null) {
+				cancelAnimationFrame(garbageArcSweepRafId);
+				garbageArcSweepRafId = null;
+			}
+			if (this.overlay) {
+				this._applyDeckGlOverlayOnly();
+			}
+			this.hideDeckGarbageFlowArcsForJourney();
+		},
+
+		/** 地址模擬結束後恢復背景清運弧線 sweep */
+		resumeGarbageFlowArcSweepAfterJourney() {
+			if (!garbageArcSweepPausedByJourney) return;
+			this.restoreDeckGarbageFlowArcsAfterJourney();
+			garbageArcSweepPausedByJourney = false;
+			if (!this.overlay) return;
+			this.renderDeckGLLayer();
 		},
 
 		/**
@@ -3221,188 +3282,205 @@ export const useMapStore = defineStore("map", {
 		 */
 		async runGarbageAddressJourney({ address, onStatus, onLegLabel }) {
 			const dialogStore = useDialogStore();
-			if (!this.map) {
-				dialogStore.showNotification("error", "地圖尚未就緒");
-				return;
-			}
-			this.clearGarbageAddressJourney();
-			const token = import.meta.env.VITE_MAPBOXTOKEN;
-			if (!token) {
-				dialogStore.showNotification(
-					"error",
-					"缺少 Mapbox Token，無法查詢地址",
-				);
-				return;
-			}
-			onStatus?.("地理編碼中…");
-			const geo = await geocodeAddressMapbox(address, token);
-			if (!geo) {
-				dialogStore.showNotification("error", "找不到此地址或查詢失敗");
-				onStatus?.("");
-				return;
-			}
-			onStatus?.("載入清運點位…");
-			let rs;
+			this.pauseGarbageFlowArcSweepForJourney();
 			try {
-				rs = await Promise.all([
-					axios.get("/mapData/garbage_taipei_truck_local.geojson"),
-					axios.get("/mapData/garbage_ntpc_route_local.geojson"),
-					axios
-						.get("/mapData/garbage_taipei_brigade_offices.json")
-						.catch(() => ({ data: null })),
-					axios
-						.get("/mapData/garbage_ntpc_route_hubs.json")
-						.catch(() => ({ data: null })),
-					axios.get("/mapData/incinerator_facilities.json"),
-				]);
-			} catch (e) {
-				console.error(e);
-				dialogStore.showNotification("error", "無法載入清運參考資料");
-				onStatus?.("");
-				return;
-			}
-			const [tpe, ntpc, offices, hubs, facilities] = rs.map(
-				(r) => r.data,
-			);
-			const nearest = findNearestGarbageStop(geo.lng, geo.lat, tpe, ntpc);
-			if (!nearest) {
-				dialogStore.showNotification("error", "清運點位資料為空");
-				onStatus?.("");
-				return;
-			}
-			const plan = planGarbageAddressJourney(
-				geo.lng,
-				geo.lat,
-				nearest,
-				offices,
-				hubs,
-				facilities,
-			);
-			if (plan.error) {
-				dialogStore.showNotification("error", plan.error);
-				onStatus?.("");
-				return;
-			}
-			garbageJourneyMarker = new mapboxGl.Marker({ color: "#ea580c" })
-				.setLngLat(plan.waypoints[0])
-				.addTo(this.map);
-			onLegLabel?.(plan.labels[0] ?? "");
+				if (!this.map) {
+					dialogStore.showNotification("error", "地圖尚未就緒");
+					return;
+				}
+				this.clearGarbageAddressJourney({ skipArcResume: true });
+				const token = import.meta.env.VITE_MAPBOXTOKEN;
+				if (!token) {
+					dialogStore.showNotification(
+						"error",
+						"缺少 Mapbox Token，無法查詢地址",
+					);
+					return;
+				}
+				onStatus?.("地理編碼中…");
+				const geo = await geocodeAddressMapbox(address, token);
+				if (!geo) {
+					dialogStore.showNotification("error", "找不到此地址或查詢失敗");
+					onStatus?.("");
+					return;
+				}
+				onStatus?.("載入清運點位…");
+				let rs;
+				try {
+					rs = await Promise.all([
+						axios.get("/mapData/garbage_taipei_truck_local.geojson"),
+						axios.get("/mapData/garbage_ntpc_route_local.geojson"),
+						axios
+							.get("/mapData/garbage_taipei_brigade_offices.json")
+							.catch(() => ({ data: null })),
+						axios
+							.get("/mapData/garbage_ntpc_route_hubs.json")
+							.catch(() => ({ data: null })),
+						axios.get("/mapData/incinerator_facilities.json"),
+					]);
+				} catch (e) {
+					console.error(e);
+					dialogStore.showNotification("error", "無法載入清運參考資料");
+					onStatus?.("");
+					return;
+				}
+				const [tpe, ntpc, offices, hubs, facilities] = rs.map(
+					(r) => r.data,
+				);
+				const nearest = findNearestGarbageStop(geo.lng, geo.lat, tpe, ntpc);
+				if (!nearest) {
+					dialogStore.showNotification("error", "清運點位資料為空");
+					onStatus?.("");
+					return;
+				}
+				const plan = planGarbageAddressJourney(
+					geo.lng,
+					geo.lat,
+					nearest,
+					offices,
+					hubs,
+					facilities,
+				);
+				if (plan.error) {
+					dialogStore.showNotification("error", plan.error);
+					onStatus?.("");
+					return;
+				}
+				garbageJourneyMarker = new mapboxGl.Marker({ color: "#ea580c" })
+					.setLngLat(plan.waypoints[0])
+					.addTo(this.map);
+				onLegLabel?.(plan.labels[0] ?? "");
 
-			const { labels, segmentPolylines } = plan;
-
-			// 畫出全部三段路線（半透明虛線）
-			const allCoords = segmentPolylines.flatMap((seg) => seg);
-			this.map.addSource(JOURNEY_ROUTE_SOURCE, {
-				type: "geojson",
-				data: {
-					type: "Feature",
-					geometry: { type: "LineString", coordinates: allCoords },
-				},
-			});
-			this.map.addLayer({
-				id: JOURNEY_ROUTE_ALL_LAYER,
-				type: "line",
-				source: JOURNEY_ROUTE_SOURCE,
-				paint: {
-					"line-color": "#94a3b8",
-					"line-width": 2,
-					"line-dasharray": [3, 3],
-					"line-opacity": 0.7,
-				},
-			});
-
-			// 高亮目前段的 source（初始為第 0 段）
-			this.map.addSource(JOURNEY_ROUTE_ACTIVE_SOURCE, {
-				type: "geojson",
-				data: {
-					type: "Feature",
-					geometry: {
-						type: "LineString",
-						coordinates: segmentPolylines[0] ?? [],
-					},
-				},
-			});
-			this.map.addLayer({
-				id: JOURNEY_ROUTE_ACTIVE_LAYER,
-				type: "line",
-				source: JOURNEY_ROUTE_ACTIVE_SOURCE,
-				paint: {
-					"line-color": "#ea580c",
-					"line-width": 4,
-					"line-opacity": 0.95,
-				},
-			});
-
-			const flyToSegment = (legIdx) => {
-				const poly = segmentPolylines[legIdx];
-				if (!poly?.length) return;
-				const b = new mapboxGl.LngLatBounds();
-				for (const pt of poly) b.extend(pt);
-				this.map.fitBounds(b, {
-					padding: { top: 80, bottom: 120, left: 80, right: 80 },
-					maxZoom: 13,
-					duration: 900,
-				});
-			};
-
-			const bounds = new mapboxGl.LngLatBounds();
-			for (const wp of plan.waypoints) bounds.extend(wp);
-			this.map.fitBounds(bounds, {
-				padding: { top: 56, bottom: 96, left: 48, right: 48 },
-				pitch: 52,
-				bearing: -18,
-				maxZoom: 12.2,
-				duration: 1400,
-			});
-			await new Promise((resolveMove) => {
-				let settled = false;
-				const finish = () => {
-					if (settled) return;
-					settled = true;
-					resolveMove();
-				};
-				this.map.once("moveend", finish);
-				setTimeout(finish, 1900);
-			});
-			onStatus?.("模擬路徑中（示意）…");
-			const { promise, cancel } = startMarkerAlongSegmentPolylines(
-				this.map,
-				garbageJourneyMarker,
-				segmentPolylines,
-				{
-					msPerLeg: 3000,
-					onLegStart: (leg) => {
-						const toLabel = labels[leg + 1];
-						onLegLabel?.(toLabel ?? "");
-						// 更新高亮段
-						const activeSrc = this.map?.getSource(
-							JOURNEY_ROUTE_ACTIVE_SOURCE,
-						);
-						if (activeSrc) {
-							activeSrc.setData({
+				const { labels, segmentPolylines } = plan;
+				const wp = plan.waypoints;
+				// 三條大圓弧合併為同一 FeatureCollection，依 leg 上色，避免多 layer 視覺併成兩段
+				const arcCoordsA = sampleGreatCircleLngLat(wp[0], wp[1], 32);
+				const arcCoordsB = sampleGreatCircleLngLat(wp[1], wp[2], 40);
+				const arcCoordsC = sampleGreatCircleLngLat(wp[2], wp[3], 40);
+				this.map.addSource(JOURNEY_ARCS_SOURCE, {
+					type: "geojson",
+					data: {
+						type: "FeatureCollection",
+						features: [
+							{
 								type: "Feature",
+								properties: { leg: 0 },
 								geometry: {
 									type: "LineString",
-									coordinates: segmentPolylines[leg] ?? [],
+									coordinates: arcCoordsA,
 								},
-							});
-						}
-						// 飛到本段範圍
-						flyToSegment(leg);
+							},
+							{
+								type: "Feature",
+								properties: { leg: 1 },
+								geometry: {
+									type: "LineString",
+									coordinates: arcCoordsB,
+								},
+							},
+							{
+								type: "Feature",
+								properties: { leg: 2 },
+								geometry: {
+									type: "LineString",
+									coordinates: arcCoordsC,
+								},
+							},
+						],
 					},
-				},
-			);
-			garbageJourneyAnimCancel = cancel;
-			try {
-				await promise;
-				onLegLabel?.(labels[labels.length - 1] ?? "");
-				dialogStore.showNotification(
-					"success",
-					"路徑模擬結束（示意，非實際車行路線）",
+				});
+				this.map.addLayer({
+					id: JOURNEY_ARCS_LAYER,
+					type: "line",
+					source: JOURNEY_ARCS_SOURCE,
+					paint: {
+						"line-color": [
+							"match",
+							["to-number", ["get", "leg"]],
+							0,
+							"#38bdf8",
+							1,
+							"#fb923c",
+							2,
+							"#f43f5e",
+							"#94a3b8",
+						],
+						"line-width": [
+							"match",
+							["to-number", ["get", "leg"]],
+							0,
+							4,
+							1,
+							3.5,
+							2,
+							3.5,
+							2,
+						],
+						"line-opacity": 0.92,
+					},
+				});
+				this.ensureIncineratorOnTop();
+
+				const flyToSegment = (legIdx) => {
+					const poly = segmentPolylines[legIdx];
+					if (!poly?.length) return;
+					const b = new mapboxGl.LngLatBounds();
+					for (const pt of poly) b.extend(pt);
+					this.map.fitBounds(b, {
+						padding: { top: 80, bottom: 120, left: 80, right: 80 },
+						maxZoom: 13,
+						duration: GARBAGE_JOURNEY_FLYTO_LEG_MS,
+					});
+				};
+
+				const bounds = new mapboxGl.LngLatBounds();
+				for (const wp of plan.waypoints) bounds.extend(wp);
+				this.map.fitBounds(bounds, {
+					padding: { top: 56, bottom: 96, left: 48, right: 48 },
+					pitch: 52,
+					bearing: -18,
+					maxZoom: 12.2,
+					duration: GARBAGE_JOURNEY_INTRO_FIT_MS,
+				});
+				await new Promise((resolveMove) => {
+					let settled = false;
+					const finish = () => {
+						if (settled) return;
+						settled = true;
+						resolveMove();
+					};
+					this.map.once("moveend", finish);
+					setTimeout(finish, GARBAGE_JOURNEY_INTRO_WAIT_MS);
+				});
+				onStatus?.("模擬路徑中（示意）…");
+				const { promise, cancel } = startMarkerAlongSegmentPolylines(
+					this.map,
+					garbageJourneyMarker,
+					segmentPolylines,
+					{
+						msPerLeg: GARBAGE_JOURNEY_MS_PER_LEG,
+						pauseMsBetweenLegs: GARBAGE_JOURNEY_PAUSE_BETWEEN_LEGS_MS,
+						onLegStart: (leg) => {
+							const toLabel = labels[leg + 1];
+							onLegLabel?.(toLabel ?? "");
+							flyToSegment(leg);
+						},
+					},
 				);
+				garbageJourneyAnimCancel = cancel;
+				try {
+					await promise;
+					onLegLabel?.(labels[labels.length - 1] ?? "");
+					dialogStore.showNotification(
+						"success",
+						"路徑模擬結束（示意，非實際車行路線）",
+					);
+				} finally {
+					garbageJourneyAnimCancel = null;
+					onStatus?.("");
+				}
 			} finally {
-				garbageJourneyAnimCancel = null;
-				onStatus?.("");
+				this.resumeGarbageFlowArcSweepAfterJourney();
 			}
 		},
 

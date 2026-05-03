@@ -72,6 +72,7 @@ export function startMarkerLngLatPathAnimation(map, marker, waypoints, opts = {}
  * @param {[number, number][][]} segmentPolylines 每段 [lng, lat][]，依序播放
  * @param {object} [opts]
  * @param {number} [opts.msPerLeg=3200]
+ * @param {number} [opts.pauseMsBetweenLegs=150] 每段結束後暫停（毫秒）
  * @param {(legIndex: number) => void} [opts.onLegStart]
  * @param {boolean} [opts.followCamera=false]
  * @returns {{ promise: Promise<void>, cancel: () => void }}
@@ -83,6 +84,7 @@ export function startMarkerAlongSegmentPolylines(
 	opts = {},
 ) {
 	const msPerLeg = opts.msPerLeg ?? 3200;
+	const pauseMs = opts.pauseMsBetweenLegs ?? 150;
 	const onLegStart = opts.onLegStart ?? (() => {});
 	const followCamera = opts.followCamera === true;
 
@@ -101,7 +103,7 @@ export function startMarkerAlongSegmentPolylines(
 			if (poly.length === 1) {
 				marker.setLngLat(poly[0]);
 				if (followCamera && map) map.setCenter(poly[0]);
-				await new Promise((r) => setTimeout(r, 400));
+				await new Promise((r) => setTimeout(r, pauseMs));
 				continue;
 			}
 
@@ -132,7 +134,7 @@ export function startMarkerAlongSegmentPolylines(
 			});
 
 			if (cancelled) return;
-			await new Promise((r) => setTimeout(r, 400));
+			await new Promise((r) => setTimeout(r, pauseMs));
 		}
 	})();
 

@@ -87,3 +87,8 @@ db-sample-data/dashboardmanager-demo.sql
 db-sample-data/metro_kitchen_unified_manager_patch.sql
 db-sample-data/metro_recycling_unified_manager_patch.sql
 db-sample-data/tpc_recycling_mvp_manager_patch.sql
+
+# 原始調查／下載資料（由各開發者本機維護，不進版控）
+db-sample-data/raw/
+# Excel 開啟時產生的暫存檔
+~$*

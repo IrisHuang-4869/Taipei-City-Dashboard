@@ -550,134 +550,134 @@ function toggleSelectAllLayers() {
       </template>
     </template>
     <template v-else>
-    <div
-      class="moenv-tabs"
-      role="tablist"
-    >
-      <button
-        v-for="t in tabs"
-        :key="t.id"
-        type="button"
-        class="moenv-tab"
-        :class="{ 'moenv-tab--active': activeSubTab === t.id }"
-        role="tab"
-        :aria-selected="activeSubTab === t.id"
-        @click="activeSubTab = t.id"
+      <div
+        class="moenv-tabs"
+        role="tablist"
       >
-        {{ t.label }}
-      </button>
-    </div>
-
-    <template v-if="activeSubTab === 'layers'">
-      <p class="moenv-layer-toggles__hint">
-        開啟組件主開關後，可在此選擇要顯示的回收物資類別。
-      </p>
-      <div class="moenv-layer-toggles__bulk">
-        <div class="moenv-layer-toggles__ai-input-wrap">
-          <input
-            v-model="aiUserMessage"
-            type="text"
-            class="moenv-layer-toggles__ai-input"
-            placeholder="輸入你想回收的東西"
-            :disabled="!parentMapOn || aiLoading"
-            @keyup.enter="sendAIMessage"
-          >
-          <button
-            class="moenv-layer-toggles__ai-btn"
-            :disabled="!parentMapOn || aiLoading || !aiUserMessage.trim()"
-            @click="sendAIMessage"
-          >
-            <i
-              v-if="aiLoading"
-              class="fas fa-spinner fa-spin"
-            />
-            <span v-else>🔍</span>
-          </button>
-        </div>
-
         <button
-          v-if="map_config?.length"
+          v-for="t in tabs"
+          :key="t.id"
           type="button"
-          class="moenv-layer-toggles__select-all"
-          :disabled="!parentMapOn"
-          @click="toggleSelectAllLayers"
+          class="moenv-tab"
+          :class="{ 'moenv-tab--active': activeSubTab === t.id }"
+          role="tab"
+          :aria-selected="activeSubTab === t.id"
+          @click="activeSubTab = t.id"
         >
-          {{ allLayersEnabled ? "取消全選" : "全選" }}
+          {{ t.label }}
         </button>
       </div>
-      <div
-        v-if="aiResultText"
-        class="moenv-layer-toggles__ai-result"
-      >
-        {{ aiResultText }}
-      </div>
-      <div
-        v-if="aiCarbonText"
-        class="moenv-layer-toggles__ai-carbon"
-      >
-        {{ aiCarbonText }}
-      </div>
-      <div
-        v-for="(mc, i) in map_config"
-        :key="`layer-${mc.index}-${mc.city || ''}-${i}`"
-        class="moenv-layer-toggles__row"
-      >
-        <span
-          class="moenv-layer-toggles__swatch"
-          :style="{ backgroundColor: layerColor(i) }"
-        />
-        <span class="moenv-layer-toggles__label">{{ layerTitle(mc) }}</span>
-        <label class="toggleswitch moenv-layer-toggles__switch">
-          <input
-            type="checkbox"
-            :checked="!!userLayerEnabled[i]"
-            :disabled="!parentMapOn"
-            @change="(e) => onSubToggle(i, e.target.checked)"
-          >
-          <span class="toggleswitch-slider" />
-        </label>
-      </div>
-    </template>
 
-    <template v-else-if="activeSubTab === 'counts'">
-      <p class="moenv-layer-toggles__hint">
-        各類別點位總數依公開圖資統計（不分行政區），長條由多至少排列。
-      </p>
-      <div
-        v-if="countsLoading"
-        class="moenv-layer-toggles__loading"
-      >
-        載入中…
-      </div>
-      <template v-else-if="countsLoaded && countBarSeries.data.length">
-        <div class="moenv-layer-toggles__chart-wrap">
-          <VueApexCharts
-            width="100%"
-            :height="countsChartHeight"
-            type="bar"
-            :options="countsChartOptions"
-            :series="countsChartSeries"
-          />
+      <template v-if="activeSubTab === 'layers'">
+        <p class="moenv-layer-toggles__hint">
+          開啟組件主開關後，可在此選擇要顯示的回收物資類別。
+        </p>
+        <div class="moenv-layer-toggles__bulk">
+          <div class="moenv-layer-toggles__ai-input-wrap">
+            <input
+              v-model="aiUserMessage"
+              type="text"
+              class="moenv-layer-toggles__ai-input"
+              placeholder="輸入你想回收的東西"
+              :disabled="!parentMapOn || aiLoading"
+              @keyup.enter="sendAIMessage"
+            >
+            <button
+              class="moenv-layer-toggles__ai-btn"
+              :disabled="!parentMapOn || aiLoading || !aiUserMessage.trim()"
+              @click="sendAIMessage"
+            >
+              <i
+                v-if="aiLoading"
+                class="fas fa-spinner fa-spin"
+              />
+              <span v-else>🔍</span>
+            </button>
+          </div>
+
+          <button
+            v-if="map_config?.length"
+            type="button"
+            class="moenv-layer-toggles__select-all"
+            :disabled="!parentMapOn"
+            @click="toggleSelectAllLayers"
+          >
+            {{ allLayersEnabled ? "取消全選" : "全選" }}
+          </button>
         </div>
         <div
-          v-if="totalCount !== null"
-          class="moenv-layer-toggles__total"
+          v-if="aiResultText"
+          class="moenv-layer-toggles__ai-result"
         >
-          <template v-if="allCountsOk">
-            合計 <strong>{{ totalCount.toLocaleString("zh-TW") }}</strong> 處
-          </template>
-          <template v-else>
-            已載入類別合計 <strong>{{ totalCount.toLocaleString("zh-TW") }}</strong> 處
-          </template>
+          {{ aiResultText }}
         </div>
-        <p
-          v-if="hasCountLoadError"
-          class="moenv-layer-toggles__warn"
+        <div
+          v-if="aiCarbonText"
+          class="moenv-layer-toggles__ai-carbon"
         >
-          部分圖檔無法讀取；顯示「—」的類別未計入長條長度（值為 0）。
-        </p>
+          {{ aiCarbonText }}
+        </div>
+        <div
+          v-for="(mc, i) in map_config"
+          :key="`layer-${mc.index}-${mc.city || ''}-${i}`"
+          class="moenv-layer-toggles__row"
+        >
+          <span
+            class="moenv-layer-toggles__swatch"
+            :style="{ backgroundColor: layerColor(i) }"
+          />
+          <span class="moenv-layer-toggles__label">{{ layerTitle(mc) }}</span>
+          <label class="toggleswitch moenv-layer-toggles__switch">
+            <input
+              type="checkbox"
+              :checked="!!userLayerEnabled[i]"
+              :disabled="!parentMapOn"
+              @change="(e) => onSubToggle(i, e.target.checked)"
+            >
+            <span class="toggleswitch-slider" />
+          </label>
+        </div>
       </template>
-    </template>
+
+      <template v-else-if="activeSubTab === 'counts'">
+        <p class="moenv-layer-toggles__hint">
+          各類別點位總數依公開圖資統計（不分行政區），長條由多至少排列。
+        </p>
+        <div
+          v-if="countsLoading"
+          class="moenv-layer-toggles__loading"
+        >
+          載入中…
+        </div>
+        <template v-else-if="countsLoaded && countBarSeries.data.length">
+          <div class="moenv-layer-toggles__chart-wrap">
+            <VueApexCharts
+              width="100%"
+              :height="countsChartHeight"
+              type="bar"
+              :options="countsChartOptions"
+              :series="countsChartSeries"
+            />
+          </div>
+          <div
+            v-if="totalCount !== null"
+            class="moenv-layer-toggles__total"
+          >
+            <template v-if="allCountsOk">
+              合計 <strong>{{ totalCount.toLocaleString("zh-TW") }}</strong> 處
+            </template>
+            <template v-else>
+              已載入類別合計 <strong>{{ totalCount.toLocaleString("zh-TW") }}</strong> 處
+            </template>
+          </div>
+          <p
+            v-if="hasCountLoadError"
+            class="moenv-layer-toggles__warn"
+          >
+            部分圖檔無法讀取；顯示「—」的類別未計入長條長度（值為 0）。
+          </p>
+        </template>
+      </template>
     </template>
   </div>
 </template>

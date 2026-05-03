@@ -106,3 +106,6 @@ SET search_path TO public;
 
 -- Step 19: 新增清運流向第二階段弧線圖層（component_maps id 323/324）並更新 garbage_district_compare_local map_config_ids
 \ir garbage_flow_phase2_map_layers_patch.sql
+
+-- Step 20: 廚餘組件顯示名稱、焚化爐圖層還原為 symbol+flame（點位不可誤用 fill）
+\ir fix_kitchen_display_name_and_incinerator_symbol.sql

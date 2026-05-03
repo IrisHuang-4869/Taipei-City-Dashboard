@@ -131,9 +131,9 @@ export function planGarbageAddressJourney(
 	];
 
 	const segmentPolylines = [
-		sampleGreatCircleLngLat(waypoints[0], waypoints[1], 28),
-		sampleGreatCircleLngLat(waypoints[1], waypoints[2], 48),
-		sampleGreatCircleLngLat(waypoints[2], waypoints[3], 48),
+		sampleGreatCircleLngLat(waypoints[0], waypoints[1], 16),
+		sampleGreatCircleLngLat(waypoints[1], waypoints[2], 24),
+		sampleGreatCircleLngLat(waypoints[2], waypoints[3], 24),
 	];
 
 	return {
