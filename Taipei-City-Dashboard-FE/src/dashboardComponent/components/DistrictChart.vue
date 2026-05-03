@@ -83,6 +83,33 @@ const districts = [
 	"烏來區",
 ];
 
+/**
+ * three_d 多數列時，後端回傳的 series 順序依 SQL 列順序，不一定與 component_charts.unit 一致。
+ * 例如焚化爐查詢同時回傳「比率 (%)」與「總焚化量 (噸)」時，若誤用 series[0] 會把噸數當成百分比平均（如 1308%）。
+ */
+function pickMainSerieForDistrictMap(series, unit) {
+	if (!Array.isArray(series) || series.length === 0) return null;
+	if (series.length === 1) return series[0];
+	if (unit === "%") {
+		const preferred = series.find((s) => {
+			const n = String(s?.name ?? "");
+			const looksLikeRate =
+				/%/.test(n) ||
+				(/比率|占比|負載/.test(n) && !/公噸|噸\/|總焚|焚燒量/.test(n));
+			return looksLikeRate && !/公噸|噸\/月|噸\/日/.test(n);
+		});
+		if (preferred) return preferred;
+		const plausiblePct = series.filter((s) => {
+			const nums = (s?.data ?? []).filter((v) => Number.isFinite(v));
+			if (!nums.length) return false;
+			const mx = Math.max(...nums.map((v) => Math.abs(v)));
+			return mx <= 250;
+		});
+		if (plausiblePct.length) return plausiblePct[0];
+	}
+	return series[0];
+}
+
 // Parse District Data (to support 2D or 3D data)
 const districtData = computed(() => {
 	let output = {
@@ -146,8 +173,17 @@ const districtData = computed(() => {
 			}
 		});
 	} else {
-		// 如果有多個數列，預設取第一個數列作為地圖顯示與標題數值（避免單位不同相加導致錯誤）
-		const mainSerie = props.series[0];
+		// 如果有多個數列，依單位與數列名稱選主數列（避免誤用與 % 不同單位的數列）
+		const mainSerie = pickMainSerieForDistrictMap(
+			props.series,
+			props.chart_config?.unit,
+		);
+		if (!mainSerie?.data?.length) {
+			output.highest = 0;
+			output.sum = 0;
+			output.average = 0;
+			return output;
+		}
 		for (let i = 0; i < props.chart_config.categories.length; i++) {
 			output[props.chart_config.categories[i]] = +mainSerie.data[i];
 		}
