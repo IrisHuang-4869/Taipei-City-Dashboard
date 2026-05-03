@@ -6,6 +6,15 @@
  */
 
 const MIN_LEN2 = 1e-16;
+
+/** 新北 schedule_summary（"HH:MM" 或 "HH:MM；HH:MM"）→ 分鐘數（0–1439），取第一個時段 */
+function schedule_to_minutes(summary) {
+	if (!summary) return null;
+	const first = String(summary).split("；")[0].trim();
+	const m = first.match(/^(\d{1,2}):(\d{2})$/);
+	if (!m) return null;
+	return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+}
 /** 雙北周邊合理範圍（含新北東北角、烏來等略放寬） */
 const BBOX = { lonMin: 121.2, lonMax: 122.15, latMin: 24.7, latMax: 25.35 };
 /** 停靠點→集中點最長弧線（公里）；偏遠山區路線略放寬 */
@@ -91,12 +100,15 @@ export function getNtpcRouteHubLngLatForStop(stopFeature, hubsDoc = null) {
  * @param {object | null} [hubsDoc] 可選之路線集中點覆寫表
  * @returns {GeoJSON.FeatureCollection} LineString [停靠點, 集中點]
  */
-export function buildNtpcGarbageRouteHubArcs(featureCollection, hubsDoc = null) {
+export function buildNtpcGarbageRouteHubArcs(
+	featureCollection,
+	hubsDoc = null,
+) {
 	const byRoute = new Map();
 	for (const f of featureCollection.features) {
 		if (f.geometry?.type !== "Point") continue;
 		const p = f.properties || {};
-		const {dist} = p;
+		const { dist } = p;
 		const routeName = p.route_name;
 		if (!dist || !routeName) continue;
 		const key = routeGroupKey(dist, routeName);
@@ -122,7 +134,7 @@ export function buildNtpcGarbageRouteHubArcs(featureCollection, hubsDoc = null) 
 	for (const f of featureCollection.features) {
 		if (f.geometry?.type !== "Point") continue;
 		const p = f.properties || {};
-		const {dist} = p;
+		const { dist } = p;
 		const routeName = p.route_name;
 		if (!dist || !routeName) continue;
 		const key = routeGroupKey(dist, routeName);
@@ -154,6 +166,7 @@ export function buildNtpcGarbageRouteHubArcs(featureCollection, hubsDoc = null) 
 		const dy = lat - tlat;
 		if (dx * dx + dy * dy < MIN_LEN2) continue;
 
+		const timeMinutes = schedule_to_minutes(p.schedule_summary);
 		features.push({
 			type: "Feature",
 			geometry: {
@@ -169,6 +182,7 @@ export function buildNtpcGarbageRouteHubArcs(featureCollection, hubsDoc = null) 
 				flow_target: flowTarget,
 				hub_source: hubSource,
 				...(hubPt?.address ? { hub_table_address: hubPt.address } : {}),
+				time_minutes: timeMinutes,
 			},
 		});
 	}

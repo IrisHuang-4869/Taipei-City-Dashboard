@@ -72,10 +72,7 @@ function parseComponentMapPaint(paint) {
 
 function isKitchenFillMapConfig(map_config) {
 	if (!map_config) return false;
-	if (
-		map_config.index &&
-		KITCHEN_FILL_MAP_INDICES.has(map_config.index)
-	) {
+	if (map_config.index && KITCHEN_FILL_MAP_INDICES.has(map_config.index)) {
 		return true;
 	}
 	const lid = map_config.layerId;
@@ -171,6 +168,12 @@ export const useMapStore = defineStore("map", {
 		deckGlLayer: {},
 		// Store animate step form 1 to 100
 		step: 1,
+		// 收運流向時間動畫：目前顯示的時間（分鐘，0–1439），null = 顯示全部
+		arcTimeMinutes: null,
+		// 收運流向時間動畫：是否正在播放
+		arcTimeAnimating: false,
+		// 各 arc 圖層的完整 feature 陣列快取（用於時間篩選）
+		arcRawFeatures: {},
 		// Stores popup information
 		popup: null,
 		// Store currently loading layers,
@@ -449,14 +452,14 @@ export const useMapStore = defineStore("map", {
 						canvas.width = size;
 						canvas.height = size;
 						const ctx = canvas.getContext("2d");
-						
+
 						// Bootstrap Icons "fire" path, viewBox is 16x16
 						// 放大事倍數：128 / 16 = 8
 						ctx.scale(8, 8);
 						const flamePath = new Path2D(
-							"M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z"
+							"M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z",
 						);
-						
+
 						ctx.fillStyle = "white";
 						ctx.fill(flamePath);
 
@@ -470,7 +473,10 @@ export const useMapStore = defineStore("map", {
 						`/images/map/${element}.png`,
 						(error, image) => {
 							if (error) {
-								console.error(`Failed to load image: ${element}`, error);
+								console.error(
+									`Failed to load image: ${element}`,
+									error,
+								);
 								resolve();
 								return;
 							}
@@ -957,7 +963,10 @@ export const useMapStore = defineStore("map", {
 			// 需求：為特定的垃圾/回收圖層增加懸浮工具提示 (Hover Tooltip)
 			if (this.map.getLayer(map_config.layerId)) {
 				if (map_config.index === "incinerator_capacity") {
-					this.addWasteHoverHandlers(map_config.layerId, "incinerator");
+					this.addWasteHoverHandlers(
+						map_config.layerId,
+						"incinerator",
+					);
 				} else if (map_config.index.includes("recycling_map_mvp")) {
 					this.addWasteHoverHandlers(map_config.layerId, "recycling");
 				} else if (map_config.index.includes("kitchen_waste_map_mvp")) {
@@ -969,9 +978,13 @@ export const useMapStore = defineStore("map", {
 		ensureIncineratorOnTop() {
 			if (!this.map) return;
 			// 遍歷所有已載入的圖層，尋找焚化爐圖層並將其移動到最前面
-			this.currentLayers.forEach(layerId => {
+			this.currentLayers.forEach((layerId) => {
 				const config = this.mapConfigs[layerId];
-				if (config && config.index === "incinerator_capacity" && this.map.getLayer(layerId)) {
+				if (
+					config &&
+					config.index === "incinerator_capacity" &&
+					this.map.getLayer(layerId)
+				) {
 					this.map.moveLayer(layerId);
 				}
 			});
@@ -982,17 +995,17 @@ export const useMapStore = defineStore("map", {
 
 			map.on("mouseenter", layerId, (e) => {
 				map.getCanvas().style.cursor = "pointer";
-				
+
 				const props = e.features[0].properties;
 				let html = "";
-				
+
 				if (type === "incinerator") {
 					html = `
 						<div style="padding: 10px; color: white; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 13px; line-height: 1.6; min-width: 180px;">
 							<div style="font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.2); margin-bottom: 8px; padding-bottom: 4px; font-size: 14px;">${props.name}</div>
 							<div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
 								<span style="color: #94a3b8;">焚化量能比率:</span>
-								<span style="color: #fbbf24; font-weight: 600;">${props.capacity_ratio_pct || (Math.round(props.capacity_ratio * 100) + '%')}</span>
+								<span style="color: #fbbf24; font-weight: 600;">${props.capacity_ratio_pct || Math.round(props.capacity_ratio * 100) + "%"}</span>
 							</div>
 							<div style="display: flex; justify-content: space-between;">
 								<span style="color: #94a3b8;">總焚化量:</span>
@@ -1001,7 +1014,8 @@ export const useMapStore = defineStore("map", {
 						</div>
 					`;
 				} else {
-					const title = type === "recycling" ? "資源回收量" : "廚餘回收量";
+					const title =
+						type === "recycling" ? "資源回收量" : "廚餘回收量";
 					const district = props.TNAME || props.district || "";
 					html = `
 						<div style="padding: 10px; color: white; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 13px; line-height: 1.6; min-width: 180px;">
@@ -1017,14 +1031,14 @@ export const useMapStore = defineStore("map", {
 						</div>
 					`;
 				}
-				
+
 				if (this.hoverPopup) this.hoverPopup.remove();
-				
+
 				this.hoverPopup = new mapboxGl.Popup({
 					closeButton: false,
 					closeOnClick: false,
 					offset: 15,
-					anchor: 'bottom'
+					anchor: "bottom",
 				})
 					.setLngLat(e.lngLat)
 					.setHTML(html)
@@ -1121,11 +1135,15 @@ export const useMapStore = defineStore("map", {
 				id: map_config.index,
 				data: data.features,
 				visible: layerVisible,
-				getSourcePosition: (d) => d.geometry.coordinates[0],
-				getTargetPosition: (d) => d.geometry.coordinates[1],
+				// coordinates[1] 是分隊/集中點（中心），作為 source 使動畫從外往中心收斂
+				getSourcePosition: (d) => d.geometry.coordinates[1],
+				getTargetPosition: (d) => d.geometry.coordinates[0],
 				// color format: [r, g, b, [a]]
 				getSourceColor: () => {
-					const color = hexToRGB(paintSettings["arc-color"][0]);
+					const color = hexToRGB(
+						paintSettings["arc-color"][1] ||
+							paintSettings["arc-color"][0],
+					);
 					return [
 						parseInt(color.r, 16),
 						parseInt(color.g, 16),
@@ -1134,10 +1152,7 @@ export const useMapStore = defineStore("map", {
 					];
 				},
 				getTargetColor: () => {
-					const color = hexToRGB(
-						paintSettings["arc-color"][1] ||
-							paintSettings["arc-color"][0],
-					);
+					const color = hexToRGB(paintSettings["arc-color"][0]);
 					return [
 						parseInt(color.r, 16),
 						parseInt(color.g, 16),
@@ -1151,6 +1166,8 @@ export const useMapStore = defineStore("map", {
 					coef: this.step / 1000,
 				}),
 			};
+			// 快取完整 features 供時間篩選
+			this.arcRawFeatures[mapLayerId] = data.features;
 			// add deckgl layer to overlay
 			this.deckGlLayer[mapLayerId] = {
 				type: paintSettings["arc-animate"]
@@ -1174,16 +1191,33 @@ export const useMapStore = defineStore("map", {
 		renderDeckGLLayer() {
 			const layers = Object.keys(this.deckGlLayer).map((index) => {
 				const l = this.deckGlLayer[index];
-				switch (l.type) {
-				case "ArcLayer":
-					return new ArcLayer(l.config);
-				case "AnimatedArcLayer":
-					return new AnimatedArcLayer({
-						...l.config,
-						coef: this.step / 1000,
+				// 時間過濾：若 arcTimeMinutes 不為 null，顯示已到時間的 features（只加不減）
+				let filteredData = l.data;
+				if (
+					this.arcTimeMinutes !== null &&
+					Array.isArray(this.arcRawFeatures[index])
+				) {
+					const t = this.arcTimeMinutes;
+					filteredData = this.arcRawFeatures[index].filter((f) => {
+						const tm = f.properties?.time_minutes;
+						if (tm == null) return true;
+						return tm <= t;
 					});
-				default:
-					break;
+				}
+				switch (l.type) {
+					case "ArcLayer":
+						return new ArcLayer({
+							...l.config,
+							data: filteredData,
+						});
+					case "AnimatedArcLayer":
+						return new AnimatedArcLayer({
+							...l.config,
+							data: filteredData,
+							coef: this.step / 1000,
+						});
+					default:
+						break;
 				}
 			});
 			this.overlay.setProps({
@@ -1198,6 +1232,78 @@ export const useMapStore = defineStore("map", {
 				this.step < 1000
 			)
 				this.animateArcLayer();
+		},
+		// 4-2-4. Set arc time filter and re-render
+		setArcTimeMinutes(minutes) {
+			this.arcTimeMinutes = minutes;
+			this.step = 1;
+			this.renderDeckGLLayer();
+		},
+		// 4-2-5. Start/stop time-lapse playback (30 s from earliest to latest time in data)
+		startArcTimeAnimation() {
+			if (this.arcTimeAnimating) return;
+			this.arcTimeAnimating = true;
+			// 從所有 arc 圖層中找資料最小/最大 time_minutes
+			let dataMin = 1439;
+			let dataMax = 0;
+			for (const features of Object.values(this.arcRawFeatures)) {
+				for (const f of features) {
+					const tm = f.properties?.time_minutes;
+					if (tm != null) {
+						if (tm < dataMin) dataMin = tm;
+						if (tm > dataMax) dataMax = tm;
+					}
+				}
+			}
+			if (dataMin > dataMax) {
+				dataMin = 360;
+				dataMax = 1439;
+			}
+			const TOTAL_MS = 15000;
+			const TOTAL_RANGE = dataMax - dataMin || 1;
+			// 若目前滑桿在範圍外或為 null，從頭開始
+			if (
+				this.arcTimeMinutes === null ||
+				this.arcTimeMinutes < dataMin ||
+				this.arcTimeMinutes >= dataMax
+			) {
+				this.arcTimeMinutes = dataMin;
+			}
+			let lastTs = null;
+			const tick = (ts) => {
+				if (!this.arcTimeAnimating) return;
+				if (lastTs !== null) {
+					const delta = ts - lastTs;
+					const next =
+						this.arcTimeMinutes + (delta / TOTAL_MS) * TOTAL_RANGE;
+					if (next >= dataMax) {
+						this.arcTimeMinutes = dataMax;
+						this.step = 1;
+						this.renderDeckGLLayer();
+						this.arcTimeAnimating = false;
+						return;
+					}
+					this.arcTimeMinutes = Math.floor(next);
+					this.step = 1;
+					this.renderDeckGLLayer();
+				}
+				lastTs = ts;
+				this._arcTimeRafId = requestAnimationFrame(tick);
+			};
+			this._arcTimeRafId = requestAnimationFrame(tick);
+		},
+		stopArcTimeAnimation() {
+			this.arcTimeAnimating = false;
+			if (this._arcTimeRafId) {
+				cancelAnimationFrame(this._arcTimeRafId);
+				this._arcTimeRafId = null;
+			}
+		},
+		resetArcTimeFilter() {
+			this.stopArcTimeAnimation();
+			this.arcTimeMinutes = null;
+			this.step = 1;
+			this.renderDeckGLLayer();
 		},
 		// 4-2-3. Animate Arc Layer
 		// Developed by Weeee Chill, Taipei Codefest 2024
@@ -2227,9 +2333,8 @@ export const useMapStore = defineStore("map", {
 						"visible",
 					);
 					if (this.map.getLayer(mapLayerId)) {
-						const mvpFill = mvpPerCapitaFillExprForLayerId(
-							mapLayerId,
-						);
+						const mvpFill =
+							mvpPerCapitaFillExprForLayerId(mapLayerId);
 						if (mvpFill) {
 							this.map.setPaintProperty(
 								mapLayerId,

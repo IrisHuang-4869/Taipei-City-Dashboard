@@ -7,6 +7,15 @@
  */
 
 const MIN_LEN2 = 1e-16;
+
+/** 台北 arrive_time（HHMM 整數，可能 >2400）→ 分鐘數（0–1439） */
+function hhmm_to_minutes(hhmm) {
+	if (hhmm == null) return null;
+	const n = Number(hhmm) % 2400;
+	const h = Math.floor(n / 100);
+	const m = n % 100;
+	return h * 60 + m;
+}
 /** 雙北收運點合理範圍（略寬鬆）；超出則不畫該弧線，避免錯誤座標「沖天」 */
 const BBOX = { lonMin: 121.25, lonMax: 122.05, latMin: 24.75, latMax: 25.35 };
 /** 停靠點→終點最長弧線（公里），超過視為異常不畫 */
@@ -86,7 +95,10 @@ export function getTaipeiBrigadeHubLngLatForStop(stopFeature, officesDoc = null)
  * @param {object | null} [officesDoc] 分隊地址／座標表（可為 null）
  * @returns {GeoJSON.FeatureCollection} LineString [停靠點, 分隊終點]
  */
-export function buildTaipeiGarbageBrigadeArcs(featureCollection, officesDoc = null) {
+export function buildTaipeiGarbageBrigadeArcs(
+	featureCollection,
+	officesDoc = null,
+) {
 	const byBrigade = new Map();
 	for (const f of featureCollection.features) {
 		if (f.geometry?.type !== "Point") continue;
@@ -147,6 +159,7 @@ export function buildTaipeiGarbageBrigadeArcs(featureCollection, officesDoc = nu
 		const dy = lat - tlat;
 		if (dx * dx + dy * dy < MIN_LEN2) continue;
 
+		const timeMinutes = hhmm_to_minutes(f.properties?.arrive_time);
 		features.push({
 			type: "Feature",
 			geometry: {
@@ -163,6 +176,7 @@ export function buildTaipeiGarbageBrigadeArcs(featureCollection, officesDoc = nu
 				...(officePt?.address
 					? { brigade_office_address: officePt.address }
 					: {}),
+				time_minutes: timeMinutes,
 			},
 		});
 	}

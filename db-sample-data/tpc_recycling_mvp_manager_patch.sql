@@ -47,7 +47,7 @@ INSERT INTO query_charts (
   '臺北市各行政區清潔隊資源回收量，單位：公噸。資料來源：raw/tpc_recycling_history 之年報 PDF。',
   'MVP 為單月快照（與 ntpc_waste_mvp 相同邏輯：取 tpc_recycling_monthly 最近月）。歷史圖為全市各月加總（dashboard.tpc_recycling_monthly）。',
   '與新北回收地圖同頁對照臺北市各區回收量。',
-  ARRAY[]::text[], ARRAY['tpc']::text[], NOW(), NOW(), 'three_d',
+  ARRAY['https://data.gov.tw/dataset/163144','https://data.taipei/dataset/detail?id=34f4f00b-5386-43ab-bcc7-b0ae7ee3e305','https://oas.bas.ntpc.gov.tw/NTPCTRWD/NewPage/Publish.aspx?Mid1=382150000I&p=2&y=2025/12/25&s=10']::text[], ARRAY['tpc']::text[], NOW(), NOW(), 'three_d',
   $q$SELECT district AS x_axis,
        '資源回收量(公噸)' AS y_axis,
        ''::text AS icon,
