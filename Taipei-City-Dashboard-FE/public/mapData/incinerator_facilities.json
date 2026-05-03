@@ -1,0 +1,162 @@
+{
+	"meta": {
+		"description": "雙北垃圾焚化廠：責任行政區、流向／地理說明與代表座標（供圖層、第二階段弧線對照）。行政區名統一為「○○區」以利與清運 GeoJSON 之 dist 比對；若實務分區與表列不同，請以官方公告為準並更新本檔。",
+		"updated": "2026-05-03",
+		"coordinate_order": "latitude, longitude 為 WGS84 十進位；幾何若用 GeoJSON 請改為 [longitude, latitude]。"
+	},
+	"facilities": [
+		{
+			"id": "tpc_beitou",
+			"name": "臺北市北投垃圾焚化廠",
+			"name_short": "北投焚化廠",
+			"city": "taipei",
+			"latitude": 25.107,
+			"longitude": 121.501,
+			"districts_responsible": [
+				"北投區",
+				"士林區",
+				"大同區",
+				"中山區"
+			],
+			"geographic_note": "責任分區涵蓋臺北市西北側與核心區北緣。",
+			"flow_summary": "北投、士林、大同、中山區之一般垃圾處理責任分區（表列）。"
+		},
+		{
+			"id": "tpc_neihu",
+			"name": "臺北市內湖垃圾焚化廠",
+			"name_short": "內湖焚化廠",
+			"city": "taipei",
+			"latitude": 25.062734,
+			"longitude": 121.603711,
+			"districts_responsible": ["內湖區", "南港區", "松山區"],
+			"geographic_note": "負責臺北市東側。",
+			"flow_summary": "內湖、南港、松山區；東側收運處理為主。"
+		},
+		{
+			"id": "tpc_muzha",
+			"name": "臺北市木柵垃圾焚化廠",
+			"name_short": "木柵焚化廠",
+			"city": "taipei",
+			"latitude": 25.005107,
+			"longitude": 121.587616,
+			"districts_responsible": [
+				"文山區",
+				"大安區",
+				"信義區",
+				"中正區",
+				"萬華區"
+			],
+			"geographic_note": "負責臺北市南端與城中區。",
+			"flow_summary": "文山、大安、信義、中正、萬華區；南段與城中區為主。"
+		},
+		{
+			"id": "ntpc_bali",
+			"name": "新北市八里垃圾焚化廠",
+			"name_short": "八里焚化廠",
+			"city": "newtaipei",
+			"latitude": 25.136,
+			"longitude": 121.369,
+			"districts_responsible": [
+				"汐止區",
+				"瑞芳區",
+				"淡水區",
+				"五股區",
+				"泰山區",
+				"林口區",
+				"八里區",
+				"三芝區",
+				"石門區",
+				"金山區",
+				"萬里區",
+				"平溪區",
+				"雙溪區",
+				"貢寮區"
+			],
+			"geographic_note": "新北東北岸與北海岸一帶之區域樞紐。",
+			"flow_summary": "表列行政區之一般垃圾／區域調度常與八里廠連動（示意分區，實務以環保局公告為準）。"
+		},
+		{
+			"id": "ntpc_shulin",
+			"name": "新北市樹林垃圾焚化廠",
+			"name_short": "樹林焚化廠",
+			"city": "newtaipei",
+			"latitude": 24.966,
+			"longitude": 121.378,
+			"districts_responsible": [
+				"板橋區",
+				"新莊區",
+				"樹林區",
+				"土城區",
+				"三峽區",
+				"鶯歌區",
+				"三重區",
+				"蘆洲區"
+			],
+			"geographic_note": "處理新北人口最密集之溪北、溪南核心區。",
+			"flow_summary": "板橋、新莊、樹林、土城、三峽、鶯歌、三重、蘆洲區；大臺北西側與板新走廊為主。"
+		},
+		{
+			"id": "ntpc_xindian",
+			"name": "新北市新店垃圾焚化廠",
+			"name_short": "新店焚化廠",
+			"city": "newtaipei",
+			"latitude": 24.957,
+			"longitude": 121.498,
+			"districts_responsible": [
+				"中和區",
+				"永和區",
+				"新店區",
+				"深坑區",
+				"石碇區",
+				"坪林區",
+				"烏來區"
+			],
+			"geographic_note": "負責新北南側山區與中永和高密度住宅區。",
+			"flow_summary": "中和、永和、新店、深坑、石碇、坪林、烏來區；南側與中永和為主。"
+		}
+	],
+	"district_to_facility_hint": {
+		"_comment": "由 districts_responsible 展開之「行政區 → 廠 id」快速查表；第二階段弧線或圖例可用。若一區多廠或分時調度，請改為陣列或另建規則表。",
+		"北投區": "tpc_beitou",
+		"士林區": "tpc_beitou",
+		"大同區": "tpc_beitou",
+		"中山區": "tpc_beitou",
+		"內湖區": "tpc_neihu",
+		"南港區": "tpc_neihu",
+		"松山區": "tpc_neihu",
+		"文山區": "tpc_muzha",
+		"大安區": "tpc_muzha",
+		"信義區": "tpc_muzha",
+		"中正區": "tpc_muzha",
+		"萬華區": "tpc_muzha",
+		"汐止區": "ntpc_bali",
+		"瑞芳區": "ntpc_bali",
+		"淡水區": "ntpc_bali",
+		"五股區": "ntpc_bali",
+		"泰山區": "ntpc_bali",
+		"林口區": "ntpc_bali",
+		"八里區": "ntpc_bali",
+		"三芝區": "ntpc_bali",
+		"石門區": "ntpc_bali",
+		"金山區": "ntpc_bali",
+		"萬里區": "ntpc_bali",
+		"平溪區": "ntpc_bali",
+		"雙溪區": "ntpc_bali",
+		"貢寮區": "ntpc_bali",
+		"板橋區": "ntpc_shulin",
+		"新莊區": "ntpc_shulin",
+		"樹林區": "ntpc_shulin",
+		"土城區": "ntpc_shulin",
+		"三峽區": "ntpc_shulin",
+		"鶯歌區": "ntpc_shulin",
+		"三重區": "ntpc_shulin",
+		"蘆洲區": "ntpc_shulin",
+		"中和區": "ntpc_xindian",
+		"永和區": "ntpc_xindian",
+		"新店區": "ntpc_xindian",
+		"深坑區": "ntpc_xindian",
+		"石碇區": "ntpc_xindian",
+		"坪林區": "ntpc_xindian",
+		"烏來區": "ntpc_xindian"
+	}
+}

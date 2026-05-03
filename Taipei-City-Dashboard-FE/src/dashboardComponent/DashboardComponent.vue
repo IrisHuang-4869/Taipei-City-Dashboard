@@ -29,6 +29,8 @@ import IconPercentChart from "./components/IconPercentChart.vue";
 import IndicatorChart from "./components/IndicatorChart.vue";
 import TextUnitChart from "./components/TextUnitChart.vue";
 import MoenvRecycleLayerToggles from "./components/MoenvRecycleLayerToggles.vue";
+import GarbageFlowArcControls from "./components/GarbageFlowArcControls.vue";
+import GarbageFlowAddressJourney from "./components/GarbageFlowAddressJourney.vue";
 
 import MapLegendSvg from "./assets/chart/MapLegend.svg";
 import DistrictChartSvg from "./assets/chart/DistrictChart.svg";
@@ -126,10 +128,10 @@ const toggleOn = computed({
 const moenvLayerToggleProps = computed(() =>
 	props.config.index === "moenv_wr_recycle_metrotaipei"
 		? {
-				parentMapOn: toggleOn.value,
-				// 與地圖交叉比對「站點數量」分頁相同：總覽不帶 map / halfmap 時只顯示各類別點位長條圖
-				countsOnly: !props.mode.includes("map"),
-			}
+			parentMapOn: toggleOn.value,
+			// 與地圖交叉比對「站點數量」分頁相同：總覽不帶 map / halfmap 時只顯示各類別點位長條圖
+			countsOnly: !props.mode.includes("map"),
+		}
 		: {},
 );
 
@@ -463,6 +465,29 @@ function returnChartComponent(name, svg) {
 					(map_config) => $emit('clearByLayerFilter', map_config)
 				"
 				@fly="(location) => $emit('fly', location)"
+			/>
+			<GarbageFlowArcControls
+				v-if="config.index === 'garbage_district_compare_local' && mode.includes('map') && toggleOn && config.map_filter && config.map_config?.length"
+				:map-filter="config.map_filter"
+				:map-config="config.map_config"
+				:series="config.chart_data"
+				:disabled="toggleDisable"
+				@filter-by-param="
+					(map_filter, map_config, x, y) =>
+						$emit('filterByParam', map_filter, map_config, x, y)
+				"
+				@clear-by-param-filter="
+					(map_config) => $emit('clearByParamFilter', map_config)
+				"
+			/>
+			<GarbageFlowAddressJourney
+				v-if="
+					config.index === 'garbage_district_compare_local' &&
+						mode.includes('map') &&
+						toggleOn &&
+						config.map_config?.length
+				"
+				:disabled="toggleDisable"
 			/>
 		</div>
 		<div

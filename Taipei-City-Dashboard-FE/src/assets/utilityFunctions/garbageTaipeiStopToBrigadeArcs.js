@@ -54,6 +54,34 @@ function buildOfficeCoordMap(officesDoc) {
 }
 
 /**
+ * 單一站推算分隊匯聚座標（隊部表優先，否則為該站座標＝僅一筆時之重心）。
+ * 與弧線圖層不同：不因「停靠點與匯聚點重合」而略過，供地址模擬路徑等使用。
+ * @param {GeoJSON.Feature} stopFeature
+ * @param {object | null} [officesDoc]
+ * @returns {{ lng: number, lat: number } | null}
+ */
+export function getTaipeiBrigadeHubLngLatForStop(stopFeature, officesDoc = null) {
+	if (stopFeature?.geometry?.type !== "Point") return null;
+	const b = stopFeature.properties?.brigade;
+	if (!b) return null;
+	const [lng, lat] = stopFeature.geometry.coordinates;
+	if (!Number.isFinite(lng) || !Number.isFinite(lat)) return null;
+
+	const aliases =
+		officesDoc?.brigade_name_aliases &&
+		typeof officesDoc.brigade_name_aliases === "object"
+			? officesDoc.brigade_name_aliases
+			: {};
+	const officeName = aliases[b] != null ? aliases[b] : b;
+	const officeCoordsByName = buildOfficeCoordMap(officesDoc);
+	const officePt = officeCoordsByName.get(officeName);
+	if (officePt) {
+		return { lng: officePt.lng, lat: officePt.lat };
+	}
+	return { lng, lat };
+}
+
+/**
  * @param {GeoJSON.FeatureCollection} featureCollection 點位，properties.brigade 為分隊名
  * @param {object | null} [officesDoc] 分隊地址／座標表（可為 null）
  * @returns {GeoJSON.FeatureCollection} LineString [停靠點, 分隊終點]

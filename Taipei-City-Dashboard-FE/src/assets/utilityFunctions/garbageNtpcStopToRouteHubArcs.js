@@ -63,6 +63,30 @@ function buildRouteHubOverrideMap(hubsDoc) {
 }
 
 /**
+ * 單一站推算路線集中點（hubs 表優先，否則為該站座標＝僅一筆時之重心）。
+ * 不因「停靠點與集中點重合」而略過，供地址模擬路徑等使用。
+ * @param {GeoJSON.Feature} stopFeature
+ * @param {object | null} [hubsDoc]
+ * @returns {{ lng: number, lat: number } | null}
+ */
+export function getNtpcRouteHubLngLatForStop(stopFeature, hubsDoc = null) {
+	if (stopFeature?.geometry?.type !== "Point") return null;
+	const p = stopFeature.properties || {};
+	const { dist } = p;
+	const routeName = p.route_name;
+	if (!dist || !routeName) return null;
+	const key = routeGroupKey(dist, routeName);
+	const overrides = buildRouteHubOverrideMap(hubsDoc);
+	const hubPt = overrides.get(key);
+	if (hubPt) {
+		return { lng: hubPt.lng, lat: hubPt.lat };
+	}
+	const [lng, lat] = stopFeature.geometry.coordinates;
+	if (!Number.isFinite(lng) || !Number.isFinite(lat)) return null;
+	return { lng, lat };
+}
+
+/**
  * @param {GeoJSON.FeatureCollection} featureCollection 點位；properties 需含 dist、route_name（與 garbage_ntpc_route_local.geojson 一致）
  * @param {object | null} [hubsDoc] 可選之路線集中點覆寫表
  * @returns {GeoJSON.FeatureCollection} LineString [停靠點, 集中點]

@@ -137,9 +137,23 @@ import { getPopupCoordinates } from "../assets/utilityFunctions/getPopupCoordina
 import { buildTaipeiGarbageBrigadeArcs } from "../assets/utilityFunctions/garbageTaipeiStopToBrigadeArcs.js";
 import { buildNtpcGarbageRouteHubArcs } from "../assets/utilityFunctions/garbageNtpcStopToRouteHubArcs.js";
 import {
+	buildNtpcHubToIncineratorArcs,
+	buildTaipeiHubToIncineratorArcs,
+} from "../assets/utilityFunctions/garbageHubToIncineratorArcs.js";
+import {
 	getCrowdColor,
 	mrtLineColor,
 } from "../assets/utilityFunctions/getThematicColor.js";
+import { geocodeAddressMapbox } from "../assets/utilityFunctions/geocodeMapbox.js";
+import {
+	findNearestGarbageStop,
+	planGarbageAddressJourney,
+} from "../assets/utilityFunctions/garbageAddressJourneyPlanner.js";
+import { startMarkerAlongSegmentPolylines } from "../assets/utilityFunctions/animateLngLatAlongPath.js";
+
+/** 清運地址模擬路徑：動畫 Marker 與取消（非 Pinia state） */
+let garbageJourneyMarker = null;
+let garbageJourneyAnimCancel = null;
 
 export const useMapStore = defineStore("map", {
 	state: () => ({
@@ -180,8 +194,36 @@ export const useMapStore = defineStore("map", {
 		layerUpdateTime: {
 			// [layerId]: Date
 		},
+		/** 雙北清運弧線：'all' | '1'（站點→匯聚）| '2'（匯聚→焚化爐） */
+		garbageFlowArcPhaseMode: "all",
 	}),
 	actions: {
+		/** 是否為「雙北清運收運流向」四層弧線之一（供階段開關） */
+		getGarbageFlowArcPhaseForDeckId(mapLayerId) {
+			if (!mapLayerId || mapLayerId.indexOf("-arc-") === -1) return null;
+			if (mapLayerId.includes("hub_incinerator_arcs")) return 2;
+			if (
+				mapLayerId.startsWith("garbage_ntpc_route_arcs_local-") ||
+				mapLayerId.startsWith("garbage_taipei_truck_local-")
+			) {
+				return 1;
+			}
+			return null;
+		},
+		/** 依階段模式更新四層清運弧線之 deck.gl visible */
+		setGarbageFlowArcPhase(mode) {
+			const next =
+				mode === "1" || mode === "2" || mode === "all" ? mode : "all";
+			this.garbageFlowArcPhaseMode = next;
+			for (const mapLayerId of Object.keys(this.deckGlLayer)) {
+				const ph = this.getGarbageFlowArcPhaseForDeckId(mapLayerId);
+				if (ph == null) continue;
+				const cfg = this.deckGlLayer[mapLayerId]?.config;
+				if (!cfg) continue;
+				cfg.visible = next === "all" || next === String(ph);
+			}
+			this.renderDeckGLLayer();
+		},
 		/* Initialize Mapbox */
 		// 1. Creates the mapbox instance and passes in initial configs
 		initializeMapBox() {
@@ -609,6 +651,44 @@ export const useMapStore = defineStore("map", {
 					.catch((e) => console.error(e));
 				return;
 			}
+			if (map_config.index === "garbage_taipei_hub_incinerator_arcs_local") {
+				Promise.all([
+					axios.get("/mapData/garbage_taipei_truck_local.geojson"),
+					axios
+						.get("/mapData/garbage_taipei_brigade_offices.json")
+						.catch(() => ({ data: null })),
+					axios.get("/mapData/incinerator_facilities.json"),
+				])
+					.then(([rsPoints, rsOffices, rsFac]) => {
+						const arcData = buildTaipeiHubToIncineratorArcs(
+							rsPoints.data,
+							rsOffices.data,
+							rsFac.data,
+						);
+						this.addGeojsonSource(map_config, arcData);
+					})
+					.catch((e) => console.error(e));
+				return;
+			}
+			if (map_config.index === "garbage_ntpc_hub_incinerator_arcs_local") {
+				Promise.all([
+					axios.get("/mapData/garbage_ntpc_route_local.geojson"),
+					axios
+						.get("/mapData/garbage_ntpc_route_hubs.json")
+						.catch(() => ({ data: null })),
+					axios.get("/mapData/incinerator_facilities.json"),
+				])
+					.then(([rsPoints, rsHubs, rsFac]) => {
+						const arcData = buildNtpcHubToIncineratorArcs(
+							rsPoints.data,
+							rsHubs.data,
+							rsFac.data,
+						);
+						this.addGeojsonSource(map_config, arcData);
+					})
+					.catch((e) => console.error(e));
+				return;
+			}
 			axios
 				.get(`/mapData/${map_config.index}.geojson`)
 				.then((rs) => {
@@ -898,7 +978,7 @@ export const useMapStore = defineStore("map", {
 		},
 		/** 為圖層增加懸浮工具提示 (支援焚化爐、回收、廚餘) */
 		addWasteHoverHandlers(layerId, type) {
-			const map = this.map;
+			const { map } = this;
 
 			map.on("mouseenter", layerId, (e) => {
 				map.getCanvas().style.cursor = "pointer";
@@ -1016,10 +1096,31 @@ export const useMapStore = defineStore("map", {
 			paintSettings["arc-color"] = paintSettings["arc-color"]
 				? paintSettings["arc-color"]
 				: ["#ffffff"];
+			const baseArcWidth = paintSettings["arc-width"] ?? 2;
+			const widthField =
+				typeof paintSettings["arc-width-property"] === "string"
+					? paintSettings["arc-width-property"].trim()
+					: "";
+			let getArcWidth = baseArcWidth;
+			if (widthField.length > 0) {
+				getArcWidth = (d) => {
+					const v = Number(d?.properties?.[widthField]);
+					return Number.isFinite(v) && v > 0 ? v : baseArcWidth;
+				};
+			}
+			const flowPhase = this.getGarbageFlowArcPhaseForDeckId(mapLayerId);
+			let layerVisible = true;
+			if (
+				flowPhase != null &&
+				this.garbageFlowArcPhaseMode !== "all"
+			) {
+				layerVisible = this.garbageFlowArcPhaseMode === String(flowPhase);
+			}
 			// formatted data
 			const layerConfig = {
 				id: map_config.index,
 				data: data.features,
+				visible: layerVisible,
 				getSourcePosition: (d) => d.geometry.coordinates[0],
 				getTargetPosition: (d) => d.geometry.coordinates[1],
 				// color format: [r, g, b, [a]]
@@ -1044,7 +1145,7 @@ export const useMapStore = defineStore("map", {
 						255 * paintSettings["arc-opacity"] || 255 * 0.5,
 					];
 				},
-				getWidth: paintSettings["arc-width"] || 2,
+				getWidth: getArcWidth,
 				pickable: true,
 				...(paintSettings["arc-animate"] && {
 					coef: this.step / 1000,
@@ -2084,7 +2185,13 @@ export const useMapStore = defineStore("map", {
 		//  5. Turn on the visibility for a exisiting map layer
 		turnOnMapLayerVisibility(mapLayerId) {
 			if (mapLayerId.indexOf("-arc") !== -1) {
-				this.deckGlLayer[mapLayerId].config.visible = true;
+				const ph = this.getGarbageFlowArcPhaseForDeckId(mapLayerId);
+				if (ph != null && this.garbageFlowArcPhaseMode !== "all") {
+					this.deckGlLayer[mapLayerId].config.visible =
+						this.garbageFlowArcPhaseMode === String(ph);
+				} else {
+					this.deckGlLayer[mapLayerId].config.visible = true;
+				}
 				this.step = 1;
 				this.currentVisibleLayers.push(mapLayerId);
 				this.renderDeckGLLayer();
@@ -2161,6 +2268,13 @@ export const useMapStore = defineStore("map", {
 		// 6. Turn off the visibility of an exisiting map layer but don't remove it completely
 		turnOffMapLayerVisibility(map_config) {
 			this.stopAnimation();
+			const turnsOffGarbageFlowArcs = map_config.some((element) => {
+				const lid = `${element.index}-${element.type}-${element.city}`;
+				return this.getGarbageFlowArcPhaseForDeckId(lid) != null;
+			});
+			if (turnsOffGarbageFlowArcs) {
+				this.garbageFlowArcPhaseMode = "all";
+			}
 			map_config.forEach((element) => {
 				let mapLayerId = `${element.index}-${element.type}-${element.city}`;
 				this.loadingLayers = this.loadingLayers.filter(
@@ -2888,9 +3002,142 @@ export const useMapStore = defineStore("map", {
 			this.flyToLocation(res.geometry.coordinates);
 		},
 
+		/** 清除地址模擬清運路徑之 Marker 與動畫 */
+		clearGarbageAddressJourney() {
+			if (garbageJourneyAnimCancel) {
+				garbageJourneyAnimCancel();
+				garbageJourneyAnimCancel = null;
+			}
+			if (garbageJourneyMarker) {
+				garbageJourneyMarker.remove();
+				garbageJourneyMarker = null;
+			}
+		},
+
+		/**
+		 * 地址地理編碼（Mapbox）→ 最近清運站 → 第一階段集中站 → 焚化廠之示意動畫
+		 * @param {{ address: string, onStatus?: (s: string) => void, onLegLabel?: (s: string) => void }} param0
+		 */
+		async runGarbageAddressJourney({ address, onStatus, onLegLabel }) {
+			const dialogStore = useDialogStore();
+			if (!this.map) {
+				dialogStore.showNotification("error", "地圖尚未就緒");
+				return;
+			}
+			this.clearGarbageAddressJourney();
+			const token = import.meta.env.VITE_MAPBOXTOKEN;
+			if (!token) {
+				dialogStore.showNotification("error", "缺少 Mapbox Token，無法查詢地址");
+				return;
+			}
+			onStatus?.("地理編碼中…");
+			const geo = await geocodeAddressMapbox(address, token);
+			if (!geo) {
+				dialogStore.showNotification("error", "找不到此地址或查詢失敗");
+				onStatus?.("");
+				return;
+			}
+			onStatus?.("載入清運點位…");
+			let rs;
+			try {
+				rs = await Promise.all([
+					axios.get("/mapData/garbage_taipei_truck_local.geojson"),
+					axios.get("/mapData/garbage_ntpc_route_local.geojson"),
+					axios
+						.get("/mapData/garbage_taipei_brigade_offices.json")
+						.catch(() => ({ data: null })),
+					axios
+						.get("/mapData/garbage_ntpc_route_hubs.json")
+						.catch(() => ({ data: null })),
+					axios.get("/mapData/incinerator_facilities.json"),
+				]);
+			} catch (e) {
+				console.error(e);
+				dialogStore.showNotification("error", "無法載入清運參考資料");
+				onStatus?.("");
+				return;
+			}
+			const [tpe, ntpc, offices, hubs, facilities] = rs.map((r) => r.data);
+			const nearest = findNearestGarbageStop(
+				geo.lng,
+				geo.lat,
+				tpe,
+				ntpc,
+			);
+			if (!nearest) {
+				dialogStore.showNotification("error", "清運點位資料為空");
+				onStatus?.("");
+				return;
+			}
+			const plan = planGarbageAddressJourney(
+				geo.lng,
+				geo.lat,
+				nearest,
+				offices,
+				hubs,
+				facilities,
+			);
+			if (plan.error) {
+				dialogStore.showNotification("error", plan.error);
+				onStatus?.("");
+				return;
+			}
+			garbageJourneyMarker = new mapboxGl.Marker({ color: "#ea580c" })
+				.setLngLat(plan.waypoints[0])
+				.addTo(this.map);
+			onLegLabel?.(plan.labels[0] ?? "");
+
+			const bounds = new mapboxGl.LngLatBounds();
+			for (const wp of plan.waypoints) bounds.extend(wp);
+			this.map.fitBounds(bounds, {
+				padding: { top: 56, bottom: 96, left: 48, right: 48 },
+				pitch: 52,
+				bearing: -18,
+				maxZoom: 12.2,
+				duration: 1400,
+			});
+			await new Promise((resolveMove) => {
+				let settled = false;
+				const finish = () => {
+					if (settled) return;
+					settled = true;
+					resolveMove();
+				};
+				this.map.once("moveend", finish);
+				setTimeout(finish, 1900);
+			});
+			onStatus?.("模擬路徑中（示意）…");
+			const { labels, segmentPolylines } = plan;
+			const { promise, cancel } = startMarkerAlongSegmentPolylines(
+				this.map,
+				garbageJourneyMarker,
+				segmentPolylines,
+				{
+					msPerLeg: 3000,
+					onLegStart: (leg) => {
+						const toLabel = labels[leg + 1];
+						onLegLabel?.(toLabel ?? "");
+					},
+				},
+			);
+			garbageJourneyAnimCancel = cancel;
+			try {
+				await promise;
+				onLegLabel?.(labels[labels.length - 1] ?? "");
+				dialogStore.showNotification(
+					"success",
+					"路徑模擬結束（示意，非實際車行路線）",
+				);
+			} finally {
+				garbageJourneyAnimCancel = null;
+				onStatus?.("");
+			}
+		},
+
 		/* Clearing the map */
 		// 1. Called when the user is switching between maps
 		clearOnlyLayers() {
+			this.clearGarbageAddressJourney();
 			this.removePopup();
 			if (!this.map) {
 				this.currentLayers = [];
@@ -2912,6 +3159,7 @@ export const useMapStore = defineStore("map", {
 		},
 		// 2. Called when user navigates away from the map
 		clearEntireMap() {
+			this.clearGarbageAddressJourney();
 			this.currentLayers = [];
 			this.mapConfigs = {};
 			this.map = null;
