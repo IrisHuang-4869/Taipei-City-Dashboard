@@ -15,6 +15,8 @@ const { garbageFlowArcPhaseMode, arcDistrictFilter, loadingLayers } = storeToRef
 const GARBAGE_ARC_LAYER_IDS = [
 	"garbage_ntpc_route_arcs_local-arc-metrotaipei",
 	"garbage_ntpc_hub_incinerator_arcs_local-arc-metrotaipei",
+	"garbage_taipei_truck_local-arc-metrotaipei",
+	"garbage_taipei_hub_incinerator_arcs_local-arc-metrotaipei",
 	"garbage_taipei_truck_local-arc-taipei",
 	"garbage_taipei_hub_incinerator_arcs_local-arc-taipei",
 ];

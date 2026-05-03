@@ -103,3 +103,6 @@ SET search_path TO public;
 
 -- Step 18: 為 metro_recycling（303）、metro_kitchen（301）、garbage_district_compare（416）補 query_charts city=taipei
 \ir metro_unified_query_charts_taipei_patch.sql
+
+-- Step 19: 新增清運流向第二階段弧線圖層（component_maps id 323/324）並更新 garbage_district_compare_local map_config_ids
+\ir garbage_flow_phase2_map_layers_patch.sql

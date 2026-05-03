@@ -94,6 +94,10 @@ const emits = defineEmits([
 ]);
 
 const chartTypesList = computed(() => props.config.chart_config?.types ?? []);
+/** 雙北清運收運流向：地圖卡內需把「地址路徑」與可捲動的行政區圖分開，否則說明會被捲到視窗外 */
+const isGarbageDistrictCompare = computed(
+	() => props.config.index === "garbage_district_compare_local",
+);
 const activeChart = ref(chartTypesList.value[0] ?? null);
 watch(
 	chartTypesList,
@@ -466,14 +470,16 @@ function returnChartComponent(name, svg) {
 				"
 				@fly="(location) => $emit('fly', location)"
 			/>
-			<GarbageFlowArcControls
-				v-if="config.index === 'garbage_district_compare_local' && mode.includes('map') && toggleOn"
-				:series="config.chart_data"
-				:disabled="toggleDisable"
-			/>
+		<GarbageFlowArcControls
+			v-if="isGarbageDistrictCompare && mode.includes('map') && toggleOn && config.map_filter && config.map_config?.length"
+			:map-filter="config.map_filter"
+			:map-config="config.map_config"
+			:series="config.chart_data"
+			:disabled="toggleDisable"
+		/>
 			<GarbageFlowAddressJourney
 				v-if="
-					config.index === 'garbage_district_compare_local' &&
+					isGarbageDistrictCompare &&
 						mode.includes('map') &&
 						toggleOn &&
 						config.map_config?.length

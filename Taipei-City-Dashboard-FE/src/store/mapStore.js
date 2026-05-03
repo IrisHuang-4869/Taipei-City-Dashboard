@@ -151,6 +151,10 @@ import { startMarkerAlongSegmentPolylines } from "../assets/utilityFunctions/ani
 /** 清運地址模擬路徑：動畫 Marker 與取消（非 Pinia state） */
 let garbageJourneyMarker = null;
 let garbageJourneyAnimCancel = null;
+const JOURNEY_ROUTE_SOURCE = "garbage-journey-route";
+const JOURNEY_ROUTE_ALL_LAYER = "garbage-journey-route-all";
+const JOURNEY_ROUTE_ACTIVE_SOURCE = "garbage-journey-route-active";
+const JOURNEY_ROUTE_ACTIVE_LAYER = "garbage-journey-route-active";
 
 export const useMapStore = defineStore("map", {
 	state: () => ({
@@ -3177,7 +3181,7 @@ export const useMapStore = defineStore("map", {
 			this.flyToLocation(res.geometry.coordinates);
 		},
 
-		/** 清除地址模擬清運路徑之 Marker 與動畫 */
+		/** 清除地址模擬清運路徑之 Marker、動畫與地圖線段 */
 		clearGarbageAddressJourney() {
 			if (garbageJourneyAnimCancel) {
 				garbageJourneyAnimCancel();
@@ -3186,6 +3190,16 @@ export const useMapStore = defineStore("map", {
 			if (garbageJourneyMarker) {
 				garbageJourneyMarker.remove();
 				garbageJourneyMarker = null;
+			}
+			if (this.map) {
+				if (this.map.getLayer(JOURNEY_ROUTE_ALL_LAYER))
+					this.map.removeLayer(JOURNEY_ROUTE_ALL_LAYER);
+				if (this.map.getSource(JOURNEY_ROUTE_SOURCE))
+					this.map.removeSource(JOURNEY_ROUTE_SOURCE);
+				if (this.map.getLayer(JOURNEY_ROUTE_ACTIVE_LAYER))
+					this.map.removeLayer(JOURNEY_ROUTE_ACTIVE_LAYER);
+				if (this.map.getSource(JOURNEY_ROUTE_ACTIVE_SOURCE))
+					this.map.removeSource(JOURNEY_ROUTE_ACTIVE_SOURCE);
 			}
 		},
 
@@ -3262,6 +3276,63 @@ export const useMapStore = defineStore("map", {
 				.addTo(this.map);
 			onLegLabel?.(plan.labels[0] ?? "");
 
+			const { labels, segmentPolylines } = plan;
+
+			// 畫出全部三段路線（半透明虛線）
+			const allCoords = segmentPolylines.flatMap((seg) => seg);
+			this.map.addSource(JOURNEY_ROUTE_SOURCE, {
+				type: "geojson",
+				data: {
+					type: "Feature",
+					geometry: { type: "LineString", coordinates: allCoords },
+				},
+			});
+			this.map.addLayer({
+				id: JOURNEY_ROUTE_ALL_LAYER,
+				type: "line",
+				source: JOURNEY_ROUTE_SOURCE,
+				paint: {
+					"line-color": "#94a3b8",
+					"line-width": 2,
+					"line-dasharray": [3, 3],
+					"line-opacity": 0.7,
+				},
+			});
+
+			// 高亮目前段的 source（初始為第 0 段）
+			this.map.addSource(JOURNEY_ROUTE_ACTIVE_SOURCE, {
+				type: "geojson",
+				data: {
+					type: "Feature",
+					geometry: {
+						type: "LineString",
+						coordinates: segmentPolylines[0] ?? [],
+					},
+				},
+			});
+			this.map.addLayer({
+				id: JOURNEY_ROUTE_ACTIVE_LAYER,
+				type: "line",
+				source: JOURNEY_ROUTE_ACTIVE_SOURCE,
+				paint: {
+					"line-color": "#ea580c",
+					"line-width": 4,
+					"line-opacity": 0.95,
+				},
+			});
+
+			const flyToSegment = (legIdx) => {
+				const poly = segmentPolylines[legIdx];
+				if (!poly?.length) return;
+				const b = new mapboxGl.LngLatBounds();
+				for (const pt of poly) b.extend(pt);
+				this.map.fitBounds(b, {
+					padding: { top: 80, bottom: 120, left: 80, right: 80 },
+					maxZoom: 13,
+					duration: 900,
+				});
+			};
+
 			const bounds = new mapboxGl.LngLatBounds();
 			for (const wp of plan.waypoints) bounds.extend(wp);
 			this.map.fitBounds(bounds, {
@@ -3282,7 +3353,6 @@ export const useMapStore = defineStore("map", {
 				setTimeout(finish, 1900);
 			});
 			onStatus?.("模擬路徑中（示意）…");
-			const { labels, segmentPolylines } = plan;
 			const { promise, cancel } = startMarkerAlongSegmentPolylines(
 				this.map,
 				garbageJourneyMarker,
@@ -3292,6 +3362,19 @@ export const useMapStore = defineStore("map", {
 					onLegStart: (leg) => {
 						const toLabel = labels[leg + 1];
 						onLegLabel?.(toLabel ?? "");
+						// 更新高亮段
+						const activeSrc = this.map?.getSource(JOURNEY_ROUTE_ACTIVE_SOURCE);
+						if (activeSrc) {
+							activeSrc.setData({
+								type: "Feature",
+								geometry: {
+									type: "LineString",
+									coordinates: segmentPolylines[leg] ?? [],
+								},
+							});
+						}
+						// 飛到本段範圍
+						flyToSegment(leg);
 					},
 				},
 			);
