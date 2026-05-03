@@ -20,7 +20,7 @@ function haversineKm(lat1, lon1, lat2, lon2) {
 /** 依該匯聚點涵蓋之停靠站數粗估弧寬（deck.gl ArcLayer getWidth） */
 function widthFromStopCount(n) {
 	const raw = 1.6 + Math.sqrt(Math.max(1, n)) * 0.52;
-	return Math.min(12, Math.max(2, Math.round(raw * 10) / 10));
+	return Math.min(12, Math.max(4, Math.round(raw * 10) / 10));
 }
 
 /** 依行政區對照 incinerator_facilities.json 之焚化廠（供弧線與地址模擬路徑共用） */
@@ -80,8 +80,7 @@ export function buildTaipeiHubToIncineratorArcs(
 		if (f.geometry?.type !== "Point") continue;
 		const b = f.properties?.brigade;
 		if (!b) continue;
-		if (!byBrigade.has(b))
-			byBrigade.set(b, { coords: [], props: [] });
+		if (!byBrigade.has(b)) byBrigade.set(b, { coords: [], props: [] });
 		const g = byBrigade.get(b);
 		g.coords.push(f.geometry.coordinates);
 		g.props.push(f.properties || {});
@@ -113,10 +112,15 @@ export function buildTaipeiHubToIncineratorArcs(
 		if (!dist) continue;
 
 		const fac = resolveGarbageFacilityByDistrict(dist, facilitiesDoc);
-		if (!fac || !Number.isFinite(fac.longitude) || !Number.isFinite(fac.latitude))
+		if (
+			!fac ||
+			!Number.isFinite(fac.longitude) ||
+			!Number.isFinite(fac.latitude)
+		)
 			continue;
 
-		const officeName = aliases[brigade] != null ? aliases[brigade] : brigade;
+		const officeName =
+			aliases[brigade] != null ? aliases[brigade] : brigade;
 		const officePt = officeCoordsByName.get(officeName);
 		let tlng;
 		let tlat;
@@ -156,6 +160,7 @@ export function buildTaipeiHubToIncineratorArcs(
 				flow_stage2: `${fac.name_short ?? fac.name}（依 ${dist} 對照 district_to_facility_hint）`,
 				arc_width: widthFromStopCount(n),
 				stop_count_hub: n,
+				time_minutes: 1440,
 			},
 		});
 	}
@@ -227,7 +232,11 @@ export function buildNtpcHubToIncineratorArcs(
 		if (!dist) continue;
 
 		const fac = resolveGarbageFacilityByDistrict(dist, facilitiesDoc);
-		if (!fac || !Number.isFinite(fac.longitude) || !Number.isFinite(fac.latitude))
+		if (
+			!fac ||
+			!Number.isFinite(fac.longitude) ||
+			!Number.isFinite(fac.latitude)
+		)
 			continue;
 
 		const hubPt = overrides.get(key);
@@ -272,6 +281,7 @@ export function buildNtpcHubToIncineratorArcs(
 				flow_stage2: `${fac.name_short ?? fac.name}（依 ${dist} 對照 district_to_facility_hint）`,
 				arc_width: widthFromStopCount(n),
 				stop_count_hub: n,
+				time_minutes: 1440,
 			},
 		});
 	}

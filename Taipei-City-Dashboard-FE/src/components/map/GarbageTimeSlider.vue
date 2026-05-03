@@ -81,7 +81,7 @@ function playFurElise() {
 // ─────────────────────────────────────────────────────────────────
 
 const MIN_TIME = 360;   // 06:00 — 最早班次
-const MAX_TIME = 1439;  // 23:59
+const MAX_TIME = 1440;  // 第二階段弧線統一在此出現
 
 const sliderMin = MIN_TIME;
 const sliderMax = MAX_TIME;
@@ -103,7 +103,9 @@ function formatTime(minutes) {
 	return `${h}:${min}`;
 }
 
-const displayTime = computed(() => formatTime(sliderValue.value));
+const displayTime = computed(() =>
+	sliderValue.value >= 1440 ? "第二階段" : formatTime(sliderValue.value),
+);
 
 function togglePlay() {
 	if (mapStore.arcTimeAnimating) {

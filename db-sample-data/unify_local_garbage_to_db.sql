@@ -5,19 +5,26 @@
 BEGIN;
 
 -- 1. component_maps：新增弧線圖層與黃金資收站圖層
-DELETE FROM component_maps WHERE id IN (320, 321, 322)
-   OR index IN ('garbage_ntpc_route_arcs_local', 'garbage_taipei_truck_arcs_local', 'garbage_ntpc_gold_local');
+DELETE FROM component_maps WHERE id IN (320, 321, 322, 323, 324)
+   OR index IN ('garbage_ntpc_route_arcs_local', 'garbage_taipei_truck_arcs_local', 'garbage_ntpc_gold_local',
+                'garbage_taipei_hub_incinerator_arcs_local', 'garbage_ntpc_hub_incinerator_arcs_local');
 
 INSERT INTO component_maps (id, index, title, type, source, size, icon, paint, property) VALUES
 (320, 'garbage_ntpc_route_arcs_local', '收運流向（新北）', 'arc', 'geojson', 'big', NULL,
- '{"arc-color":["#4e79a7","#a8c8e8"],"arc-width":2,"arc-opacity":0.38}'::json,
+ '{"arc-color":["#4e79a7","#a8c8e8"],"arc-width":2,"arc-opacity":0.38,"arc-animate":true}'::json,
  '[{"key":"dist","name":"行政區"},{"key":"vil","name":"里別"},{"key":"point_name","name":"清運點名稱"},{"key":"route_name","name":"路線名稱"},{"key":"schedule_summary","name":"表定時間"},{"key":"flow_target","name":"弧線終點"},{"key":"hub_source","name":"終點來源"},{"key":"hub_table_address","name":"集中點登記地址"}]'::json),
 (321, 'garbage_taipei_truck_local', '收運流向（台北）', 'arc', 'geojson', 'big', NULL,
- '{"arc-color":["#fd7900","#47d3d9"],"arc-width":2.2,"arc-opacity":0.42}'::json,
+ '{"arc-color":["#fd7900","#47d3d9"],"arc-width":2.2,"arc-opacity":0.42,"arc-animate":true}'::json,
  '[{"key":"dist","name":"行政區"},{"key":"vil","name":"里別"},{"key":"brigade","name":"清潔隊分隊"},{"key":"address","name":"地點"},{"key":"arrive_time","name":"抵達時間"},{"key":"leave_time","name":"離開時間"},{"key":"flow_target","name":"弧線終點"},{"key":"hub_source","name":"終點來源"},{"key":"brigade_office_address","name":"分隊登記地址"}]'::json),
 (322, 'garbage_ntpc_gold_local', '黃金資收站', 'circle', 'geojson', 'big', NULL,
  '{"circle-color":"#c9a227","circle-opacity":0.88,"circle-stroke-color":"#fff0b3","circle-stroke-width":0.9}'::json,
- '[{"key":"dist","name":"行政區"},{"key":"vil","name":"里別"},{"key":"leader","name":"里長"},{"key":"siteaddress","name":"資收地點"},{"key":"worktime","name":"資收時間"},{"key":"phone","name":"電話"}]'::json);
+ '[{"key":"dist","name":"行政區"},{"key":"vil","name":"里別"},{"key":"leader","name":"里長"},{"key":"siteaddress","name":"資收地點"},{"key":"worktime","name":"資收時間"},{"key":"phone","name":"電話"}]'::json),
+(323, 'garbage_taipei_hub_incinerator_arcs_local', '第二階段弧線（台北）', 'arc', 'geojson', 'big', NULL,
+ '{"arc-color":["#fd7900","#ffe066"],"arc-width":4.4,"arc-opacity":0.55,"arc-animate":true}'::json,
+ '[{"key":"dist","name":"行政區"},{"key":"flow_stage2","name":"送往焚化廠"},{"key":"stop_count_hub","name":"涵蓋站數"}]'::json),
+(324, 'garbage_ntpc_hub_incinerator_arcs_local', '第二階段弧線（新北）', 'arc', 'geojson', 'big', NULL,
+ '{"arc-color":["#4e79a7","#b3e0ff"],"arc-width":4,"arc-opacity":0.55,"arc-animate":true}'::json,
+ '[{"key":"dist","name":"行政區"},{"key":"flow_stage2","name":"送往焚化廠"},{"key":"stop_count_hub","name":"涵蓋站數"}]'::json);
 
 -- 2. components
 DELETE FROM components WHERE id IN (416, 417)
@@ -45,7 +52,7 @@ INSERT INTO query_charts (
 ) VALUES
 (
   'garbage_district_compare_local',
-  ARRAY[320, 321]::integer[],
+  ARRAY[320, 321, 323, 324]::integer[],
   '{"mode":"byParam","byParam":{"xParam":"dist"}}'::json,
   'static', NULL, 0, NULL,
   '新北市環保局、臺北市環保局',
@@ -114,7 +121,7 @@ SET components = CASE
 WHERE index = 'garbage_map_metrotaipei';
 
 -- 6. 更新 ID sequence
-SELECT setval('component_maps_id_seq', (SELECT COALESCE(MAX(id), 1) FROM component_maps));
+SELECT setval('component_maps_id_seq', GREATEST((SELECT COALESCE(MAX(id), 1) FROM component_maps), 324));
 SELECT setval('components_id_seq',     (SELECT COALESCE(MAX(id), 1) FROM components));
 
 -- 7. 補上各組件相關資料連結（dashboardmanager-demo.sql 初版 links 為空，此處確保有值）

@@ -698,7 +698,9 @@ export const useMapStore = defineStore("map", {
 					.catch((e) => console.error(e));
 				return;
 			}
-			if (map_config.index === "garbage_ntpc_hub_incinerator_arcs_local") {
+			if (
+				map_config.index === "garbage_ntpc_hub_incinerator_arcs_local"
+			) {
 				Promise.all([
 					axios.get("/mapData/garbage_ntpc_route_local.geojson"),
 					axios
@@ -1294,13 +1296,13 @@ export const useMapStore = defineStore("map", {
 		startArcTimeAnimation() {
 			if (this.arcTimeAnimating) return;
 			this.arcTimeAnimating = true;
-			// 從所有 arc 圖層中找資料最小/最大 time_minutes
+			// 從第一階段 arc 圖層（time_minutes < 1440）找最小/最大時間
 			let dataMin = 1439;
 			let dataMax = 0;
 			for (const features of Object.values(this.arcRawFeatures)) {
 				for (const f of features) {
 					const tm = f.properties?.time_minutes;
-					if (tm != null) {
+					if (tm != null && tm < 1440) {
 						if (tm < dataMin) dataMin = tm;
 						if (tm > dataMax) dataMax = tm;
 					}
@@ -1310,7 +1312,7 @@ export const useMapStore = defineStore("map", {
 				dataMin = 360;
 				dataMax = 1439;
 			}
-			const TOTAL_MS = 15000;
+			const TOTAL_MS = 10000;
 			const TOTAL_RANGE = dataMax - dataMin || 1;
 			// 若目前滑桿在範圍外或為 null，從頭開始
 			if (
@@ -1320,18 +1322,27 @@ export const useMapStore = defineStore("map", {
 			) {
 				this.arcTimeMinutes = dataMin;
 			}
+			const STAGE1_MAX = 1439;
+			const stage1Range = STAGE1_MAX - dataMin || 1;
 			let lastTs = null;
 			const tick = (ts) => {
 				if (!this.arcTimeAnimating) return;
 				if (lastTs !== null) {
 					const delta = ts - lastTs;
 					const next =
-						this.arcTimeMinutes + (delta / TOTAL_MS) * TOTAL_RANGE;
-					if (next >= dataMax) {
-						this.arcTimeMinutes = dataMax;
+						this.arcTimeMinutes + (delta / TOTAL_MS) * stage1Range;
+					if (next >= STAGE1_MAX) {
+						this.arcTimeMinutes = STAGE1_MAX;
 						this.step = 1;
 						this.renderDeckGLLayer();
-						this.arcTimeAnimating = false;
+						// 停 1 秒後顯示第二階段
+						this._arcTimeRafId = setTimeout(() => {
+							if (!this.arcTimeAnimating) return;
+							this.arcTimeMinutes = 1440;
+							this.step = 1;
+							this.renderDeckGLLayer();
+							this.arcTimeAnimating = false;
+						}, 1000);
 						return;
 					}
 					this.arcTimeMinutes = Math.floor(next);
@@ -1347,6 +1358,7 @@ export const useMapStore = defineStore("map", {
 			this.arcTimeAnimating = false;
 			if (this._arcTimeRafId) {
 				cancelAnimationFrame(this._arcTimeRafId);
+				clearTimeout(this._arcTimeRafId);
 				this._arcTimeRafId = null;
 			}
 		},
@@ -3363,7 +3375,9 @@ export const useMapStore = defineStore("map", {
 						const toLabel = labels[leg + 1];
 						onLegLabel?.(toLabel ?? "");
 						// 更新高亮段
-						const activeSrc = this.map?.getSource(JOURNEY_ROUTE_ACTIVE_SOURCE);
+						const activeSrc = this.map?.getSource(
+							JOURNEY_ROUTE_ACTIVE_SOURCE,
+						);
 						if (activeSrc) {
 							activeSrc.setData({
 								type: "Feature",
