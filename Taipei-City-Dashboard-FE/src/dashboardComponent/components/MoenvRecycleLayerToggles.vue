@@ -36,7 +36,44 @@ const tabs = [
 
 const aiUserMessage = ref("");
 const aiResultText = ref("");
+const aiCarbonText = ref("");
 const aiLoading = ref(false);
+
+// 各類別每次回收預估省下的 CO₂ 當量（kg），與丟棄相比
+const CARBON_KG_BY_KEYWORD = [
+	{ keywords: ["3c", "電子", "電器", "資訊", "科技", "家電"], kg: 20 },
+	{ keywords: ["書", "紙", "報", "雜誌"], kg: 1.5 },
+	{ keywords: ["家具", "木", "桌", "椅", "床", "沙發"], kg: 12 },
+	{ keywords: ["金屬", "鋁", "鐵", "銅", "鋼"], kg: 8 },
+	{ keywords: ["衣", "布", "紡", "織", "玩具", "娃娃"], kg: 6 },
+	{ keywords: ["塑膠", "寶特瓶", "pet"], kg: 2 },
+	{ keywords: ["玻璃"], kg: 0.3 },
+	{ keywords: ["電池", "充電"], kg: 3 },
+	{ keywords: ["廚餘"], kg: 0.5 },
+];
+
+function estimateCarbonKg(titles) {
+	let total = 0;
+	for (const title of titles) {
+		const lower = title.toLowerCase();
+		let matched = false;
+		for (const entry of CARBON_KG_BY_KEYWORD) {
+			if (entry.keywords.some((k) => lower.includes(k))) {
+				total += entry.kg;
+				matched = true;
+				break;
+			}
+		}
+		if (!matched) total += 3;
+	}
+	return total;
+}
+
+function formatCarbonKg(kg) {
+	if (kg < 0.1) return `${Math.round(kg * 1000)} g`;
+	if (kg < 10) return `${kg.toFixed(1)} kg`;
+	return `${Math.round(kg)} kg`;
+}
 
 const getSystemPrompt = () => {
 	const layerInfo = props.map_config.map((mc, idx) => `${idx}: ${mc.title || mc.index}`).join('\n');
@@ -117,23 +154,33 @@ const sendAIMessage = async () => {
 				}
 				const names = targetIndices.map(idx => layerTitle(props.map_config[idx]));
 				aiResultText.value = `已為您開啟：${names.join('、')}`;
+				const carbonKg = estimateCarbonKg(names);
+				aiCarbonText.value = `超讚！你省下約 ${formatCarbonKg(carbonKg)} 的碳排放量 ♻️`;
 			} else {
 				aiResultText.value = "抱歉，我無法判斷該物品的分類。";
+				aiCarbonText.value = "";
 			}
 		} else {
 			aiResultText.value = data?.content || "抱歉，我無法判斷該物品的分類。";
 		}
 	} catch (error) {
 		console.error("AI chat error", error);
-		aiResultText.value = "AI 分類時發生錯誤，請稍後再試。";
+		const msg =
+			typeof error?.response?.data?.message === "string"
+				? error.response.data.message
+				: "";
+		aiResultText.value = msg
+			? `AI 錯誤：${msg}`
+			: "AI 分類時發生錯誤，請稍後再試。";
+		aiCarbonText.value = "";
 	} finally {
 		aiLoading.value = false;
-		// 3秒後自動清除小字
 		setTimeout(() => {
-			if (aiResultText.value && !aiLoading.value) {
+			if (!aiLoading.value) {
 				aiResultText.value = "";
+				aiCarbonText.value = "";
 			}
-		}, 5000);
+		}, 8000);
 	}
 };
 
@@ -565,6 +612,12 @@ function toggleSelectAllLayers() {
         {{ aiResultText }}
       </div>
       <div
+        v-if="aiCarbonText"
+        class="moenv-layer-toggles__ai-carbon"
+      >
+        {{ aiCarbonText }}
+      </div>
+      <div
         v-for="(mc, i) in map_config"
         :key="`layer-${mc.index}-${mc.city || ''}-${i}`"
         class="moenv-layer-toggles__row"
@@ -761,9 +814,18 @@ function toggleSelectAllLayers() {
 .moenv-layer-toggles__ai-result {
 	font-size: 0.75rem;
 	color: #88c0d0;
-	margin: -0.25rem 0 0.55rem;
+	margin: -0.25rem 0 0.2rem;
 	padding-left: 0.2rem;
 	animation: fadeIn 0.3s;
+}
+
+.moenv-layer-toggles__ai-carbon {
+	font-size: 0.75rem;
+	color: #88d0a8;
+	margin: 0 0 0.55rem;
+	padding-left: 0.2rem;
+	animation: fadeIn 0.3s;
+	font-weight: 500;
 }
 
 @keyframes fadeIn {

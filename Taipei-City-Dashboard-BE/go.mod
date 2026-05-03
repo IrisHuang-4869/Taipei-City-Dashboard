@@ -11,6 +11,7 @@ require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/google/uuid v1.6.0
+	github.com/joho/godotenv v1.5.1
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/spf13/cobra v1.8.0
 	github.com/sugarme/tokenizer v0.3.0

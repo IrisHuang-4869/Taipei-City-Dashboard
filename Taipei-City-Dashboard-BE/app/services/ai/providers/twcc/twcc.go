@@ -5,8 +5,10 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
 	"strings"
 	"time"
@@ -27,12 +29,60 @@ type TWCC struct {
 // Ensure TWCC implements llms.Model
 var _ llms.Model = (*TWCC)(nil)
 
+func newTWTransport() *http.Transport {
+	// ForceAttemptHTTP2: false — 部分環境對 TWCC HTTPS 走 HTTP/2 會出現連線被對方關閉（Post "...": EOF）
+	return &http.Transport{
+		Proxy: http.ProxyFromEnvironment,
+		DialContext: (&net.Dialer{
+			Timeout:   30 * time.Second,
+			KeepAlive: 30 * time.Second,
+		}).DialContext,
+		ForceAttemptHTTP2:     false,
+		MaxIdleConns:          8,
+		IdleConnTimeout:       90 * time.Second,
+		TLSHandshakeTimeout:   20 * time.Second,
+		ExpectContinueTimeout: 1 * time.Second,
+	}
+}
+
+func twNetErrRetriable(err error) bool {
+	if err == nil {
+		return false
+	}
+	if errors.Is(err, context.DeadlineExceeded) {
+		return false
+	}
+	var x error = err
+	for x != nil {
+		if e, ok := x.(net.Error); ok && e.Timeout() {
+			return false
+		}
+		type unwrapper interface{ Unwrap() error }
+		u, ok := x.(unwrapper)
+		if !ok {
+			break
+		}
+		x = u.Unwrap()
+	}
+	s := strings.ToLower(err.Error())
+	if strings.Contains(s, "timeout") || strings.Contains(s, "deadline exceeded") {
+		return false
+	}
+	return strings.Contains(s, "eof") ||
+		strings.Contains(s, "connection reset") ||
+		strings.Contains(s, "broken pipe")
+}
+
 func New(apiKey, baseURL, model string, timeout int) *TWCC {
+	tr := newTWTransport()
 	return &TWCC{
-		APIKey:     apiKey,
-		BaseURL:    baseURL,
-		ModelName:  model,
-		HTTPClient: &http.Client{Timeout: time.Duration(timeout) * time.Second},
+		APIKey:    apiKey,
+		BaseURL:   baseURL,
+		ModelName: model,
+		HTTPClient: &http.Client{
+			Timeout:   time.Duration(timeout) * time.Second,
+			Transport: tr,
+		},
 		Temperature: 0.7,
 		MaxTokens:   350,
 	}
@@ -170,26 +220,51 @@ func (m *TWCC) toTWCCTools(tools []llms.Tool) []TWCCTool {
 
 func (m *TWCC) doRequest(ctx context.Context, body []byte, isStreaming bool) (*http.Response, error) {
 	endpoint := fmt.Sprintf("%s/models/conversation", m.BaseURL)
-	req, err := http.NewRequestWithContext(ctx, "POST", endpoint, bytes.NewBuffer(body))
-	if err != nil {
-		return nil, fmt.Errorf("failed to create request: %v", err)
-	}
-
-	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("X-API-KEY", m.APIKey)
 
 	client := m.HTTPClient
-	if isStreaming { client = &http.Client{Timeout: 0} }
-
-	resp, err := client.Do(req)
-	if err != nil { return nil, fmt.Errorf("failed to send request to TWCC: %v", err) }
-
-	if resp.StatusCode != http.StatusOK {
-		raw, _ := io.ReadAll(resp.Body)
-		resp.Body.Close()
-		return nil, fmt.Errorf("TWCC API returned error status %d: %s", resp.StatusCode, string(raw))
+	if isStreaming {
+		client = &http.Client{
+			Transport: m.HTTPClient.Transport,
+			Timeout:   0,
+		}
 	}
-	return resp, nil
+
+	var lastErr error
+	for attempt := 0; attempt < 3; attempt++ {
+		if attempt > 0 {
+			select {
+			case <-time.After(400 * time.Millisecond):
+			case <-ctx.Done():
+				return nil, fmt.Errorf("failed to send request to TWCC: %w", ctx.Err())
+			}
+			logs.FWarn("TWCC doRequest retry %d: %v", attempt, lastErr)
+		}
+
+		req, err := http.NewRequestWithContext(ctx, "POST", endpoint, bytes.NewReader(body))
+		if err != nil {
+			return nil, fmt.Errorf("failed to create request: %v", err)
+		}
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("X-API-KEY", m.APIKey)
+		req.Close = true
+
+		resp, err := client.Do(req)
+		if err != nil {
+			lastErr = err
+			if twNetErrRetriable(err) {
+				continue
+			}
+			return nil, fmt.Errorf("failed to send request to TWCC: %v", err)
+		}
+
+		if resp.StatusCode != http.StatusOK {
+			raw, _ := io.ReadAll(resp.Body)
+			resp.Body.Close()
+			return nil, fmt.Errorf("TWCC API returned error status %d: %s", resp.StatusCode, string(raw))
+		}
+		return resp, nil
+	}
+	return nil, fmt.Errorf("failed to send request to TWCC: %v", lastErr)
 }
 
 // handleStreamingResponse manages the SSE flow using a dedicated processor.

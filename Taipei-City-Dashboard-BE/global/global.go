@@ -1,6 +1,7 @@
 package global
 
 import (
+	_ "TaipeiCityDashboardBE/internal/envbootstrap" // 須最先執行：載入 .env / .env.local 再讀 os.Getenv
 	"TaipeiCityDashboardBE/logs"
 	"os"
 	"strconv"

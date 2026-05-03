@@ -50,7 +50,21 @@ http.interceptors.response.use(
 		contentStore.error = true;
 		contentStore.loading = false;
 
-		switch (error.response.status) {
+		const status = error.response?.status;
+		const serverMsg =
+			typeof error.response?.data?.message === "string"
+				? error.response.data.message
+				: "";
+
+		if (status == null) {
+			dialogStore.showNotification(
+				"fail",
+				serverMsg || "網路錯誤或無法連線伺服器",
+			);
+			return Promise.reject(error);
+		}
+
+		switch (status) {
 			case 401:
 				if (authStore.token) {
 					dialogStore.showNotification(
@@ -82,13 +96,15 @@ http.interceptors.response.use(
 			case 500:
 				dialogStore.showNotification(
 					"fail",
-					"500，伺服器錯誤，動作無法完成"
+					serverMsg
+						? `500：${serverMsg}`
+						: "500，伺服器錯誤，動作無法完成",
 				);
 				break;
 			default:
 				dialogStore.showNotification(
 					"fail",
-					`${error.response.status}，${error.response.data.message}`
+					`${status}，${serverMsg || error.response?.data?.error || "請稍後再試"}`,
 				);
 				break;
 		}
