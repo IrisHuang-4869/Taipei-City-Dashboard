@@ -174,6 +174,8 @@ export const useMapStore = defineStore("map", {
 		arcTimeAnimating: false,
 		// 各 arc 圖層的完整 feature 陣列快取（用於時間篩選）
 		arcRawFeatures: {},
+		// 收運流向行政區篩選：null = 顯示全部，否則為行政區名稱
+		arcDistrictFilter: null,
 		// Stores popup information
 		popup: null,
 		// Store currently loading layers,
@@ -657,7 +659,9 @@ export const useMapStore = defineStore("map", {
 					.catch((e) => console.error(e));
 				return;
 			}
-			if (map_config.index === "garbage_taipei_hub_incinerator_arcs_local") {
+			if (
+				map_config.index === "garbage_taipei_hub_incinerator_arcs_local"
+			) {
 				Promise.all([
 					axios.get("/mapData/garbage_taipei_truck_local.geojson"),
 					axios
@@ -676,7 +680,9 @@ export const useMapStore = defineStore("map", {
 					.catch((e) => console.error(e));
 				return;
 			}
-			if (map_config.index === "garbage_ntpc_hub_incinerator_arcs_local") {
+			if (
+				map_config.index === "garbage_ntpc_hub_incinerator_arcs_local"
+			) {
 				Promise.all([
 					axios.get("/mapData/garbage_ntpc_route_local.geojson"),
 					axios
@@ -1124,20 +1130,17 @@ export const useMapStore = defineStore("map", {
 			}
 			const flowPhase = this.getGarbageFlowArcPhaseForDeckId(mapLayerId);
 			let layerVisible = true;
-			if (
-				flowPhase != null &&
-				this.garbageFlowArcPhaseMode !== "all"
-			) {
-				layerVisible = this.garbageFlowArcPhaseMode === String(flowPhase);
+			if (flowPhase != null && this.garbageFlowArcPhaseMode !== "all") {
+				layerVisible =
+					this.garbageFlowArcPhaseMode === String(flowPhase);
 			}
 			// formatted data
 			const layerConfig = {
 				id: map_config.index,
 				data: data.features,
 				visible: layerVisible,
-				// coordinates[1] 是分隊/集中點（中心），作為 source 使動畫從外往中心收斂
-				getSourcePosition: (d) => d.geometry.coordinates[1],
-				getTargetPosition: (d) => d.geometry.coordinates[0],
+				getSourcePosition: (d) => d.geometry.coordinates[0],
+				getTargetPosition: (d) => d.geometry.coordinates[1],
 				// color format: [r, g, b, [a]]
 				getSourceColor: () => {
 					const color = hexToRGB(
@@ -1191,18 +1194,22 @@ export const useMapStore = defineStore("map", {
 		renderDeckGLLayer() {
 			const layers = Object.keys(this.deckGlLayer).map((index) => {
 				const l = this.deckGlLayer[index];
-				// 時間過濾：若 arcTimeMinutes 不為 null，顯示已到時間的 features（只加不減）
-				let filteredData = l.data;
-				if (
-					this.arcTimeMinutes !== null &&
-					Array.isArray(this.arcRawFeatures[index])
-				) {
+				let filteredData = Array.isArray(this.arcRawFeatures[index])
+					? this.arcRawFeatures[index]
+					: l.data;
+				if (this.arcTimeMinutes !== null) {
 					const t = this.arcTimeMinutes;
-					filteredData = this.arcRawFeatures[index].filter((f) => {
+					filteredData = filteredData.filter((f) => {
 						const tm = f.properties?.time_minutes;
 						if (tm == null) return true;
 						return tm <= t;
 					});
+				}
+				if (this.arcDistrictFilter !== null) {
+					const d = this.arcDistrictFilter;
+					filteredData = filteredData.filter(
+						(f) => f.properties?.dist === d,
+					);
 				}
 				switch (l.type) {
 					case "ArcLayer":
@@ -1302,6 +1309,11 @@ export const useMapStore = defineStore("map", {
 		resetArcTimeFilter() {
 			this.stopArcTimeAnimation();
 			this.arcTimeMinutes = null;
+			this.step = 1;
+			this.renderDeckGLLayer();
+		},
+		setArcDistrictFilter(district) {
+			this.arcDistrictFilter = district || null;
 			this.step = 1;
 			this.renderDeckGLLayer();
 		},
@@ -2379,6 +2391,7 @@ export const useMapStore = defineStore("map", {
 			});
 			if (turnsOffGarbageFlowArcs) {
 				this.garbageFlowArcPhaseMode = "all";
+				this.arcDistrictFilter = null;
 			}
 			map_config.forEach((element) => {
 				let mapLayerId = `${element.index}-${element.type}-${element.city}`;
@@ -2513,6 +2526,23 @@ export const useMapStore = defineStore("map", {
 			}
 
 			if (!parsedPopupContent.length || !mapConfigs[0]) return;
+
+			// 點擊行政區時同步更新清運弧線篩選
+			if (
+				this.arcRawFeatures &&
+				Object.keys(this.arcRawFeatures).length > 0
+			) {
+				const clickedDistrict = parsedPopupContent
+					.map((f) => f.properties?.TNAME || f.properties?.dist)
+					.find(Boolean);
+				if (clickedDistrict) {
+					this.setArcDistrictFilter(
+						clickedDistrict === this.arcDistrictFilter
+							? null
+							: clickedDistrict,
+					);
+				}
+			}
 
 			// Create a new mapbox popup
 			const popupCoords = getPopupCoordinates(
@@ -3132,7 +3162,10 @@ export const useMapStore = defineStore("map", {
 			this.clearGarbageAddressJourney();
 			const token = import.meta.env.VITE_MAPBOXTOKEN;
 			if (!token) {
-				dialogStore.showNotification("error", "缺少 Mapbox Token，無法查詢地址");
+				dialogStore.showNotification(
+					"error",
+					"缺少 Mapbox Token，無法查詢地址",
+				);
 				return;
 			}
 			onStatus?.("地理編碼中…");
@@ -3162,13 +3195,10 @@ export const useMapStore = defineStore("map", {
 				onStatus?.("");
 				return;
 			}
-			const [tpe, ntpc, offices, hubs, facilities] = rs.map((r) => r.data);
-			const nearest = findNearestGarbageStop(
-				geo.lng,
-				geo.lat,
-				tpe,
-				ntpc,
+			const [tpe, ntpc, offices, hubs, facilities] = rs.map(
+				(r) => r.data,
 			);
+			const nearest = findNearestGarbageStop(geo.lng, geo.lat, tpe, ntpc);
 			if (!nearest) {
 				dialogStore.showNotification("error", "清運點位資料為空");
 				onStatus?.("");

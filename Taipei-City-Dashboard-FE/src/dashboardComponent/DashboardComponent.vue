@@ -467,18 +467,9 @@ function returnChartComponent(name, svg) {
 				@fly="(location) => $emit('fly', location)"
 			/>
 			<GarbageFlowArcControls
-				v-if="config.index === 'garbage_district_compare_local' && mode.includes('map') && toggleOn && config.map_filter && config.map_config?.length"
-				:map-filter="config.map_filter"
-				:map-config="config.map_config"
+				v-if="config.index === 'garbage_district_compare_local' && mode.includes('map') && toggleOn"
 				:series="config.chart_data"
 				:disabled="toggleDisable"
-				@filter-by-param="
-					(map_filter, map_config, x, y) =>
-						$emit('filterByParam', map_filter, map_config, x, y)
-				"
-				@clear-by-param-filter="
-					(map_config) => $emit('clearByParamFilter', map_config)
-				"
 			/>
 			<GarbageFlowAddressJourney
 				v-if="

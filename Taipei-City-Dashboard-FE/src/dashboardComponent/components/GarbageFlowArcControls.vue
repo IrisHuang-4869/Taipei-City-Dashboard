@@ -1,20 +1,16 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { storeToRefs } from "pinia";
 import { useMapStore } from "../../store/mapStore";
 
 const props = defineProps({
-	mapFilter: { type: Object, default: null },
-	mapConfig: { type: Array, default: () => [] },
 	/** chart_data 格式，取 [0].data[].x 作為行政區選單 */
 	series: { type: Array, default: () => [] },
 	disabled: { type: Boolean, default: false },
 });
 
-const emit = defineEmits(["filterByParam", "clearByParamFilter"]);
-
 const mapStore = useMapStore();
-const { garbageFlowArcPhaseMode, loadingLayers } = storeToRefs(mapStore);
+const { garbageFlowArcPhaseMode, arcDistrictFilter, loadingLayers } = storeToRefs(mapStore);
 
 const GARBAGE_ARC_LAYER_IDS = [
 	"garbage_ntpc_route_arcs_local-arc-metrotaipei",
@@ -36,22 +32,15 @@ const districtOptions = computed(() => {
 	);
 });
 
-const selectedDistrict = ref("");
-
-function onDistrictChange() {
-	if (!props.mapFilter || !props.mapConfig?.length) return;
-	if (!selectedDistrict.value) {
-		emit("clearByParamFilter", props.mapConfig);
-	} else {
-		emit(
-			"filterByParam",
-			props.mapFilter,
-			props.mapConfig,
-			selectedDistrict.value,
-			null,
-		);
-	}
-}
+// 直接用 store 的 arcDistrictFilter 作為 select 的 model（null → ""）
+const selectedDistrict = computed({
+	get() {
+		return arcDistrictFilter.value ?? "";
+	},
+	set(v) {
+		mapStore.setArcDistrictFilter(v || null);
+	},
+});
 
 function setPhase(mode) {
 	mapStore.setGarbageFlowArcPhase(mode);
@@ -69,7 +58,6 @@ function setPhase(mode) {
         v-model="selectedDistrict"
         class="garbage-flow-controls__select"
         :disabled="disabled || districtBusy"
-        @change="onDistrictChange"
       >
         <option value="">
           全部
