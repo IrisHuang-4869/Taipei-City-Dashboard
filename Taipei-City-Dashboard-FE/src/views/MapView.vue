@@ -104,14 +104,37 @@ function isGarbageMapDashboard() {
 	return contentStore.currentDashboard.index === "garbage_map_metrotaipei";
 }
 
-// 雙北垃圾車儀表板的城市切換：只更新組件的 city 欄位（activeCity），不換整個資料組件
+// 雙北垃圾車儀表板的城市切換：只更新組件的 city 欄位（activeCity），
+// 並在 MapView 中依新 city 切換地圖圖層可見性。
 function handleGarbageCityChange(city, item) {
 	const componentIndex = contentStore.currentDashboard.components.findIndex(
 		(c) => c.id === item.id,
 	);
-	if (componentIndex !== -1) {
-		const updated = { ...contentStore.currentDashboard.components[componentIndex], city };
-		contentStore.setComponentData(componentIndex, updated);
+	if (componentIndex === -1) return;
+
+	const oldMapConfig = item.map_config;
+	const updated = { ...contentStore.currentDashboard.components[componentIndex], city };
+	contentStore.setComponentData(componentIndex, updated);
+
+	// 如果目前在 MapView 且組件已開啟（地圖圖層可見），才需要切換圖層
+	if (!oldMapConfig || !oldMapConfig[0]) return;
+
+	// 判斷組件是否已開啟（至少一個圖層在 currentVisibleLayers 中）
+	const oldLayerIds = oldMapConfig.map((el) => `${el.index}-${el.type}-${el.city}`);
+	const isToggleOn = oldLayerIds.some((id) => mapStore.currentVisibleLayers.includes(id));
+	if (!isToggleOn) return;
+
+	// 關掉所有舊圖層（不分城市）
+	mapStore.clearByParamFilter(oldMapConfig);
+	mapStore.turnOffMapLayerVisibility(oldMapConfig);
+
+	// 依照新 city 篩選出應顯示的圖層（city 相符，或 city = metrotaipei 時顯示所有）
+	const newMapConfig = oldMapConfig.filter((el) => {
+		if (city === "metrotaipei") return true; // 雙北：全部顯示
+		return el.city === city; // 台北：只顯示 city === "taipei" 的圖層
+	});
+	if (newMapConfig.length > 0) {
+		mapStore.addToMapLayerList(newMapConfig);
 	}
 }
 
