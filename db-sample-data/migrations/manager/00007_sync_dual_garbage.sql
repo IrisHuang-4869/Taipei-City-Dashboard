@@ -1,3 +1,9 @@
+-- +goose NO TRANSACTION
+-- source: db-sample-data/sync_dual_taipei_garbage.sql
+
+-- +goose Up
+SET search_path TO public;
+
 BEGIN;
 
 UPDATE public.dashboards 
@@ -115,3 +121,6 @@ SET
 WHERE index = 'garbage_map_metrotaipei';
 
 COMMIT;
+
+-- +goose Down
+-- TODO: 視需要填寫回滾 SQL

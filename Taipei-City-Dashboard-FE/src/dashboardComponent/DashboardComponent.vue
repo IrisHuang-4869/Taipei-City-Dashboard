@@ -442,7 +442,7 @@ function returnChartComponent(name, svg) {
 			<component
 				:is="returnChartComponent(item)"
 				v-for="item in chartTypesList"
-				:key="`${props.config.index}-${item}-chart-${item.city}`"
+				:key="`${props.config.index}-${item}-chart-${config.city ?? activeCity}`"
 				:active-chart="activeChart"
 				:active-city="activeCity"
 				:chart_config="config.chart_config"

@@ -680,9 +680,21 @@ export const useMapStore = defineStore("map", {
 					.catch((e) => console.error(e));
 				return;
 			}
-			if (
-				map_config.index === "garbage_ntpc_hub_incinerator_arcs_local"
-			) {
+			// 焚化爐：雙北與臺北市視圖分檔（避免臺北視圖仍顯示新北三廠）
+			if (map_config.index === "incinerator_capacity") {
+				const base =
+					map_config.city === "taipei"
+						? "incinerator_capacity_taipei"
+						: "incinerator_capacity";
+				axios
+					.get(`/mapData/${base}.geojson`)
+					.then((rs) => {
+						this.addGeojsonSource(map_config, rs.data);
+					})
+					.catch((e) => console.error(e));
+				return;
+			}
+			if (map_config.index === "garbage_ntpc_hub_incinerator_arcs_local") {
 				Promise.all([
 					axios.get("/mapData/garbage_ntpc_route_local.geojson"),
 					axios
@@ -697,6 +709,34 @@ export const useMapStore = defineStore("map", {
 							rsFac.data,
 						);
 						this.addGeojsonSource(map_config, arcData);
+					})
+					.catch((e) => console.error(e));
+				return;
+			}
+			// 雙北資源回收面圖：component_maps.index 皆為 metro_recycling_map_mvp，依 query_charts.city 換檔（41 區 vs 臺北 12 區）
+			if (map_config.index === "metro_recycling_map_mvp") {
+				const base =
+					map_config.city === "taipei"
+						? "tpc_recycling_map_mvp"
+						: "metro_recycling_map_mvp";
+				axios
+					.get(`/mapData/${base}.geojson`)
+					.then((rs) => {
+						this.addGeojsonSource(map_config, rs.data);
+					})
+					.catch((e) => console.error(e));
+				return;
+			}
+			// 雙北廚餘：DB 的 map 圖層 index 為 tpc_kitchen_map_mvp，但 city=metrotaipei 時應載入 41 區合併面，不可誤用僅 12 區的 tpc 檔
+			if (map_config.index === "tpc_kitchen_map_mvp") {
+				const base =
+					map_config.city === "metrotaipei"
+						? "metro_kitchen_waste_map_mvp"
+						: "tpc_kitchen_map_mvp";
+				axios
+					.get(`/mapData/${base}.geojson`)
+					.then((rs) => {
+						this.addGeojsonSource(map_config, rs.data);
 					})
 					.catch((e) => console.error(e));
 				return;

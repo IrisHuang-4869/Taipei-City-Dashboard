@@ -1,7 +1,7 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023-2024-->
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 import {
 	isNtpcWasteRankColorChart,
@@ -11,11 +11,20 @@ import {
 const props = defineProps([
 	"chart_config",
 	"activeChart",
+	"activeCity",
 	"series",
 	"map_config",
 	"map_filter",
 	"map_filter_on",
 ]);
+
+const chartMountNonce = ref(0);
+watch(
+	() => props.activeCity,
+	() => {
+		chartMountNonce.value += 1;
+	},
+);
 
 const emits = defineEmits([
 	"filterByParam",
@@ -300,7 +309,7 @@ function handleDataSelection(_e, _chartContext, config) {
     class="columnChart"
   >
     <VueApexCharts
-      :key="chartHeight"
+      :key="`col-${chartHeight}-${props.activeCity ?? 'na'}-${chartMountNonce}`"
       width="100%"
       :height="chartHeight"
       type="bar"

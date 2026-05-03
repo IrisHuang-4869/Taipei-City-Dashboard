@@ -73,15 +73,35 @@ function isGarbageMapDashboard() {
 	return contentStore.currentDashboard.index === "garbage_map_metrotaipei";
 }
 
-// 雙北垃圾車儀表板的城市切換：只更新組件的 city 欄位（activeCity），不換整個資料組件
-function handleGarbageCityChange(city, item) {
+/** 無需／不支援雙北↔臺北切換的組件：隱藏城市下拉 */
+function hideGarbageDashboardCitySelect(item) {
+	const idx = item?.index;
+	return (
+		idx === "metro_kitchen_waste_map_mvp" ||
+		idx === "garbage_ntpc_gold_district_local"
+	);
+}
+
+// 雙北垃圾車儀表板的城市切換：換成 cityDashboard 裡對應 city 的完整組件（含 map_config / chart_data），並重拉圖表
+async function handleGarbageCityChange(city, item) {
 	const componentIndex = contentStore.currentDashboard.components.findIndex(
 		(c) => c.id === item.id,
 	);
-	if (componentIndex !== -1) {
-		const updated = { ...contentStore.currentDashboard.components[componentIndex], city };
+	if (componentIndex === -1) return;
+
+	const selected = contentStore.cityDashboard.components.find(
+		(c) => c.id === item.id && c.city === city,
+	);
+	if (selected) {
+		contentStore.setComponentData(componentIndex, { ...selected });
+	} else {
+		const updated = {
+			...contentStore.currentDashboard.components[componentIndex],
+			city,
+		};
 		contentStore.setComponentData(componentIndex, updated);
 	}
+	await contentStore.refreshCurrentDashboardComponentChartAt(componentIndex);
 }
 </script>
 
@@ -99,7 +119,7 @@ function handleGarbageCityChange(city, item) {
       :info-btn="true"
       :active-city="item.city"
       :select-btn="true"
-      :select-btn-disabled="contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city).length === 1"
+      :select-btn-disabled="contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city).length === 1 || hideGarbageDashboardCitySelect(item)"
       :select-btn-list="contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city)"
       :city-tag="contentStore.cityManager.getTagList(contentStore.currentDashboard?.city)"
       :favorite-btn="authStore.token ? true : false"
@@ -149,7 +169,7 @@ function handleGarbageCityChange(city, item) {
       :info-btn="true"
       :active-city="item.city"
       :select-btn="true"
-      :select-btn-disabled="contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city).length === 1 || (!isGarbageMapDashboard() && contentStore.currentDashboardExcluded.components.filter((data) => data.index === item.index).length === 0)"
+      :select-btn-disabled="contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city).length === 1 || (!isGarbageMapDashboard() && contentStore.currentDashboardExcluded.components.filter((data) => data.index === item.index).length === 0) || hideGarbageDashboardCitySelect(item)"
       :select-btn-list="contentStore.currentDashboard?.city
         ? contentStore.cityManager.getSelectList(contentStore.currentDashboard?.city)
         : contentStore.cityManager.getCities(contentStore.cityManager.activeCities)

@@ -1,7 +1,7 @@
 <!-- Developed by Taipei Urban Intelligence Center 2023-2024-->
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 import {
 	isNtpcWasteRankColorChart,
@@ -11,11 +11,22 @@ import {
 const props = defineProps([
 	"chart_config",
 	"activeChart",
+	"activeCity",
 	"series",
 	"map_config",
 	"map_filter",
 	"map_filter_on",
 ]);
+
+// 雙北儀表板：外層 v-for :key 會在 metrotaipei ↔ taipei 回到相同字串時復用同一個
+// TreemapChart 實例，vue3-apexcharts 內部狀態不會重繪；依 activeCity 遞增 nonce 強制重建圖表。
+const chartMountNonce = ref(0);
+watch(
+	() => props.activeCity,
+	() => {
+		chartMountNonce.value += 1;
+	},
+);
 
 const emits = defineEmits([
 	"filterByParam",
@@ -233,6 +244,7 @@ function handleDataSelection(_e, _chartContext, config) {
       <h6>{{ sum }} {{ chart_config.unit }}</h6>
     </div>
     <VueApexCharts
+      :key="`treemap-${props.activeCity ?? 'na'}-${chartMountNonce}`"
       width="100%"
       type="treemap"
       :options="treemapChartOptions"

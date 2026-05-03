@@ -82,6 +82,68 @@ export const useContentStore = defineStore("content", {
 		setComponentData(index, component) {
 			this.currentDashboard.components[index] = component;
 		},
+		/**
+		 * 垃圾地圖等：切換組件 city 後重新拉 /component/:id/chart，避免 UI 與 API 城市不一致。
+		 */
+		async refreshCurrentDashboardComponentChartAt(dashboardComponentIndex) {
+			const list = this.currentDashboard.components;
+			if (!list?.[dashboardComponentIndex]) return;
+			const component = list[dashboardComponentIndex];
+			if (component.id >= 990000) return;
+			try {
+				const response = await http.get(
+					`/component/${component.id}/chart`,
+					{
+						params: {
+							city: component.city,
+							...(!["static", "current", "demo"].includes(
+								component.time_from,
+							)
+								? getComponentDataTimeframe(
+										component.time_from,
+										component.time_to,
+										true,
+									)
+								: {}),
+						},
+					},
+				);
+				const chartData = response.data.data;
+				this.currentDashboard.components[dashboardComponentIndex].chart_data =
+					chartData;
+				if (
+					response.data.categories &&
+					this.currentDashboard.components[dashboardComponentIndex]
+						.chart_config
+				) {
+					this.currentDashboard.components[
+						dashboardComponentIndex
+					].chart_config.categories = response.data.categories;
+				}
+				const cd = this.cityDashboard.components;
+				if (Array.isArray(cd)) {
+					const j = cd.findIndex(
+						(c) =>
+							c.id === component.id && c.city === component.city,
+					);
+					if (j !== -1) {
+						cd[j].chart_data = chartData;
+						if (response.data.categories && cd[j].chart_config) {
+							cd[j].chart_config.categories =
+								response.data.categories;
+						}
+					}
+				}
+			} catch (error) {
+				console.error(
+					`Failed to refresh chart for component ${component.id}:`,
+					error,
+				);
+				this.currentDashboard.components[
+					dashboardComponentIndex
+				].chart_data = [];
+			}
+		},
 		setMapLayerData(index, component) {
 			this.mapLayers[index] = component;
 		},
@@ -346,50 +408,51 @@ export const useContentStore = defineStore("content", {
 					const component = this.cityDashboard.components[index];
 					// Get history data if applicable
 					if (component.history_config?.range) {
-						for (let i in component.history_config.range) {
-							try {
-								const response = await http.get(
-									`/component/${component.id}/history`,
-									{
-										params: {
-											city: component.city,
-											...getComponentDataTimeframe(
-												component.history_config.range[
-													i
-												],
-												"now",
-												true,
-											),
-										},
+					for (let i in component.history_config.range) {
+						// 先初始化，避免 fetch 失敗時 catch 裡 .push([]) 打到 undefined
+						if (i === "0") {
+							this.cityDashboard.components[
+								index
+							].history_data = [];
+						}
+						try {
+							const response = await http.get(
+								`/component/${component.id}/history`,
+								{
+									params: {
+										city: component.city,
+										...getComponentDataTimeframe(
+											component.history_config.range[
+												i
+											],
+											"now",
+											true,
+										),
 									},
-								);
+								},
+							);
 
-								if (i === "0") {
-									this.cityDashboard.components[
-										index
-									].history_data = [];
-								}
-								this.cityDashboard.components[
-									index
-								].history_data.push(response.data.data);
-							} catch (error) {
-								console.error(
-									`Failed to fetch history data for component ${component.id} (range ${i}):`,
-									error,
-								);
-								// Add empty data to maintain data structure consistency
-								this.cityDashboard.components[
-									index
-								].history_data.push([]);
-							}
+							this.cityDashboard.components[
+								index
+							].history_data.push(response.data.data);
+						} catch (error) {
+							console.error(
+								`Failed to fetch history data for component ${component.id} (range ${i}):`,
+								error,
+							);
+							// Add empty data to maintain data structure consistency
+							this.cityDashboard.components[
+								index
+							].history_data.push([]);
 						}
 					}
 				}
-			} catch (error) {
-				console.error("Error setting dashboard chart data:", error);
-				this.loading = false;
 			}
-			this.filterCurrentDashboardContent();
+		} catch (error) {
+			console.error("Error setting dashboard chart data:", error);
+			this.loading = false;
+		}
+		this.filterCurrentDashboardContent();
 		},
 
 		// 20251224 因應擁擠程度相關組件須每分鐘刷新新增func
@@ -469,50 +532,51 @@ export const useContentStore = defineStore("content", {
 					}
 					// Get history data if applicable
 					if (component.history_config?.range) {
-						for (let i in component.history_config.range) {
-							try {
-								const response = await http.get(
-									`/component/${component.id}/history`,
-									{
-										params: {
-											city: component.city,
-											...getComponentDataTimeframe(
-												component.history_config.range[
-													i
-												],
-												"now",
-												true,
-											),
-										},
+					for (let i in component.history_config.range) {
+						// 先初始化，避免 fetch 失敗時 catch 裡 .push([]) 打到 undefined
+						if (i === "0") {
+							this.cityDashboard.components[
+								index
+							].history_data = [];
+						}
+						try {
+							const response = await http.get(
+								`/component/${component.id}/history`,
+								{
+									params: {
+										city: component.city,
+										...getComponentDataTimeframe(
+											component.history_config.range[
+												i
+											],
+											"now",
+											true,
+										),
 									},
-								);
+								},
+							);
 
-								if (i === "0") {
-									this.cityDashboard.components[
-										index
-									].history_data = [];
-								}
-								this.cityDashboard.components[
-									index
-								].history_data.push(response.data.data);
-							} catch (error) {
-								console.error(
-									`Failed to fetch history data for component ${component.id} (range ${i}):`,
-									error,
-								);
-								// Add empty data to maintain data structure consistency
-								this.cityDashboard.components[
-									index
-								].history_data.push([]);
-							}
+							this.cityDashboard.components[
+								index
+							].history_data.push(response.data.data);
+						} catch (error) {
+							console.error(
+								`Failed to fetch history data for component ${component.id} (range ${i}):`,
+								error,
+							);
+							// Add empty data to maintain data structure consistency
+							this.cityDashboard.components[
+								index
+							].history_data.push([]);
 						}
 					}
 				}
-			} catch (error) {
-				console.error("Error setting dashboard chart data:", error);
-				this.loading = false;
 			}
-			this.filterCurrentDashboardContent();
+		} catch (error) {
+			console.error("Error setting dashboard chart data:", error);
+			this.loading = false;
+		}
+		this.filterCurrentDashboardContent();
 		},
 
 		async updateCurrentDashboardCertainChartData() {
@@ -591,50 +655,51 @@ export const useContentStore = defineStore("content", {
 					}
 					// Get history data if applicable
 					if (component.history_config?.range) {
-						for (let i in component.history_config.range) {
-							try {
-								const response = await http.get(
-									`/component/${component.id}/history`,
-									{
-										params: {
-											city: component.city,
-											...getComponentDataTimeframe(
-												component.history_config.range[
-													i
-												],
-												"now",
-												true,
-											),
-										},
+					for (let i in component.history_config.range) {
+						// 先初始化，避免 fetch 失敗時 catch 裡 .push([]) 打到 undefined
+						if (i === "0") {
+							this.cityDashboard.components[
+								index
+							].history_data = [];
+						}
+						try {
+							const response = await http.get(
+								`/component/${component.id}/history`,
+								{
+									params: {
+										city: component.city,
+										...getComponentDataTimeframe(
+											component.history_config.range[
+												i
+											],
+											"now",
+											true,
+										),
 									},
-								);
+								},
+							);
 
-								if (i === "0") {
-									this.cityDashboard.components[
-										index
-									].history_data = [];
-								}
-								this.cityDashboard.components[
-									index
-								].history_data.push(response.data.data);
-							} catch (error) {
-								console.error(
-									`Failed to fetch history data for component ${component.id} (range ${i}):`,
-									error,
-								);
-								// Add empty data to maintain data structure consistency
-								this.cityDashboard.components[
-									index
-								].history_data.push([]);
-							}
+							this.cityDashboard.components[
+								index
+							].history_data.push(response.data.data);
+						} catch (error) {
+							console.error(
+								`Failed to fetch history data for component ${component.id} (range ${i}):`,
+								error,
+							);
+							// Add empty data to maintain data structure consistency
+							this.cityDashboard.components[
+								index
+							].history_data.push([]);
 						}
 					}
 				}
-			} catch (error) {
-				console.error("Error setting dashboard chart data:", error);
-				this.loading = false;
 			}
-			this.filterCurrentDashboardContent();
+		} catch (error) {
+			console.error("Error setting dashboard chart data:", error);
+			this.loading = false;
+		}
+		this.filterCurrentDashboardContent();
 		},
 
 		// 5. filter the info for the current dashboard based on the index and city and adds it to "currentDashboard"
