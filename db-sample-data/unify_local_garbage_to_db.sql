@@ -117,4 +117,45 @@ WHERE index = 'garbage_map_metrotaipei';
 SELECT setval('component_maps_id_seq', (SELECT COALESCE(MAX(id), 1) FROM component_maps));
 SELECT setval('components_id_seq',     (SELECT COALESCE(MAX(id), 1) FROM components));
 
+-- 7. 補上各組件相關資料連結（dashboardmanager-demo.sql 初版 links 為空，此處確保有值）
+
+-- 焚化爐
+UPDATE query_charts
+SET links = ARRAY['https://data.moenv.gov.tw/dataset/detail/FAC_S_02']::text[]
+WHERE index = 'incinerator_capacity'
+  AND (links IS NULL OR links = '{}'::text[]);
+
+-- 大台北地區回收點（環境部 MOENV）
+UPDATE query_charts
+SET links = ARRAY['https://data.gov.tw/dataset/163144']::text[]
+WHERE index = 'moenv_wr_recycle_metrotaipei'
+  AND (links IS NULL OR links = '{}'::text[]);
+
+-- 資源回收統計（雙北）
+UPDATE query_charts
+SET links = ARRAY[
+  'https://data.taipei/dataset/detail?id=34f4f00b-5386-43ab-bcc7-b0ae7ee3e305',
+  'https://oas.bas.ntpc.gov.tw/NTPCTRWD/NewPage/Publish.aspx?Mid1=382150000I&p=2&y=2025/12/25&s=10'
+]::text[]
+WHERE index = 'metro_recycling_map_mvp'
+  AND (links IS NULL OR links = '{}'::text[]);
+
+-- 回收地圖（新北）：補充 ntpc 連結
+UPDATE query_charts
+SET links = array_append(links, 'https://oas.bas.ntpc.gov.tw/NTPCTRWD/NewPage/Publish.aspx?Mid1=382150000I&p=2&y=2025/12/25&s=10')
+WHERE index = 'ntpc_recycling_map_mvp'
+  AND NOT ('https://oas.bas.ntpc.gov.tw/NTPCTRWD/NewPage/Publish.aspx?Mid1=382150000I&p=2&y=2025/12/25&s=10' = ANY(links));
+
+-- 臺北回收地圖：補充 ntpc 連結
+UPDATE query_charts
+SET links = array_append(links, 'https://oas.bas.ntpc.gov.tw/NTPCTRWD/NewPage/Publish.aspx?Mid1=382150000I&p=2&y=2025/12/25&s=10')
+WHERE index = 'tpc_recycling_map_mvp'
+  AND NOT ('https://oas.bas.ntpc.gov.tw/NTPCTRWD/NewPage/Publish.aspx?Mid1=382150000I&p=2&y=2025/12/25&s=10' = ANY(links));
+
+-- 廚餘地圖（雙北）
+UPDATE query_charts
+SET links = ARRAY['https://oas.bas.ntpc.gov.tw/NTPCTRWD/NewPage/Publish.aspx?Mid1=382150000I&p=2&y=2025/12/25&s=10']::text[]
+WHERE index = 'metro_kitchen_waste_map_mvp'
+  AND (links IS NULL OR links = '{}'::text[]);
+
 COMMIT;
